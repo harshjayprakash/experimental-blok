@@ -28,7 +28,7 @@ int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
     (void)hPrevInstance;
     (void)lpCmdLine;
 
-    BlokInitLogger(BlokConsole);
+    BlokInitLogger(BlokFile);
 
     (void)BlokInit(hInstance, nShowCmd);
     (void)BlokProcessArguments();

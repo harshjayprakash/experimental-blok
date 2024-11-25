@@ -22,7 +22,7 @@
  * \param nShowCmd How the program will be displayed.
  * \return Exit code 0 for success.
  */
-int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine,
+int __stdcall wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine,
                       int nShowCmd)
 {
     (void)hPrevInstance;

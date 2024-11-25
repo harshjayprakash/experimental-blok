@@ -1,6 +1,6 @@
 /**
  * \file main.c
- * \date 13-08-2024
+ * \date 25-11-2024
  * \brief Implementation of the entrypoint.
  *
  * This file contains the WinMain entrypoint functions for Windows programs.

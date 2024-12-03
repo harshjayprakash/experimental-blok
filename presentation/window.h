@@ -9,4 +9,8 @@ typedef struct bkWindow
 	HWND hWindow;
 } bkWindow;
 
+void bkWindowInit(bkWindow* pWindow);
+
+void bkWindowFree(bkWindow* pWindow);
+
 #endif // !__BLOK_WINDOW_H

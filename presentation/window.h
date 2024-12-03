@@ -7,6 +7,7 @@
 typedef struct bkWindow
 {
 	HWND hWindow;
+	WNDCLASSEXW klass;
 } bkWindow;
 
 void bkWindowInit(bkWindow* pWindow);

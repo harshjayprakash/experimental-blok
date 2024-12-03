@@ -12,8 +12,7 @@ typedef struct bkProgram
 
 void bkInit(
 	bkProgram* pProgram, HINSTANCE hInstance, HINSTANCE hPreviousInstance,
-	LPWSTR pCommandLine, int showFlag
-);
+	LPWSTR pCommandLine, int showFlag);
 
 void bkRun(bkProgram* pProgram);
 

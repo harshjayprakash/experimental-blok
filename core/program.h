@@ -10,7 +10,10 @@ typedef struct bkProgram
 	bkArgs args;
 } bkProgram;
 
-void bkInit(bkProgram* pProgram, HINSTANCE hInstance, HINSTANCE hPreviousInstance, LPWSTR pCommandLine, int showFlag);
+void bkInit(
+	bkProgram* pProgram, HINSTANCE hInstance, HINSTANCE hPreviousInstance,
+	LPWSTR pCommandLine, int showFlag
+);
 
 void bkRun(bkProgram* pProgram);
 

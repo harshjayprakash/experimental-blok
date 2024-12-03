@@ -2,8 +2,7 @@
 
 void bkInit(
 	bkProgram* pProgram, HINSTANCE hInstance, HINSTANCE hPreviousInstance,
-	LPWSTR pCommandLine, int showFlag
-)
+	LPWSTR pCommandLine, int showFlag)
 {
 	if (!pProgram) return;
 	pProgram->args.hInstance = hInstance;

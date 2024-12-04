@@ -10,8 +10,8 @@ typedef struct bkWindow
 	WNDCLASSEXW klass;
 } bkWindow;
 
-void bkWindowInit(bkWindow* pWindow);
+void bkWindowInit(bkWindow* pWindow, HINSTANCE hInstance, int showFlag);
 
-void bkWindowFree(bkWindow* pWindow);
+void bkWindowFree(bkWindow* pWindow, HINSTANCE hInstance);
 
 #endif // !__BLOK_WINDOW_H

@@ -11,6 +11,7 @@
 
 #define STRICT 1
 #include <Windows.h>
+#include "gfx/renderer.h"
 
 typedef struct bkWindow
 {
@@ -18,7 +19,9 @@ typedef struct bkWindow
 	WNDCLASSEXW klass;
 } bkWindow;
 
-void bkWindowInit(bkWindow* pWindow, HINSTANCE hInstance, int showFlag);
+void bkWindowInit(bkWindow* pWindow, HINSTANCE hInstance);
+
+WPARAM bkWindowShow(bkWindow* pWindow, const int kShowFlag);
 
 void bkWindowFree(bkWindow* pWindow, HINSTANCE hInstance);
 

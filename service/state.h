@@ -8,4 +8,8 @@ typedef struct bkState
 	bkSquare user;
 } bkState;
 
+void bkStateInit(bkState* state);
+
+void bkStateFree(bkState* state);
+
 #endif // !__BLOK_STATE_H

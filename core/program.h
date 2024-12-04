@@ -4,10 +4,12 @@
 #define STRICT 1
 #include <Windows.h>
 #include "args.h"
+#include "../presentation/window.h"
 
 typedef struct bkProgram
 {
 	bkArgs args;
+	bkWindow window;
 } bkProgram;
 
 void bkInit(

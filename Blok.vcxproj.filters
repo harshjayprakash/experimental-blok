@@ -21,12 +21,18 @@
     <ClCompile Include="core\program.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="presentation\window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\program.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="core\args.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentation\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

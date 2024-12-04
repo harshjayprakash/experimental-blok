@@ -7,6 +7,7 @@
  *********************************************************************/
 
 #include "window.h"
+#include "gfx/renderer.h"
 
 #define BK_WINDOW_KLASS L"__BlokWindowClass"
 

@@ -51,7 +51,7 @@ static ATOM __blokWindowRegister(WNDCLASSEXW* pKlass, HINSTANCE hInstance)
 	return RegisterClassExW(pKlass);
 }
 
-void bkWindowInit(bkWindow* pWindow, HINSTANCE hInstance, int showFlag)
+void bkWindowInit(bkWindow* pWindow, HINSTANCE hInstance)
 {
 	if (!pWindow) return;
 	ATOM registerSuccessful = __blokWindowRegister(&pWindow->klass, hInstance);

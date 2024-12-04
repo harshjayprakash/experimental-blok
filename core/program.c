@@ -14,7 +14,8 @@ void bkInit(
 void bkRun(bkProgram* pProgram)
 {
 	if (!pProgram) return;
-	(void)MessageBoxW(NULL, L"This is a test.", L"Blok", MB_OK);
+	bkWindowInit(&pProgram->window, pProgram->args.hInstance, pProgram->args.showFlag);
+	bkWindowFree(&pProgram->window, pProgram->args.hInstance);
 }
 
 void bkFree(bkProgram* pProgram)

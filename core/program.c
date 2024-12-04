@@ -22,7 +22,8 @@ void bkInit(
 void bkRun(bkProgram* pProgram)
 {
 	if (!pProgram) return;
-	bkWindowInit(&pProgram->window, pProgram->args.hInstance, pProgram->args.showFlag);
+	bkWindowInit(&pProgram->window, pProgram->args.hInstance);
+	bkWindowShow(&pProgram->window, pProgram->args.showFlag);
 	bkWindowFree(&pProgram->window, pProgram->args.hInstance);
 }
 

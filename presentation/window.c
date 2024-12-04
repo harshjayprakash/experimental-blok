@@ -16,11 +16,17 @@
 static LRESULT CALLBACK __bkWindowProcedure(
 	HWND hWindow, UINT messageId, WPARAM wParam, LPARAM lParam)
 {
+	static RECT windowArea = { 0 };
 	switch (messageId)
 	{
+	case WM_CREATE:
+		(void)GetClientRect(hWindow, &windowArea);
+		return 0LL;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0LL;
+	case WM_SIZE:
+		return GetClientRect(hWindow, &windowArea);
 	default:
 		return DefWindowProcW(hWindow, messageId, wParam, lParam);
 	}

@@ -24,6 +24,12 @@
     <ClCompile Include="presentation\window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="presentation\gfx\renderer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="presentation\gfx\tools.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\program.h">
@@ -33,6 +39,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="presentation\window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentation\gfx\renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentation\gfx\tools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentation\gfx\colours.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

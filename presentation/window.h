@@ -11,7 +11,6 @@
 
 #define STRICT 1
 #include <Windows.h>
-#include "gfx/renderer.h"
 
 typedef struct bkWindow
 {

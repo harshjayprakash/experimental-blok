@@ -26,24 +26,6 @@ static LRESULT CALLBACK __bkWindowProcedure(
 	}
 }
 
-static WPARAM __blokWindowRunMessageLoop(void)
-{
-	MSG events = { 0 };
-	while (events.message != WM_QUIT)
-	{
-		if (PeekMessageW(&events, NULL, 0, 0, PM_REMOVE))
-		{
-			(void)TranslateMessage(&events);
-			(void)DispatchMessageW(&events);
-		}
-		else
-		{
-			Sleep(1);
-		}
-	}
-	return events.wParam;
-}
-
 static HWND __blokWindowCreate(
 	HINSTANCE hInstance, PWCHAR pCaption, const int kWidth, const int kHeight)
 {
@@ -84,9 +66,29 @@ void bkWindowInit(bkWindow* pWindow, HINSTANCE hInstance, int showFlag)
 		(void)MessageBoxW(NULL, L"Window creation failed.", L"Blok", MB_OK);
 		return;
 	}
-	(void)ShowWindow(pWindow->hWindow, showFlag);
+
+}
+
+WPARAM bkWindowShow(bkWindow* pWindow, const int kShowFlag)
+{
+	if (!pWindow) return MAXULONG_PTR;
+	MSG events = { 0 };
+	(void)ShowWindow(pWindow->hWindow, kShowFlag);
 	(void)UpdateWindow(pWindow->hWindow);
-	(void)__blokWindowRunMessageLoop();
+	while (events.message != WM_QUIT)
+	{
+		if (PeekMessageW(&events, NULL, 0, 0, PM_REMOVE))
+		{
+			(void)TranslateMessage(&events);
+			(void)DispatchMessageW(&events);
+		}
+		else
+		{
+			(void)SendMessageW(pWindow->hWindow, WM_PAINT, 0, 0);
+			Sleep(1);
+		}
+	}
+	return events.wParam;
 }
 
 void bkWindowFree(bkWindow* pWindow, HINSTANCE hInstance)

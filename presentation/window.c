@@ -16,15 +16,30 @@
 static LRESULT CALLBACK __bkWindowProcedure(
 	HWND hWindow, UINT messageId, WPARAM wParam, LPARAM lParam)
 {
+	static bkRenderer renderer = { 0 };
 	static RECT windowArea = { 0 };
 	switch (messageId)
 	{
 	case WM_CREATE:
+		bkRendererInit(&renderer);
 		(void)GetClientRect(hWindow, &windowArea);
 		return 0LL;
 	case WM_DESTROY:
+		bkRendererFree(&renderer);
 		PostQuitMessage(0);
 		return 0LL;
+	case WM_PAINT: {
+		PAINTSTRUCT paint;
+		HDC hWindowContext = BeginPaint(hWindow, &paint);
+		HDC hBufferedContext = CreateCompatibleDC(hWindowContext);
+		HBITMAP hBufferedBitmap = CreateCompatibleBitmap(hWindowContext, windowArea.right, windowArea.bottom);
+		(void)SelectObject(hBufferedContext, hBufferedBitmap);
+		bkRendererPaint(&renderer, hBufferedContext, windowArea);
+		(void)BitBlt(hWindowContext, 0, 0, windowArea.right, windowArea.bottom, hBufferedContext, 0, 0, SRCCOPY);
+		(void)DeleteObject(hBufferedBitmap);
+		(void)DeleteDC(hBufferedContext);
+		return EndPaint(hWindow, &paint);
+	}
 	case WM_SIZE:
 		return GetClientRect(hWindow, &windowArea);
 	default:

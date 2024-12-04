@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * \file   window.c
+ * \brief  Contains windows functions implementation.
+ * 
+ * \author Harsh Jayprakash
+ * \date   04th of December 2024
+ *********************************************************************/
+
 #include "window.h"
 
 #define BK_WINDOW_KLASS L"__BlokWindowClass"

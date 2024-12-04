@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * \file   program.h
+ * \brief  Contains base program functions and structure.
+ * 
+ * \author Harsh Jayprakash
+ * \date   04 of December 2024
+ *********************************************************************/
+
 #ifndef __BLOK_PROGRAM_H
 #define __BLOK_PROGRAM_H
 

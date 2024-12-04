@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * \file   program.c
+ * \brief  Contains program function implementation.
+ * 
+ * \author Harsh Jayprakash
+ * \date   04 of December 2024
+ *********************************************************************/
+
 #include "program.h"
 
 void bkInit(

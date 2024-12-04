@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * \file   window.h
+ * \brief  Contains window related functions and structures.
+ * 
+ * \author Harsh Jayprakash
+ * \date   04 of December 2024
+ *********************************************************************/
+
 #ifndef __BLOK_WINDOW_H
 #define __BLOK_WINDOW_H
 

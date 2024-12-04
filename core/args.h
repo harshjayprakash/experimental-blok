@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * \file   args.h
+ * \brief  Contains the `bkArgs` type.
+ * 
+ * \author Harsh Jayprakash
+ * \date   04th of December 2024
+ *********************************************************************/
+
 #ifndef __BLOK_ARGS_H
 #define __BLOK_ARGS_H
 

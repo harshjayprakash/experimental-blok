@@ -39,7 +39,7 @@ static LRESULT CALLBACK __bkWindowProcedure(
 		HDC hBufferedContext = CreateCompatibleDC(hWindowContext);
 		HBITMAP hBufferedBitmap = CreateCompatibleBitmap(hWindowContext, windowArea.right, windowArea.bottom);
 		(void)SelectObject(hBufferedContext, hBufferedBitmap);
-		bkRendererPaint(&renderer, hBufferedContext, windowArea);
+		bkRendererPaint(&renderer, &state, hBufferedContext, windowArea);
 		(void)BitBlt(hWindowContext, 0, 0, windowArea.right, windowArea.bottom, hBufferedContext, 0, 0, SRCCOPY);
 		(void)DeleteObject(hBufferedBitmap);
 		(void)DeleteDC(hBufferedContext);

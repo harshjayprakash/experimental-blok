@@ -8,6 +8,7 @@
 
 #include "window.h"
 #include "gfx/renderer.h"
+#include "../service/state.h"
 
 #define BK_WINDOW_KLASS L"__BlokWindowClass"
 
@@ -18,15 +19,18 @@ static LRESULT CALLBACK __bkWindowProcedure(
 	HWND hWindow, UINT messageId, WPARAM wParam, LPARAM lParam)
 {
 	static bkRenderer renderer = { 0 };
+	static bkState state = { 0 };
 	static RECT windowArea = { 0 };
 	switch (messageId)
 	{
 	case WM_CREATE:
 		bkRendererInit(&renderer);
+		bkStateInit(&state);
 		(void)GetClientRect(hWindow, &windowArea);
 		return 0LL;
 	case WM_DESTROY:
 		bkRendererFree(&renderer);
+		bkStateFree(&state);
 		PostQuitMessage(0);
 		return 0LL;
 	case WM_PAINT: {

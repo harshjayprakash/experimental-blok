@@ -7,6 +7,9 @@
 typedef struct bkGraphicsTools
 {
 	HBRUSH darkBlueBrush;
+	HBRUSH aquaBrush;
+	HBRUSH blackBrush;
+	HBRUSH whiteBrush;
 } bkGraphicsTools;
 
 void bkGraphicsToolsInit(bkGraphicsTools* pGfxTools);

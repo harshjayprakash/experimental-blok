@@ -129,17 +129,26 @@
   <ItemGroup>
     <ClCompile Include="core\program.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="model\object\square.c" />
+    <ClCompile Include="model\util\position.c" />
+    <ClCompile Include="model\util\size.c" />
     <ClCompile Include="presentation\gfx\renderer.c" />
     <ClCompile Include="presentation\gfx\tools.c" />
     <ClCompile Include="presentation\window.c" />
+    <ClCompile Include="service\state.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\args.h" />
     <ClInclude Include="core\program.h" />
+    <ClInclude Include="model\object\square.h" />
+    <ClInclude Include="model\util\direction.h" />
+    <ClInclude Include="model\util\position.h" />
+    <ClInclude Include="model\util\size.h" />
     <ClInclude Include="presentation\gfx\colours.h" />
     <ClInclude Include="presentation\gfx\renderer.h" />
     <ClInclude Include="presentation\gfx\tools.h" />
     <ClInclude Include="presentation\window.h" />
+    <ClInclude Include="service\state.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

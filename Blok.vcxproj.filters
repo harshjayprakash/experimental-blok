@@ -30,6 +30,18 @@
     <ClCompile Include="presentation\gfx\tools.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="model\util\position.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\util\size.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\object\square.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="service\state.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\program.h">
@@ -48,6 +60,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="presentation\gfx\colours.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\util\direction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\util\position.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\util\size.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\object\square.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="service\state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

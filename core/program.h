@@ -13,13 +13,11 @@
 #include <Windows.h>
 #include "args.h"
 #include "../presentation/window.h"
-#include "../presentation/gfx/renderer.h"
 
 typedef struct bkProgram
 {
 	bkArgs args;
 	bkWindow window;
-	bkRenderer renderer;
 } bkProgram;
 
 void bkInit(

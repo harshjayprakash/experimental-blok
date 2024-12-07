@@ -6,9 +6,9 @@ void bkRendererInit(bkRenderer* pRenderer)
 	bkGraphicsToolsInit(&pRenderer->tools);
 }
 
-void bkRendererPaint(bkRenderer* pRenderer, HDC hDeviceContext, const RECT kWindowArea)
+void bkRendererPaint(bkRenderer* pRenderer, bkState* state, HDC hDeviceContext, const RECT kWindowArea)
 {
-	if (!pRenderer) return;
+	if (!pRenderer || !state) return;
 	(void)FillRect(hDeviceContext, &kWindowArea, pRenderer->tools.darkBlueBrush);
 }
 

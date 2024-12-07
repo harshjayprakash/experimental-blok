@@ -3,6 +3,7 @@
 
 #include <Windows.h>
 #include "tools.h"
+#include "../../service/state.h"
 
 typedef struct bkRenderer
 {
@@ -12,7 +13,7 @@ typedef struct bkRenderer
 
 void bkRendererInit(bkRenderer* pRenderer);
 
-void bkRendererPaint(bkRenderer* pRenderer, HDC hDeviceContext, const RECT kWindowArea);
+void bkRendererPaint(bkRenderer* pRenderer, bkState* state, HDC hDeviceContext, const RECT kWindowArea);
 
 void bkRendererFree(bkRenderer* pRenderer);
 

@@ -47,6 +47,23 @@ static LRESULT CALLBACK __bkWindowProcedure(
 	}
 	case WM_SIZE:
 		return GetClientRect(hWindow, &windowArea);
+	case WM_KEYDOWN: {
+		switch ((int)wParam)
+		{
+		case VK_UP: 
+			state.user.position.y -= 5;
+			return InvalidateRect(hWindow, NULL, FALSE);
+		case VK_DOWN: 
+			state.user.position.y += 5;
+			return InvalidateRect(hWindow, NULL, FALSE);
+		case VK_LEFT: 
+			state.user.position.x -= 5;
+			return InvalidateRect(hWindow, NULL, FALSE);
+		case VK_RIGHT: 
+			state.user.position.x += 5;
+			return InvalidateRect(hWindow, NULL, FALSE);
+		}
+	}
 	default:
 		return DefWindowProcW(hWindow, messageId, wParam, lParam);
 	}

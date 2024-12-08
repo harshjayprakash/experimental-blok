@@ -132,7 +132,6 @@ void bkWindowInit(bkWindow* pWindow, HINSTANCE hInstance)
 		(void)MessageBoxW(NULL, L"Window creation failed.", L"Blok", MB_OK);
 		return;
 	}
-
 }
 
 WPARAM bkWindowShow(bkWindow* pWindow, const int kShowFlag)

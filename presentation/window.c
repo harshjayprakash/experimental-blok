@@ -9,6 +9,7 @@
 #include "window.h"
 #include "gfx/renderer.h"
 #include "../service/state.h"
+#include "../common/macros.h"
 
 #define BK_WINDOW_KLASS L"__BlokWindowClass"
 
@@ -68,12 +69,12 @@ static LRESULT CALLBACK __bkWindowProcedure(
 			state.user.position.y = 0;
 			return InvalidateRect(hWindow, NULL, FALSE);
 		case VK_F1:
-			(void)MessageBoxW(hWindow, L"Help: Not Implemented", L"Blok", MB_OK);
+			(void)MessageBoxW(hWindow, L"Help: Not Implemented", BK_NAME, MB_OK);
 			return 0LL;
 		case VK_F9:
 			return InvalidateRect(hWindow, NULL, TRUE);
 		case VK_F12:
-			(void)MessageBoxW(hWindow, L"Export: Not Implemented", L"Blok", MB_OK);
+			(void)MessageBoxW(hWindow, L"Export: Not Implemented", BK_NAME, MB_OK);
 			return 0LL;
 		case VK_F3:
 			// FIND THE BLOCK (FLASH ON THE SCREEN)
@@ -96,7 +97,7 @@ static HWND __blokWindowCreate(
 	HINSTANCE hInstance, PWCHAR pCaption, const int kWidth, const int kHeight)
 {
 	return CreateWindowExW(
-		WS_EX_OVERLAPPEDWINDOW, BK_WINDOW_KLASS, L"Blok", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT,
+		WS_EX_OVERLAPPEDWINDOW, BK_WINDOW_KLASS, BK_NAME, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT,
 		CW_USEDEFAULT, kWidth, kHeight, NULL, NULL, hInstance, NULL);
 }
 
@@ -123,13 +124,13 @@ void bkWindowInit(bkWindow* pWindow, HINSTANCE hInstance)
 	ATOM registerSuccessful = __blokWindowRegister(&pWindow->klass, hInstance);
 	if (!registerSuccessful)
 	{
-		(void)MessageBoxW(NULL, L"Window registration failed.", L"Blok", MB_OK);
+		(void)MessageBoxW(NULL, L"Window registration failed.", BK_NAME, MB_OK);
 		return;
 	}
-	pWindow->hWindow = __blokWindowCreate(hInstance, L"Blok", 800, 600);
+	pWindow->hWindow = __blokWindowCreate(hInstance, BK_NAME, 800, 600);
 	if (!pWindow->hWindow)
 	{
-		(void)MessageBoxW(NULL, L"Window creation failed.", L"Blok", MB_OK);
+		(void)MessageBoxW(NULL, L"Window creation failed.", BK_NAME, MB_OK);
 		return;
 	}
 }

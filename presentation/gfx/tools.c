@@ -8,6 +8,8 @@ void bkGraphicsToolsInit(bkGraphicsTools* pGfxTools)
 	pGfxTools->aquaBrush = CreateSolidBrush(bkAqua);
 	pGfxTools->blackBrush = CreateSolidBrush(bkBlack);
 	pGfxTools->whiteBrush = CreateSolidBrush(bkWhite);
+	pGfxTools->greyBrush = CreateSolidBrush(bkGrey);
+	pGfxTools->greyPen = CreatePen(PS_SOLID, 1, bkGrey);
 }
 
 void bkGraphicsToolsFree(bkGraphicsTools* pGfxTools)
@@ -17,4 +19,6 @@ void bkGraphicsToolsFree(bkGraphicsTools* pGfxTools)
 	if (pGfxTools->aquaBrush) (void)DeleteObject(pGfxTools->aquaBrush);
 	if (pGfxTools->blackBrush) (void)DeleteObject(pGfxTools->blackBrush);
 	if (pGfxTools->whiteBrush) (void)DeleteObject(pGfxTools->whiteBrush);
+	if (pGfxTools->greyBrush) (void)DeleteObject(pGfxTools->greyBrush);
+	if (pGfxTools->greyPen) (void)DeleteObject(pGfxTools->greyPen);
 }

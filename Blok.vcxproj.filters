@@ -48,6 +48,18 @@
     <ClCompile Include="presentation\components\panel.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="presentation\controls\text.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="presentation\controls\progress-bar.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="presentation\controls\button.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="presentation\controls\toggle-button.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\program.h">
@@ -87,6 +99,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="presentation\components\panel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentation\controls\text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentation\controls\progress-bar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentation\controls\button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentation\controls\toggle-button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common\macros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

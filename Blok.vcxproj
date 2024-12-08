@@ -134,12 +134,17 @@
     <ClCompile Include="model\util\size.c" />
     <ClCompile Include="presentation\components\canvas.c" />
     <ClCompile Include="presentation\components\panel.c" />
+    <ClCompile Include="presentation\controls\button.c" />
+    <ClCompile Include="presentation\controls\progress-bar.c" />
+    <ClCompile Include="presentation\controls\text.c" />
+    <ClCompile Include="presentation\controls\toggle-button.c" />
     <ClCompile Include="presentation\gfx\renderer.c" />
     <ClCompile Include="presentation\gfx\tools.c" />
     <ClCompile Include="presentation\window.c" />
     <ClCompile Include="service\state.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common\macros.h" />
     <ClInclude Include="core\args.h" />
     <ClInclude Include="core\program.h" />
     <ClInclude Include="model\object\square.h" />
@@ -148,6 +153,10 @@
     <ClInclude Include="model\util\size.h" />
     <ClInclude Include="presentation\components\canvas.h" />
     <ClInclude Include="presentation\components\panel.h" />
+    <ClInclude Include="presentation\controls\button.h" />
+    <ClInclude Include="presentation\controls\progress-bar.h" />
+    <ClInclude Include="presentation\controls\text.h" />
+    <ClInclude Include="presentation\controls\toggle-button.h" />
     <ClInclude Include="presentation\gfx\colours.h" />
     <ClInclude Include="presentation\gfx\renderer.h" />
     <ClInclude Include="presentation\gfx\tools.h" />

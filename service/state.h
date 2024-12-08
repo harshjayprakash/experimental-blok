@@ -6,6 +6,7 @@
 typedef struct bkState
 {
 	bkSquare user;
+	int showInterface;
 } bkState;
 
 void bkStateInit(bkState* state);

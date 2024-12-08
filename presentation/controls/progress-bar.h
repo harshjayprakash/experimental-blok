@@ -1,0 +1,4 @@
+#ifndef __BLOK_PROGRESSBAR_H
+#define __BLOK_PROGRESSBAR_H
+
+#endif // !__BLOK_PROGRESSBAR_H

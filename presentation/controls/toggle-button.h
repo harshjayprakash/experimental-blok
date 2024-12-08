@@ -1,0 +1,4 @@
+#ifndef __BLOK_TOGGLEBUTTON_H
+#define __BLOK_TOGGLEBUTTON_H
+
+#endif // !__BLOK_TOGGLEBUTTON_H

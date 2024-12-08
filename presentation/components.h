@@ -1,0 +1,4 @@
+#ifndef __BLOK_COMPONENTS_H
+#define __BLOK_COMPONENTS_H
+
+#endif // !__BLOK_COMPONENTS_H

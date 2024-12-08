@@ -9,6 +9,7 @@ typedef enum bkColours
 	bkWhite = RGB(255, 255, 255),
 	bkDarkBlue = RGB(0, 53, 89),
 	bkAqua = RGB(0, 255, 255),
+	bkGrey = RGB(150, 150, 150),
 } bkColours;
 
 #endif

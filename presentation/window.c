@@ -62,6 +62,32 @@ static LRESULT CALLBACK __bkWindowProcedure(
 		case VK_RIGHT: 
 			state.user.position.x += 15;
 			return InvalidateRect(hWindow, NULL, FALSE);
+		case VK_F11:
+			state.showInterface =
+				(state.showInterface == 1) ? 0 : 1;
+			return InvalidateRect(hWindow, NULL, FALSE);
+		case VK_F5:
+			state.user.position.x = 0;
+			state.user.position.y = 0;
+			return InvalidateRect(hWindow, NULL, FALSE);
+		case VK_F1:
+			(void)MessageBoxW(hWindow, L"Help: Not Implemented", L"Blok", MB_OK);
+			return 0LL;
+		case VK_F9:
+			return InvalidateRect(hWindow, NULL, TRUE);
+		case VK_F12:
+			(void)MessageBoxW(hWindow, L"Export: Not Implemented", L"Blok", MB_OK);
+			return 0LL;
+		case VK_F3:
+			// FIND THE BLOCK (FLASH ON THE SCREEN)
+			return 0LL;
+		case VK_F4:
+			// CLOSE
+		case VK_F6:
+		case VK_F7:
+		case VK_F8:
+		case VK_F10:
+			return 0LL;
 		}
 	}
 	default:

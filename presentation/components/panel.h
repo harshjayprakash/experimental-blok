@@ -8,4 +8,11 @@ typedef struct bkPanel
 	RECT region;
 	int show;
 } bkPanel;
+
+void bkComponentPanelInit(bkPanel* pPanel);
+
+void bkComponentPanelRender(bkPanel* pPanel);
+
+void bkComponentPanelFree(bkPanel* pPanel);
+
 #endif // !__BLOK_PANEL_H

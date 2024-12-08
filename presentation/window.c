@@ -12,9 +12,6 @@
 
 #define BK_WINDOW_KLASS L"__BlokWindowClass"
 
-#define BK_FREE_NOTNULL(o, f) \
-	if (o) (void)f(o)
-
 static LRESULT CALLBACK __bkWindowProcedure(
 	HWND hWindow, UINT messageId, WPARAM wParam, LPARAM lParam)
 {
@@ -164,9 +161,9 @@ void bkWindowFree(bkWindow* pWindow, HINSTANCE hInstance)
 {
 	if (!pWindow) return;
 	(void)UnregisterClassW(BK_WINDOW_KLASS, hInstance);
-	BK_FREE_NOTNULL(pWindow->klass.hIcon, DestroyIcon);
-	BK_FREE_NOTNULL(pWindow->klass.hIconSm, DestroyIcon);
-	BK_FREE_NOTNULL(pWindow->klass.hCursor, DestroyCursor);
-	BK_FREE_NOTNULL(pWindow->klass.hbrBackground, DeleteObject);
-	BK_FREE_NOTNULL(pWindow->hWindow, DestroyWindow);
+	if (pWindow->klass.hIcon) (void)DestroyIcon(pWindow->klass.hIcon);
+	if (pWindow->klass.hIconSm) (void)DestroyIcon(pWindow->klass.hIconSm);
+	if (pWindow->klass.hCursor) (void)DestroyCursor(pWindow->klass.hCursor);
+	if (pWindow->klass.hbrBackground) (void)DeleteObject(pWindow->klass.hbrBackground);
+	if (pWindow->hWindow) (void)DestroyWindow(pWindow->hWindow);
 }

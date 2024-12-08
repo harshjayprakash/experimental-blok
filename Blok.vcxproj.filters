@@ -60,6 +60,9 @@
     <ClCompile Include="presentation\controls\toggle-button.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="presentation\components.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\program.h">
@@ -114,6 +117,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="common\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentation\components.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

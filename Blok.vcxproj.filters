@@ -42,6 +42,12 @@
     <ClCompile Include="service\state.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="presentation\components\canvas.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="presentation\components\panel.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\program.h">
@@ -75,6 +81,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="service\state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentation\components\canvas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="presentation\components\panel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

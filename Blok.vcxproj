@@ -132,6 +132,8 @@
     <ClCompile Include="model\object\square.c" />
     <ClCompile Include="model\util\position.c" />
     <ClCompile Include="model\util\size.c" />
+    <ClCompile Include="presentation\components\canvas.c" />
+    <ClCompile Include="presentation\components\panel.c" />
     <ClCompile Include="presentation\gfx\renderer.c" />
     <ClCompile Include="presentation\gfx\tools.c" />
     <ClCompile Include="presentation\window.c" />
@@ -144,6 +146,8 @@
     <ClInclude Include="model\util\direction.h" />
     <ClInclude Include="model\util\position.h" />
     <ClInclude Include="model\util\size.h" />
+    <ClInclude Include="presentation\components\canvas.h" />
+    <ClInclude Include="presentation\components\panel.h" />
     <ClInclude Include="presentation\gfx\colours.h" />
     <ClInclude Include="presentation\gfx\renderer.h" />
     <ClInclude Include="presentation\gfx\tools.h" />

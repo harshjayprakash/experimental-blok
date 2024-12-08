@@ -18,6 +18,19 @@ void bkRendererPaint(bkRenderer* pRenderer, bkState* state, HDC hDeviceContext, 
 		state->user.position.y + state->user.size.height
 	};
 	(void)FillRect(hDeviceContext, &user, pRenderer->tools.aquaBrush);
+
+	(void)SelectObject(hDeviceContext, pRenderer->tools.darkBlueBrush);
+	(void)SelectObject(hDeviceContext, pRenderer->tools.greyPen);
+	if (state->showInterface)
+	{
+		(void)Rectangle(
+			hDeviceContext,
+			kWindowArea.left + 10,
+			kWindowArea.bottom - 60,
+			kWindowArea.right - 10,
+			kWindowArea.bottom - 10
+		);
+	}
 }
 
 void bkRendererFree(bkRenderer* pRenderer)

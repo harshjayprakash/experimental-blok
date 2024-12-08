@@ -51,16 +51,16 @@ static LRESULT CALLBACK __bkWindowProcedure(
 		switch ((int)wParam)
 		{
 		case VK_UP: 
-			state.user.position.y -= 5;
+			state.user.position.y -= 15;
 			return InvalidateRect(hWindow, NULL, FALSE);
 		case VK_DOWN: 
-			state.user.position.y += 5;
+			state.user.position.y += 15;
 			return InvalidateRect(hWindow, NULL, FALSE);
 		case VK_LEFT: 
-			state.user.position.x -= 5;
+			state.user.position.x -= 15;
 			return InvalidateRect(hWindow, NULL, FALSE);
 		case VK_RIGHT: 
-			state.user.position.x += 5;
+			state.user.position.x += 15;
 			return InvalidateRect(hWindow, NULL, FALSE);
 		}
 	}

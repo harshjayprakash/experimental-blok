@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > This version "25H2.1" is currently still in development, the features described may not 
-> work correctly, at all, or subject to change. These changes will merged to main (stable) 
+> work correctly, at all, or subject to change. These changes will merged to main (or "stable enough") 
 > in Autumn 2025.
 
 

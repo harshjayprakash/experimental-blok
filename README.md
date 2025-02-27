@@ -11,7 +11,7 @@ a box that move around with the WASD or Arrow keys. **This project is in active*
 
 ## Usage
 
-
+![Light Dark Mode Screenshot](./doc/xbk-light-dark-screenshot.png)
 
 #### The Canvas Grid
 

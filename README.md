@@ -1,1 +1,58 @@
 # Experimental Blok
+
+> [!NOTE]
+> This version "25H2.1" is currently still in development, the features described may not 
+> work correctly, at all, or subject to change. These changes will merged to main (stable) 
+> in Autumn 2025.
+
+
+## Usage
+
+
+#### The Canvas
+
+
+#### The Information and Action Panel
+
+
+## Compilation and Execution
+
+This project uses the CMake build system. I use MSVC. 
+
+The executable can be run with extra arguments
+
+```sh
+# Runs with the defaults.
+blok.exe
+
+# Specifying a theme.
+blok.exe --light-theme
+blok.exe --dark-theme
+
+# Showing the console.
+blok.exe --show-console
+
+# Scaling the grid.
+blok.exe --scale #number#
+blok.exe --scale-x #number#
+blok.exe --scale-y #number#
+```
+
+## Changelog (25H2.1)
+
+* Internal Architecture (Rewritten).
+* Disabled Console by Default. Enable using the `--show-console` flag.
+* Redesigned UI.
+* Updated Colour Scheme.
+* Improved Performance.
+* Switched build systems from MinGW Make to CMake.
+* Singular Instance.
+* More responsive (on hover).
+* Click Drag.
+
+## Future Features to be implemented
+
+* Message System.
+* Custom Theming.
+* Saving State to File.
+* P2P Networking? 

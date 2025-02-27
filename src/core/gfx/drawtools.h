@@ -13,6 +13,8 @@ typedef struct _DrawingTools {
     HBRUSH secondaryVariantBrush;
     HPEN onSurfacePen;
     HPEN onSurfaceVariantPen;
+    HPEN onPrimaryPen;
+    HPEN onPrimaryVariantPen;
 } DrawingTools;
 
 void BlokDrawingToolsInit(DrawingTools *tools, const ColourSpace *colours);

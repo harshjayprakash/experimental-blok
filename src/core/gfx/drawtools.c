@@ -20,6 +20,8 @@ void BlokDrawingToolsInit(DrawingTools *tools, const ColourSpace *colours)
     tools->secondaryVariantBrush = CreateSolidBrush(colours->secondaryVariant);
     tools->onSurfacePen = CreatePen(PS_SOLID, 1, colours->onSurface);
     tools->onSurfaceVariantPen = CreatePen(PS_SOLID, 1, colours->onSurfaceVariant);
+    tools->onPrimaryPen = CreatePen(PS_SOLID, 1, colours->primary);
+    tools->onPrimaryVariantPen = CreatePen(PS_SOLID, 1, colours->primaryVariant);
 }
 
 void BlokDrawingToolsFree(DrawingTools *tools)
@@ -34,4 +36,6 @@ void BlokDrawingToolsFree(DrawingTools *tools)
     __BLOK_FREE_WINGDI_OBJECT(tools->secondaryVariantBrush);
     __BLOK_FREE_WINGDI_OBJECT(tools->onSurfacePen);
     __BLOK_FREE_WINGDI_OBJECT(tools->onSurfaceVariantPen);
+    __BLOK_FREE_WINGDI_OBJECT(tools->onPrimaryPen);
+    __BLOK_FREE_WINGDI_OBJECT(tools->onPrimaryVariantPen);
 }

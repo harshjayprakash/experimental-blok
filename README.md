@@ -12,7 +12,8 @@ a box that move around with the WASD or Arrow keys. **This project is in active*
 ## Usage
 
 
-#### The Canvas
+
+#### The Canvas Grid
 
 
 #### The Information and Action Panel

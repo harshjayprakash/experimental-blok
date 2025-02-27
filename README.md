@@ -15,7 +15,28 @@ a box that move around with the WASD or Arrow keys. **This project is in active*
 
 ### The Canvas Grid
 
+The "Canvas Grid" is the component that provides a coordinate grid scaled at fifteen or
+a value specified at startup. This grid contains the movable box and a surface to create
+walls ("obstructives") that the box cannot move past.
+
+* The canvas is not limited to the startup size and can adapt to the window size.
+* The grid can be toggle with the `G` key on the keyboard but is drawn before the box and
+obstructive.
+* Clicking on the canvas will create an obstructive.
+* Drag clicking will create a series of obstructives.
+
 ### The Information and Action Panel
+
+The "Panel" is the component that shows information and provides controls to manipulate
+the canvas.
+
+* The coordinates of the box is shown.
+* The "Clear All" button removes all the obstructives from the grid.
+* The "Generate" button randomly adds an obstructive on to the grid surface.
+* The number provides the number of obstructives currently visible.
+* The progress bar showing the internal dynamic memory size storing the obstructs.
+* The locked toggle, shows whether the canvas is locked - meaning mouse clicks or drags
+will not have any effect.
 
 ### The Console (if visible)
 

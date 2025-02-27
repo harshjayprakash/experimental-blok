@@ -85,7 +85,7 @@ void BlokProcessEventOnPaint(HWND window)
 
         (void) SelectObject(offSurface, 
             __BLOK_MOUSE_AT_(viewport->clearAllButton.region, viewport->mousePos) ?
-            graphics->tools.onSurfacePen : graphics->tools.onSurfaceVariantPen);
+            graphics->tools.onPrimaryVariantPen : graphics->tools.onSurfaceVariantPen);
 
         (void) Rectangle(
             offSurface, viewport->clearAllButton.region.left, 
@@ -98,7 +98,7 @@ void BlokProcessEventOnPaint(HWND window)
 
         (void) SelectObject(offSurface, 
             __BLOK_MOUSE_AT_(viewport->generateButton.region, viewport->mousePos) ?
-            graphics->tools.onSurfacePen : graphics->tools.onSurfaceVariantPen);
+            graphics->tools.onPrimaryVariantPen : graphics->tools.onSurfaceVariantPen);
 
         (void) Rectangle(
             offSurface, viewport->generateButton.region.left, 
@@ -127,7 +127,7 @@ void BlokProcessEventOnPaint(HWND window)
         
         (void) SelectObject(offSurface, 
             __BLOK_MOUSE_AT_(viewport->lockedToggle.region, viewport->mousePos) ?
-            graphics->tools.onSurfacePen : graphics->tools.onSurfaceVariantPen);
+            graphics->tools.onPrimaryVariantPen : graphics->tools.onSurfaceVariantPen);
     
         (void) Rectangle(
             offSurface, viewport->lockedToggle.region.left, 

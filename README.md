@@ -19,6 +19,23 @@ a box that move around with the WASD or Arrow keys. **This project is in active*
 #### The Information and Action Panel
 
 
+#### The Console (if visible)
+
+
+#### Keyboard Shortcuts
+
+* `W`: Move box up by current scale.
+* `A`: Move box right by current scale.
+* `S`: Move box down by current scale.
+* `D`: Move box left by current scale.
+* `G`: Toggle grid lines visibility.
+* `O`: Generate an obstructive at a random location.
+* `I`: Toggle interface visibility.
+* `T`: Change theme.
+* `C`: Clear all obstructives.
+* `L`: Toggle canvas lock.
+
+
 ## Compilation and Execution
 
 This project uses the CMake build system. I use MSVC. 

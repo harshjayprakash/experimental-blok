@@ -333,7 +333,8 @@ void BlokProcessEventOnLeftMouseDown(HWND window, LPARAM mousepos)
     };
 
     if (mpos.x > viewport->panel.region.left && mpos.x < viewport->panel.region.right 
-        && mpos.y > viewport->panel.region.top && mpos.y < viewport->panel.region.bottom)
+        && mpos.y > viewport->panel.region.top && mpos.y < viewport->panel.region.bottom
+        && viewport->isInterfaceVisible)
     {
         if (__BLOK_MOUSE_AT_(viewport->generateButton.region, viewport->mousePos))
         {
@@ -458,7 +459,8 @@ void BlokProcessEventOnMouseHover(HWND window, LPARAM mousepos)
         return;
     }
 
-    if (__BLOK_MOUSE_AT_(viewport->panel.region, viewport->mousePos))
+    if (__BLOK_MOUSE_AT_(viewport->panel.region, viewport->mousePos) 
+        && viewport->isInterfaceVisible)
     {
         (void) InvalidateRect(window, NULL, FALSE);
         return;

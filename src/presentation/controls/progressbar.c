@@ -71,5 +71,5 @@ void BlokProgressBarUpdateValue(ProgressBar *pbar, const int value)
 
     pbar->barValue = value;
     float percent = (float) pbar->barValue / (pbar->barMaxValue - pbar->barMinValue);
-    pbar->barRegion.right = pbar->barRegion.left + (pbar->barMaxSize * percent);
+    pbar->barRegion.right = pbar->barRegion.left + ((LONG)(pbar->barMaxSize * percent));
 }

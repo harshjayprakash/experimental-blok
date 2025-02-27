@@ -61,19 +61,33 @@ blok.exe --scale-y #number#
 
 ## Changelog (25H2.1)
 
-* Internal Architecture (Rewritten).
-* Disabled Console by Default. Enable using the `--show-console` flag.
-* Redesigned UI.
-* Updated Colour Scheme.
-* Improved Performance.
-* Switched build systems from MinGW Make to CMake.
-* Singular Instance.
-* More responsive (on hover).
-* Click Drag.
 
-## Future Features to be implemented
+* Functionality
+    * Update on Keyboard Shortcuts.
+    * Add Obstructives by Drag Click.
+    * Console disabled by default.
+* Internal
+    * Uses `wWinMain` unicode entrypoint.
+    * Performance Improvements.
+    * Uses CMake build system.
+    * New Architecture - Global Contextual System.
+    * Change Win32 Message Loop Handling Implementation.
+    * Restore old values after painting.
+    * New Control and Component Update functions to simplify resizing.
+    * Vector Renamed to DynList.
+    * Size, Position Merged to VectorII
+    * New Mathemtical Vector Operations
+    * Direction to VectorII.
+    * New VectorVI type.
+* Visual
+    * Singular Instance with Mutex (Mutant WinObj).
+    * Updated Colour Scheme.
+    * Redesigned UI.
+    * Responsive on control hover.
+    * Panel does not span whole width.
+    * Uses Segoe UI font.
+    * Uses RC Resource for Executable Details.
+    * Reduced GDI32 Flickering.
+    * Panel can be hidden.
+    * New grid lines visibility toggle.
 
-* Message System.
-* Custom Theming.
-* Saving State to File.
-* P2P Networking? 

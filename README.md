@@ -91,3 +91,11 @@ blok.exe --scale-y #number#
     * Panel can be hidden.
     * New grid lines visibility toggle.
 
+## Limitations and Known Issues
+
+* Generating an Obstructive (Button/Keyboard) may create a duplicate positioned wall.
+* Cannot remove a single obstructive.
+* Box can go under the panel.
+* Box can go out of bounds of the window.
+* Specified scaling can be too small, too big or negative.
+* Invalidating area can fail at certain scales, resulting in the box leaving a trail.

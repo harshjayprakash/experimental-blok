@@ -57,35 +57,34 @@ blok.exe --scale-y #number#
 
 ## Changelog (25H2.1)
 
-
 * Functionality
-    * Update on Keyboard Shortcuts.
-    * Add Obstructives by Drag Click.
-    * Console disabled by default.
+  * Added new keyboard shortcuts.
+  * Implemented drag click.
+  * Disabled console by default.
 * Internal
-    * Uses `wWinMain` unicode entrypoint.
-    * Performance Improvements.
-    * Uses CMake build system.
-    * New Architecture - Global Contextual System.
-    * Change Win32 Message Loop Handling Implementation.
-    * Restore old values after painting.
-    * New Control and Component Update functions to simplify resizing.
-    * Vector Renamed to DynList.
-    * Size, Position Merged to VectorII
-    * New Mathemtical Vector Operations
-    * Direction to VectorII.
-    * New VectorVI type.
+  * Changed entrypoint to `wWinMain`.
+  * Improved performance.
+  * Changed build system to CMake.
+  * Updated Architecture to a contextual system.
+  * Improved win32 message handling.
+  * Improved window painting operation.
+  * Implemented new control and component update functions.
+  * Renamed `Vector` to `DynList`.
+  * Refactored `Size` and `Position` to `VectorII`
+  * Implemented direction to vectorii function.
+  * Added new `VectorIV` type.
+  * Update text rendering to use `DrawTextW` instead of `TextOutW`.
 * Visual
-    * Singular Instance with Mutex (Mutant WinObj).
-    * Updated Colour Scheme.
-    * Redesigned UI.
-    * Responsive on control hover.
-    * Panel does not span whole width.
-    * Uses Segoe UI font.
-    * Uses RC Resource for Executable Details.
-    * Reduced GDI32 Flickering.
-    * Panel can be hidden.
-    * New grid lines visibility toggle.
+  * Implemented single instance mutex (mutant winobj).
+  * Updated colour scheme.
+  * Redesigned UI.
+  * Implemented on hover styles.
+  * Changed panel width.
+  * Updated font to "Segoe UI".
+  * Added executable resource file.
+  * Reduced gdi32 flickering.
+  * Implemented panel visibility.
+  * Implemented grid visibility.
 
 ## Limitations and Known Issues
 
@@ -95,3 +94,4 @@ blok.exe --scale-y #number#
 * Box can go out of bounds of the window.
 * Specified scaling can be too small, too big or negative.
 * Invalidating area can fail at certain scales, resulting in the box leaving a trail.
+* Drag click can continue if the cursor leaves the window.

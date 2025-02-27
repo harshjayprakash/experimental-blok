@@ -19,8 +19,7 @@ void BlokProcessEventOnPaint(HWND window)
     HDC offSurface = CreateCompatibleDC(surface);
     HBITMAP offSurfaceBitmap = CreateCompatibleBitmap(
         surface, viewport->region.right, viewport->region.bottom);
-    (void) SelectObject(offSurface, offSurfaceBitmap);
-
+    HBITMAP surfaceBitmap = SelectObject(offSurface, offSurfaceBitmap);
     HFONT oldFont = (HFONT) 0;
     HBRUSH oldBrush = (HBRUSH) SelectObject(offSurface, graphics->tools.surfaceBrush);
     HPEN oldPen = (HPEN) SelectObject(offSurface, graphics->tools.onSurfacePen);
@@ -165,6 +164,7 @@ void BlokProcessEventOnPaint(HWND window)
     (void) SetBkMode(offSurface, oldBkMode);
     (void) SelectObject(offSurface, oldPen);
     (void) SelectObject(offSurface, oldBrush);
+    (void) SelectObject(offSurface, surfaceBitmap);
     (void) DeleteObject(offSurfaceBitmap);
     (void) DeleteDC(offSurface);
     (void) EndPaint(window, &paintstruct);

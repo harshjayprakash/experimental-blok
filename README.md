@@ -67,21 +67,30 @@ This project uses the CMake build system. I use MSVC.
 
 The executable can be run with extra arguments
 
-```sh
-# Runs with the defaults.
+```pwsh
+# Runs with the defaults configuration
 blok.exe
 
-# Specifying a theme.
-blok.exe --light-theme
-blok.exe --dark-theme
-
-# Showing the console.
-blok.exe --show-console
-
-# Scaling the grid.
-blok.exe --scale #number#
-blok.exe --scale-x #number#
-blok.exe --scale-y #number#
+# Any of the following arguments can be passed to the program:
+#
+#     --light-theme
+#         Specifies the program to startup with the light theme.
+#
+#     --dark-theme
+#         Specifies the program to startup with the dark theme (default).
+#
+#     --show-console
+#         Shows the information console while the program is running.
+#         The console cannot be started after the program is running.
+#
+#     --scale [integer]
+#         Specifies the scale in both x and y direction (default: 15).
+#
+#     --scale-x [integer]
+#         Specifies the scale in the x direction (default: 15).
+#
+#     --scale-y [integer]
+#         Specifies the scale in the y direction (default: 15).
 ```
 
 ## Changelog (25H2.1)

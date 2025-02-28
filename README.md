@@ -40,7 +40,13 @@ the canvas.
 * The locked toggle, shows whether the canvas is locked - meaning mouse clicks or drags
 will not have any effect.
 
-### The Console (if visible)
+### The Console
+
+The console is not initialised unless the `--show-console` argument is passed at
+execution. The console displayes informational, warnings and error messages while the
+program is running.
+
+* The console does not accept user input.
 
 ### Keyboard Shortcuts
 

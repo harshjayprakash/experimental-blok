@@ -1,6 +1,6 @@
 # Experimental Blok
 
-![Banner (Decorative)](./doc/xbk-banner.png)
+![Banner (Decorative)](./doc/xbk-banner-raster.png)
 
 > [!NOTE]
 > This version "25H2.1" is currently still in development, the features described may not

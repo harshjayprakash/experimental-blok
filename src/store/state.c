@@ -1,5 +1,5 @@
 #include "state.h"
-#include "maths/vector.h"
+#include "../model/vector.h"
 
 void BlokStateInit(State *state, const VectorII scale)
 {

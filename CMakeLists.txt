@@ -14,33 +14,40 @@ project(blok C)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
-
 enable_language(RC)
 
 set(SOURCES
     "src/main.c"
-    "src/core/config/args.c" "src/core/config/args.h"
-    "src/core/debug/console.c" "src/core/debug/console.h"
-    "src/core/gfx/drawtools.c" "src/core/gfx/drawtools.h"
-    "src/core/gfx/graphics.c" "src/core/gfx/graphics.h"
-    "src/core/gfx/theme.c" "src/core/gfx/theme.h"
-    "src/core/context.c" "src/core/context.h"
-    "src/core/lifecycle.c" "src/core/lifecycle.h"
-    "src/model/maths/direction.c" "src/model/maths/direction.h"
-    "src/model/maths/dynlist.c" "src/model/maths/dynlist.h"
-    "src/model/maths/vector.c" "src/model/maths/vector.h"
-    "src/model/objects/square.h"
-    "src/model/state.c" "src/model/state.h"
-    "src/presentation/controls/button.c" "src/presentation/controls/button.h"
-    "src/presentation/controls/progressbar.c" "src/presentation/controls/progressbar.h"
-    "src/presentation/controls/text.c" "src/presentation/controls/text.h"
-    "src/presentation/controls/toggle.c" "src/presentation/controls/toggle.h"
-    "src/presentation/components/canvas.c" "src/presentation/components/canvas.h"
-    "src/presentation/components/panel.c" "src/presentation/components/panel.h"
-    "src/presentation/events/process.c" "src/presentation/events/process.h"
-    "src/presentation/frame/window.c" "src/presentation/frame/window.h"
-    "src/presentation/viewport.c" "src/presentation/viewport.h"
-    "src/service/convert.c" "src/service/convert.h"
+
+    "src/base/context.c" "src/base/context.h"
+    "src/base/lifecycle.c" "src/base/lifecycle.h"
+
+    "src/cmd/args.c" "src/cmd/args.h"
+    "src/cmd/console.c" "src/cmd/console.h"
+
+    "src/gdi/drawtools.c" "src/gdi/drawtools.h"
+    "src/gdi/graphics.c" "src/gdi/graphics.h"
+    "src/gdi/theme.c" "src/gdi/theme.h"
+
+    "src/model/direction.c" "src/model/direction.h"
+    "src/model/dynlist.c" "src/model/dynlist.h"
+    "src/model/square.h"
+    "src/model/vector.c" "src/model/vector.h"
+
+    "src/store/state.c" "src/store/state.h"
+
+    "src/ui/controls/button.c" "src/ui/controls/button.h"
+    "src/ui/controls/progressbar.c" "src/ui/controls/progressbar.h"
+    "src/ui/controls/text.c" "src/ui/controls/text.h"
+    "src/ui/controls/toggle.c" "src/ui/controls/toggle.h"
+    "src/ui/components/canvas.c" "src/ui/components/canvas.h"
+    "src/ui/components/panel.c" "src/ui/components/panel.h"
+    "src/ui/events/process.c" "src/ui/events/process.h"
+    "src/ui/frame/window.c" "src/ui/frame/window.h"
+    "src/ui/viewport.c" "src/ui/viewport.h"
+
+    "src/utils/convert.c" "src/utils/convert.h"
+
     "res/resource.rc"
 )
 

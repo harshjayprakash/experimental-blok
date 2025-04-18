@@ -1,6 +1,6 @@
 #include "process.h"
-#include "../../core/context.h"
-#include "../../service/convert.h"
+#include "../../base/context.h"
+#include "../../utils/convert.h"
 #include <strsafe.h>
 #include <Windowsx.h>
 

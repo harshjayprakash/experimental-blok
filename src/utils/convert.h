@@ -1,7 +1,7 @@
 #ifndef _BLOK_CONVERT_H_
 #define _BLOK_CONVERT_H_
 
-#include "../model/maths/vector.h"
+#include "../model/vector.h"
 #include <Windows.h>
 
 VectorII BlokConvertCoordV(const COORD coord);

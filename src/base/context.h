@@ -1,10 +1,10 @@
 #ifndef _BLOK_CONTEXT_H_
 #define _BLOK_CONTEXT_H_
 
-#include "../presentation/viewport.h"
-#include "../model/state.h"
-#include "gfx/graphics.h"
-#include "debug/console.h"
+#include "../ui/viewport.h"
+#include "../store/state.h"
+#include "../gdi/graphics.h"
+#include "../cmd/console.h"
 #include <Windows.h>
 
 typedef struct _Context {

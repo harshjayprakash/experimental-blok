@@ -1,9 +1,9 @@
 #ifndef _BLOK_STATE_H_
 #define _BLOK_STATE_H_
 
-#include "maths/direction.h"
-#include "objects/square.h"
-#include "maths/dynlist.h"
+#include "../model/direction.h"
+#include "../model/square.h"
+#include "../model/dynlist.h"
 
 typedef struct _State {
     Square box;

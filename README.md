@@ -60,6 +60,21 @@ program is running.
 * `C`: Clear all obstructives.
 * `L`: Toggle canvas lock.
 
+## The Architecture
+
+![Program Architecture (Shows Interaction Between Layers)](./doc/xbk-arch-raster.png)
+
+| Folder | Description |
+| :----- | :---------- |
+| (main.c) | entrypoint. |
+| base   | contains the main singleton context structure (stores all program data) and lifecycle functions |
+| cmd | handles the console host allocation and argument processing. |
+| gdi | handles the windows drawing and painting tools, and theme handling. |
+| model | model object structures and operations. |
+| store | stores the object state. |
+| ui | handles the user interface (including event handling and components). |
+| utils | any unclassified function such as converting from blok to win -types and vise versa. |
+
 ## Compilation and Execution
 
 This project uses the CMake build system. I use MSVC.

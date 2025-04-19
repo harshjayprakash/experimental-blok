@@ -1,4 +1,4 @@
-# Experimental Blok
+# Experimental Blok: An exploration of the Win32 API
 
 ![Banner (Decorative)](./doc/xbk-banner-raster.png)
 

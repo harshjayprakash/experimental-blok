@@ -71,6 +71,9 @@ program is running.
 
 ## The Architecture
 
+The architecture of the program is based around the `Context` structure, storing the
+state of the entire program as a sort of global through a singleton helper function.
+
 ![Program Architecture (Shows Interaction Between Layers)](./doc/xbk-arch-raster.png)
 
 | Folder | Description |
@@ -91,7 +94,7 @@ This project uses the CMake build system. I use MSVC.
 The executable can be run with extra arguments
 
 ```pwsh
-# Runs with the defaults configuration
+# Runs with the default configuration
 blok.exe
 
 # Any of the following arguments can be passed to the program:
@@ -104,7 +107,8 @@ blok.exe
 #
 #     --show-console
 #         Shows the information console while the program is running.
-#         The console cannot be started after the program is running.
+#         The console cannot be started after the program is running due to
+#             implementation.
 #
 #     --scale [integer]
 #         Specifies the scale in both x and y direction (default: 15).
@@ -158,3 +162,19 @@ blok.exe
 * Invalidating area can fail at certain scales, resulting in the box leaving a trail.
 * Drag click can continue if the cursor leaves the window.
 * Cannot control blok with arrow keys.
+* Holding dowwn the left mouse button on the generate button will not continue to generate
+obstructives.
+
+## Future Features (Potential)
+
+* Move around the canvas.
+* Ability to move the panel.
+* Ability to remove single obstructives.
+* Custom theming.
+* Load configuration from file.
+* File-based logging.
+* Debug: Edit object data through console.
+* Small alert notify system.
+* Keyboard shortcut guide screen.
+* Save/import state to/from file.
+* Generate entire maze.

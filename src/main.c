@@ -4,6 +4,8 @@
 int WINAPI wWinMain(
     HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nShowCmd)
 {
+    (void) hPrevInstance;
+
     HANDLE instanceMutex = CreateMutexW(NULL, TRUE, L"BlokInstance");
 
     if (!instanceMutex)

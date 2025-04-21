@@ -165,3 +165,16 @@ blok.exe
 * Holding dowwn the left mouse button on the generate button will not continue to generate
 obstructives.
 
+## Future Features (Potential)
+
+* Move around the canvas.
+* Ability to move the panel.
+* Ability to remove single obstructives.
+* Custom theming.
+* Load configuration from file.
+* File-based logging.
+* Debug: Edit object data through console.
+* Small alert notify system.
+* Keyboard shortcut guide screen.
+* Save/import state to/from file.
+* Generate entire maze.

@@ -184,18 +184,22 @@ void BlokProcessEventOnKeyDown(HWND window, WPARAM virtualKey)
 
     switch (virtualKey)
     {
+    case VK_UP:
     case 'W': 
         moveBoxOperation = BLOK_DIRECTION_NORTH; 
         break;
     
+    case VK_LEFT:
     case 'A':
         moveBoxOperation = BLOK_DIRECTION_WEST;
         break;
     
+    case VK_DOWN:
     case 'S':
         moveBoxOperation = BLOK_DIRECTION_SOUTH;
         break;
     
+    case VK_RIGHT:
     case 'D':
         moveBoxOperation = BLOK_DIRECTION_EAST;
         break;

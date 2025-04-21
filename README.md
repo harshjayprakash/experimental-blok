@@ -107,7 +107,8 @@ blok.exe
 #
 #     --show-console
 #         Shows the information console while the program is running.
-#         The console cannot be started after the program is running.
+#         The console cannot be started after the program is running due to
+#             implementation.
 #
 #     --scale [integer]
 #         Specifies the scale in both x and y direction (default: 15).

@@ -161,7 +161,6 @@ blok.exe
 * Specified scaling can be too small, too big or negative.
 * Invalidating area can fail at certain scales, resulting in the box leaving a trail.
 * Drag click can continue if the cursor leaves the window.
-* Cannot control blok with arrow keys.
 * Holding dowwn the left mouse button on the generate button will not continue to generate
 obstructives.
 

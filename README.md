@@ -71,6 +71,9 @@ program is running.
 
 ## The Architecture
 
+The architecture of the program is based around the `Context` structure, storing the
+state of the entire program as a sort of global through a singleton helper function.
+
 ![Program Architecture (Shows Interaction Between Layers)](./doc/xbk-arch-raster.png)
 
 | Folder | Description |

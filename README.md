@@ -91,7 +91,7 @@ This project uses the CMake build system. I use MSVC.
 The executable can be run with extra arguments
 
 ```pwsh
-# Runs with the defaults configuration
+# Runs with the default configuration
 blok.exe
 
 # Any of the following arguments can be passed to the program:

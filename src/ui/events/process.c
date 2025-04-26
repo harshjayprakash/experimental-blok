@@ -366,6 +366,9 @@ void BlokProcessEventOnLeftMouseDown(HWND window, LPARAM mousepos)
 
     Node node = {mpos};
     
+    int exists = BlokDynListExists(&state->obstructives, &node);
+    if (exists) { return; }
+
     long r = BlokDynListAdd(&state->obstructives, &node);
     (void) wprintf(L"pushed to list at idx %ld (%d, %d)\n",r, mpos.x, mpos.y);
 

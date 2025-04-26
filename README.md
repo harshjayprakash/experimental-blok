@@ -32,8 +32,9 @@ walls ("obstructives") that the box cannot move past.
 * The canvas is not limited to the startup size and can adapt to the window size.
 * The grid can be toggle with the `G` key on the keyboard but is drawn before the box and
 obstructive.
-* Clicking on the canvas will create an obstructive.
-* Drag clicking will create a series of obstructives.
+* Left clicking on the canvas will create an obstructive.
+* Drag left clicking will create a series of obstructives.
+* Right clicking on the canvas will remove an existing obstructive.
 
 ### The Information and Action Panel
 
@@ -127,6 +128,7 @@ blok.exe
     * Added new keyboard shortcuts.
     * Implemented drag click.
     * Disabled console by default.
+    * Implemented obstruct removal.
   * Internal
     * Changed entrypoint to `wWinMain`.
     * Improved performance.
@@ -168,7 +170,6 @@ obstructives.
 
 * Move around the canvas.
 * Ability to move the panel.
-* Ability to remove single obstructives.
 * Custom theming.
 * Load configuration from file.
 * File-based logging.

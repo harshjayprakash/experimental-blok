@@ -11,6 +11,7 @@ void BlokViewportInit(Viewport *viewport, HINSTANCE instance)
     BlokWindowInit(&viewport->window, instance);
 
     viewport->isLeftMouseDown = 0;
+    viewport->isRightMouseDown = 0;
     viewport->isInterfaceVisible = 1;
     viewport->isGridVisible = 0;
     viewport->isCanvasLocked = 0;

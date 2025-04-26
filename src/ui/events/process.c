@@ -327,7 +327,7 @@ void BlokProcessEventOnLeftMouseDown(HWND window, LPARAM mousepos)
     State *state = BlokContextGetState();
     Viewport *viewport = BlokContextGetViewport();
     
-    viewport->mouseDown = TRUE;
+    viewport->leftMouseDown = TRUE;
 
     VectorII span = state->box.size;
 
@@ -395,7 +395,7 @@ void BlokProcessEventOnLeftMouseUp(HWND window, LPARAM mousepos)
     State *state = BlokContextGetState();
     Viewport *viewport = BlokContextGetViewport();
 
-    viewport->mouseDown = FALSE;
+    viewport->leftMouseDown = FALSE;
 }
 
 void BlokProcessEventOnResize(HWND window)
@@ -470,7 +470,7 @@ void BlokProcessEventOnMouseHover(HWND window, LPARAM mousepos)
         return;
     }
 
-    if (viewport->mouseDown)
+    if (viewport->leftMouseDown)
     {
         Node pos = {{
             (viewport->mousePos.X / scale.x) * scale.x,

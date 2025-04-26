@@ -492,3 +492,38 @@ void BlokProcessEventOnMouseHover(HWND window, LPARAM mousepos)
 
     (void) InvalidateRect(window, NULL, FALSE);
 }
+
+void BlokProcessEventOnRightMouseDown(HWND window, LPARAM mousepos)
+{
+    State *state = BlokContextGetState();
+    Viewport *viewport = BlokContextGetViewport();
+
+    VectorII span = state->box.size;
+
+    VectorII mpos = {
+        (GET_X_LPARAM(mousepos) / span.x) * span.x,
+        (GET_Y_LPARAM(mousepos) / span.y) * span.y
+    };
+
+    if (viewport->isCanvasLocked) { return; }
+
+    Node node = {mpos};
+
+    if (BlokDynListExists(&state->obstructives, &node))
+    {
+        (void) BlokDynListRemove(&state->obstructives, node);
+
+        RECT updateRegion = BlokConvertVectorRect(node.data, state->box.size);
+
+        BlokProgressBarUpdateMinMax(
+            &viewport->obstructMemoryBar, 0, state->obstructives.max);
+        BlokProgressBarUpdateValue(
+            &viewport->obstructMemoryBar, state->obstructives.size);
+        (void) StringCbPrintfW(
+            viewport->obstructCountText.data, 60, L"%ld", state->obstructives.size);
+        (void) InvalidateRect(window, &updateRegion, FALSE);
+        (void) InvalidateRect(window, &viewport->obstructCountText.region, FALSE);
+        (void) InvalidateRect(window, &viewport->obstructMemoryBar.region, FALSE);
+    }
+
+}

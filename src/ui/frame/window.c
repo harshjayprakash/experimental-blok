@@ -56,7 +56,7 @@ void BlokWindowInit(Window *window, HINSTANCE instance)
     if (!instance) { return; }
 
     window->klassName = L"BlokViewportWindow";
-    window->caption = L"Blok 25H2.1";
+    window->caption = L"Blok 5.0 (25H2A)";
 
     window->klass.cbSize = sizeof(WNDCLASSEXW);
     window->klass.style = CS_HREDRAW | CS_VREDRAW;

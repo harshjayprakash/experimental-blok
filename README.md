@@ -165,6 +165,7 @@ blok.exe
 * Drag click can continue if the cursor leaves the window.
 * Holding dowwn the left mouse button on the generate button will not continue to generate
 obstructives.
+* Duplicate obstructives can be created with clicking on the canvas.
 
 ## Future Features (Potential)
 

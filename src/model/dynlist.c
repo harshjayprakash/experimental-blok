@@ -122,6 +122,20 @@ void BlokDynListCombine(DynList *dest, const DynList *src)
     }
 }
 
+int BlokDynListRemove(DynList *list, const Node node)
+{
+    if (!list) { return -1; }
+
+    long idx = BlokDynListGetIndex(list, &node);
+    if (idx < 0) { return -1; }
+
+    BlokVectorIICopy( &(list->arr + idx)->data, (list->arr + list->head)->data);
+    --list->head;
+    --list->size;
+
+    return idx;
+}
+
 void BlokDynListFree(DynList *list)
 {
     if (!list) { return; }

@@ -32,6 +32,8 @@ int BlokDynListExists(const DynList *list, const Node *node);
 
 void BlokDynListCombine(DynList *dest, const DynList *src);
 
+int BlokDynListRemove(DynList *list, const Node node);
+
 void BlokDynListFree(DynList *list);
 
 #endif // _BLOK_DYNLIST_H_

@@ -15,7 +15,7 @@ typedef struct _Viewport {
     RECT region;
     COORD mousePos;
     HFONT font;
-    BOOL leftMouseDown;
+    BOOL isLeftMouseDown;
 
     Canvas canvas;
     int isCanvasLocked;

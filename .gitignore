@@ -1,2 +1,5 @@
 # CMake Output Directory.
 out/
+
+# Visual Studio
+.vs/

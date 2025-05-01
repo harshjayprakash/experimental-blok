@@ -33,10 +33,10 @@ typedef struct _Viewport {
     Toggle lockedToggle;
 } Viewport;
 
-void BlokViewportInit(Viewport *viewport, HINSTANCE instance);
+void blokViewportInit(Viewport *viewport, HINSTANCE instance);
 
-void BlokViewportShow(Viewport *viewport, DWORD showFlag);
+void blokViewportShow(Viewport *viewport, DWORD showFlag);
 
-void BlokViewportFree(Viewport *viewport, HINSTANCE instance);
+void blokViewportFree(Viewport *viewport, HINSTANCE instance);
 
 #endif // _BLOK_VIEWPORT_H_

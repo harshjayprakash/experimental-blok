@@ -1,7 +1,7 @@
 #include "toggle.h"
 
 
-void BlokToggleUpdateEx(
+void blokToggleUpdateEx(
     Toggle *toggle, const POINT *position, const SIZE *size, const SIZE *margin, 
     const SIZE *selectMargin)
 {
@@ -45,15 +45,15 @@ void BlokToggleUpdateEx(
     toggle->selectRegion.bottom -= toggle->selectMargin.cy;
 }
 
-void BlokToggleUpdate(Toggle *toggle, const POINT *position)
+void blokToggleUpdate(Toggle *toggle, const POINT *position)
 {
     if (!toggle) { return; }
     if (!position) { return; }
 
-    BlokToggleUpdateEx(toggle, position, (SIZE *) 0, (SIZE *) 0, (SIZE *) 0);
+    blokToggleUpdateEx(toggle, position, (SIZE *) 0, (SIZE *) 0, (SIZE *) 0);
 }
 
-void BlokToggleUpdateSelected(Toggle *toggle, const BOOL selected)
+void blokToggleUpdateSelected(Toggle *toggle, const BOOL selected)
 {
     if (!toggle) { return; }
 

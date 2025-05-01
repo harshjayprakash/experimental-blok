@@ -13,12 +13,12 @@ typedef struct _Toggle {
     BOOL selected;
 } Toggle;
 
-void BlokToggleUpdateEx(
+void blokToggleUpdateEx(
     Toggle *toggle, const POINT *position, const SIZE *size, const SIZE *margin, 
     const SIZE *selectMargin);
 
-void BlokToggleUpdate(Toggle *toggle, const POINT *position);
+void blokToggleUpdate(Toggle *toggle, const POINT *position);
 
-void BlokToggleUpdateSelected(Toggle *toggle, const BOOL selected);
+void blokToggleUpdateSelected(Toggle *toggle, const BOOL selected);
 
 #endif // _BLOK_TOGGLE_H_

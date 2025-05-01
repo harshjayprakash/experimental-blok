@@ -7,11 +7,11 @@
 #define __BLOK_MOUSE_AT_(rect, pos) \
     (pos.X > rect.left && pos.X < rect.right && pos.Y > rect.top && pos.Y < rect.bottom)
 
-void BlokProcessEventOnPaint(HWND window)
+void blokProcessEventOnPaint(HWND window)
 {
-    Graphics *graphics = BlokContextGetGraphics();
-    Viewport *viewport = BlokContextGetViewport();
-    State *state = BlokContextGetState();
+    Graphics *graphics = blokContextGetGraphics();
+    Viewport *viewport = blokContextGetViewport();
+    State *state = blokContextGetState();
     VectorII scaling = state->box.size;
 
     PAINTSTRUCT paintstruct;
@@ -55,7 +55,7 @@ void BlokProcessEventOnPaint(HWND window)
         }
     }
 
-    RECT box = BlokConvertVectorRect(state->box.position, state->box.size);
+    RECT box = blokConvertVectorRect(state->box.position, state->box.size);
     INT innerBoxSF = 3;
     RECT innerBox = {
         box.left + (scaling.x / innerBoxSF),
@@ -68,7 +68,7 @@ void BlokProcessEventOnPaint(HWND window)
 
     for (long obstructIdx = 0; obstructIdx < state->obstructives.size; obstructIdx++)
     {
-        RECT obstructiveRc = BlokConvertVectorRect(
+        RECT obstructiveRc = blokConvertVectorRect(
             state->obstructives.arr[obstructIdx].data, scaling);
         (void) FillRect(offSurface, &obstructiveRc, graphics->tools.secondaryBrush);
     }
@@ -170,10 +170,10 @@ void BlokProcessEventOnPaint(HWND window)
     (void) EndPaint(window, &paintstruct);
 }
 
-void BlokProcessEventOnKeyDown(HWND window, WPARAM virtualKey)
+void blokProcessEventOnKeyDown(HWND window, WPARAM virtualKey)
 {
-    State *state = BlokContextGetState();
-    Viewport *viewport = BlokContextGetViewport();
+    State *state = blokContextGetState();
+    Viewport *viewport = blokContextGetViewport();
     Direction moveBoxOperation = 0;
     int changeGridVisibility = 0;
     int changeInterfaceVisibility = 0;
@@ -231,9 +231,9 @@ void BlokProcessEventOnKeyDown(HWND window, WPARAM virtualKey)
 
     if (moveBoxOperation)
     {
-        if (BlokStateBoxMovableInDirection(state, moveBoxOperation))
+        if (blokStateBoxMovableInDirection(state, moveBoxOperation))
         {
-            BlokStateMoveBox(&state->box, moveBoxOperation);
+            blokStateMoveBox(&state->box, moveBoxOperation);
         }
 
         (void) StringCbPrintfW(
@@ -272,16 +272,16 @@ void BlokProcessEventOnKeyDown(HWND window, WPARAM virtualKey)
         };
 
         Node node = {obstruct};
-        (void) BlokDynListAdd(&state->obstructives, &node);
+        (void) blokDynListAdd(&state->obstructives, &node);
 
-        RECT updateRegion = BlokConvertVectorRect(obstruct, state->box.size);
+        RECT updateRegion = blokConvertVectorRect(obstruct, state->box.size);
 
         (void) StringCbPrintfW(
             viewport->obstructCountText.data, 60, L"%ld", state->obstructives.size);
 
-        BlokProgressBarUpdateMinMax(
+        blokProgressBarUpdateMinMax(
             &viewport->obstructMemoryBar, 0, state->obstructives.max);
-        BlokProgressBarUpdateValue(
+        blokProgressBarUpdateValue(
             &viewport->obstructMemoryBar, state->obstructives.size);
 
         (void) InvalidateRect(window, &updateRegion, FALSE);
@@ -291,10 +291,10 @@ void BlokProcessEventOnKeyDown(HWND window, WPARAM virtualKey)
 
     if (changeTheme)
     {
-        Graphics *graphics = BlokContextGetGraphics();
+        Graphics *graphics = blokContextGetGraphics();
         int currentTheme = graphics->theme;
-        BlokGraphicsFree(graphics);
-        BlokGraphicsInit(
+        blokGraphicsFree(graphics);
+        blokGraphicsInit(
             graphics, 
             (currentTheme == 1 || currentTheme == 0) 
             ? BLOK_THEME_LIGHT : BLOK_THEME_DARK
@@ -304,8 +304,8 @@ void BlokProcessEventOnKeyDown(HWND window, WPARAM virtualKey)
 
     if (clearObstructs)
     {
-        BlokDynListClear(&state->obstructives);
-        BlokProgressBarUpdateValue(
+        blokDynListClear(&state->obstructives);
+        blokProgressBarUpdateValue(
             &viewport->obstructMemoryBar, state->obstructives.size);
         (void) StringCbPrintfW(
             viewport->obstructCountText.data, 60, L"%ld", state->obstructives.size);
@@ -317,15 +317,15 @@ void BlokProcessEventOnKeyDown(HWND window, WPARAM virtualKey)
     if (toggleLock)
     {
         viewport->isCanvasLocked = !viewport->isCanvasLocked;
-        BlokToggleUpdateSelected(&viewport->lockedToggle, viewport->isCanvasLocked);
+        blokToggleUpdateSelected(&viewport->lockedToggle, viewport->isCanvasLocked);
         (void) InvalidateRect(window, &viewport->lockedToggle.region, FALSE);
     }
 }
 
-void BlokProcessEventOnLeftMouseDown(HWND window, LPARAM mousepos)
+void blokProcessEventOnLeftMouseDown(HWND window, LPARAM mousepos)
 {
-    State *state = BlokContextGetState();
-    Viewport *viewport = BlokContextGetViewport();
+    State *state = blokContextGetState();
+    Viewport *viewport = blokContextGetViewport();
     
     viewport->isLeftMouseDown = TRUE;
 
@@ -366,18 +366,18 @@ void BlokProcessEventOnLeftMouseDown(HWND window, LPARAM mousepos)
 
     Node node = {mpos};
     
-    int exists = BlokDynListExists(&state->obstructives, &node);
+    int exists = blokDynListExists(&state->obstructives, &node);
     if (exists) { return; }
 
-    long r = BlokDynListAdd(&state->obstructives, &node);
+    long r = blokDynListAdd(&state->obstructives, &node);
     (void) wprintf(L"pushed to list at idx %ld (%d, %d)\n",r, mpos.x, mpos.y);
 
     (void) StringCbPrintfW(
         viewport->obstructCountText.data, 60, L"%ld", state->obstructives.size);
 
-    BlokProgressBarUpdateMinMax(
+    blokProgressBarUpdateMinMax(
         &viewport->obstructMemoryBar, 0, state->obstructives.max);
-    BlokProgressBarUpdateValue(
+    blokProgressBarUpdateValue(
         &viewport->obstructMemoryBar, state->obstructives.size);
 
     RECT refreshRegion = {
@@ -393,68 +393,68 @@ void BlokProcessEventOnLeftMouseDown(HWND window, LPARAM mousepos)
 
 }
 
-void BlokProcessEventOnLeftMouseUp(HWND window, LPARAM mousepos)
+void blokProcessEventOnLeftMouseUp(HWND window, LPARAM mousepos)
 {
-    State *state = BlokContextGetState();
-    Viewport *viewport = BlokContextGetViewport();
+    State *state = blokContextGetState();
+    Viewport *viewport = blokContextGetViewport();
 
     viewport->isLeftMouseDown = FALSE;
 }
 
-void BlokProcessEventOnResize(HWND window)
+void blokProcessEventOnResize(HWND window)
 {
-    Viewport *viewport = BlokContextGetViewport();
-    State *state = BlokContextGetState();
+    Viewport *viewport = blokContextGetViewport();
+    State *state = blokContextGetState();
 
     (void) GetClientRect(window, &viewport->region);
-    BlokPanelUpdate(&viewport->panel, &viewport->region);
-    BlokCanvasUpdate(&viewport->canvas, &viewport->region);
-    BlokTextUpdate(
+    blokPanelUpdate(&viewport->panel, &viewport->region);
+    blokCanvasUpdate(&viewport->canvas, &viewport->region);
+    blokTextUpdate(
         &viewport->coordinatesText, 
         &((POINT){viewport->panel.region.left+10, viewport->panel.region.top+10}));
-    BlokButtonUpdate(
+    blokButtonUpdate(
         &viewport->clearAllButton, 
         &((POINT){
             viewport->coordinatesText.region.right+10, 
             viewport->coordinatesText.region.top}
         ));
-    BlokButtonUpdate(
+    blokButtonUpdate(
         &viewport->generateButton, 
         &((POINT){
             viewport->clearAllButton.region.right+10, 
             viewport->clearAllButton.region.top}
         ));
-    BlokTextUpdate(
+    blokTextUpdate(
         &viewport->obstructCountText,
         &((POINT){
             viewport->generateButton.region.right+10, 
             viewport->generateButton.region.top}
         ));
-    BlokProgressBarUpdate(
+    blokProgressBarUpdate(
         &viewport->obstructMemoryBar, 
         &((POINT){
             viewport->obstructCountText.region.right+10, 
             viewport->obstructCountText.region.top}));
-    BlokProgressBarUpdateMinMax(
+    blokProgressBarUpdateMinMax(
         &viewport->obstructMemoryBar, 0, state->obstructives.max);
-    BlokProgressBarUpdateValue(
+    blokProgressBarUpdateValue(
         &viewport->obstructMemoryBar, state->obstructives.size);
-    BlokToggleUpdate(
+    blokToggleUpdate(
         &viewport->lockedToggle,
         &((POINT){
             viewport->obstructMemoryBar.region.right+10,
             viewport->obstructMemoryBar.region.top}));
-    BlokTextUpdate(
+    blokTextUpdate(
         &viewport->lockedToggleText, 
         &((POINT){
             viewport->lockedToggle.region.right+10, 
             viewport->lockedToggle.region.top}));
 }
 
-void BlokProcessEventOnMouseHover(HWND window, LPARAM mousepos)
+void blokProcessEventOnMouseHover(HWND window, LPARAM mousepos)
 {
-    Viewport *viewport = BlokContextGetViewport();
-    State *state = BlokContextGetState();
+    Viewport *viewport = blokContextGetViewport();
+    State *state = blokContextGetState();
     VectorII scale = state->box.size;
 
     viewport->mousePos.X = GET_X_LPARAM(mousepos);
@@ -479,12 +479,12 @@ void BlokProcessEventOnMouseHover(HWND window, LPARAM mousepos)
             (viewport->mousePos.X / scale.x) * scale.x,
             (viewport->mousePos.Y / scale.y) * scale.y
         }};
-        if (BlokDynListExists(&state->obstructives, &pos)) { return; }
-        BlokDynListAdd(&state->obstructives, &pos);
-        RECT updateRegion = BlokConvertVectorRect(pos.data, scale);
-        BlokProgressBarUpdateMinMax(
+        if (blokDynListExists(&state->obstructives, &pos)) { return; }
+        blokDynListAdd(&state->obstructives, &pos);
+        RECT updateRegion = blokConvertVectorRect(pos.data, scale);
+        blokProgressBarUpdateMinMax(
             &viewport->obstructMemoryBar, 0, state->obstructives.max);
-        BlokProgressBarUpdateValue(
+        blokProgressBarUpdateValue(
             &viewport->obstructMemoryBar, state->obstructives.size);
         (void) StringCbPrintfW(
             viewport->obstructCountText.data, 60, L"%ld", state->obstructives.size);
@@ -499,12 +499,12 @@ void BlokProcessEventOnMouseHover(HWND window, LPARAM mousepos)
             (viewport->mousePos.X / scale.x) * scale.x,
             (viewport->mousePos.Y / scale.y) * scale.y
         }};
-        if (!BlokDynListExists(&state->obstructives, &pos)) { return; }
-        (void) BlokDynListRemove(&state->obstructives, pos);
-        RECT updateRegion = BlokConvertVectorRect(pos.data, scale);
-        BlokProgressBarUpdateMinMax(
+        if (!blokDynListExists(&state->obstructives, &pos)) { return; }
+        (void) blokDynListRemove(&state->obstructives, pos);
+        RECT updateRegion = blokConvertVectorRect(pos.data, scale);
+        blokProgressBarUpdateMinMax(
             &viewport->obstructMemoryBar, 0, state->obstructives.max);
-        BlokProgressBarUpdateValue(
+        blokProgressBarUpdateValue(
             &viewport->obstructMemoryBar, state->obstructives.size);
         (void) StringCbPrintfW(
             viewport->obstructCountText.data, 60, L"%ld", state->obstructives.size);
@@ -516,10 +516,10 @@ void BlokProcessEventOnMouseHover(HWND window, LPARAM mousepos)
     (void) InvalidateRect(window, NULL, FALSE);
 }
 
-void BlokProcessEventOnRightMouseDown(HWND window, LPARAM mousepos)
+void blokProcessEventOnRightMouseDown(HWND window, LPARAM mousepos)
 {
-    State *state = BlokContextGetState();
-    Viewport *viewport = BlokContextGetViewport();
+    State *state = blokContextGetState();
+    Viewport *viewport = blokContextGetViewport();
 
     viewport->isRightMouseDown = TRUE;
 
@@ -534,15 +534,15 @@ void BlokProcessEventOnRightMouseDown(HWND window, LPARAM mousepos)
 
     Node node = {mpos};
 
-    if (BlokDynListExists(&state->obstructives, &node))
+    if (blokDynListExists(&state->obstructives, &node))
     {
-        (void) BlokDynListRemove(&state->obstructives, node);
+        (void) blokDynListRemove(&state->obstructives, node);
 
-        RECT updateRegion = BlokConvertVectorRect(node.data, state->box.size);
+        RECT updateRegion = blokConvertVectorRect(node.data, state->box.size);
 
-        BlokProgressBarUpdateMinMax(
+        blokProgressBarUpdateMinMax(
             &viewport->obstructMemoryBar, 0, state->obstructives.max);
-        BlokProgressBarUpdateValue(
+        blokProgressBarUpdateValue(
             &viewport->obstructMemoryBar, state->obstructives.size);
         (void) StringCbPrintfW(
             viewport->obstructCountText.data, 60, L"%ld", state->obstructives.size);
@@ -553,9 +553,9 @@ void BlokProcessEventOnRightMouseDown(HWND window, LPARAM mousepos)
 
 }
 
-void BlokProcessEventOnRightMouseUp(HWND window, LPARAM mousepos)
+void blokProcessEventOnRightMouseUp(HWND window, LPARAM mousepos)
 {
-    Viewport *viewport = BlokContextGetViewport();
+    Viewport *viewport = blokContextGetViewport();
 
     viewport->isRightMouseDown = FALSE;
 }

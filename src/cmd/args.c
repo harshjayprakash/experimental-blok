@@ -7,7 +7,7 @@
 #define __BLOK_ARGS_MODE_CUSTOM_SCALE_A 0x30
 #define __BLOK_DEFAULT_SCALE 15
 
-void BlokArgsProcess(LPWSTR commandLine, ArgsInfo *result)
+void blokArgsProcess(LPWSTR commandLine, ArgsInfo *result)
 {
     if (!commandLine) { return; }
     if (!result) { return; }

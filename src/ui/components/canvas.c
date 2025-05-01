@@ -1,6 +1,6 @@
 #include "canvas.h"
 
-void BlokCanvasUpdate(Canvas *canvas, const RECT *windowRegion)
+void blokCanvasUpdate(Canvas *canvas, const RECT *windowRegion)
 {
     if (!canvas) { return; }
     if (!windowRegion) { return; }

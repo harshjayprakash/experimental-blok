@@ -4,7 +4,7 @@
 #define __BLOK_CLEANUP_RESOURCE(object, cleanFn) \
     if (object != NULL) { (void)cleanFn(object); object = NULL; }
 
-LRESULT CALLBACK __BlokWindowProcedure(
+LRESULT CALLBACK __blokWindowProcedure(
     HWND window, UINT messageId, WPARAM dataWord, LPARAM dataLong)
 {
     switch (messageId)
@@ -14,35 +14,35 @@ LRESULT CALLBACK __BlokWindowProcedure(
         return TRUE;
 
     case WM_PAINT:
-        BlokProcessEventOnPaint(window);
+        blokProcessEventOnPaint(window);
         return TRUE;
 
     case WM_SIZE:
-        BlokProcessEventOnResize(window);
+        blokProcessEventOnResize(window);
         return TRUE;
 
     case WM_KEYDOWN:
-        BlokProcessEventOnKeyDown(window, dataWord);
+        blokProcessEventOnKeyDown(window, dataWord);
         return TRUE;
 
     case WM_LBUTTONDOWN:
-        BlokProcessEventOnLeftMouseDown(window, dataLong);
+        blokProcessEventOnLeftMouseDown(window, dataLong);
         return TRUE;
 
     case WM_RBUTTONDOWN:
-        BlokProcessEventOnRightMouseDown(window, dataLong);
+        blokProcessEventOnRightMouseDown(window, dataLong);
         return TRUE;
 
     case WM_LBUTTONUP:
-        BlokProcessEventOnLeftMouseUp(window, dataLong);
+        blokProcessEventOnLeftMouseUp(window, dataLong);
         return TRUE;
 
     case WM_RBUTTONUP:
-        BlokProcessEventOnRightMouseUp(window, dataLong);
+        blokProcessEventOnRightMouseUp(window, dataLong);
         return TRUE;
 
     case WM_MOUSEMOVE:
-        BlokProcessEventOnMouseHover(window, dataLong);
+        blokProcessEventOnMouseHover(window, dataLong);
         return TRUE;
 
     default:
@@ -50,7 +50,7 @@ LRESULT CALLBACK __BlokWindowProcedure(
     }
 }
 
-void BlokWindowInit(Window *window, HINSTANCE instance)
+void blokWindowInit(Window *window, HINSTANCE instance)
 {
     if (!window) { return; }
     if (!instance) { return; }
@@ -60,7 +60,7 @@ void BlokWindowInit(Window *window, HINSTANCE instance)
 
     window->klass.cbSize = sizeof(WNDCLASSEXW);
     window->klass.style = CS_HREDRAW | CS_VREDRAW;
-    window->klass.lpfnWndProc = __BlokWindowProcedure;
+    window->klass.lpfnWndProc = __blokWindowProcedure;
     window->klass.cbClsExtra = 0;
     window->klass.cbWndExtra = 0;
     window->klass.hInstance = instance;
@@ -77,7 +77,7 @@ void BlokWindowInit(Window *window, HINSTANCE instance)
     {
         (void) MessageBoxW(0, L"Window Class Registeration Failed", L"Blok", 
             MB_OK | MB_ICONERROR);
-        BlokWindowFree(window, instance);
+        blokWindowFree(window, instance);
         return;
     }
 
@@ -87,12 +87,12 @@ void BlokWindowInit(Window *window, HINSTANCE instance)
     if (!window->handle)
     {
         (void) MessageBoxW(0, L"Window Creation Failed", L"Blok", MB_OK | MB_ICONERROR);
-        BlokWindowFree(window, instance);
+        blokWindowFree(window, instance);
         return;
     }
 }
 
-void BlokWindowShow(Window *window, DWORD showFlag)
+void blokWindowShow(Window *window, DWORD showFlag)
 {
     if (!window) { return; }
     if (!window->handle) { return; }
@@ -116,7 +116,7 @@ void BlokWindowShow(Window *window, DWORD showFlag)
     }
 }
 
-void BlokWindowFree(Window *window, HINSTANCE instance)
+void blokWindowFree(Window *window, HINSTANCE instance)
 {
     if (!window) { return; }
     

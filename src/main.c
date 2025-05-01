@@ -26,11 +26,11 @@ int WINAPI wWinMain(
         return 1;
     }
 
-    Context *context = BlokContextGet();
+    Context *context = blokContextGet();
     
-    BlokInit(context, hInstance, lpCmdLine, nShowCmd);
-    BlokRun(context);
-    BlokFree(context);
+    blokInit(context, hInstance, lpCmdLine, nShowCmd);
+    blokRun(context);
+    blokFree(context);
 
     (void) CloseHandle(instanceMutex);
     

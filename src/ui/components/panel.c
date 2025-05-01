@@ -1,6 +1,6 @@
 #include "panel.h"
 
-void BlokPanelUpdateEx(
+void blokPanelUpdateEx(
     Panel *panel, const RECT *windowRegion, const COORD *size, const COORD *margin)
 {
     if (!panel) { return; }
@@ -24,10 +24,10 @@ void BlokPanelUpdateEx(
     panel->region.bottom = windowRegion->bottom - panel->margin.Y;
 }
 
-void BlokPanelUpdate(Panel *panel, const RECT *windowRegion)
+void blokPanelUpdate(Panel *panel, const RECT *windowRegion)
 {
     if (!panel) { return; }
     if (!windowRegion) { return; }
 
-    BlokPanelUpdateEx(panel, windowRegion, NULL, NULL);
+    blokPanelUpdateEx(panel, windowRegion, NULL, NULL);
 }

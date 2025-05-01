@@ -1,6 +1,6 @@
 #include "direction.h"
 
-VectorII BlokDirectionToVector(const Direction direction)
+VectorII blokDirectionToVector(const Direction direction)
 {
     switch (direction)
     {

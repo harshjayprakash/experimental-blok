@@ -10,8 +10,8 @@ typedef struct _Graphics {
     DrawingTools tools;
 } Graphics;
 
-void BlokGraphicsInit(Graphics *gfx, const Theme theme);
+void blokGraphicsInit(Graphics *gfx, const Theme theme);
 
-void BlokGraphicsFree(Graphics *gfx);
+void blokGraphicsFree(Graphics *gfx);
 
 #endif // _BLOK_GRAPHICS_H_

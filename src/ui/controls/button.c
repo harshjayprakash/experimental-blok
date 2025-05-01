@@ -1,6 +1,6 @@
 #include "button.h"
 
-void BlokButtonUpdateEx(Button *button, const POINT *pos, const SIZE *size, const SIZE *margin)
+void blokButtonUpdateEx(Button *button, const POINT *pos, const SIZE *size, const SIZE *margin)
 {
     if (!button) { return; }
 
@@ -28,10 +28,10 @@ void BlokButtonUpdateEx(Button *button, const POINT *pos, const SIZE *size, cons
     button->region.bottom = (button->position.y + button->size.cy) - button->margin.cx;
 }
 
-void BlokButtonUpdate(Button *button, const POINT *position)
+void blokButtonUpdate(Button *button, const POINT *position)
 {
     if (!button) { return; }
     if (!position) { return; }
 
-    BlokButtonUpdateEx(button, position, (SIZE *) 0, (SIZE *) 0);
+    blokButtonUpdateEx(button, position, (SIZE *) 0, (SIZE *) 0);
 }

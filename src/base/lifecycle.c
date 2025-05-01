@@ -1,7 +1,7 @@
 #include "lifecycle.h"
 #include "../cmd/args.h"
 
-void BlokInit(Context *context, HINSTANCE instance, LPWSTR commandLine, DWORD showFlag)
+void blokInit(Context *context, HINSTANCE instance, LPWSTR commandLine, DWORD showFlag)
 {
     if (!context) { return; }
 
@@ -10,31 +10,31 @@ void BlokInit(Context *context, HINSTANCE instance, LPWSTR commandLine, DWORD sh
     context->showFlag = showFlag;
 
     ArgsInfo argsResult;
-    BlokArgsProcess(context->commandLine, &argsResult);
+    blokArgsProcess(context->commandLine, &argsResult);
 
     if (argsResult.showConsole)
     {
-        BlokConsoleInit(&context->console);
+        blokConsoleInit(&context->console);
     }
 
-    BlokStateInit(&context->state, (VectorII){argsResult.scaleX, argsResult.scaleY});
-    BlokGraphicsInit(&context->graphics, argsResult.theme);
-    BlokViewportInit(&context->viewport, context->instance);
+    blokStateInit(&context->state, (VectorII){argsResult.scaleX, argsResult.scaleY});
+    blokGraphicsInit(&context->graphics, argsResult.theme);
+    blokViewportInit(&context->viewport, context->instance);
 }
 
-void BlokRun(Context *context)
+void blokRun(Context *context)
 {
     if (!context) { return; }
 
-    BlokViewportShow(&context->viewport, context->showFlag);
+    blokViewportShow(&context->viewport, context->showFlag);
 }
 
-void BlokFree(Context *context)
+void blokFree(Context *context)
 {
     if (!context) { return; }
 
-    BlokViewportFree(&context->viewport, context->instance);
-    BlokGraphicsFree(&context->graphics);
-    BlokStateFree(&context->state);
-    BlokConsoleFree(&context->console);
+    blokViewportFree(&context->viewport, context->instance);
+    blokGraphicsFree(&context->graphics);
+    blokStateFree(&context->state);
+    blokConsoleFree(&context->console);
 }

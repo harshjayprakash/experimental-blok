@@ -11,6 +11,6 @@ typedef enum _Direction {
     BLOK_DIRECTION_WEST = 9,
 } Direction;
 
-VectorII BlokDirectionToVector(const Direction direction);
+VectorII blokDirectionToVector(const Direction direction);
 
 #endif // _BLOK_DIRECTION_H_

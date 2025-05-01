@@ -18,15 +18,15 @@ typedef struct _ProgressBar {
     INT barValue;
 } ProgressBar;
 
-void BlokProgressBarUpdateEx(
+void blokProgressBarUpdateEx(
     ProgressBar *pbar, const POINT *position, const SIZE *size, const SIZE *margin,
     const SIZE *barMargin);
 
-void BlokProgressBarUpdate(ProgressBar *pbar, const POINT *position);
+void blokProgressBarUpdate(ProgressBar *pbar, const POINT *position);
 
-void BlokProgressBarUpdateMinMax(
+void blokProgressBarUpdateMinMax(
     ProgressBar *pbar, const int minValue, const int maxValue);
 
-void BlokProgressBarUpdateValue(ProgressBar *pbar, const int value);
+void blokProgressBarUpdateValue(ProgressBar *pbar, const int value);
 
 #endif // _BLOK_PROGRESSBAR_H_

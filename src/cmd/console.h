@@ -10,8 +10,8 @@ typedef struct _Console {
     FILE *output;
 } Console;
 
-void BlokConsoleInit(Console *con);
+void blokConsoleInit(Console *con);
 
-void BlokConsoleFree(Console *con);
+void blokConsoleFree(Console *con);
 
 #endif // _BLOK_CONSOLE_H_

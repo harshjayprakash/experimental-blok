@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <memory.h>
 
-static long __BlokDynListGenerateNewSize(const long currentSize)
+static long __blokDynListGenerateNewSize(const long currentSize)
 {
     return (long) (currentSize + (currentSize / 2));
 }
 
-static int __BlokDynListResize(DynList *list, const long newSize)
+static int __blokDynListResize(DynList *list, const long newSize)
 {
     if (!list) { return 0; }
     if (!list->arr) { return 0; }
@@ -23,7 +23,7 @@ static int __BlokDynListResize(DynList *list, const long newSize)
     return 1;
 }
 
-void BlokDynListInit(DynList *list, const long size)
+void blokDynListInit(DynList *list, const long size)
 {
     if (!list) { return; }
 
@@ -36,7 +36,7 @@ void BlokDynListInit(DynList *list, const long size)
     list->size = 0;
 }
 
-int BlokDynListIsFull(const DynList *list)
+int blokDynListIsFull(const DynList *list)
 {
     if (!list) { return -1; }
     if (!list->arr) { return -1; }
@@ -44,7 +44,7 @@ int BlokDynListIsFull(const DynList *list)
     return (list->size == list->max);
 }
 
-int BlokDynListIsEmpty(const DynList *list)
+int blokDynListIsEmpty(const DynList *list)
 {
     if (!list) { return -1; }
     if (!list->arr) { return -1; }
@@ -52,26 +52,26 @@ int BlokDynListIsEmpty(const DynList *list)
     return (list->head == -1);
 }
 
-long BlokDynListAdd(DynList *list, const Node *node)
+long blokDynListAdd(DynList *list, const Node *node)
 {
     if (!list) { return -1; }
     if (!node) { return -1; }
 
-    if (BlokDynListIsFull(list)) 
+    if (blokDynListIsFull(list)) 
     { 
-        int success = __BlokDynListResize(list, __BlokDynListGenerateNewSize(list->max));
+        int success = __blokDynListResize(list, __blokDynListGenerateNewSize(list->max));
         if (!success) { return -1; }
     }
 
     ++list->head;
     ++list->size;
 
-    BlokVectorIICopy(&(list->arr + list->head)->data, node->data);
+    blokVectorIICopy(&(list->arr + list->head)->data, node->data);
 
     return list->head;
 }
 
-void BlokDynListClear(DynList *list)
+void blokDynListClear(DynList *list)
 {
     if (!list) { return; }
     if (!list->arr) { return; }
@@ -80,7 +80,7 @@ void BlokDynListClear(DynList *list)
     list->size = 0;
 }
 
-int BlokDynListGetIndex(const DynList *list, const Node *node)
+int blokDynListGetIndex(const DynList *list, const Node *node)
 {
     if (!list) { return -2; }
     if (!list->arr) { return -2; }
@@ -88,7 +88,7 @@ int BlokDynListGetIndex(const DynList *list, const Node *node)
 
     for (long arrIdx = 0; arrIdx < list->size; arrIdx++)
     {
-        if (BlokVectorIIEquals(list->arr[arrIdx].data, node->data))
+        if (blokVectorIIEquals(list->arr[arrIdx].data, node->data))
         {
             return arrIdx;
         }
@@ -97,18 +97,18 @@ int BlokDynListGetIndex(const DynList *list, const Node *node)
     return -1;
 }  
 
-int BlokDynListExists(const DynList *list, const Node *node)
+int blokDynListExists(const DynList *list, const Node *node)
 {
     if (!list) { return -1; }
     if (!node) { return -1; }
 
-    int result = BlokDynListGetIndex(list, node);
+    int result = blokDynListGetIndex(list, node);
     if (result == -2) { return -1; }
     if (result == -1) { return 0; }
     return 1;
 }
 
-void BlokDynListCombine(DynList *dest, const DynList *src)
+void blokDynListCombine(DynList *dest, const DynList *src)
 {
     if (!dest) { return; }
     if (!dest->arr) { return; }
@@ -117,26 +117,26 @@ void BlokDynListCombine(DynList *dest, const DynList *src)
 
     for (long arrIdx = 0; arrIdx < src->size; arrIdx++)
     {
-        int exists = BlokDynListExists(dest, src->arr+arrIdx);
-        if (exists == 1) { BlokDynListAdd(dest, src->arr+arrIdx); }
+        int exists = blokDynListExists(dest, src->arr+arrIdx);
+        if (exists == 1) { blokDynListAdd(dest, src->arr+arrIdx); }
     }
 }
 
-int BlokDynListRemove(DynList *list, const Node node)
+int blokDynListRemove(DynList *list, const Node node)
 {
     if (!list) { return -1; }
 
-    long idx = BlokDynListGetIndex(list, &node);
+    long idx = blokDynListGetIndex(list, &node);
     if (idx < 0) { return -1; }
 
-    BlokVectorIICopy( &(list->arr + idx)->data, (list->arr + list->head)->data);
+    blokVectorIICopy( &(list->arr + idx)->data, (list->arr + list->head)->data);
     --list->head;
     --list->size;
 
     return idx;
 }
 
-void BlokDynListFree(DynList *list)
+void blokDynListFree(DynList *list)
 {
     if (!list) { return; }
 

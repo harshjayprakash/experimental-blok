@@ -13,16 +13,16 @@ typedef struct _VectorIV {
     int w;
 } VectorIV;
 
-void BlokVectorIICopy(VectorII *dest, const VectorII src);
+void blokVectorIICopy(VectorII *dest, const VectorII src);
 
-void BlokVectorIVCopy(VectorIV *dest, const VectorIV src);
+void blokVectorIVCopy(VectorIV *dest, const VectorIV src);
 
-int BlokVectorIIEquals(const VectorII veca, const VectorII vecb);
+int blokVectorIIEquals(const VectorII veca, const VectorII vecb);
 
-VectorII BlokVectorIIAdd(const VectorII veca, const VectorII vecb);
+VectorII blokVectorIIAdd(const VectorII veca, const VectorII vecb);
 
-VectorII BlokVectorIISubtract(const VectorII veca, const VectorII vecb);
+VectorII blokVectorIISubtract(const VectorII veca, const VectorII vecb);
 
-VectorII BlokVectorIIMultiply(const VectorII veca, const VectorII vecb);
+VectorII blokVectorIIMultiply(const VectorII veca, const VectorII vecb);
 
 #endif // _BLOK_VECTOR_H_

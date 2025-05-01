@@ -18,12 +18,12 @@ typedef struct _Context {
     void *result;
 } Context;
 
-Context *BlokContextGet(void);
+Context *blokContextGet(void);
 
-Graphics *BlokContextGetGraphics(void);
+Graphics *blokContextGetGraphics(void);
 
-Viewport *BlokContextGetViewport(void);
+Viewport *blokContextGetViewport(void);
 
-State *BlokContextGetState(void);
+State *blokContextGetState(void);
 
 #endif // _BLOK_CONTEXT_H_

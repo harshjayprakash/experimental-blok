@@ -7,7 +7,7 @@
         winGdiObject = (void *) 0;              \
     }                                           
 
-void BlokDrawingToolsInit(DrawingTools *tools, const ColourSpace *colours)
+void blokDrawingToolsInit(DrawingTools *tools, const ColourSpace *colours)
 {
     if (!tools) { return; }
     if (!colours) { return; }
@@ -24,7 +24,7 @@ void BlokDrawingToolsInit(DrawingTools *tools, const ColourSpace *colours)
     tools->onPrimaryVariantPen = CreatePen(PS_SOLID, 1, colours->primaryVariant);
 }
 
-void BlokDrawingToolsFree(DrawingTools *tools)
+void blokDrawingToolsFree(DrawingTools *tools)
 {
     if (!tools) { return; }
 

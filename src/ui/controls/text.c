@@ -1,6 +1,6 @@
 #include "text.h"
 
-void BlokTextUpdateEx(Text *text, const POINT *point, const SIZE *size, const SIZE *margin)
+void blokTextUpdateEx(Text *text, const POINT *point, const SIZE *size, const SIZE *margin)
 {
     if (!text) { return; }
 
@@ -28,10 +28,10 @@ void BlokTextUpdateEx(Text *text, const POINT *point, const SIZE *size, const SI
     text->region.bottom = (text->position.y + text->size.cy) - text->margin.cx;
 }
 
-void BlokTextUpdate(Text *text, const POINT *position)
+void blokTextUpdate(Text *text, const POINT *position)
 {
     if (!text) { return; }
     if (!position) { return; }
 
-    BlokTextUpdateEx(text, position, (SIZE *) 0, (SIZE *) 0);
+    blokTextUpdateEx(text, position, (SIZE *) 0, (SIZE *) 0);
 }

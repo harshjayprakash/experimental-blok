@@ -13,9 +13,9 @@ typedef struct _Text {
     POINT position;
 } Text;
 
-void BlokTextUpdateEx(
+void blokTextUpdateEx(
     Text *text, const POINT *point, const SIZE *size, const SIZE *margin);
 
-void BlokTextUpdate(Text *text, const POINT *position);
+void blokTextUpdate(Text *text, const POINT *position);
 
 #endif // _BLOK_TEXT_H_

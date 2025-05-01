@@ -1,43 +1,43 @@
 #include "state.h"
 #include "../model/vector.h"
 
-void BlokStateInit(State *state, const VectorII scale)
+void blokStateInit(State *state, const VectorII scale)
 {
     if (!state) { return; }
 
     VectorII defaultBoxState = {0, 0};
     VectorII defaultBoxSize = scale;
-    BlokVectorIICopy(&state->box.size, defaultBoxSize);
-    BlokVectorIICopy(&state->box.position, defaultBoxState);
+    blokVectorIICopy(&state->box.size, defaultBoxSize);
+    blokVectorIICopy(&state->box.position, defaultBoxState);
 
-    BlokDynListInit(&state->obstructives, 10);
+    blokDynListInit(&state->obstructives, 10);
 }
 
-void BlokStateFree(State *state)
+void blokStateFree(State *state)
 {
     if (!state) { return; }
 
-    BlokDynListFree(&state->obstructives);
+    blokDynListFree(&state->obstructives);
 }
 
-void BlokStateMoveBox(Square *box, const Direction direction)
+void blokStateMoveBox(Square *box, const Direction direction)
 {
     if (!box) { return; }
 
-    VectorII vector = BlokDirectionToVector(direction);
-    VectorII scaled = BlokVectorIIMultiply(vector, box->size);
-    VectorII newpos = BlokVectorIIAdd(box->position, scaled);
-    BlokVectorIICopy(&box->position, newpos);
+    VectorII vector = blokDirectionToVector(direction);
+    VectorII scaled = blokVectorIIMultiply(vector, box->size);
+    VectorII newpos = blokVectorIIAdd(box->position, scaled);
+    blokVectorIICopy(&box->position, newpos);
 }
 
-int BlokStateBoxMovableInDirection(State *state, const Direction direction)
+int blokStateBoxMovableInDirection(State *state, const Direction direction)
 {
     if (!state) { return -1; }
 
     state->boxProjected = state->box;
-    BlokStateMoveBox(&state->boxProjected, direction);
+    blokStateMoveBox(&state->boxProjected, direction);
 
-    int checkIdx = BlokDynListGetIndex(
+    int checkIdx = blokDynListGetIndex(
         &state->obstructives, 
         &((Node){state->boxProjected.position}));
     

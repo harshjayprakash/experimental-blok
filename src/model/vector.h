@@ -6,16 +6,7 @@ typedef struct _VectorII {
     int y;
 } VectorII;
 
-typedef struct _VectorIV {
-    int x;
-    int y;
-    int z;
-    int w;
-} VectorIV;
-
 void blokVectorIICopy(VectorII *dest, const VectorII src);
-
-void blokVectorIVCopy(VectorIV *dest, const VectorIV src);
 
 int blokVectorIIEquals(const VectorII veca, const VectorII vecb);
 

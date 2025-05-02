@@ -21,7 +21,7 @@ window but would leave a tail behind, due to the lack of updating the window.
 You may thinking why? To answer that, I'm not sure. But what I know is that I have always
 had a strong interest in the Windows Operating System.
 
-![Light Dark Mode Screenshot](./doc/xbk-light-dark-screenshot.png)
+![Light Dark Mode Screenshot](./doc/xbk-preview-light-dark.png)
 
 ### The Canvas Grid
 

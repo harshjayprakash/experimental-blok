@@ -1,10 +1,10 @@
 #include "drawtools.h"
 
-#define BLOK_FREE_WINGDI_OBJECT(winGdiObject) \
-    if (winGdiObject)                           \
-    {                                           \
-        (void) DeleteObject(winGdiObject);      \
-        winGdiObject = (void *) 0;              \
+#define BLOK_DELETE_OBJECT(hObject)                                                      \
+    if (hObject != NULL)                                                                 \
+    {                                                                                    \
+        (void) DeleteObject(hObject);                                                    \
+        hObject = NULL;                                                                  \
     }                                           
 
 void blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours)
@@ -28,14 +28,14 @@ void blokDrawingToolsFree(DrawingTools *pTools)
 {
     if (!pTools) { return; }
 
-    BLOK_FREE_WINGDI_OBJECT(pTools->hSurfaceBrush);
-    BLOK_FREE_WINGDI_OBJECT(pTools->hSurfaceVariantBrush);
-    BLOK_FREE_WINGDI_OBJECT(pTools->hPrimaryBrush);
-    BLOK_FREE_WINGDI_OBJECT(pTools->hPrimaryVariantBrush);
-    BLOK_FREE_WINGDI_OBJECT(pTools->hSecondaryBrush);
-    BLOK_FREE_WINGDI_OBJECT(pTools->hSecondaryVariantBrush);
-    BLOK_FREE_WINGDI_OBJECT(pTools->hOnSurfacePen);
-    BLOK_FREE_WINGDI_OBJECT(pTools->hOnSurfaceVariantPen);
-    BLOK_FREE_WINGDI_OBJECT(pTools->hOnPrimaryPen);
-    BLOK_FREE_WINGDI_OBJECT(pTools->hOnPrimaryVariantPen);
+    BLOK_DELETE_OBJECT(pTools->hSurfaceBrush);
+    BLOK_DELETE_OBJECT(pTools->hSurfaceVariantBrush);
+    BLOK_DELETE_OBJECT(pTools->hPrimaryBrush);
+    BLOK_DELETE_OBJECT(pTools->hPrimaryVariantBrush);
+    BLOK_DELETE_OBJECT(pTools->hSecondaryBrush);
+    BLOK_DELETE_OBJECT(pTools->hSecondaryVariantBrush);
+    BLOK_DELETE_OBJECT(pTools->hOnSurfacePen);
+    BLOK_DELETE_OBJECT(pTools->hOnSurfaceVariantPen);
+    BLOK_DELETE_OBJECT(pTools->hOnPrimaryPen);
+    BLOK_DELETE_OBJECT(pTools->hOnPrimaryVariantPen);
 }

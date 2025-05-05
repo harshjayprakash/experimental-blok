@@ -13,6 +13,11 @@ int blokVectorIIEquals(const VectorII veca, const VectorII vecb)
     return (veca.x == vecb.x && veca.y == vecb.y);
 }
 
+VectorII blokVectorIIOffset(const VectorII veca, const VectorII vecb)
+{
+    return (VectorII){veca.x + vecb.x, veca.y + vecb.y};
+}
+
 VectorII blokVectorIIAdd(const VectorII veca, const VectorII vecb)
 {
     return (VectorII) {veca.x+vecb.x, veca.y+vecb.y};

@@ -8,7 +8,7 @@
 #define BLOK_ARGM_SCALE_A 30
 
 #define BLOK_EVALUATE_SCALE(assignTo, value)                                             \
-    int scale = _wtoi(value);                                                            \
+    int scale = abs(_wtoi(value));                                                       \
     assignTo = (scale != 0) ? scale : BLOK_SCALE_DEF
 
 int blokArgsProcess(ArgsInfo *pArgs, LPCWSTR pCommandLine)

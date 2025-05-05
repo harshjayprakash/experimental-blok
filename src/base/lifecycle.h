@@ -3,10 +3,10 @@
 
 #include "context.h"
 
-void blokInit(Context *pContext, HINSTANCE hInstance, LPWSTR pCommandLine, DWORD showFlag);
+int blokInit(Context *pContext, HINSTANCE hInstance, LPWSTR pCommandLine, DWORD showFlag);
 
-void blokRun(Context *pContext);
+int blokRun(Context *pContext);
 
-void blokFree(Context *pContext);
+int blokFree(Context *pContext);
 
 #endif // _BLOK_LIFECYCLE_H_

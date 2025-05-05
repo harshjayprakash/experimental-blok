@@ -8,7 +8,7 @@
         object = NULL;                                                                   \
     }
 
-LRESULT CALLBACK __blokWindowProcedure(
+LRESULT CALLBACK _blokWindowProcedure(
     HWND hWindow, UINT messageId, WPARAM dataWord, LPARAM dataLong)
 {
     switch (messageId)
@@ -64,7 +64,7 @@ void blokWindowInit(Window *pWindow, HINSTANCE hInstance)
 
     pWindow->klass.cbSize = sizeof(WNDCLASSEXW);
     pWindow->klass.style = CS_HREDRAW | CS_VREDRAW;
-    pWindow->klass.lpfnWndProc = __blokWindowProcedure;
+    pWindow->klass.lpfnWndProc = _blokWindowProcedure;
     pWindow->klass.cbClsExtra = 0;
     pWindow->klass.cbWndExtra = 0;
     pWindow->klass.hInstance = hInstance;

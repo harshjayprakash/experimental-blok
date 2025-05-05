@@ -4,7 +4,7 @@
 #include <strsafe.h>
 #include <Windowsx.h>
 
-#define __BLOK_MOUSE_AT_(rect, pos) \
+#define BLOK_MOUSE_AT(rect, pos) \
     (pos.X > rect.left && pos.X < rect.right && pos.Y > rect.top && pos.Y < rect.bottom)
 
 void blokProcessEventOnPaint(HWND hWindow)

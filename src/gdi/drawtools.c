@@ -1,6 +1,6 @@
 #include "drawtools.h"
 
-#define __BLOK_FREE_WINGDI_OBJECT(winGdiObject) \
+#define BLOK_FREE_WINGDI_OBJECT(winGdiObject) \
     if (winGdiObject)                           \
     {                                           \
         (void) DeleteObject(winGdiObject);      \

@@ -1,6 +1,6 @@
 #include "theme.h"
 
-#define __BLOK_LIGHT_DARK(light, dark) \
+#define BLOK_LIGHT_DARK(light, dark) \
     (theme == BLOK_THEME_LIGHT) ? light : dark
 
 void blokColoursSet(ColourSpace *pColourSpace, const Theme theme)

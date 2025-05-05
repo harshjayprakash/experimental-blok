@@ -9,6 +9,6 @@ typedef struct _Canvas {
     SIZE size;
 } Canvas;
 
-void blokCanvasUpdate(Canvas *pCanvas, const RECT *pWindowRgn);
+int blokCanvasUpdate(Canvas *pCanvas, const RECT *pWindowRgn);
 
 #endif // _BLOK_CANVAS_H_

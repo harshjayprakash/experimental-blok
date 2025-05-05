@@ -11,9 +11,9 @@ typedef struct _Panel {
     COORD size;
 } Panel;
 
-void blokPanelUpdateEx(
+int blokPanelUpdateEx(
     Panel *pPanel, const RECT *pWindowRgn, const COORD *pSize, const COORD *pMargin);
 
-void blokPanelUpdate(Panel *pPanel, const RECT *pWindowRgn);
+int blokPanelUpdate(Panel *pPanel, const RECT *pWindowRgn);
 
 #endif // _BLOK_PANEL_H_

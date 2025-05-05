@@ -11,10 +11,10 @@ typedef struct _Window {
     ATOM klassAtomIdx;
 } Window;
 
-void blokWindowInit(Window *pWindow, HINSTANCE hInstance);
+int blokWindowInit(Window *pWindow, HINSTANCE hInstance);
 
-void blokWindowShow(Window *pWindow, DWORD showFlag);
+int blokWindowShow(Window *pWindow, DWORD showFlag);
 
-void blokWindowFree(Window *pWindow, HINSTANCE hInstance);
+int blokWindowFree(Window *pWindow, HINSTANCE hInstance);
 
 #endif // _BLOK_WINDOW_H_

@@ -11,11 +11,11 @@ typedef struct _State {
     DynList obstructives;
 } State;
 
-void blokStateInit(State *pState, const VectorII scale);
+int blokStateInit(State *pState, const VectorII scale);
 
-void blokStateFree(State *pState);
+int blokStateFree(State *pState);
 
-void blokStateMoveBox(Square *pBox, const Direction direction);
+int blokStateMoveBox(Square *pBox, const Direction direction);
 
 int blokStateBoxMovableInDirection(State *pState, const Direction direction);
 

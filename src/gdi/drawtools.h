@@ -17,8 +17,8 @@ typedef struct _DrawingTools {
     HPEN hOnPrimaryVariantPen;
 } DrawingTools;
 
-void blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours);
+int blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours);
 
-void blokDrawingToolsFree(DrawingTools *pTools);
+int blokDrawingToolsFree(DrawingTools *pTools);
 
 #endif // _BLOK_DRAWTOOLS_H_

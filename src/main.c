@@ -8,7 +8,7 @@ int WINAPI wWinMain(
 
     HANDLE hInstanceMutex = CreateMutexW(NULL, TRUE, L"BlokInstance");
 
-    if (!hInstanceMutex)
+    if (hInstanceMutex == NULL)
     {
         (void) MessageBoxW(
             NULL, L"Mutex creation failed. The program will now exit.", L"Blok", 

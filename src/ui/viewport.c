@@ -2,9 +2,10 @@
 #include <strsafe.h>
 #include <time.h>
 
-void blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
+int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
 {
-    if (!pViewport) { return; }
+    if (pViewport == NULL)
+        return 0;
 
     srand((unsigned int) time(0));
 
@@ -21,9 +22,9 @@ void blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
         OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS, CLEARTYPE_QUALITY, FF_DONTCARE, 
         L"Segoe UI");
     
-    if (!pViewport->hFont)
+    if (pViewport->hFont == NULL)
     {
-        (void) MessageBoxW(0, L"Font Loading Failed.", L"Blok", MB_OK | MB_ICONERROR);
+        (void)MessageBoxW(0, L"Font Loading Failed.", L"Blok", MB_OK | MB_ICONERROR);
     }
 
     (void) GetClientRect(pViewport->window.hHandle, &pViewport->region);
@@ -88,23 +89,29 @@ void blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
         &((SIZE){30, 20}),
         &((SIZE){0, 0}));
     (void) StringCbPrintfW(pViewport->lockedToggleText.data, 60, L"Locked");
+
+    return 1;
 }
 
-void blokViewportShow(Viewport *pViewport, DWORD showFlag)
+int blokViewportShow(Viewport *pViewport, DWORD showFlag)
 {
-    if (!pViewport) { return; }
+    if (pViewport == NULL)
+        return 0;
 
     blokWindowShow(&pViewport->window, showFlag);
+
+    return 1;
 }
 
-void blokViewportFree(Viewport *pViewport, HINSTANCE hInstance)
+int blokViewportFree(Viewport *pViewport, HINSTANCE hInstance)
 {
-    if (!pViewport) { return; }
+    if (pViewport == NULL)
+        return 0;
 
-    if (pViewport->hFont != (HFONT) 0)
+    if (pViewport->hFont != NULL)
     {
-        (void) DeleteObject(pViewport->hFont);
+        (void)DeleteObject(pViewport->hFont);
     }
 
-    blokWindowFree(&pViewport->window, hInstance);
+    return blokWindowFree(&pViewport->window, hInstance);
 }

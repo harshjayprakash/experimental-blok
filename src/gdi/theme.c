@@ -3,9 +3,10 @@
 #define BLOK_LIGHT_DARK(light, dark)                                                     \
     (theme == BLOK_THEME_LIGHT) ? light : dark
 
-void blokColoursSet(ColourSpace *pColourSpace, const Theme theme)
+int blokColoursSet(ColourSpace *pColourSpace, const Theme theme)
 {
-    if (!pColourSpace) { return; }
+    if (pColourSpace == NULL)
+        return 0;
 
     pColourSpace->surface = BLOK_LIGHT_DARK(BLOK_COLOUR_100S, BLOK_COLOUR_900S);
     pColourSpace->surfaceVariant = BLOK_LIGHT_DARK(BLOK_COLOUR_200S, BLOK_COLOUR_800S);
@@ -15,4 +16,6 @@ void blokColoursSet(ColourSpace *pColourSpace, const Theme theme)
     pColourSpace->primaryVariant = BLOK_LIGHT_DARK(BLOK_COLOUR_100A, BLOK_COLOUR_100A);
     pColourSpace->secondary = BLOK_LIGHT_DARK(BLOK_COLOUR_500S, BLOK_COLOUR_300S);
     pColourSpace->secondaryVariant = BLOK_LIGHT_DARK(BLOK_COLOUR_400S, BLOK_COLOUR_500S);
+
+    return 1;
 }

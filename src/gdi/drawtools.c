@@ -7,10 +7,13 @@
         hObject = NULL;                                                                  \
     }                                           
 
-void blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours)
+int blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours)
 {
-    if (!pTools) { return; }
-    if (!pColours) { return; }
+    if (pTools == NULL)
+        return 0;
+
+    if (pColours == NULL)
+        return 0;
 
     pTools->hSurfaceBrush = CreateSolidBrush(pColours->surface);
     pTools->hSurfaceVariantBrush = CreateSolidBrush(pColours->surfaceVariant);
@@ -22,11 +25,14 @@ void blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours)
     pTools->hOnSurfaceVariantPen = CreatePen(PS_SOLID, 1, pColours->onSurfaceVariant);
     pTools->hOnPrimaryPen = CreatePen(PS_SOLID, 1, pColours->primary);
     pTools->hOnPrimaryVariantPen = CreatePen(PS_SOLID, 1, pColours->primaryVariant);
+
+    return 1;
 }
 
-void blokDrawingToolsFree(DrawingTools *pTools)
+int blokDrawingToolsFree(DrawingTools *pTools)
 {
-    if (!pTools) { return; }
+    if (pTools == NULL)
+        return 0;
 
     BLOK_DELETE_OBJECT(pTools->hSurfaceBrush);
     BLOK_DELETE_OBJECT(pTools->hSurfaceVariantBrush);
@@ -38,4 +44,6 @@ void blokDrawingToolsFree(DrawingTools *pTools)
     BLOK_DELETE_OBJECT(pTools->hOnSurfaceVariantPen);
     BLOK_DELETE_OBJECT(pTools->hOnPrimaryPen);
     BLOK_DELETE_OBJECT(pTools->hOnPrimaryVariantPen);
+
+    return 1;
 }

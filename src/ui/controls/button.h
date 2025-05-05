@@ -11,9 +11,9 @@ typedef struct _Button {
     POINT position;
 } Button;
 
-void blokButtonUpdateEx(
+int blokButtonUpdateEx(
     Button *pButton, const POINT *pPos, const SIZE *pSize, const SIZE *pMargin);
 
-void blokButtonUpdate(Button *pButton, const POINT *pPos);
+int blokButtonUpdate(Button *pButton, const POINT *pPos);
 
 #endif // _BLOK_BUTTON_H_

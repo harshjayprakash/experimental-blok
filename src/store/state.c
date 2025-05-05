@@ -1,9 +1,11 @@
 #include "state.h"
 #include "../model/vector.h"
+#include <stdlib.h>
 
-void blokStateInit(State *pState, const VectorII scale)
+int blokStateInit(State *pState, const VectorII scale)
 {
-    if (!pState) { return; }
+    if (pState == NULL)
+        return 0;
 
     VectorII defaultBoxState = {0, 0};
     VectorII defaultBoxSize = scale;
@@ -11,28 +13,35 @@ void blokStateInit(State *pState, const VectorII scale)
     blokVectorIICopy(&pState->box.position, defaultBoxState);
 
     blokDynListInit(&pState->obstructives, 10);
+
+    return 1;
 }
 
-void blokStateFree(State *pState)
+int blokStateFree(State *pState)
 {
-    if (!pState) { return; }
+    if (pState == NULL)
+        return 0;
 
-    blokDynListFree(&pState->obstructives);
+    return blokDynListFree(&pState->obstructives);
 }
 
-void blokStateMoveBox(Square *pBox, const Direction direction)
+int blokStateMoveBox(Square *pBox, const Direction direction)
 {
-    if (!pBox) { return; }
+    if (pBox == NULL)
+        return 0;
 
     VectorII vector = blokDirectionToVector(direction);
     VectorII scaled = blokVectorIIMultiply(vector, pBox->size);
     VectorII newpos = blokVectorIIAdd(pBox->position, scaled);
     blokVectorIICopy(&pBox->position, newpos);
+
+    return 1;
 }
 
 int blokStateBoxMovableInDirection(State *pState, const Direction direction)
 {
-    if (!pState) { return -1; }
+    if (pState == NULL)
+        return (-1);
 
     pState->boxProjected = pState->box;
     blokStateMoveBox(&pState->boxProjected, direction);
@@ -41,7 +50,8 @@ int blokStateBoxMovableInDirection(State *pState, const Direction direction)
         &pState->obstructives, 
         &((Node){pState->boxProjected.position}));
     
-    if (checkIdx == -1) { return 1; }
+    if (checkIdx == -1)
+        return 1;
 
     return 0;
 }

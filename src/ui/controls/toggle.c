@@ -1,32 +1,33 @@
 #include "toggle.h"
 
 
-void blokToggleUpdateEx(
+int blokToggleUpdateEx(
     Toggle *pToggle, const POINT *pPosition, const SIZE *pSize, const SIZE *pMargin, 
     const SIZE *pSelectMargin)
 {
-    if (!pToggle) { return; }
+    if (pToggle == NULL)
+        return 0;
 
-    if (pPosition != (POINT *) 0)
+    if (pPosition != NULL)
     {
         pToggle->position.x = pPosition->x;
         pToggle->position.y = pPosition->y;
     }
 
-    if (pSize != (SIZE *) 0)
+    if (pSize != NULL)
     {
         pToggle->size.cx = pSize->cx;
         pToggle->size.cy = pSize->cy;
     }
 
-    if (pMargin != (SIZE *) 0)
+    if (pMargin != NULL)
     {
         pToggle->margin.cx = pMargin->cx;
         pToggle->margin.cy = pMargin->cy;
     }
 
     
-    if (pSelectMargin != (SIZE *) 0)
+    if (pSelectMargin != NULL)
     {
         pToggle->selectMargin.cx = pSelectMargin->cx;
         pToggle->selectMargin.cy = pSelectMargin->cy;
@@ -43,19 +44,27 @@ void blokToggleUpdateEx(
     pToggle->selectRegion.top += pToggle->selectMargin.cy;
     pToggle->selectRegion.right -= pToggle->selectMargin.cx;
     pToggle->selectRegion.bottom -= pToggle->selectMargin.cy;
+
+    return 1;
 }
 
-void blokToggleUpdate(Toggle *pToggle, const POINT *pPosition)
+int blokToggleUpdate(Toggle *pToggle, const POINT *pPosition)
 {
-    if (!pToggle) { return; }
-    if (!pPosition) { return; }
+    if (pToggle == NULL)
+        return 0;
 
-    blokToggleUpdateEx(pToggle, pPosition, (SIZE *) 0, (SIZE *) 0, (SIZE *) 0);
+    if (pPosition == NULL)
+        return 0;
+
+    return blokToggleUpdateEx(pToggle, pPosition, NULL, NULL, NULL);
 }
 
-void blokToggleUpdateSelected(Toggle *pToggle, const BOOL selected)
+int blokToggleUpdateSelected(Toggle *pToggle, const BOOL selected)
 {
-    if (!pToggle) { return; }
+    if (pToggle == NULL)
+        return 0;
 
     pToggle->selected = selected;
+
+    return 1;
 }

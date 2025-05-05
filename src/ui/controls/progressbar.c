@@ -1,31 +1,31 @@
 #include "progressbar.h"
 
-void blokProgressBarUpdateEx(
+int blokProgressBarUpdateEx(
     ProgressBar *pPbar, const POINT *pPosition, const SIZE *pSize, const SIZE *pMargin,
-    const SIZE *pBarMargin
-)
+    const SIZE *pBarMargin)
 {
-    if (!pPbar) { return; }
+    if (pPbar == NULL)
+        return 0;
 
-    if (pPosition != (POINT *) 0)
+    if (pPosition != NULL)
     {
         pPbar->position.x = pPosition->x;
         pPbar->position.y = pPosition->y;
     }
 
-    if (pSize != (SIZE *) 0)
+    if (pSize != NULL)
     {
         pPbar->size.cx = pSize->cx;
         pPbar->size.cy = pSize->cy;
     }
 
-    if (pMargin != (SIZE *) 0)
+    if (pMargin != NULL)
     {
         pPbar->margin.cx = pMargin->cx;
         pPbar->margin.cy = pMargin->cy;
     }
 
-    if (pBarMargin != (SIZE *) 0)
+    if (pBarMargin != NULL)
     {
         pPbar->barMargin.cx = pBarMargin->cx;
         pPbar->barMargin.cy = pBarMargin->cy;
@@ -46,30 +46,41 @@ void blokProgressBarUpdateEx(
     pPbar->barMinPoint = (pPbar->region.left + pPbar->barMargin.cx);
     pPbar->barMaxPoint = (pPbar->region.right - pPbar->barMargin.cx);
     pPbar->barMaxSize = pPbar->barMaxPoint - pPbar->barMinPoint;
+
+    return 1;
 }
 
-void blokProgressBarUpdate(ProgressBar *pPbar, const POINT *pPosition)
+int blokProgressBarUpdate(ProgressBar *pPbar, const POINT *pPosition)
 {
-    if (!pPbar) { return; }
-    if (!pPosition) { return; }
+    if (pPbar == NULL)
+        return 0;
 
-    blokProgressBarUpdateEx(pPbar, pPosition, (SIZE *) 0, (SIZE *) 0, (SIZE *)0);
+    if (pPosition == NULL)
+        return 0;
+
+    return blokProgressBarUpdateEx(pPbar, pPosition, NULL, NULL, NULL);
 }
 
-void blokProgressBarUpdateMinMax(
+int blokProgressBarUpdateMinMax(
     ProgressBar *pPbar, const int minValue, const int maxValue)
 {
-    if (!pPbar) { return; }
+    if (pPbar == NULL)
+        return 0;
 
     pPbar->barMinValue = minValue;
     pPbar->barMaxValue = maxValue;
+
+    return 1;
 }
 
-void blokProgressBarUpdateValue(ProgressBar *pPbar, const int value)
+int blokProgressBarUpdateValue(ProgressBar *pPbar, const int value)
 {
-    if (!pPbar) { return; }
+    if (pPbar == NULL)
+        return 0;
 
     pPbar->barValue = value;
     float percent = (float) pPbar->barValue / (pPbar->barMaxValue - pPbar->barMinValue);
     pPbar->barRegion.right = pPbar->barRegion.left + ((LONG)(pPbar->barMaxSize * percent));
+
+    return 1;
 }

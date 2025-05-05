@@ -1,22 +1,23 @@
 #include "text.h"
 
-void blokTextUpdateEx(Text *pText, const POINT *pPoint, const SIZE *pSize, const SIZE *pMargin)
+int blokTextUpdateEx(Text *pText, const POINT *pPoint, const SIZE *pSize, const SIZE *pMargin)
 {
-    if (!pText) { return; }
+    if (pText == NULL)
+        return 0;
 
-    if (pPoint != (POINT *) 0)
+    if (pPoint != NULL)
     {
         pText->position.x = pPoint->x;
         pText->position.y = pPoint->y;
     }
 
-    if (pSize != (SIZE *) 0)
+    if (pSize != NULL)
     {
         pText->size.cx = pSize->cx;
         pText->size.cy = pSize->cy;
     }
 
-    if (pMargin != (SIZE *) 0)
+    if (pMargin != NULL)
     {
         pText->margin.cx = pMargin->cx;
         pText->margin.cy = pMargin->cy;
@@ -26,12 +27,17 @@ void blokTextUpdateEx(Text *pText, const POINT *pPoint, const SIZE *pSize, const
     pText->region.top = pText->position.y + pText->margin.cy;
     pText->region.right = (pText->position.x + pText->size.cx) - pText->margin.cx;
     pText->region.bottom = (pText->position.y + pText->size.cy) - pText->margin.cx;
+
+    return 1;
 }
 
-void blokTextUpdate(Text *text, const POINT *position)
+int blokTextUpdate(Text *pText, const POINT *pPosition)
 {
-    if (!text) { return; }
-    if (!position) { return; }
+    if (pText == NULL)
+        return 0;
 
-    blokTextUpdateEx(text, position, (SIZE *) 0, (SIZE *) 0);
+    if (pPosition == NULL)
+        return 0;
+
+    return blokTextUpdateEx(pText, pPosition, NULL, NULL);
 }

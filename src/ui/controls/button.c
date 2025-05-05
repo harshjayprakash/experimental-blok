@@ -1,22 +1,23 @@
 #include "button.h"
 
-void blokButtonUpdateEx(Button *pButton, const POINT *pPos, const SIZE *pSize, const SIZE *pMargin)
+int blokButtonUpdateEx(Button *pButton, const POINT *pPos, const SIZE *pSize, const SIZE *pMargin)
 {
-    if (!pButton) { return; }
+    if (pButton == NULL)
+        return 0;
 
-    if (pPos != (POINT *) 0)
+    if (pPos != NULL)
     {
         pButton->position.x = pPos->x;
         pButton->position.y = pPos->y;
     }
 
-    if (pSize != (SIZE *) 0)
+    if (pSize != NULL)
     {
         pButton->size.cx = pSize->cx;
         pButton->size.cy = pSize->cy;
     }
 
-    if (pMargin != (SIZE *) 0)
+    if (pMargin != NULL)
     {
         pButton->margin.cx = pMargin->cx;
         pButton->margin.cy = pMargin->cy;
@@ -26,12 +27,17 @@ void blokButtonUpdateEx(Button *pButton, const POINT *pPos, const SIZE *pSize, c
     pButton->region.top = pButton->position.y + pButton->margin.cy;
     pButton->region.right = (pButton->position.x + pButton->size.cx) - pButton->margin.cx;
     pButton->region.bottom = (pButton->position.y + pButton->size.cy) - pButton->margin.cx;
+
+    return 1;
 }
 
-void blokButtonUpdate(Button *pButton, const POINT *pPos)
+int blokButtonUpdate(Button *pButton, const POINT *pPos)
 {
-    if (!pButton) { return; }
-    if (!pPos) { return; }
+    if (pButton == NULL)
+        return 0;
 
-    blokButtonUpdateEx(pButton, pPos, (SIZE *) 0, (SIZE *) 0);
+    if (pPos == NULL)
+        return 0;
+
+    return blokButtonUpdateEx(pButton, pPos, NULL, NULL);
 }

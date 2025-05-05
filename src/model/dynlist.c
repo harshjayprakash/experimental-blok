@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <memory.h>
 
-static long __blokDynListGenerateNewSize(const long currentSize)
+static long _blokDynListGenerateNewSize(const long currentSize)
 {
     return (long) (currentSize + (currentSize / 2));
 }
 
-static int __blokDynListResize(DynList *pList, const long newSize)
+static int _blokDynListResize(DynList *pList, const long newSize)
 {
     if (!pList) { return 0; }
     if (!pList->pArr) { return 0; }
@@ -59,8 +59,11 @@ long blokDynListAdd(DynList *pList, const Node *pNode)
 
     if (blokDynListIsFull(pList)) 
     { 
-        int success = __blokDynListResize(pList, __blokDynListGenerateNewSize(pList->max));
-        if (!success) { return -1; }
+        int newSize = _blokDynListGenerateNewSize(pList->max);
+        int success = _blokDynListResize(pList, newSize);
+
+        if (!success)
+            return (-1L);
     }
 
     ++pList->head;

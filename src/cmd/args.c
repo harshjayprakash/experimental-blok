@@ -52,6 +52,8 @@ int blokArgsProcess(ArgsInfo *pArgs, LPCWSTR pCommandLine)
             BLOK_EVALUATE_SCALE(pArgs->scaleY, ppArgv[idx]);
         }
 
+        argm = BLOK_ARGM_UNSET;
+
 
         if (_wcsnicmp(ppArgv[idx], L"--scale-x", 10*sizeof(unsigned short)) == 0)
             argm = BLOK_ARGM_SCALE_X;

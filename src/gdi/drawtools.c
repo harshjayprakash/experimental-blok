@@ -7,35 +7,35 @@
         winGdiObject = (void *) 0;              \
     }                                           
 
-void blokDrawingToolsInit(DrawingTools *tools, const ColourSpace *colours)
+void blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours)
 {
-    if (!tools) { return; }
-    if (!colours) { return; }
+    if (!pTools) { return; }
+    if (!pColours) { return; }
 
-    tools->surfaceBrush = CreateSolidBrush(colours->surface);
-    tools->surfaceVariantBrush = CreateSolidBrush(colours->surfaceVariant);
-    tools->primaryBrush = CreateSolidBrush(colours->primary);
-    tools->primaryVariantBrush = CreateSolidBrush(colours->primaryVariant);
-    tools->secondaryBrush = CreateSolidBrush(colours->secondary);
-    tools->secondaryVariantBrush = CreateSolidBrush(colours->secondaryVariant);
-    tools->onSurfacePen = CreatePen(PS_SOLID, 1, colours->onSurface);
-    tools->onSurfaceVariantPen = CreatePen(PS_SOLID, 1, colours->onSurfaceVariant);
-    tools->onPrimaryPen = CreatePen(PS_SOLID, 1, colours->primary);
-    tools->onPrimaryVariantPen = CreatePen(PS_SOLID, 1, colours->primaryVariant);
+    pTools->hSurfaceBrush = CreateSolidBrush(pColours->surface);
+    pTools->hSurfaceVariantBrush = CreateSolidBrush(pColours->surfaceVariant);
+    pTools->hPrimaryBrush = CreateSolidBrush(pColours->primary);
+    pTools->hPrimaryVariantBrush = CreateSolidBrush(pColours->primaryVariant);
+    pTools->hSecondaryBrush = CreateSolidBrush(pColours->secondary);
+    pTools->hSecondaryVariantBrush = CreateSolidBrush(pColours->secondaryVariant);
+    pTools->hOnSurfacePen = CreatePen(PS_SOLID, 1, pColours->onSurface);
+    pTools->hOnSurfaceVariantPen = CreatePen(PS_SOLID, 1, pColours->onSurfaceVariant);
+    pTools->hOnPrimaryPen = CreatePen(PS_SOLID, 1, pColours->primary);
+    pTools->hOnPrimaryVariantPen = CreatePen(PS_SOLID, 1, pColours->primaryVariant);
 }
 
-void blokDrawingToolsFree(DrawingTools *tools)
+void blokDrawingToolsFree(DrawingTools *pTools)
 {
-    if (!tools) { return; }
+    if (!pTools) { return; }
 
-    __BLOK_FREE_WINGDI_OBJECT(tools->surfaceBrush);
-    __BLOK_FREE_WINGDI_OBJECT(tools->surfaceVariantBrush);
-    __BLOK_FREE_WINGDI_OBJECT(tools->primaryBrush);
-    __BLOK_FREE_WINGDI_OBJECT(tools->primaryVariantBrush);
-    __BLOK_FREE_WINGDI_OBJECT(tools->secondaryBrush);
-    __BLOK_FREE_WINGDI_OBJECT(tools->secondaryVariantBrush);
-    __BLOK_FREE_WINGDI_OBJECT(tools->onSurfacePen);
-    __BLOK_FREE_WINGDI_OBJECT(tools->onSurfaceVariantPen);
-    __BLOK_FREE_WINGDI_OBJECT(tools->onPrimaryPen);
-    __BLOK_FREE_WINGDI_OBJECT(tools->onPrimaryVariantPen);
+    BLOK_FREE_WINGDI_OBJECT(pTools->hSurfaceBrush);
+    BLOK_FREE_WINGDI_OBJECT(pTools->hSurfaceVariantBrush);
+    BLOK_FREE_WINGDI_OBJECT(pTools->hPrimaryBrush);
+    BLOK_FREE_WINGDI_OBJECT(pTools->hPrimaryVariantBrush);
+    BLOK_FREE_WINGDI_OBJECT(pTools->hSecondaryBrush);
+    BLOK_FREE_WINGDI_OBJECT(pTools->hSecondaryVariantBrush);
+    BLOK_FREE_WINGDI_OBJECT(pTools->hOnSurfacePen);
+    BLOK_FREE_WINGDI_OBJECT(pTools->hOnSurfaceVariantPen);
+    BLOK_FREE_WINGDI_OBJECT(pTools->hOnPrimaryPen);
+    BLOK_FREE_WINGDI_OBJECT(pTools->hOnPrimaryVariantPen);
 }

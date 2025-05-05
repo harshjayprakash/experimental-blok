@@ -5,20 +5,20 @@
 #include <Windows.h>
 
 typedef struct _DrawingTools {
-    HBRUSH surfaceBrush;
-    HBRUSH surfaceVariantBrush;
-    HBRUSH primaryBrush;
-    HBRUSH primaryVariantBrush;
-    HBRUSH secondaryBrush;
-    HBRUSH secondaryVariantBrush;
-    HPEN onSurfacePen;
-    HPEN onSurfaceVariantPen;
-    HPEN onPrimaryPen;
-    HPEN onPrimaryVariantPen;
+    HBRUSH hSurfaceBrush;
+    HBRUSH hSurfaceVariantBrush;
+    HBRUSH hPrimaryBrush;
+    HBRUSH hPrimaryVariantBrush;
+    HBRUSH hSecondaryBrush;
+    HBRUSH hSecondaryVariantBrush;
+    HPEN hOnSurfacePen;
+    HPEN hOnSurfaceVariantPen;
+    HPEN hOnPrimaryPen;
+    HPEN hOnPrimaryVariantPen;
 } DrawingTools;
 
-void blokDrawingToolsInit(DrawingTools *tools, const ColourSpace *colours);
+void blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours);
 
-void blokDrawingToolsFree(DrawingTools *tools);
+void blokDrawingToolsFree(DrawingTools *pTools);
 
 #endif // _BLOK_DRAWTOOLS_H_

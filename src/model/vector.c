@@ -1,11 +1,11 @@
 #include "vector.h"
 
-void blokVectorIICopy(VectorII *dest, const VectorII src)
+void blokVectorIICopy(VectorII *pDest, const VectorII src)
 {
-    if (!dest) { return; }
+    if (!pDest) { return; }
 
-    dest->x = src.x;
-    dest->y = src.y;
+    pDest->x = src.x;
+    pDest->y = src.y;
 }
 
 int blokVectorIIEquals(const VectorII veca, const VectorII vecb)

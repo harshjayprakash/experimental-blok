@@ -10,30 +10,30 @@ typedef struct _Node {
 } Node;
 
 typedef struct _DynList {
-    Node *arr;
+    Node *pArr;
     long head;
     long size;
     long max;
 } DynList;
 
-void blokDynListInit(DynList *list, const long size);
+void blokDynListInit(DynList *pList, const long size);
 
-int blokDynListIsFull(const DynList *list);
+int blokDynListIsFull(const DynList *pList);
 
-int blokDynListIsEmpty(const DynList *list);
+int blokDynListIsEmpty(const DynList *pList);
 
-long blokDynListAdd(DynList *list, const Node *node);
+long blokDynListAdd(DynList *pList, const Node *pNode);
 
-void blokDynListClear(DynList *list);
+void blokDynListClear(DynList *pList);
 
-int blokDynListGetIndex(const DynList *list, const Node *node);
+int blokDynListGetIndex(const DynList *pList, const Node *pNode);
 
-int blokDynListExists(const DynList *list, const Node *node);
+int blokDynListExists(const DynList *pList, const Node *pNode);
 
-void blokDynListCombine(DynList *dest, const DynList *src);
+void blokDynListCombine(DynList *pDest, const DynList *pSrc);
 
-int blokDynListRemove(DynList *list, const Node node);
+int blokDynListRemove(DynList *pList, const Node node);
 
-void blokDynListFree(DynList *list);
+void blokDynListFree(DynList *pList);
 
 #endif // _BLOK_DYNLIST_H_

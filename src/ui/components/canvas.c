@@ -1,12 +1,12 @@
 #include "canvas.h"
 
-void blokCanvasUpdate(Canvas *canvas, const RECT *windowRegion)
+void blokCanvasUpdate(Canvas *pCanvas, const RECT *pWindowRgn)
 {
-    if (!canvas) { return; }
-    if (!windowRegion) { return; }
+    if (!pCanvas) { return; }
+    if (!pWindowRgn) { return; }
 
-    (void) CopyRect(&canvas->region, windowRegion);
+    (void) CopyRect(&pCanvas->region, pWindowRgn);
 
-    canvas->size.cx = canvas->region.right - canvas->region.left;
-    canvas->size.cy = canvas->region.bottom - canvas->region.top;
+    pCanvas->size.cx = pCanvas->region.right - pCanvas->region.left;
+    pCanvas->size.cy = pCanvas->region.bottom - pCanvas->region.top;
 }

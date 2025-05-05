@@ -3,20 +3,20 @@
 
 #include <Windows.h>
 
-void blokProcessEventOnPaint(HWND window);
+void blokProcessEventOnPaint(HWND hWindow);
 
-void blokProcessEventOnKeyDown(HWND window, WPARAM virtualKey);
+void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey);
 
-void blokProcessEventOnLeftMouseDown(HWND window, LPARAM mousepos);
+void blokProcessEventOnLeftMouseDown(HWND hWindow, LPARAM mousepos);
 
-void blokProcessEventOnRightMouseDown(HWND window, LPARAM mousepos);
+void blokProcessEventOnRightMouseDown(HWND hWindow, LPARAM mousepos);
 
-void blokProcessEventOnLeftMouseUp(HWND window, LPARAM mousepos);
+void blokProcessEventOnLeftMouseUp(HWND hWindow, LPARAM mousepos);
 
-void blokProcessEventOnRightMouseUp(HWND window, LPARAM mousepos);
+void blokProcessEventOnRightMouseUp(HWND hWindow, LPARAM mousepos);
 
-void blokProcessEventOnResize(HWND window);
+void blokProcessEventOnResize(HWND hWindow);
 
-void blokProcessEventOnMouseHover(HWND window, LPARAM mousepos);
+void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos);
 
 #endif // _BLOK_PROCESS_H_

@@ -14,7 +14,7 @@ typedef struct _Viewport {
     Window window;
     RECT region;
     COORD mousePos;
-    HFONT font;
+    HFONT hFont;
     BOOL isLeftMouseDown;
     BOOL isRightMouseDown;
 
@@ -33,10 +33,10 @@ typedef struct _Viewport {
     Toggle lockedToggle;
 } Viewport;
 
-void blokViewportInit(Viewport *viewport, HINSTANCE instance);
+void blokViewportInit(Viewport *pViewport, HINSTANCE hInstance);
 
-void blokViewportShow(Viewport *viewport, DWORD showFlag);
+void blokViewportShow(Viewport *pViewport, DWORD showFlag);
 
-void blokViewportFree(Viewport *viewport, HINSTANCE instance);
+void blokViewportFree(Viewport *pViewport, HINSTANCE hInstance);
 
 #endif // _BLOK_VIEWPORT_H_

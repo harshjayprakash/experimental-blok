@@ -8,14 +8,14 @@
 #include <Windows.h>
 
 typedef struct _Context {
-    HINSTANCE instance;
-    LPWSTR commandLine;
+    HINSTANCE hInstance;
+    LPWSTR pCommandLine;
     DWORD showFlag;
     Console console;
     Graphics graphics;
     Viewport viewport;
     State state;
-    void *result;
+    void *pResult;
 } Context;
 
 Context *blokContextGet(void);

@@ -39,6 +39,6 @@ typedef struct _ColourSpace {
     COLORREF secondaryVariant;
 } ColourSpace;
 
-void blokColoursSet(ColourSpace *colours, const Theme theme);
+void blokColoursSet(ColourSpace *pColourSpace, const Theme theme);
 
 #endif // _BLOK_THEME_H_

@@ -10,17 +10,17 @@ COORD blokConvertVectorCoord(const VectorII vec)
     return (COORD) {vec.x, vec.y};
 }
 
-RECT blokConvertVectorRect(const VectorII position, const VectorII size)
+RECT blokConvertVectorRect(const VectorII pos, const VectorII size)
 {
-    return (RECT) {position.x, position.y, position.x+size.x, position.y+size.y};
+    return (RECT) {pos.x, pos.y, pos.x+size.x, pos.y+size.y};
 }
 
-VectorII blokConvertRectPositionV(const RECT rc)
+VectorII blokConvertRectPositionV(const RECT rect)
 {
-    return (VectorII) {rc.top, rc.left};
+    return (VectorII) {rect.top, rect.left};
 }
 
-VectorII blokConvertRectSizeV(const RECT rc)
+VectorII blokConvertRectSizeV(const RECT rect)
 {
-    return (VectorII) {rc.right-rc.left, rc.bottom-rc.top};
+    return (VectorII) {rect.right-rect.left, rect.bottom-rect.top};
 }

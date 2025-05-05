@@ -2,60 +2,60 @@
 
 
 void blokToggleUpdateEx(
-    Toggle *toggle, const POINT *position, const SIZE *size, const SIZE *margin, 
-    const SIZE *selectMargin)
+    Toggle *pToggle, const POINT *pPosition, const SIZE *pSize, const SIZE *pMargin, 
+    const SIZE *pSelectMargin)
 {
-    if (!toggle) { return; }
+    if (!pToggle) { return; }
 
-    if (position != (POINT *) 0)
+    if (pPosition != (POINT *) 0)
     {
-        toggle->position.x = position->x;
-        toggle->position.y = position->y;
+        pToggle->position.x = pPosition->x;
+        pToggle->position.y = pPosition->y;
     }
 
-    if (size != (SIZE *) 0)
+    if (pSize != (SIZE *) 0)
     {
-        toggle->size.cx = size->cx;
-        toggle->size.cy = size->cy;
+        pToggle->size.cx = pSize->cx;
+        pToggle->size.cy = pSize->cy;
     }
 
-    if (margin != (SIZE *) 0)
+    if (pMargin != (SIZE *) 0)
     {
-        toggle->margin.cx = margin->cx;
-        toggle->margin.cy = margin->cy;
+        pToggle->margin.cx = pMargin->cx;
+        pToggle->margin.cy = pMargin->cy;
     }
 
     
-    if (selectMargin != (SIZE *) 0)
+    if (pSelectMargin != (SIZE *) 0)
     {
-        toggle->selectMargin.cx = selectMargin->cx;
-        toggle->selectMargin.cy = selectMargin->cy;
+        pToggle->selectMargin.cx = pSelectMargin->cx;
+        pToggle->selectMargin.cy = pSelectMargin->cy;
     }
 
-    toggle->region.left = toggle->position.x + toggle->margin.cx;
-    toggle->region.top = toggle->position.y + toggle->margin.cy;
-    toggle->region.right = (toggle->position.x + toggle->size.cx) - toggle->margin.cx;
-    toggle->region.bottom = (toggle->position.y + toggle->size.cy) - toggle->margin.cx;
+    pToggle->region.left = pToggle->position.x + pToggle->margin.cx;
+    pToggle->region.top = pToggle->position.y + pToggle->margin.cy;
+    pToggle->region.right = (pToggle->position.x + pToggle->size.cx) - pToggle->margin.cx;
+    pToggle->region.bottom = (pToggle->position.y + pToggle->size.cy) - pToggle->margin.cx;
 
-    (void) CopyRect(&toggle->selectRegion, &toggle->region);
+    (void) CopyRect(&pToggle->selectRegion, &pToggle->region);
 
-    toggle->selectRegion.left += toggle->selectMargin.cx;
-    toggle->selectRegion.top += toggle->selectMargin.cy;
-    toggle->selectRegion.right -= toggle->selectMargin.cx;
-    toggle->selectRegion.bottom -= toggle->selectMargin.cy;
+    pToggle->selectRegion.left += pToggle->selectMargin.cx;
+    pToggle->selectRegion.top += pToggle->selectMargin.cy;
+    pToggle->selectRegion.right -= pToggle->selectMargin.cx;
+    pToggle->selectRegion.bottom -= pToggle->selectMargin.cy;
 }
 
-void blokToggleUpdate(Toggle *toggle, const POINT *position)
+void blokToggleUpdate(Toggle *pToggle, const POINT *pPosition)
 {
-    if (!toggle) { return; }
-    if (!position) { return; }
+    if (!pToggle) { return; }
+    if (!pPosition) { return; }
 
-    blokToggleUpdateEx(toggle, position, (SIZE *) 0, (SIZE *) 0, (SIZE *) 0);
+    blokToggleUpdateEx(pToggle, pPosition, (SIZE *) 0, (SIZE *) 0, (SIZE *) 0);
 }
 
-void blokToggleUpdateSelected(Toggle *toggle, const BOOL selected)
+void blokToggleUpdateSelected(Toggle *pToggle, const BOOL selected)
 {
-    if (!toggle) { return; }
+    if (!pToggle) { return; }
 
-    toggle->selected = selected;
+    pToggle->selected = selected;
 }

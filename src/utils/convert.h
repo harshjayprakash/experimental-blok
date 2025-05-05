@@ -8,10 +8,10 @@ VectorII blokConvertCoordV(const COORD coord);
 
 COORD blokConvertVectorCoord(const VectorII vec);
 
-RECT blokConvertVectorRect(const VectorII position, const VectorII size);
+RECT blokConvertVectorRect(const VectorII pos, const VectorII size);
 
-VectorII blokConvertRectPositionV(const RECT rc);
+VectorII blokConvertRectPositionV(const RECT rect);
 
-VectorII blokConvertRectSizeV(const RECT rc);
+VectorII blokConvertRectSizeV(const RECT rect);
 
 #endif // _BLOK_CONVERT_H_

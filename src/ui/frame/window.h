@@ -4,17 +4,17 @@
 #include <Windows.h>
 
 typedef struct _Window {
-    HWND handle;
+    HWND hHandle;
     WNDCLASSEXW klass;
     LPWSTR klassName;
     LPWSTR caption;
     ATOM klassAtomIdx;
 } Window;
 
-void blokWindowInit(Window *window, HINSTANCE instance);
+void blokWindowInit(Window *pWindow, HINSTANCE hInstance);
 
-void blokWindowShow(Window *window, DWORD showFlag);
+void blokWindowShow(Window *pWindow, DWORD showFlag);
 
-void blokWindowFree(Window *window, HINSTANCE instance);
+void blokWindowFree(Window *pWindow, HINSTANCE hInstance);
 
 #endif // _BLOK_WINDOW_H_

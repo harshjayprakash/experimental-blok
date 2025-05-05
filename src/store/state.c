@@ -1,45 +1,45 @@
 #include "state.h"
 #include "../model/vector.h"
 
-void blokStateInit(State *state, const VectorII scale)
+void blokStateInit(State *pState, const VectorII scale)
 {
-    if (!state) { return; }
+    if (!pState) { return; }
 
     VectorII defaultBoxState = {0, 0};
     VectorII defaultBoxSize = scale;
-    blokVectorIICopy(&state->box.size, defaultBoxSize);
-    blokVectorIICopy(&state->box.position, defaultBoxState);
+    blokVectorIICopy(&pState->box.size, defaultBoxSize);
+    blokVectorIICopy(&pState->box.position, defaultBoxState);
 
-    blokDynListInit(&state->obstructives, 10);
+    blokDynListInit(&pState->obstructives, 10);
 }
 
-void blokStateFree(State *state)
+void blokStateFree(State *pState)
 {
-    if (!state) { return; }
+    if (!pState) { return; }
 
-    blokDynListFree(&state->obstructives);
+    blokDynListFree(&pState->obstructives);
 }
 
-void blokStateMoveBox(Square *box, const Direction direction)
+void blokStateMoveBox(Square *pBox, const Direction direction)
 {
-    if (!box) { return; }
+    if (!pBox) { return; }
 
     VectorII vector = blokDirectionToVector(direction);
-    VectorII scaled = blokVectorIIMultiply(vector, box->size);
-    VectorII newpos = blokVectorIIAdd(box->position, scaled);
-    blokVectorIICopy(&box->position, newpos);
+    VectorII scaled = blokVectorIIMultiply(vector, pBox->size);
+    VectorII newpos = blokVectorIIAdd(pBox->position, scaled);
+    blokVectorIICopy(&pBox->position, newpos);
 }
 
-int blokStateBoxMovableInDirection(State *state, const Direction direction)
+int blokStateBoxMovableInDirection(State *pState, const Direction direction)
 {
-    if (!state) { return -1; }
+    if (!pState) { return -1; }
 
-    state->boxProjected = state->box;
-    blokStateMoveBox(&state->boxProjected, direction);
+    pState->boxProjected = pState->box;
+    blokStateMoveBox(&pState->boxProjected, direction);
 
     int checkIdx = blokDynListGetIndex(
-        &state->obstructives, 
-        &((Node){state->boxProjected.position}));
+        &pState->obstructives, 
+        &((Node){pState->boxProjected.position}));
     
     if (checkIdx == -1) { return 1; }
 

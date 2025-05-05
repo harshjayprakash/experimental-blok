@@ -5,7 +5,7 @@
     if (object != NULL) { (void)cleanFn(object); object = NULL; }
 
 LRESULT CALLBACK __blokWindowProcedure(
-    HWND window, UINT messageId, WPARAM dataWord, LPARAM dataLong)
+    HWND hWindow, UINT messageId, WPARAM dataWord, LPARAM dataLong)
 {
     switch (messageId)
     {   
@@ -14,90 +14,90 @@ LRESULT CALLBACK __blokWindowProcedure(
         return TRUE;
 
     case WM_PAINT:
-        blokProcessEventOnPaint(window);
+        blokProcessEventOnPaint(hWindow);
         return TRUE;
 
     case WM_SIZE:
-        blokProcessEventOnResize(window);
+        blokProcessEventOnResize(hWindow);
         return TRUE;
 
     case WM_KEYDOWN:
-        blokProcessEventOnKeyDown(window, dataWord);
+        blokProcessEventOnKeyDown(hWindow, dataWord);
         return TRUE;
 
     case WM_LBUTTONDOWN:
-        blokProcessEventOnLeftMouseDown(window, dataLong);
+        blokProcessEventOnLeftMouseDown(hWindow, dataLong);
         return TRUE;
 
     case WM_RBUTTONDOWN:
-        blokProcessEventOnRightMouseDown(window, dataLong);
+        blokProcessEventOnRightMouseDown(hWindow, dataLong);
         return TRUE;
 
     case WM_LBUTTONUP:
-        blokProcessEventOnLeftMouseUp(window, dataLong);
+        blokProcessEventOnLeftMouseUp(hWindow, dataLong);
         return TRUE;
 
     case WM_RBUTTONUP:
-        blokProcessEventOnRightMouseUp(window, dataLong);
+        blokProcessEventOnRightMouseUp(hWindow, dataLong);
         return TRUE;
 
     case WM_MOUSEMOVE:
-        blokProcessEventOnMouseHover(window, dataLong);
+        blokProcessEventOnMouseHover(hWindow, dataLong);
         return TRUE;
 
     default:
-        return DefWindowProcW(window, messageId, dataWord, dataLong);
+        return DefWindowProcW(hWindow, messageId, dataWord, dataLong);
     }
 }
 
-void blokWindowInit(Window *window, HINSTANCE instance)
+void blokWindowInit(Window *pWindow, HINSTANCE hInstance)
 {
-    if (!window) { return; }
-    if (!instance) { return; }
+    if (!pWindow) { return; }
+    if (!hInstance) { return; }
 
-    window->klassName = L"BlokViewportWindow";
-    window->caption = L"Blok 5.0 --25H2A";
+    pWindow->klassName = L"BlokViewportWindow";
+    pWindow->caption = L"Blok 5.0 --25H2A";
 
-    window->klass.cbSize = sizeof(WNDCLASSEXW);
-    window->klass.style = CS_HREDRAW | CS_VREDRAW;
-    window->klass.lpfnWndProc = __blokWindowProcedure;
-    window->klass.cbClsExtra = 0;
-    window->klass.cbWndExtra = 0;
-    window->klass.hInstance = instance;
-    window->klass.hIcon = LoadIconW(window->klass.hInstance, IDI_APPLICATION);
-    window->klass.hCursor = LoadCursorW(NULL, IDC_ARROW);
-    window->klass.hbrBackground = CreateSolidBrush(RGB(0, 0, 0));
-    window->klass.lpszMenuName = 0;
-    window->klass.lpszClassName = window->klassName;
-    window->klass.hIconSm = LoadIconW(window->klass.hInstance, IDI_APPLICATION);
+    pWindow->klass.cbSize = sizeof(WNDCLASSEXW);
+    pWindow->klass.style = CS_HREDRAW | CS_VREDRAW;
+    pWindow->klass.lpfnWndProc = __blokWindowProcedure;
+    pWindow->klass.cbClsExtra = 0;
+    pWindow->klass.cbWndExtra = 0;
+    pWindow->klass.hInstance = hInstance;
+    pWindow->klass.hIcon = LoadIconW(pWindow->klass.hInstance, IDI_APPLICATION);
+    pWindow->klass.hCursor = LoadCursorW(NULL, IDC_ARROW);
+    pWindow->klass.hbrBackground = CreateSolidBrush(RGB(0, 0, 0));
+    pWindow->klass.lpszMenuName = 0;
+    pWindow->klass.lpszClassName = pWindow->klassName;
+    pWindow->klass.hIconSm = LoadIconW(pWindow->klass.hInstance, IDI_APPLICATION);
 
-    window->klassAtomIdx = RegisterClassExW(&window->klass);
+    pWindow->klassAtomIdx = RegisterClassExW(&pWindow->klass);
     
-    if (window->klassAtomIdx == 0)
+    if (pWindow->klassAtomIdx == 0)
     {
         (void) MessageBoxW(0, L"Window Class Registeration Failed", L"Blok", 
             MB_OK | MB_ICONERROR);
-        blokWindowFree(window, instance);
+        blokWindowFree(pWindow, hInstance);
         return;
     }
 
-    window->handle = CreateWindowExW(0L, window->klassName, window->caption, 
-        WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 800, 600, 0, 0, instance, 0);
+    pWindow->hHandle = CreateWindowExW(0L, pWindow->klassName, pWindow->caption, 
+        WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 800, 600, 0, 0, hInstance, 0);
     
-    if (!window->handle)
+    if (!pWindow->hHandle)
     {
         (void) MessageBoxW(0, L"Window Creation Failed", L"Blok", MB_OK | MB_ICONERROR);
-        blokWindowFree(window, instance);
+        blokWindowFree(pWindow, hInstance);
         return;
     }
 }
 
-void blokWindowShow(Window *window, DWORD showFlag)
+void blokWindowShow(Window *pWindow, DWORD showFlag)
 {
-    if (!window) { return; }
-    if (!window->handle) { return; }
+    if (!pWindow) { return; }
+    if (!pWindow->hHandle) { return; }
 
-    (void) ShowWindow(window->handle, showFlag);
+    (void) ShowWindow(pWindow->hHandle, showFlag);
 
     MSG message = {0};
 
@@ -111,23 +111,23 @@ void blokWindowShow(Window *window, DWORD showFlag)
             if (message.message == WM_QUIT) { break; }
         }
 
-        (void) UpdateWindow(window->handle);
+        (void) UpdateWindow(pWindow->hHandle);
         Sleep(1);
     }
 }
 
-void blokWindowFree(Window *window, HINSTANCE instance)
+void blokWindowFree(Window *pWindow, HINSTANCE hInstance)
 {
-    if (!window) { return; }
+    if (!pWindow) { return; }
     
-    __BLOK_CLEANUP_RESOURCE(window->handle, DestroyWindow);
-    __BLOK_CLEANUP_RESOURCE(window->klass.hIcon, DestroyIcon);
-    __BLOK_CLEANUP_RESOURCE(window->klass.hIconSm, DestroyIcon);
-    __BLOK_CLEANUP_RESOURCE(window->klass.hCursor, DestroyCursor);
-    __BLOK_CLEANUP_RESOURCE(window->klass.hbrBackground, DeleteObject);
+    __BLOK_CLEANUP_RESOURCE(pWindow->hHandle, DestroyWindow);
+    __BLOK_CLEANUP_RESOURCE(pWindow->klass.hIcon, DestroyIcon);
+    __BLOK_CLEANUP_RESOURCE(pWindow->klass.hIconSm, DestroyIcon);
+    __BLOK_CLEANUP_RESOURCE(pWindow->klass.hCursor, DestroyCursor);
+    __BLOK_CLEANUP_RESOURCE(pWindow->klass.hbrBackground, DeleteObject);
     
-    if (window->klassAtomIdx != 0)
+    if (pWindow->klassAtomIdx != 0)
     {
-        (void) UnregisterClassW(window->klassName, instance);
+        (void) UnregisterClassW(pWindow->klassName, hInstance);
     }
 }

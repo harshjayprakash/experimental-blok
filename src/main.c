@@ -6,9 +6,9 @@ int WINAPI wWinMain(
 {
     (void) hPrevInstance;
 
-    HANDLE instanceMutex = CreateMutexW(NULL, TRUE, L"BlokInstance");
+    HANDLE hInstanceMutex = CreateMutexW(NULL, TRUE, L"BlokInstance");
 
-    if (!instanceMutex)
+    if (!hInstanceMutex)
     {
         (void) MessageBoxW(
             NULL, L"Mutex creation failed. The program will now exit.", L"Blok", 
@@ -22,7 +22,7 @@ int WINAPI wWinMain(
             NULL, L"An instance of Blok is already running. "
             "Please close the other instance before starting a new one.", L"Blok",
             MB_OK | MB_ICONERROR);
-        (void) CloseHandle(instanceMutex);
+        (void) CloseHandle(hInstanceMutex);
         return 1;
     }
 
@@ -32,7 +32,7 @@ int WINAPI wWinMain(
     blokRun(context);
     blokFree(context);
 
-    (void) CloseHandle(instanceMutex);
+    (void) CloseHandle(hInstanceMutex);
     
     return 0;
 }

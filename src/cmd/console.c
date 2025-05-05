@@ -1,23 +1,23 @@
 #include "console.h"
 #include <Windows.h>
 
-void blokConsoleInit(Console *con)
+void blokConsoleInit(Console *pConhost)
 {
-    if (!con) { return; }
+    if (!pConhost) { return; }
 
-    con->initialised = 1;
-    con->conResult = AllocConsole();
+    pConhost->initialised = 1;
+    pConhost->conResult = AllocConsole();
 
-    if (con->conResult == 0)
+    if (pConhost->conResult == 0)
     {
         (void) MessageBoxW(
             0, L"Console Initialisation Failed.", L"Blok", MB_OK | MB_ICONERROR);
         return;
     }
 
-    con->fileResult = freopen_s(&con->output, "CONOUT$", "w", stdout);
+    pConhost->fileResult = freopen_s(&pConhost->pOutput, "CONOUT$", "w", stdout);
 
-    if (con->fileResult != 0)
+    if (pConhost->fileResult != 0)
     {
         (void) MessageBoxW(
             0, L"Opening StdOut Failed.", L"Blok", MB_OK | MB_ICONERROR);
@@ -26,17 +26,17 @@ void blokConsoleInit(Console *con)
     (void) SetConsoleTitleW(L"Blok Console");
 }
 
-void blokConsoleFree(Console *con)
+void blokConsoleFree(Console *pConhost)
 {
-    if (!con) { return; }
-    if (!con->initialised) { return; }
+    if (!pConhost) { return; }
+    if (!pConhost->initialised) { return; }
 
-    if (con->fileResult == 0)
+    if (pConhost->fileResult == 0)
     {
         (void) fclose(stdout);
     }
 
-    if (con->conResult != 0)
+    if (pConhost->conResult != 0)
     {
         (void) FreeConsole();
     }

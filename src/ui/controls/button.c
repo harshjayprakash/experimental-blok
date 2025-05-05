@@ -1,37 +1,37 @@
 #include "button.h"
 
-void blokButtonUpdateEx(Button *button, const POINT *pos, const SIZE *size, const SIZE *margin)
+void blokButtonUpdateEx(Button *pButton, const POINT *pPos, const SIZE *pSize, const SIZE *pMargin)
 {
-    if (!button) { return; }
+    if (!pButton) { return; }
 
-    if (pos != (POINT *) 0)
+    if (pPos != (POINT *) 0)
     {
-        button->position.x = pos->x;
-        button->position.y = pos->y;
+        pButton->position.x = pPos->x;
+        pButton->position.y = pPos->y;
     }
 
-    if (size != (SIZE *) 0)
+    if (pSize != (SIZE *) 0)
     {
-        button->size.cx = size->cx;
-        button->size.cy = size->cy;
+        pButton->size.cx = pSize->cx;
+        pButton->size.cy = pSize->cy;
     }
 
-    if (margin != (SIZE *) 0)
+    if (pMargin != (SIZE *) 0)
     {
-        button->margin.cx = margin->cx;
-        button->margin.cy = margin->cy;
+        pButton->margin.cx = pMargin->cx;
+        pButton->margin.cy = pMargin->cy;
     }
 
-    button->region.left = button->position.x + button->margin.cx;
-    button->region.top = button->position.y + button->margin.cy;
-    button->region.right = (button->position.x + button->size.cx) - button->margin.cx;
-    button->region.bottom = (button->position.y + button->size.cy) - button->margin.cx;
+    pButton->region.left = pButton->position.x + pButton->margin.cx;
+    pButton->region.top = pButton->position.y + pButton->margin.cy;
+    pButton->region.right = (pButton->position.x + pButton->size.cx) - pButton->margin.cx;
+    pButton->region.bottom = (pButton->position.y + pButton->size.cy) - pButton->margin.cx;
 }
 
-void blokButtonUpdate(Button *button, const POINT *position)
+void blokButtonUpdate(Button *pButton, const POINT *pPos)
 {
-    if (!button) { return; }
-    if (!position) { return; }
+    if (!pButton) { return; }
+    if (!pPos) { return; }
 
-    blokButtonUpdateEx(button, position, (SIZE *) 0, (SIZE *) 0);
+    blokButtonUpdateEx(pButton, pPos, (SIZE *) 0, (SIZE *) 0);
 }

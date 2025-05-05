@@ -7,11 +7,11 @@ typedef struct _Console {
     int initialised;
     int conResult;
     int fileResult;
-    FILE *output;
+    FILE *pOutput;
 } Console;
 
-void blokConsoleInit(Console *con);
+void blokConsoleInit(Console *pConhost);
 
-void blokConsoleFree(Console *con);
+void blokConsoleFree(Console *pConhost);
 
 #endif // _BLOK_CONSOLE_H_

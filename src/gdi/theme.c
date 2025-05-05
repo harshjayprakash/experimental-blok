@@ -3,16 +3,16 @@
 #define __BLOK_LIGHT_DARK(light, dark) \
     (theme == BLOK_THEME_LIGHT) ? light : dark
 
-void blokColoursSet(ColourSpace *colours, const Theme theme)
+void blokColoursSet(ColourSpace *pColourSpace, const Theme theme)
 {
-    if (!colours) { return; }
+    if (!pColourSpace) { return; }
 
-    colours->surface = __BLOK_LIGHT_DARK(BLOK_COLOUR_100S, BLOK_COLOUR_900S);
-    colours->surfaceVariant = __BLOK_LIGHT_DARK(BLOK_COLOUR_200S, BLOK_COLOUR_800S);
-    colours->onSurface = __BLOK_LIGHT_DARK(BLOK_COLOUR_900S, BLOK_COLOUR_100S);
-    colours->onSurfaceVariant = __BLOK_LIGHT_DARK(BLOK_COLOUR_400S, BLOK_COLOUR_500S);
-    colours->primary = __BLOK_LIGHT_DARK(BLOK_COLOUR_000A, BLOK_COLOUR_000A);
-    colours->primaryVariant = __BLOK_LIGHT_DARK(BLOK_COLOUR_100A, BLOK_COLOUR_100A);
-    colours->secondary = __BLOK_LIGHT_DARK(BLOK_COLOUR_500S, BLOK_COLOUR_300S);
-    colours->secondaryVariant = __BLOK_LIGHT_DARK(BLOK_COLOUR_400S, BLOK_COLOUR_500S);
+    pColourSpace->surface = BLOK_LIGHT_DARK(BLOK_COLOUR_100S, BLOK_COLOUR_900S);
+    pColourSpace->surfaceVariant = BLOK_LIGHT_DARK(BLOK_COLOUR_200S, BLOK_COLOUR_800S);
+    pColourSpace->onSurface = BLOK_LIGHT_DARK(BLOK_COLOUR_900S, BLOK_COLOUR_100S);
+    pColourSpace->onSurfaceVariant = BLOK_LIGHT_DARK(BLOK_COLOUR_400S, BLOK_COLOUR_500S);
+    pColourSpace->primary = BLOK_LIGHT_DARK(BLOK_COLOUR_000A, BLOK_COLOUR_000A);
+    pColourSpace->primaryVariant = BLOK_LIGHT_DARK(BLOK_COLOUR_100A, BLOK_COLOUR_100A);
+    pColourSpace->secondary = BLOK_LIGHT_DARK(BLOK_COLOUR_500S, BLOK_COLOUR_300S);
+    pColourSpace->secondaryVariant = BLOK_LIGHT_DARK(BLOK_COLOUR_400S, BLOK_COLOUR_500S);
 }

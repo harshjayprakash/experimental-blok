@@ -6,20 +6,20 @@
 #define __BLOK_DISREGARD_THEME(disregard) \
     (disregard) ? BLOK_THEME_UNSET : theme
 
-void blokGraphicsInit(Graphics *gfx, const Theme theme)
+void blokGraphicsInit(Graphics *pGraphics, const Theme theme)
 {
-    if (!gfx) { return; }
+    if (!pGraphics) { return; }
 
-    int disregard = !__BLOK_IS_VALID_THEME(theme);
-    gfx->theme = __BLOK_DISREGARD_THEME(disregard);
+    int disregard = !BLOK_IS_VALID_THEME(theme);
+    pGraphics->theme = BLOK_DISREGARD_THEME(disregard);
 
-    blokColoursSet(&gfx->colours, gfx->theme);
-    blokDrawingToolsInit(&gfx->tools, &gfx->colours);
+    blokColoursSet(&pGraphics->colours, pGraphics->theme);
+    blokDrawingToolsInit(&pGraphics->tools, &pGraphics->colours);
 }
 
-void blokGraphicsFree(Graphics *gfx)
+void blokGraphicsFree(Graphics *pGraphics)
 {
-    if (!gfx) { return; }
+    if (!pGraphics) { return; }
 
-    blokDrawingToolsFree(&gfx->tools);
+    blokDrawingToolsFree(&pGraphics->tools);
 }

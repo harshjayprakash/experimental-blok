@@ -1,43 +1,47 @@
 #include "console.h"
 #include <Windows.h>
 
-void blokConsoleInit(Console *pConhost)
+int blokConsoleInit(Console *pConhost)
 {
-    if (!pConhost) { return; }
+    if (pConhost == NULL)
+        return 0;
 
-    pConhost->initialised = 1;
-    pConhost->conResult = AllocConsole();
-
-    if (pConhost->conResult == 0)
+    pConhost->isInitialised = AllocConsole();
+    
+    if (pConhost->isInitialised == 0)
     {
-        (void) MessageBoxW(
-            0, L"Console Initialisation Failed.", L"Blok", MB_OK | MB_ICONERROR);
-        return;
+        (void)MessageBoxW(
+            NULL, L"Console initialisation failed", L"Blok", MB_OK | MB_ICONERROR);
+        return 0;
     }
 
-    pConhost->fileResult = freopen_s(&pConhost->pOutput, "CONOUT$", "w", stdout);
-
-    if (pConhost->fileResult != 0)
+    pConhost->errorOnAlloc = _wfreopen_s(
+        &pConhost->pStandardOut, L"CONOUT$", L"w", stdout);
+    
+    if (pConhost->errorOnAlloc != 0)
     {
-        (void) MessageBoxW(
-            0, L"Opening StdOut Failed.", L"Blok", MB_OK | MB_ICONERROR);
+        (void)MessageBoxW(
+            NULL, L"Opening standard out file stream failed", L"Blok", 
+            MB_OK | MB_ICONERROR);
+        blokConsoleFree(pConhost);
+        return 0;
     }
 
-    (void) SetConsoleTitleW(L"Blok Console");
+    (void)SetConsoleTitleW(L"Blok Console");
+
+    return 1;
 }
 
-void blokConsoleFree(Console *pConhost)
+int blokConsoleFree(Console *pConhost)
 {
-    if (!pConhost) { return; }
-    if (!pConhost->initialised) { return; }
+    if (pConhost == NULL)
+        return 0;
 
-    if (pConhost->fileResult == 0)
-    {
-        (void) fclose(stdout);
-    }
+    if (pConhost->errorOnAlloc == 0)
+        (void)fclose(stdout);
 
-    if (pConhost->conResult != 0)
-    {
-        (void) FreeConsole();
-    }
+    if (pConhost->isInitialised != 0)
+        (void)FreeConsole();
+
+    return 1;
 }

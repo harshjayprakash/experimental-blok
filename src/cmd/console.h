@@ -4,14 +4,13 @@
 #include <stdio.h>
 
 typedef struct _Console {
-    int initialised;
-    int conResult;
-    int fileResult;
-    FILE *pOutput;
+    int isInitialised;
+    int errorOnAlloc;
+    FILE *pStandardOut;
 } Console;
 
-void blokConsoleInit(Console *pConhost);
+int blokConsoleInit(Console *pConhost);
 
-void blokConsoleFree(Console *pConhost);
+int blokConsoleFree(Console *pConhost);
 
 #endif // _BLOK_CONSOLE_H_

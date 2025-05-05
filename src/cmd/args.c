@@ -1,76 +1,69 @@
 #include "args.h"
 #include <strsafe.h>
 
-#define __BLOK_ARGS_MODE_UNSET 0x0
-#define __BLOK_ARGS_MODE_CUSTOM_SCALE_X 0x10
-#define __BLOK_ARGS_MODE_CUSTOM_SCALE_Y 0x20
-#define __BLOK_ARGS_MODE_CUSTOM_SCALE_A 0x30
-#define __BLOK_DEFAULT_SCALE 15
+#define BLOK_SCALE_DEF    15
+#define BLOK_ARGM_UNSET   0
+#define BLOK_ARGM_SCALE_X 10
+#define BLOK_ARGM_SCALE_Y 20
+#define BLOK_ARGM_SCALE_A 30
 
-void blokArgsProcess(ArgsInfo *pArgs, LPWSTR pCommandLine)
+#define BLOK_EVALUATE_SCALE(assignTo, value)                                             \
+    int scale = _wtoi(value);                                                            \
+    assignTo = (scale != 0) ? scale : BLOK_SCALE_DEF
+
+int blokArgsProcess(ArgsInfo *pArgs, LPCWSTR pCommandLine)
 {
-    if (!pCommandLine) { return; }
-    if (!pArgs) { return; }
-
+    if (pCommandLine == NULL)
+        return 0;
+    
+    if (pArgs == NULL)
+        return 0;
+    
     pArgs->theme = 0;
-    pArgs->scaleX = __BLOK_DEFAULT_SCALE;
-    pArgs->scaleY = __BLOK_DEFAULT_SCALE;
+    pArgs->scaleX = BLOK_SCALE_DEF;
+    pArgs->scaleY = BLOK_SCALE_DEF;
     pArgs->showConsole = 0;
 
     int argc = 0;
+    int argm = BLOK_ARGM_UNSET;
     LPWSTR *ppArgv = CommandLineToArgvW(pCommandLine, &argc);
 
-    if (!ppArgv) { return; }
+    if (ppArgv == NULL)
+        return 0;
 
-    int mode = 0;
-
-    for (int argIdx = 0; argIdx < argc; ++argIdx)
+    for (int idx = 0; idx < argc; ++idx)
     {
-        if (_wcsnicmp(ppArgv[argIdx], L"--dark-theme", 13*sizeof(unsigned short)) == 0)
-        {
+        if (_wcsnicmp(ppArgv[idx], L"--dark-theme", 13*sizeof(unsigned short)) == 0)
             pArgs->theme = 1;
-        }
-        if (_wcsnicmp(ppArgv[argIdx], L"--light-theme", 14*sizeof(unsigned short)) == 0)
-        {
+
+        if (_wcsnicmp(ppArgv[idx], L"--light-theme", 14*sizeof(unsigned short)) == 0)
             pArgs->theme = 2;
-        }
-        if (_wcsnicmp(ppArgv[argIdx], L"--show-console", 15*sizeof(unsigned short)) == 0)
-        {
+
+        if (_wcsnicmp(ppArgv[idx], L"--show-console", 15*sizeof(unsigned short)) == 0)
             pArgs->showConsole = 1;
+
+        
+        if (argm == BLOK_ARGM_SCALE_A || argm == BLOK_ARGM_SCALE_X)
+        {
+            BLOK_EVALUATE_SCALE(pArgs->scaleX, ppArgv[idx]);
+        }
+        if (argm == BLOK_ARGM_SCALE_A || argm == BLOK_ARGM_SCALE_Y)
+        {
+            BLOK_EVALUATE_SCALE(pArgs->scaleY, ppArgv[idx]);
         }
 
-        if (mode == __BLOK_ARGS_MODE_CUSTOM_SCALE_X)
-        {
-            int val = _wtoi(ppArgv[argIdx]);
-            pArgs->scaleX = (val != 0) ? val : __BLOK_DEFAULT_SCALE;
-            mode = __BLOK_ARGS_MODE_UNSET;
-        }
-        if (mode == __BLOK_ARGS_MODE_CUSTOM_SCALE_Y)
-        {
-            int val = _wtoi(ppArgv[argIdx]);
-            pArgs->scaleY = (val != 0) ? val : __BLOK_DEFAULT_SCALE;
-            mode = __BLOK_ARGS_MODE_UNSET;
-        }
-        if (mode == __BLOK_ARGS_MODE_CUSTOM_SCALE_A)
-        {
-            int val = _wtoi(ppArgv[argIdx]);
-            pArgs->scaleY = pArgs->scaleX = (val != 0) ? val : __BLOK_DEFAULT_SCALE;
-            mode = __BLOK_ARGS_MODE_UNSET;
-        }
 
-        if (_wcsnicmp(ppArgv[argIdx], L"--scale-x", 10*sizeof(unsigned short)) == 0)
-        {
-            mode = __BLOK_ARGS_MODE_CUSTOM_SCALE_X;
-        }
-        if (_wcsnicmp(ppArgv[argIdx], L"--scale-y", 10*sizeof(unsigned short)) == 0)
-        {
-            mode = __BLOK_ARGS_MODE_CUSTOM_SCALE_Y;
-        }
-        if (_wcsnicmp(ppArgv[argIdx], L"--scale", 8*sizeof(unsigned short)) == 0)
-        {
-            mode = __BLOK_ARGS_MODE_CUSTOM_SCALE_A;
-        }
+        if (_wcsnicmp(ppArgv[idx], L"--scale-x", 10*sizeof(unsigned short)) == 0)
+            argm = BLOK_ARGM_SCALE_X;
+
+        if (_wcsnicmp(ppArgv[idx], L"--scale-y", 10*sizeof(unsigned short)) == 0)
+            argm = BLOK_ARGM_SCALE_Y;
+
+        if (_wcsnicmp(ppArgv[idx], L"--scale", 8*sizeof(unsigned short)) == 0)
+            argm = BLOK_ARGM_SCALE_A;
     }
 
-    (void) LocalFree(ppArgv);
+    (void)LocalFree(ppArgv);
+
+    return 1;
 }

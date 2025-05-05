@@ -10,6 +10,6 @@ typedef struct _ArgsInfo {
     int showConsole;
 } ArgsInfo;
 
-void blokArgsProcess(LPWSTR pCommandLine, ArgsInfo *pArgs);
+void blokArgsProcess(ArgsInfo *pArgs, LPWSTR pCommandLine);
 
 #endif // _BLOK_ARGS_H_

@@ -11,7 +11,7 @@ int blokInit(Context *pContext, HINSTANCE hInstance, LPWSTR pCommandLine, DWORD 
     pContext->showFlag = showFlag;
 
     ArgsInfo argsResult;
-    blokArgsProcess(pContext->pCommandLine, &argsResult);
+    blokArgsProcess(&argsResult, pContext->pCommandLine);
 
     if (argsResult.showConsole)
         blokConsoleInit(&pContext->console);

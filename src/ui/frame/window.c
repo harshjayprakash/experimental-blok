@@ -127,6 +127,8 @@ int blokWindowShow(Window *pWindow, DWORD showFlag)
         (void)UpdateWindow(pWindow->hHandle);
         Sleep(1);
     }
+
+    return (int)message.wParam;
 }
 
 int blokWindowFree(Window *pWindow, HINSTANCE hInstance)
@@ -142,4 +144,6 @@ int blokWindowFree(Window *pWindow, HINSTANCE hInstance)
     
     if (pWindow->klassAtomIdx != 0)
         (void)UnregisterClassW(pWindow->klassName, hInstance);
+
+    return 1;
 }

@@ -1,8 +1,12 @@
 #include "window.h"
 #include "../events/process.h"
 
-#define __BLOK_CLEANUP_RESOURCE(object, cleanFn) \
-    if (object != NULL) { (void)cleanFn(object); object = NULL; }
+#define BLOK_CLEANUP_RESOURCE(object, cleanFn)                                           \
+    if (object != NULL)                                                                  \
+    {                                                                                    \
+        (void)cleanFn(object);                                                           \
+        object = NULL;                                                                   \
+    }
 
 LRESULT CALLBACK __blokWindowProcedure(
     HWND hWindow, UINT messageId, WPARAM dataWord, LPARAM dataLong)

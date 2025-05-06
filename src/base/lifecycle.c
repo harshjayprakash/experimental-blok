@@ -11,14 +11,14 @@ int blokInit(Context *pContext, HINSTANCE hInstance, LPWSTR pCommandLine, DWORD 
     pContext->showFlag = showFlag;
 
     ArgsInfo argsResult;
-    blokArgsProcess(&argsResult, pContext->pCommandLine);
+    (void)blokArgsProcess(&argsResult, pContext->pCommandLine);
 
     if (argsResult.showConsole)
-        blokConsoleInit(&pContext->console);
+        (void)blokConsoleInit(&pContext->console);
 
-    blokStateInit(&pContext->state, (VectorII){argsResult.scaleX, argsResult.scaleY});
-    blokGraphicsInit(&pContext->graphics, argsResult.theme);
-    blokViewportInit(&pContext->viewport, pContext->hInstance);
+    (void)blokStateInit(&pContext->state, (VectorII){argsResult.scaleX, argsResult.scaleY});
+    (void)blokGraphicsInit(&pContext->graphics, argsResult.theme);
+    (void)blokViewportInit(&pContext->viewport, pContext->hInstance);
 
     return 1;
 }
@@ -28,7 +28,7 @@ int blokRun(Context *pContext)
     if (pContext == NULL)
         return 0;
 
-    blokViewportShow(&pContext->viewport, pContext->showFlag);
+    (void)blokViewportShow(&pContext->viewport, pContext->showFlag);
 
     return 1;
 }
@@ -38,10 +38,10 @@ int blokFree(Context *pContext)
     if (pContext == NULL)
         return 0;
 
-    blokViewportFree(&pContext->viewport, pContext->hInstance);
-    blokGraphicsFree(&pContext->graphics);
-    blokStateFree(&pContext->state);
-    blokConsoleFree(&pContext->console);
+    (void)blokViewportFree(&pContext->viewport, pContext->hInstance);
+    (void)blokGraphicsFree(&pContext->graphics);
+    (void)blokStateFree(&pContext->state);
+    (void)blokConsoleFree(&pContext->console);
 
     return 1;
 }

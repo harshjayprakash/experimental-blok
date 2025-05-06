@@ -163,7 +163,7 @@ int blokDynListCombine(DynList *pDest, const DynList *pSrc)
     for (long idx = 0; idx < pSrc->size; idx++)
     {
         if (!blokDynListExists(pDest, pSrc->pArr + idx))
-            blokDynListAdd(pDest, pSrc->pArr + idx);
+            (void)blokDynListAdd(pDest, pSrc->pArr + idx);
     }
 
     return 1;

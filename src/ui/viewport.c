@@ -7,7 +7,7 @@ int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
     if (pViewport == NULL)
         return 0;
 
-    srand((unsigned int) time(0));
+    srand((unsigned int)time(0));
 
     blokWindowInit(&pViewport->window, hInstance);
 
@@ -27,7 +27,7 @@ int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
         (void)MessageBoxW(0, L"Font Loading Failed.", L"Blok", MB_OK | MB_ICONERROR);
     }
 
-    (void) GetClientRect(pViewport->window.hHandle, &pViewport->region);
+    (void)GetClientRect(pViewport->window.hHandle, &pViewport->region);
 
     blokPanelUpdateEx(
         &pViewport->panel, &pViewport->region, &((COORD){500, 40}), &((COORD){0, 0}));
@@ -37,7 +37,7 @@ int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
         &pViewport->coordinatesText, 
         &((POINT){pViewport->panel.region.left +10, pViewport->panel.region.top +10}), 
         &((SIZE){100, 20}), &((SIZE){0, 0}));
-    (void) StringCbPrintfW(pViewport->coordinatesText.data, 60, L"(0, 0)");
+    (void)StringCbPrintfW(pViewport->coordinatesText.data, 60, L"(0, 0)");
 
     blokButtonUpdateEx(
         &pViewport->clearAllButton, 
@@ -45,7 +45,7 @@ int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
             pViewport->coordinatesText.region.right+10, 
             pViewport->coordinatesText.region.top}), 
         &((SIZE){60, 20}), &((SIZE){0, 0}));
-    (void) StringCbPrintfW(pViewport->clearAllButton.text, 60, L"Clear All");
+    (void)StringCbPrintfW(pViewport->clearAllButton.text, 60, L"Clear All");
 
     blokButtonUpdateEx(
         &pViewport->generateButton, 
@@ -53,7 +53,7 @@ int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
             pViewport->clearAllButton.region.right+10, 
             pViewport->clearAllButton.region.top}), 
         &((SIZE){70, 20}), &((SIZE){0, 0}));
-    (void) StringCbPrintfW(pViewport->generateButton.text, 60, L"Generate");
+    (void)StringCbPrintfW(pViewport->generateButton.text, 60, L"Generate");
 
     blokTextUpdateEx(
         &pViewport->obstructCountText, 
@@ -62,7 +62,7 @@ int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
             pViewport->generateButton.region.top}),
         &((SIZE){25, 20}),
         &((SIZE){0, 0}));
-    (void) StringCbPrintfW(pViewport->obstructCountText.data, 60, L"0");
+    (void)StringCbPrintfW(pViewport->obstructCountText.data, 60, L"0");
 
     blokProgressBarUpdateEx(
         &pViewport->obstructMemoryBar, 
@@ -88,7 +88,7 @@ int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
             pViewport->lockedToggle.region.top}),
         &((SIZE){30, 20}),
         &((SIZE){0, 0}));
-    (void) StringCbPrintfW(pViewport->lockedToggleText.data, 60, L"Locked");
+    (void)StringCbPrintfW(pViewport->lockedToggleText.data, 60, L"Locked");
 
     return 1;
 }

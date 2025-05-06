@@ -21,20 +21,20 @@ void blokProcessEventOnPaint(HWND hWindow)
         hSurface, pViewport->region.right, pViewport->region.bottom);
     HBITMAP hSurfaceBitmap = SelectObject(hOffSurface, hOffSurfaceBitmap);
     HFONT hOldFont = NULL;
-    HBRUSH hOldBrush = (HBRUSH) SelectObject(hOffSurface, pGraphics->tools.hSurfaceBrush);
-    HPEN hOldPen = (HPEN) SelectObject(hOffSurface, pGraphics->tools.hOnSurfacePen);
+    HBRUSH hOldBrush = (HBRUSH)SelectObject(hOffSurface, pGraphics->tools.hSurfaceBrush);
+    HPEN hOldPen = (HPEN)SelectObject(hOffSurface, pGraphics->tools.hOnSurfacePen);
     INT oldBkMode = SetBkMode(hOffSurface, TRANSPARENT);
     COLORREF oldBkColour = SetBkColor(hOffSurface, pGraphics->colours.surface);
     COLORREF oldTextColour = SetTextColor(hOffSurface, pGraphics->colours.onSurface);
 
     if (pViewport->hFont != NULL)
     {
-        HFONT oldFont = (HFONT) SelectObject(hOffSurface, pViewport->hFont);
+        HFONT oldFont = (HFONT)SelectObject(hOffSurface, pViewport->hFont);
     }
 
-    (void) FillRect(hOffSurface, &pViewport->region, pGraphics->tools.hSurfaceBrush);
+    (void)FillRect(hOffSurface, &pViewport->region, pGraphics->tools.hSurfaceBrush);
 
-    (void) SelectObject(hOffSurface, pGraphics->tools.hOnSurfaceVariantPen);
+    (void)SelectObject(hOffSurface, pGraphics->tools.hOnSurfaceVariantPen);
 
     if (pViewport->isGridVisible)
     {
@@ -42,16 +42,16 @@ void blokProcessEventOnPaint(HWND hWindow)
             xAxisIdx < pViewport->canvas.region.right; 
             xAxisIdx += scaling.x)
         {
-            (void) MoveToEx(hOffSurface, xAxisIdx, 0, NULL);
-            (void) LineTo(hOffSurface, xAxisIdx, pViewport->canvas.region.bottom);
+            (void)MoveToEx(hOffSurface, xAxisIdx, 0, NULL);
+            (void)LineTo(hOffSurface, xAxisIdx, pViewport->canvas.region.bottom);
         }
 
         for (long yAxisIdx = 0; 
             yAxisIdx < pViewport->canvas.region.bottom; 
             yAxisIdx += scaling.y)
         {
-            (void) MoveToEx(hOffSurface, 0, yAxisIdx, NULL);
-            (void) LineTo(hOffSurface, pViewport->canvas.region.right, yAxisIdx);
+            (void)MoveToEx(hOffSurface, 0, yAxisIdx, NULL);
+            (void)LineTo(hOffSurface, pViewport->canvas.region.right, yAxisIdx);
         }
     }
 
@@ -63,111 +63,111 @@ void blokProcessEventOnPaint(HWND hWindow)
         box.right - (scaling.x / innerBoxSF),
         box.bottom - (scaling.y / innerBoxSF)
     };
-    (void) FillRect(hOffSurface, &box, pGraphics->tools.hPrimaryBrush);
-    (void) FillRect(hOffSurface, &innerBox, pGraphics->tools.hSurfaceBrush);
+    (void)FillRect(hOffSurface, &box, pGraphics->tools.hPrimaryBrush);
+    (void)FillRect(hOffSurface, &innerBox, pGraphics->tools.hSurfaceBrush);
 
     for (long obstructIdx = 0; obstructIdx < pState->obstructives.size; obstructIdx++)
     {
         RECT obstructiveRc = blokConvertVectorRect(
             pState->obstructives.pArr[obstructIdx].data, scaling);
-        (void) FillRect(hOffSurface, &obstructiveRc, pGraphics->tools.hSecondaryBrush);
+        (void)FillRect(hOffSurface, &obstructiveRc, pGraphics->tools.hSecondaryBrush);
     }
 
     if (pViewport->isInterfaceVisible)
     {
-        (void) FillRect(
+        (void)FillRect(
             hOffSurface, &pViewport->panel.region, pGraphics->tools.hSurfaceVariantBrush);
         
-        (void) DrawTextW(
+        (void)DrawTextW(
             hOffSurface, pViewport->coordinatesText.data, -1, 
             &pViewport->coordinatesText.region, 
             DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_TOP);
 
-        (void) SelectObject(hOffSurface, 
+        (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->clearAllButton.region, pViewport->mousePos) ?
             pGraphics->tools.hOnPrimaryVariantPen : pGraphics->tools.hOnSurfaceVariantPen);
 
-        (void) Rectangle(
+        (void)Rectangle(
             hOffSurface, pViewport->clearAllButton.region.left, 
             pViewport->clearAllButton.region.top, pViewport->clearAllButton.region.right, 
             pViewport->clearAllButton.region.bottom);
-        (void) DrawTextW(
+        (void)DrawTextW(
             hOffSurface, pViewport->clearAllButton.text, -1, 
             &pViewport->clearAllButton.region, 
             DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOCLIP);
 
-        (void) SelectObject(hOffSurface, 
+        (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->generateButton.region, pViewport->mousePos) ?
             pGraphics->tools.hOnPrimaryVariantPen : pGraphics->tools.hOnSurfaceVariantPen);
 
-        (void) Rectangle(
+        (void)Rectangle(
             hOffSurface, pViewport->generateButton.region.left, 
             pViewport->generateButton.region.top, pViewport->generateButton.region.right, 
             pViewport->generateButton.region.bottom);
-        (void) DrawTextW(
+        (void)DrawTextW(
             hOffSurface, pViewport->generateButton.text, -1, 
             &pViewport->generateButton.region, 
             DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOCLIP);
 
-        (void) SelectObject(hOffSurface, pGraphics->tools.hOnSurfaceVariantPen);
+        (void)SelectObject(hOffSurface, pGraphics->tools.hOnSurfaceVariantPen);
 
-        (void) DrawTextW(
+        (void)DrawTextW(
             hOffSurface, pViewport->obstructCountText.data, -1, 
             &pViewport->obstructCountText.region, 
             DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOCLIP);
         
-        (void) Rectangle(
+        (void)Rectangle(
             hOffSurface, pViewport->obstructMemoryBar.region.left, 
             pViewport->obstructMemoryBar.region.top, 
             pViewport->obstructMemoryBar.region.right, 
             pViewport->obstructMemoryBar.region.bottom);
-        (void) FillRect(
+        (void)FillRect(
             hOffSurface, &pViewport->obstructMemoryBar.barRegion, 
             pGraphics->tools.hSecondaryBrush);
         
-        (void) SelectObject(hOffSurface, 
+        (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->lockedToggle.region, pViewport->mousePos) ?
             pGraphics->tools.hOnPrimaryVariantPen : pGraphics->tools.hOnSurfaceVariantPen);
     
-        (void) Rectangle(
+        (void)Rectangle(
             hOffSurface, pViewport->lockedToggle.region.left, 
             pViewport->lockedToggle.region.top, 
             pViewport->lockedToggle.region.right, 
             pViewport->lockedToggle.region.bottom);
 
-        (void) SelectObject(hOffSurface, pGraphics->tools.hOnSurfaceVariantPen);
+        (void)SelectObject(hOffSurface, pGraphics->tools.hOnSurfaceVariantPen);
 
         if (pViewport->lockedToggle.selected)
         {
-            (void) FillRect(
+            (void)FillRect(
                 hOffSurface, &pViewport->lockedToggle.selectRegion, 
                 pGraphics->tools.hSecondaryBrush);
         }
 
-        (void) DrawTextW(
+        (void)DrawTextW(
             hOffSurface, pViewport->lockedToggleText.data, -1, 
             &pViewport->lockedToggleText.region, 
             DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOCLIP);
     }
 
-    (void) BitBlt(
+    (void)BitBlt(
         hSurface, 0, 0, pViewport->region.right, pViewport->region.bottom, 
         hOffSurface, 0, 0, SRCCOPY);
     
     if (pViewport->hFont != NULL) 
     { 
-        (void) SelectObject(hOffSurface, hOldFont); 
+        (void)SelectObject(hOffSurface, hOldFont); 
     }
 
-    (void) SetTextColor(hOffSurface, oldTextColour);
-    (void) SetBkColor(hOffSurface, oldBkColour);
-    (void) SetBkMode(hOffSurface, oldBkMode);
-    (void) SelectObject(hOffSurface, hOldPen);
-    (void) SelectObject(hOffSurface, hOldBrush);
-    (void) SelectObject(hOffSurface, hSurfaceBitmap);
-    (void) DeleteObject(hOffSurfaceBitmap);
-    (void) DeleteDC(hOffSurface);
-    (void) EndPaint(hWindow, &paintstruct);
+    (void)SetTextColor(hOffSurface, oldTextColour);
+    (void)SetBkColor(hOffSurface, oldBkColour);
+    (void)SetBkMode(hOffSurface, oldBkMode);
+    (void)SelectObject(hOffSurface, hOldPen);
+    (void)SelectObject(hOffSurface, hOldBrush);
+    (void)SelectObject(hOffSurface, hSurfaceBitmap);
+    (void)DeleteObject(hOffSurfaceBitmap);
+    (void)DeleteDC(hOffSurface);
+    (void)EndPaint(hWindow, &paintstruct);
 }
 
 void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
@@ -236,7 +236,7 @@ void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
             blokStateMoveBox(&pState->box, moveBoxOperation);
         }
 
-        (void) StringCbPrintfW(
+        (void)StringCbPrintfW(
             pViewport->coordinatesText.data, 60,
             L"(%d, %d)", pState->box.position.x, pState->box.position.y);
         
@@ -246,20 +246,20 @@ void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
             pState->box.position.x + (pState->box.size.x * 2),
             pState->box.position.y + (pState->box.size.y * 2),
         };
-        (void) InvalidateRect(hWindow, &boxUpdateRegion, FALSE);
-        (void) InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
+        (void)InvalidateRect(hWindow, &boxUpdateRegion, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
     }
 
     if (changeGridVisibility)
     {
         pViewport->isGridVisible = !pViewport->isGridVisible;
-        (void) InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
     }
 
     if (changeInterfaceVisibility)
     {
         pViewport->isInterfaceVisible = !pViewport->isInterfaceVisible;
-        (void) InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
     }
 
     if (generateObstructive)
@@ -272,11 +272,11 @@ void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
         };
 
         Node node = {obstruct};
-        (void) blokDynListAdd(&pState->obstructives, &node);
+        (void)blokDynListAdd(&pState->obstructives, &node);
 
         RECT updateRegion = blokConvertVectorRect(obstruct, pState->box.size);
 
-        (void) StringCbPrintfW(
+        (void)StringCbPrintfW(
             pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
 
         blokProgressBarUpdateMinMax(
@@ -284,9 +284,9 @@ void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
         blokProgressBarUpdateValue(
             &pViewport->obstructMemoryBar, pState->obstructives.size);
 
-        (void) InvalidateRect(hWindow, &updateRegion, FALSE);
-        (void) InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-        (void) InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
+        (void)InvalidateRect(hWindow, &updateRegion, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     }
 
     if (changeTheme)
@@ -299,7 +299,7 @@ void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
             (currentTheme == 1 || currentTheme == 0) 
             ? BLOK_THEME_LIGHT : BLOK_THEME_DARK
         );
-        (void) InvalidateRect(hWindow, NULL, FALSE);
+        (void)InvalidateRect(hWindow, NULL, FALSE);
     }
 
     if (clearObstructs)
@@ -307,18 +307,18 @@ void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
         blokDynListClear(&pState->obstructives);
         blokProgressBarUpdateValue(
             &pViewport->obstructMemoryBar, pState->obstructives.size);
-        (void) StringCbPrintfW(
+        (void)StringCbPrintfW(
             pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
-        (void) InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-        (void) InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
-        (void) InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
     }
 
     if (toggleLock)
     {
         pViewport->isCanvasLocked = !pViewport->isCanvasLocked;
         blokToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
-        (void) InvalidateRect(hWindow, &pViewport->lockedToggle.region, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->lockedToggle.region, FALSE);
     }
 }
 
@@ -342,20 +342,20 @@ void blokProcessEventOnLeftMouseDown(HWND hWindow, LPARAM mousepos)
     {
         if (BLOK_MOUSE_AT(pViewport->generateButton.region, pViewport->mousePos))
         {
-            (void) SendMessageW(hWindow, WM_KEYDOWN, (WPARAM)'O', 0);
+            (void)SendMessageW(hWindow, WM_KEYDOWN, (WPARAM)'O', 0);
         }
 
         if (BLOK_MOUSE_AT(pViewport->clearAllButton.region, pViewport->mousePos))
         {
-            (void) SendMessageW(hWindow, WM_KEYDOWN, (WPARAM)'C', 0);
+            (void)SendMessageW(hWindow, WM_KEYDOWN, (WPARAM)'C', 0);
         }
 
         if (BLOK_MOUSE_AT(pViewport->lockedToggle.region, pViewport->mousePos))
         {
-            (void) SendMessageW(hWindow, WM_KEYDOWN, (WPARAM)'L', 0);
+            (void)SendMessageW(hWindow, WM_KEYDOWN, (WPARAM)'L', 0);
         }
 
-        (void) InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
         return;
     }
 
@@ -370,9 +370,9 @@ void blokProcessEventOnLeftMouseDown(HWND hWindow, LPARAM mousepos)
     if (exists) { return; }
 
     long r = blokDynListAdd(&pState->obstructives, &node);
-    (void) wprintf(L"pushed to list at idx %ld (%d, %d)\n",r, mpos.x, mpos.y);
+    (void)wprintf(L"pushed to list at idx %ld (%d, %d)\n",r, mpos.x, mpos.y);
 
-    (void) StringCbPrintfW(
+    (void)StringCbPrintfW(
         pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
 
     blokProgressBarUpdateMinMax(
@@ -387,9 +387,9 @@ void blokProcessEventOnLeftMouseDown(HWND hWindow, LPARAM mousepos)
         mpos.y + span.y
     };
 
-    (void) InvalidateRect(hWindow, &refreshRegion, FALSE);
-    (void) InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-    (void) InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
+    (void)InvalidateRect(hWindow, &refreshRegion, FALSE);
+    (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
+    (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
 
 }
 
@@ -406,7 +406,7 @@ void blokProcessEventOnResize(HWND hWindow)
     Viewport *pViewport = blokContextGetViewport();
     State *pState = blokContextGetState();
 
-    (void) GetClientRect(hWindow, &pViewport->region);
+    (void)GetClientRect(hWindow, &pViewport->region);
     blokPanelUpdate(&pViewport->panel, &pViewport->region);
     blokCanvasUpdate(&pViewport->canvas, &pViewport->region);
     blokTextUpdate(
@@ -462,14 +462,14 @@ void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos)
 
     if (pViewport->isCanvasLocked)
     {
-        (void) InvalidateRect(hWindow, NULL, FALSE);
+        (void)InvalidateRect(hWindow, NULL, FALSE);
         return;
     }
 
     if (BLOK_MOUSE_AT(pViewport->panel.region, pViewport->mousePos) 
         && pViewport->isInterfaceVisible)
     {
-        (void) InvalidateRect(hWindow, NULL, FALSE);
+        (void)InvalidateRect(hWindow, NULL, FALSE);
         return;
     }
 
@@ -486,11 +486,11 @@ void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos)
             &pViewport->obstructMemoryBar, 0, pState->obstructives.max);
         blokProgressBarUpdateValue(
             &pViewport->obstructMemoryBar, pState->obstructives.size);
-        (void) StringCbPrintfW(
+        (void)StringCbPrintfW(
             pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
-        (void) InvalidateRect(hWindow, &updateRegion, FALSE);
-        (void) InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-        (void) InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
+        (void)InvalidateRect(hWindow, &updateRegion, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     }
 
     if (pViewport->isRightMouseDown)
@@ -500,20 +500,20 @@ void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos)
             (pViewport->mousePos.Y / scale.y) * scale.y
         }};
         if (!blokDynListExists(&pState->obstructives, &pos)) { return; }
-        (void) blokDynListRemove(&pState->obstructives, pos);
+        (void)blokDynListRemove(&pState->obstructives, pos);
         RECT updateRegion = blokConvertVectorRect(pos.data, scale);
         blokProgressBarUpdateMinMax(
             &pViewport->obstructMemoryBar, 0, pState->obstructives.max);
         blokProgressBarUpdateValue(
             &pViewport->obstructMemoryBar, pState->obstructives.size);
-        (void) StringCbPrintfW(
+        (void)StringCbPrintfW(
             pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
-        (void) InvalidateRect(hWindow, &updateRegion, FALSE);
-        (void) InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-        (void) InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
+        (void)InvalidateRect(hWindow, &updateRegion, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     }
 
-    (void) InvalidateRect(hWindow, NULL, FALSE);
+    (void)InvalidateRect(hWindow, NULL, FALSE);
 }
 
 void blokProcessEventOnRightMouseDown(HWND hWindow, LPARAM mousepos)
@@ -536,7 +536,7 @@ void blokProcessEventOnRightMouseDown(HWND hWindow, LPARAM mousepos)
 
     if (blokDynListExists(&pState->obstructives, &node))
     {
-        (void) blokDynListRemove(&pState->obstructives, node);
+        (void)blokDynListRemove(&pState->obstructives, node);
 
         RECT updateRegion = blokConvertVectorRect(node.data, pState->box.size);
 
@@ -546,9 +546,9 @@ void blokProcessEventOnRightMouseDown(HWND hWindow, LPARAM mousepos)
             &pViewport->obstructMemoryBar, pState->obstructives.size);
         (void) StringCbPrintfW(
             pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
-        (void) InvalidateRect(hWindow, &updateRegion, FALSE);
-        (void) InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-        (void) InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
+        (void)InvalidateRect(hWindow, &updateRegion, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
+        (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     }
 
 }

@@ -36,7 +36,7 @@ int blokProgressBarUpdateEx(
     pPbar->region.right = (pPbar->position.x + pPbar->size.cx) - pPbar->margin.cx;
     pPbar->region.bottom = (pPbar->position.y + pPbar->size.cy) - pPbar->margin.cx;
 
-    (void) CopyRect(&pPbar->barRegion, &pPbar->region);
+    (void)CopyRect(&pPbar->barRegion, &pPbar->region);
 
     pPbar->barRegion.left += pPbar->barMargin.cx;
     pPbar->barRegion.top += pPbar->barMargin.cy;

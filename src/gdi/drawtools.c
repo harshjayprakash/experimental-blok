@@ -3,7 +3,7 @@
 #define BLOK_DELETE_OBJECT(hObject)                                                      \
     if (hObject != NULL)                                                                 \
     {                                                                                    \
-        (void) DeleteObject(hObject);                                                    \
+        (void)DeleteObject(hObject);                                                    \
         hObject = NULL;                                                                  \
     }                                           
 

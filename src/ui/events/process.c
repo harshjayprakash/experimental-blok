@@ -20,14 +20,14 @@ void blokProcessEventOnPaint(HWND hWindow)
     HBITMAP hOffSurfaceBitmap = CreateCompatibleBitmap(
         hSurface, pViewport->region.right, pViewport->region.bottom);
     HBITMAP hSurfaceBitmap = SelectObject(hOffSurface, hOffSurfaceBitmap);
-    HFONT hOldFont = (HFONT) 0;
+    HFONT hOldFont = NULL;
     HBRUSH hOldBrush = (HBRUSH) SelectObject(hOffSurface, pGraphics->tools.hSurfaceBrush);
     HPEN hOldPen = (HPEN) SelectObject(hOffSurface, pGraphics->tools.hOnSurfacePen);
     INT oldBkMode = SetBkMode(hOffSurface, TRANSPARENT);
     COLORREF oldBkColour = SetBkColor(hOffSurface, pGraphics->colours.surface);
     COLORREF oldTextColour = SetTextColor(hOffSurface, pGraphics->colours.onSurface);
 
-    if (pViewport->hFont != (HFONT) 0)
+    if (pViewport->hFont != NULL)
     {
         HFONT oldFont = (HFONT) SelectObject(hOffSurface, pViewport->hFont);
     }
@@ -154,7 +154,7 @@ void blokProcessEventOnPaint(HWND hWindow)
         hSurface, 0, 0, pViewport->region.right, pViewport->region.bottom, 
         hOffSurface, 0, 0, SRCCOPY);
     
-    if (pViewport->hFont != (HFONT) 0) 
+    if (pViewport->hFont != NULL) 
     { 
         (void) SelectObject(hOffSurface, hOldFont); 
     }

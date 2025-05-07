@@ -165,15 +165,17 @@ blok.exe
 * Drag click can continue if the cursor leaves the window.
 * Holding down the generate button will not continue to generate obstructs.
 
-## Future Features (Potential)
+## Potential Future Features
 
-* Move around the canvas.
-* Ability to move the panel.
+* Move around canvas.
+* Movable panel.
+* Re-sizable panel.
 * Custom theming.
-* Load configuration from file.
+* Loading configuration from file.
 * File-based logging.
-* Debug: Edit object data through console.
-* Small alert notify system.
+* Small alert box system.
 * Keyboard shortcut guide screen.
-* Save/import state to/from file.
+* Save state to file.
+* Import state from file.
 * Generate entire maze.
+* Find path from box to point.

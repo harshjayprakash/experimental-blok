@@ -143,7 +143,6 @@ blok.exe
     * Renamed `Vector` to `DynList`.
     * Refactored `Size` and `Position` to `VectorII`
     * Implemented direction to vectorii function.
-    * Added new `VectorIV` type.
     * Update text rendering to use `DrawTextW` instead of `TextOutW`.
   * Visual
     * Implemented single instance mutex (mutant winobj).

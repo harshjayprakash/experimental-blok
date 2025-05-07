@@ -242,7 +242,7 @@ void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
         
         RECT boxUpdateRegion = {
             pState->box.position.x - pState->box.size.x,
-            pState->box.position.y - pState->box.size.x,
+            pState->box.position.y - pState->box.size.y,
             pState->box.position.x + (pState->box.size.x * 2),
             pState->box.position.y + (pState->box.size.y * 2),
         };

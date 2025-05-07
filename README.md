@@ -158,15 +158,12 @@ blok.exe
 
 ## Limitations and Known Issues
 
-* Generating an Obstructive (Button/Keyboard) may create a duplicate positioned wall.
-* Cannot remove a single obstructive.
+* Generating an obstructs (Button/Keyboard) may create a duplicate positioned wall.
 * Box can go under the panel.
 * Box can go out of bounds of the window.
-* Specified scaling can be too small, too big or negative.
-* Invalidating area can fail at certain scales, resulting in the box leaving a trail.
+* Specified scaling can be too small or too big.
 * Drag click can continue if the cursor leaves the window.
-* Holding dowwn the left mouse button on the generate button will not continue to generate
-obstructives.
+* Holding down the generate button will not continue to generate obstructs.
 
 ## Future Features (Potential)
 

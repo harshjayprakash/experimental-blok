@@ -26,37 +26,39 @@ a strong interest in the Windows Operating System.
 
 ### The Canvas Grid
 
-The "Canvas Grid" is the component that provides a coordinate grid scaled at fifteen or
-a value specified at startup. This grid contains the movable box and a surface to create
-walls ("obstructives") that the box cannot move past.
+The "Canvas Grid" is a components that provides a coordinate grid, scaled at fifteen
+pixels or another specified value at startup (via CLI). This grid contains the box entity
+and a surface to create walls ("obstructs") that blocks the box's movement.
 
-* The canvas is not limited to the startup size and can adapt to the window size.
-* The grid can be toggle with the `G` key on the keyboard but is drawn before the box and
-obstructive.
-* Left clicking on the canvas will create an obstructive.
-* Drag left clicking will create a series of obstructives.
-* Right clicking on the canvas will remove an existing obstructive.
+* The canvas is adapts to the full window client area.
+* The grid lines can be toggled with `G` key, but is drawn before the box and obstructs -
+resulting in parts of lines becoming hidden.
+* A left click will create an obstruct at the current position.
+* A left drag click will create a series of obstructs.
+* A right click will remove an obstruct at the current position.
+* A right drag click will remove a series of obstructs.
 
 ### The Information and Action Panel
 
 The "Panel" is the component that shows information and provides controls to manipulate
 the canvas.
 
-* The coordinates of the box is shown.
-* The "Clear All" button removes all the obstructives from the grid.
-* The "Generate" button randomly adds an obstructive on to the grid surface.
-* The number provides the number of obstructives currently visible.
-* The progress bar showing the internal dynamic memory size storing the obstructs.
-* The locked toggle, shows whether the canvas is locked - meaning mouse clicks or drags
-will not have any effect.
+* The current coordinates of box is shown.
+* The "Clear All" button removes all obstructs.
+* The "Generate" button adds an obstruct at a random position.
+* Shows the current number of obstructs on the canvas.
+* The progress bar shows the internal dynamic array memory size storing the obstructs.
+* The locked toggle, shows whether the canvas has been locked
+  * Enabled - any clicks or drags on the canvas are ignored.
+  * Disabled - normal operation.
 
 ### The Console
 
-The console is not initialised unless the `--show-console` argument is passed at
-execution. The console displayes informational, warnings and error messages while the
-program is running.
+The "Console" is a separate window displaying information, warning and/or error messages
+while the program is running.
 
-* The console does not accept user input.
+* Does not accept user input.
+* Must be enabled on startup by passing the `--show-console` argument.
 
 ### Keyboard Shortcuts
 

@@ -2,8 +2,8 @@
 #define _BLOK_VECTOR_H_
 
 typedef struct _VectorII {
-    int x;
-    int y;
+    long x;
+    long y;
 } VectorII;
 
 int blokVectorIICopy(VectorII *pDest, const VectorII src);

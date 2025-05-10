@@ -13,7 +13,7 @@
 typedef struct _Viewport {
     Window window;
     RECT region;
-    COORD mousePos;
+    POINT mousePos;
     HFONT hFont;
     BOOL isLeftMouseDown;
     BOOL isRightMouseDown;

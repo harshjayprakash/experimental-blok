@@ -1,7 +1,7 @@
 #include "panel.h"
 
 int blokPanelUpdateEx(
-    Panel *pPanel, const RECT *pWindowRgn, const COORD *pSize, const COORD *pMargin)
+    Panel *pPanel, const RECT *pWindowRgn, const SIZE *pSize, const SIZE *pMargin)
 {
     if (pPanel == NULL)
         return 0;
@@ -11,20 +11,20 @@ int blokPanelUpdateEx(
 
     if (pSize != NULL)
     {
-        pPanel->size.X = pSize->X;
-        pPanel->size.Y = pSize->Y;
+        pPanel->size.cx = pSize->cx;
+        pPanel->size.cy = pSize->cy;
     }
 
     if (pMargin != NULL)
     {
-        pPanel->margin.X = pMargin->X;
-        pPanel->margin.Y = pMargin->Y;
+        pPanel->margin.cx = pMargin->cx;
+        pPanel->margin.cy = pMargin->cy;
     }
 
-    pPanel->region.left = pWindowRgn->left + pPanel->margin.X;
-    pPanel->region.top = (pWindowRgn->bottom - pPanel->size.Y) - pPanel->margin.Y;
-    pPanel->region.right = (pWindowRgn->left + pPanel->size.X) - pPanel->margin.X;
-    pPanel->region.bottom = pWindowRgn->bottom - pPanel->margin.Y;
+    pPanel->region.left = pWindowRgn->left + pPanel->margin.cx;
+    pPanel->region.top = (pWindowRgn->bottom - pPanel->size.cy) - pPanel->margin.cy;
+    pPanel->region.right = (pWindowRgn->left + pPanel->size.cx) - pPanel->margin.cx;
+    pPanel->region.bottom = pWindowRgn->bottom - pPanel->margin.cy;
 
     return 1;
 }

@@ -30,7 +30,7 @@ int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
     (void)GetClientRect(pViewport->window.hHandle, &pViewport->region);
 
     (void)blokPanelUpdateEx(
-        &pViewport->panel, &pViewport->region, &((COORD){500, 40}), &((COORD){0, 0}));
+        &pViewport->panel, &pViewport->region, &((SIZE){500, 40}), &((SIZE){0, 0}));
     (void)blokCanvasUpdate(&pViewport->canvas, &pViewport->region);
     
     (void)blokTextUpdateEx(

@@ -6,13 +6,13 @@
 
 typedef struct _Panel {
     RECT region;
-    COORD margin;
-    COORD position;
-    COORD size;
+    SIZE margin;
+    POINT position;
+    SIZE size;
 } Panel;
 
 int blokPanelUpdateEx(
-    Panel *pPanel, const RECT *pWindowRgn, const COORD *pSize, const COORD *pMargin);
+    Panel *pPanel, const RECT *pWindowRgn, const SIZE *pSize, const SIZE *pMargin);
 
 int blokPanelUpdate(Panel *pPanel, const RECT *pWindowRgn);
 

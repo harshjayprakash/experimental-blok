@@ -5,7 +5,7 @@
 #include <Windowsx.h>
 
 #define BLOK_MOUSE_AT(rect, pos) \
-    (pos.X > rect.left && pos.X < rect.right && pos.Y > rect.top && pos.Y < rect.bottom)
+    (pos.x > rect.left && pos.x < rect.right && pos.y > rect.top && pos.y < rect.bottom)
 
 void blokProcessEventOnPaint(HWND hWindow)
 {
@@ -457,8 +457,8 @@ void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos)
     State *pState = blokContextGetState();
     VectorII scale = pState->box.size;
 
-    pViewport->mousePos.X = GET_X_LPARAM(mousepos);
-    pViewport->mousePos.Y = GET_Y_LPARAM(mousepos);
+    pViewport->mousePos.x = GET_X_LPARAM(mousepos);
+    pViewport->mousePos.y = GET_Y_LPARAM(mousepos);
 
     if (pViewport->isCanvasLocked)
     {
@@ -476,8 +476,8 @@ void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos)
     if (pViewport->isLeftMouseDown)
     {
         Node pos = {{
-            (pViewport->mousePos.X / scale.x) * scale.x,
-            (pViewport->mousePos.Y / scale.y) * scale.y
+            (pViewport->mousePos.x / scale.x) * scale.x,
+            (pViewport->mousePos.y / scale.y) * scale.y
         }};
         if (blokDynListExists(&pState->obstructives, &pos)) { return; }
         (void)blokDynListAdd(&pState->obstructives, &pos);
@@ -496,8 +496,8 @@ void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos)
     if (pViewport->isRightMouseDown)
     {
         Node pos = {{
-            (pViewport->mousePos.X / scale.x) * scale.x,
-            (pViewport->mousePos.Y / scale.y) * scale.y
+            (pViewport->mousePos.x / scale.x) * scale.x,
+            (pViewport->mousePos.y / scale.y) * scale.y
         }};
         if (!blokDynListExists(&pState->obstructives, &pos)) { return; }
         (void)blokDynListRemove(&pState->obstructives, pos);

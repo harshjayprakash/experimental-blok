@@ -5,9 +5,14 @@ VectorII blokConvertCoordV(const COORD coord)
     return (VectorII){coord.X, coord.Y};
 }
 
-COORD blokConvertVectorCoord(const VectorII vec)
+POINT blokConvertVectorPoint(const VectorII vec)
 {
-    return (COORD){vec.x, vec.y};
+    return (POINT){vec.x, vec.y};
+}
+
+SIZE blokConvertVectorSize(const VectorII vec)
+{
+    return (SIZE){vec.x, vec.y};
 }
 
 RECT blokConvertVectorRect(const VectorII pos, const VectorII size)

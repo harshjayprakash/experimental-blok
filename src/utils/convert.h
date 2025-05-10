@@ -6,7 +6,9 @@
 
 VectorII blokConvertCoordV(const COORD coord);
 
-COORD blokConvertVectorCoord(const VectorII vec);
+POINT blokConvertVectorPoint(const VectorII vec);
+
+SIZE blokConvertVectorSize(const VectorII vec);
 
 RECT blokConvertVectorRect(const VectorII pos, const VectorII size);
 

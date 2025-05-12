@@ -4,7 +4,7 @@
 #include "../model/vector.h"
 #include <Windows.h>
 
-VectorII blokConvertCoordV(const COORD coord);
+VectorII blokConvertPointV(const POINT point);
 
 POINT blokConvertVectorPoint(const VectorII vec);
 

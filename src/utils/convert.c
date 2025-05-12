@@ -1,8 +1,8 @@
 #include "convert.h"
 
-VectorII blokConvertCoordV(const COORD coord)
+VectorII blokConvertPointV(const POINT point)
 {
-    return (VectorII){coord.X, coord.Y};
+    return (VectorII){point.x, point.y};
 }
 
 POINT blokConvertVectorPoint(const VectorII vec)

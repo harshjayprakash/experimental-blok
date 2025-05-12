@@ -101,7 +101,7 @@ int blokStateAddObstruct(State *pState, const VectorII point)
 
     Node newPoint = {point};
     int exists = blokDynListExists(&(pState->obstructives), &newPoint);
-    if (exists != 1)
+    if (exists)
         return (-1);
 
     return blokDynListAdd(&(pState->obstructives), &newPoint);

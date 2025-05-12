@@ -42,6 +42,7 @@ set(SOURCES
     "src/ui/controls/toggle.c" "src/ui/controls/toggle.h"
     "src/ui/components/canvas.c" "src/ui/components/canvas.h"
     "src/ui/components/panel.c" "src/ui/components/panel.h"
+    "src/ui/events/action.c" "src/ui/events/action.h"
     "src/ui/events/process.c" "src/ui/events/process.h"
     "src/ui/frame/window.c" "src/ui/frame/window.h"
     "src/ui/viewport.c" "src/ui/viewport.h"

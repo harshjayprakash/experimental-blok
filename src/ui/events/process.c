@@ -1,6 +1,7 @@
 #include "process.h"
 #include "../../base/context.h"
 #include "../../utils/convert.h"
+#include "action.h"
 #include <strsafe.h>
 #include <Windowsx.h>
 
@@ -174,151 +175,53 @@ void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
 {
     State *pState = blokContextGetState();
     Viewport *pViewport = blokContextGetViewport();
-    Direction moveBoxOperation = 0;
-    int changeGridVisibility = 0;
-    int changeInterfaceVisibility = 0;
-    int generateObstructive = 0;
-    int changeTheme = 0;
-    int clearObstructs = 0;
-    int toggleLock = 0;
+    Graphics *pGraphics = blokContextGetGraphics();
 
     switch (virtualKey)
     {
     case VK_UP:
     case 'W': 
-        moveBoxOperation = BLOK_DIRECTION_NORTH; 
+        (void)blokActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_NORTH);
         break;
     
     case VK_LEFT:
     case 'A':
-        moveBoxOperation = BLOK_DIRECTION_WEST;
+        (void)blokActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_WEST);
         break;
     
     case VK_DOWN:
     case 'S':
-        moveBoxOperation = BLOK_DIRECTION_SOUTH;
+        (void)blokActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_SOUTH);
         break;
     
     case VK_RIGHT:
     case 'D':
-        moveBoxOperation = BLOK_DIRECTION_EAST;
+        (void)blokActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_EAST);
         break;
 
     case 'G':
-        changeGridVisibility = 1;
+        (void)blokActionToggleGridLines(pViewport, hWindow);
         break;
     
     case 'O':
-        generateObstructive = 1;
+        (void)blokActionAddObstruct(pViewport, pState, hWindow, NULL);
         break;
 
     case 'I':
-        changeInterfaceVisibility = 1;
+        (void)blokActionToggleInterface(pViewport, hWindow);
         break;
     
     case 'T':
-        changeTheme = 1;
+        (void)blokActionChangeTheme(pGraphics, hWindow);
         break;
     
     case 'C':
-        clearObstructs = 1;
+        (void)blokActionClearObstructs(pViewport, pState, hWindow);
         break;
     
     case 'L':
-        toggleLock = 1;
+        (void)blokActionToggleCanvasLock(pViewport, hWindow);
         break;
-    }
-
-    if (moveBoxOperation)
-    {
-        if (blokStateBoxMovableInDirection(pState, moveBoxOperation))
-        {
-            (void)blokStateMoveBox(&pState->box, moveBoxOperation);
-        }
-
-        (void)StringCbPrintfW(
-            pViewport->coordinatesText.data, 60,
-            L"(%d, %d)", pState->box.position.x, pState->box.position.y);
-        
-        RECT boxUpdateRegion = {
-            pState->box.position.x - pState->box.size.x,
-            pState->box.position.y - pState->box.size.y,
-            pState->box.position.x + (pState->box.size.x * 2),
-            pState->box.position.y + (pState->box.size.y * 2),
-        };
-        (void)InvalidateRect(hWindow, &boxUpdateRegion, FALSE);
-        (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
-    }
-
-    if (changeGridVisibility)
-    {
-        pViewport->isGridVisible = !pViewport->isGridVisible;
-        (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
-    }
-
-    if (changeInterfaceVisibility)
-    {
-        pViewport->isInterfaceVisible = !pViewport->isInterfaceVisible;
-        (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
-    }
-
-    if (generateObstructive)
-    {
-        VectorII scale = pState->box.size;
-
-        VectorII obstruct = {
-            ((rand() % pViewport->canvas.size.cx) / scale.x) * scale.x,
-            ((rand() % pViewport->canvas.size.cy) / scale.y) * scale.y
-        };
-
-        Node node = {obstruct};
-        (void)blokDynListAdd(&pState->obstructives, &node);
-
-        RECT updateRegion = blokConvertVectorRect(obstruct, pState->box.size);
-
-        (void)StringCbPrintfW(
-            pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
-
-        (void)blokProgressBarUpdateMinMax(
-            &pViewport->obstructMemoryBar, 0, pState->obstructives.max);
-        (void)blokProgressBarUpdateValue(
-            &pViewport->obstructMemoryBar, pState->obstructives.size);
-
-        (void)InvalidateRect(hWindow, &updateRegion, FALSE);
-        (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-        (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
-    }
-
-    if (changeTheme)
-    {
-        Graphics *pGraphics = blokContextGetGraphics();
-        int currentTheme = pGraphics->theme;
-        (void)blokGraphicsFree(pGraphics);
-        (void)blokGraphicsInit(
-            pGraphics, 
-            (currentTheme == 1 || currentTheme == 0) 
-            ? BLOK_THEME_LIGHT : BLOK_THEME_DARK
-        );
-        (void)InvalidateRect(hWindow, NULL, FALSE);
-    }
-
-    if (clearObstructs)
-    {
-        (void)blokDynListClear(&pState->obstructives);
-        (void)blokProgressBarUpdateValue(
-            &pViewport->obstructMemoryBar, pState->obstructives.size);
-        (void)StringCbPrintfW(
-            pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
-        (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-        (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
-        (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
-    }
-
-    if (toggleLock)
-    {
-        pViewport->isCanvasLocked = !pViewport->isCanvasLocked;
-        (void)blokToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
-        (void)InvalidateRect(hWindow, &pViewport->lockedToggle.region, FALSE);
     }
 }
 
@@ -326,36 +229,26 @@ void blokProcessEventOnLeftMouseDown(HWND hWindow, LPARAM mousepos)
 {
     State *pState = blokContextGetState();
     Viewport *pViewport = blokContextGetViewport();
-    
-    pViewport->isLeftMouseDown = TRUE;
-
     VectorII span = pState->box.size;
-
-    VectorII mpos = {
+    POINT mpos = {
         (GET_X_LPARAM(mousepos) / span.x) * span.x,
         (GET_Y_LPARAM(mousepos) / span.y) * span.y
     };
+    
+    pViewport->isLeftMouseDown = TRUE;
 
-    if (mpos.x > pViewport->panel.region.left && mpos.x < pViewport->panel.region.right 
-        && mpos.y > pViewport->panel.region.top && mpos.y < pViewport->panel.region.bottom
-        && pViewport->isInterfaceVisible)
+    if (BLOK_MOUSE_AT(pViewport->panel.region, mpos) && pViewport->isInterfaceVisible)
     {
-        if (BLOK_MOUSE_AT(pViewport->generateButton.region, pViewport->mousePos))
-        {
-            (void)SendMessageW(hWindow, WM_KEYDOWN, (WPARAM)'O', 0);
-        }
+        if (BLOK_MOUSE_AT(pViewport->generateButton.region, mpos))
+            (void)blokActionAddObstruct(pViewport, pState, hWindow, NULL);
 
-        if (BLOK_MOUSE_AT(pViewport->clearAllButton.region, pViewport->mousePos))
-        {
-            (void)SendMessageW(hWindow, WM_KEYDOWN, (WPARAM)'C', 0);
-        }
+        if (BLOK_MOUSE_AT(pViewport->clearAllButton.region, mpos))
+            (void)blokActionClearObstructs(pViewport, pState, hWindow);
 
-        if (BLOK_MOUSE_AT(pViewport->lockedToggle.region, pViewport->mousePos))
-        {
-            (void)SendMessageW(hWindow, WM_KEYDOWN, (WPARAM)'L', 0);
-        }
+        if (BLOK_MOUSE_AT(pViewport->lockedToggle.region, mpos))
+            (void)blokActionToggleCanvasLock(pViewport, hWindow);
 
-        (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
+        (void)InvalidateRect(hWindow, &(pViewport->panel.region), FALSE);
         return;
     }
 
@@ -364,33 +257,7 @@ void blokProcessEventOnLeftMouseDown(HWND hWindow, LPARAM mousepos)
         return;
     }
 
-    Node node = {mpos};
-    
-    int exists = blokDynListExists(&pState->obstructives, &node);
-    if (exists) { return; }
-
-    long r = blokDynListAdd(&pState->obstructives, &node);
-    (void)wprintf(L"pushed to list at idx %ld (%d, %d)\n",r, mpos.x, mpos.y);
-
-    (void)StringCbPrintfW(
-        pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
-
-    (void)blokProgressBarUpdateMinMax(
-        &pViewport->obstructMemoryBar, 0, pState->obstructives.max);
-    (void)blokProgressBarUpdateValue(
-        &pViewport->obstructMemoryBar, pState->obstructives.size);
-
-    RECT refreshRegion = {
-        mpos.x,
-        mpos.y,
-        mpos.x + span.x,
-        mpos.y + span.y
-    };
-
-    (void)InvalidateRect(hWindow, &refreshRegion, FALSE);
-    (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-    (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
-
+    (void)blokActionAddObstruct(pViewport, pState, hWindow, &mpos);
 }
 
 void blokProcessEventOnLeftMouseUp(HWND hWindow, LPARAM mousepos)
@@ -455,7 +322,6 @@ void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos)
 {
     Viewport *pViewport = blokContextGetViewport();
     State *pState = blokContextGetState();
-    VectorII scale = pState->box.size;
 
     pViewport->mousePos.x = GET_X_LPARAM(mousepos);
     pViewport->mousePos.y = GET_Y_LPARAM(mousepos);
@@ -475,42 +341,12 @@ void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos)
 
     if (pViewport->isLeftMouseDown)
     {
-        Node pos = {{
-            (pViewport->mousePos.x / scale.x) * scale.x,
-            (pViewport->mousePos.y / scale.y) * scale.y
-        }};
-        if (blokDynListExists(&pState->obstructives, &pos)) { return; }
-        (void)blokDynListAdd(&pState->obstructives, &pos);
-        RECT updateRegion = blokConvertVectorRect(pos.data, scale);
-        (void)blokProgressBarUpdateMinMax(
-            &pViewport->obstructMemoryBar, 0, pState->obstructives.max);
-        (void)blokProgressBarUpdateValue(
-            &pViewport->obstructMemoryBar, pState->obstructives.size);
-        (void)StringCbPrintfW(
-            pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
-        (void)InvalidateRect(hWindow, &updateRegion, FALSE);
-        (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-        (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
+        (void)blokActionAddObstruct(pViewport, pState, hWindow, &(pViewport->mousePos));
     }
 
     if (pViewport->isRightMouseDown)
     {
-        Node pos = {{
-            (pViewport->mousePos.x / scale.x) * scale.x,
-            (pViewport->mousePos.y / scale.y) * scale.y
-        }};
-        if (!blokDynListExists(&pState->obstructives, &pos)) { return; }
-        (void)blokDynListRemove(&pState->obstructives, pos);
-        RECT updateRegion = blokConvertVectorRect(pos.data, scale);
-        (void)blokProgressBarUpdateMinMax(
-            &pViewport->obstructMemoryBar, 0, pState->obstructives.max);
-        (void)blokProgressBarUpdateValue(
-            &pViewport->obstructMemoryBar, pState->obstructives.size);
-        (void)StringCbPrintfW(
-            pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
-        (void)InvalidateRect(hWindow, &updateRegion, FALSE);
-        (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-        (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
+        (void)blokActionRemoveObstruct(pViewport, pState, hWindow, pViewport->mousePos);
     }
 
     (void)InvalidateRect(hWindow, NULL, FALSE);
@@ -523,34 +359,9 @@ void blokProcessEventOnRightMouseDown(HWND hWindow, LPARAM mousepos)
 
     pViewport->isRightMouseDown = TRUE;
 
-    VectorII span = pState->box.size;
-
-    VectorII mpos = {
-        (GET_X_LPARAM(mousepos) / span.x) * span.x,
-        (GET_Y_LPARAM(mousepos) / span.y) * span.y
-    };
-
     if (pViewport->isCanvasLocked) { return; }
 
-    Node node = {mpos};
-
-    if (blokDynListExists(&pState->obstructives, &node))
-    {
-        (void)blokDynListRemove(&pState->obstructives, node);
-
-        RECT updateRegion = blokConvertVectorRect(node.data, pState->box.size);
-
-        (void)blokProgressBarUpdateMinMax(
-            &pViewport->obstructMemoryBar, 0, pState->obstructives.max);
-        (void)blokProgressBarUpdateValue(
-            &pViewport->obstructMemoryBar, pState->obstructives.size);
-        (void) StringCbPrintfW(
-            pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
-        (void)InvalidateRect(hWindow, &updateRegion, FALSE);
-        (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
-        (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
-    }
-
+    (void)blokActionRemoveObstruct(pViewport, pState, hWindow, pViewport->mousePos);
 }
 
 void blokProcessEventOnRightMouseUp(HWND hWindow, LPARAM mousepos)

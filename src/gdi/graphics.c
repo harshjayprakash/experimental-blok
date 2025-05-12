@@ -6,7 +6,7 @@ int blokGraphicsInit(Graphics *pGraphics, const Theme theme)
         return 0;
 
     int disregardTheme = (theme >= BLOK_THEME_MIN && theme <= BLOK_THEME_MAX);
-    pGraphics->theme = (disregardTheme) ? BLOK_THEME_UNSET : theme;
+    pGraphics->theme = (!disregardTheme) ? BLOK_THEME_UNSET : theme;
 
     (void)blokColoursSet(&pGraphics->colours, pGraphics->theme);
     (void)blokDrawingToolsInit(&pGraphics->tools, &pGraphics->colours);

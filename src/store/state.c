@@ -36,19 +36,6 @@ int blokStateFree(State *pState)
     return blokDynListFree(&pState->obstructives);
 }
 
-int blokStateMoveBox(Square *pBox, const Direction direction)
-{
-    if (pBox == NULL)
-        return 0;
-
-    VectorII vector = blokDirectionToVector(direction);
-    VectorII scaled = blokVectorIIMultiply(vector, pBox->size);
-    VectorII newpos = blokVectorIIAdd(pBox->position, scaled);
-    blokVectorIICopy(&pBox->position, newpos);
-
-    return 1;
-}
-
 int blokStateBoxMovableInDirection(State *pState, const Direction direction)
 {
     if (pState == NULL)

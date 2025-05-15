@@ -36,24 +36,6 @@ int blokStateFree(State *pState)
     return blokDynListFree(&pState->obstructs);
 }
 
-int blokStateBoxMovableInDirection(State *pState, const Direction direction)
-{
-    if (pState == NULL)
-        return (-1);
-
-    pState->boxProjected = pState->box;
-    blokStateMoveBox(&pState->boxProjected, direction);
-
-    int checkIdx = blokDynListGetIndex(
-        &pState->obstructs, 
-        &((Node){pState->boxProjected.position}));
-    
-    if (checkIdx == -1)
-        return 1;
-
-    return 0;
-}
-
 int blokStateMoveBox(State *pState, Direction direction)
 {
     if (pState == NULL)

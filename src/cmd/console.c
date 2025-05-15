@@ -1,7 +1,8 @@
 #include "console.h"
 #include <Windows.h>
 
-int blokConsoleInit(Console *pConhost)
+int blokConsoleInit(
+    Console *pConhost)
 {
     if (pConhost == NULL) {
         return 0;
@@ -31,7 +32,8 @@ int blokConsoleInit(Console *pConhost)
     return 1;
 }
 
-int blokConsoleFree(Console *pConhost)
+int blokConsoleFree(
+    Console *pConhost)
 {
     if (pConhost == NULL) {
         return 0;

@@ -2,7 +2,9 @@
 #include "../model/vector.h"
 #include <stdlib.h>
 
-static int blokStateMoveBoxImpl(Square *pBox, Direction direction) 
+static int blokStateMoveBoxImpl(
+    Square *pBox,
+    Direction direction) 
 {
     if (pBox == NULL) {
         return 0;
@@ -14,7 +16,9 @@ static int blokStateMoveBoxImpl(Square *pBox, Direction direction)
     return blokVectorIICopy(&pBox->position, newpos);
 }
 
-int blokStateInit(State *pState, const VectorII scale)
+int blokStateInit(
+    State *pState,
+    const VectorII scale)
 {
     if (pState == NULL) {
         return 0;
@@ -30,7 +34,8 @@ int blokStateInit(State *pState, const VectorII scale)
     return 1;
 }
 
-int blokStateFree(State *pState)
+int blokStateFree(
+    State *pState)
 {
     if (pState == NULL) {
         return 0;
@@ -39,7 +44,9 @@ int blokStateFree(State *pState)
     return blokDynListFree(&pState->obstructs);
 }
 
-int blokStateMoveBox(State *pState, Direction direction)
+int blokStateMoveBox(
+    State *pState,
+    Direction direction)
 {
     if (pState == NULL) {
         return 0;
@@ -48,7 +55,9 @@ int blokStateMoveBox(State *pState, Direction direction)
     return blokStateMoveBoxImpl(&pState->box, direction);
 }
 
-int blokStateIsBoxMovable(State *pState, Direction direction)
+int blokStateIsBoxMovable(
+    State *pState,
+    Direction direction)
 {
     if (pState == NULL) {
         return 0;
@@ -70,7 +79,9 @@ int blokStateIsBoxMovable(State *pState, Direction direction)
     return 0;
 }
 
-int blokStateAddObstruct(State *pState, const VectorII point)
+int blokStateAddObstruct(
+    State *pState,
+    const VectorII point)
 {
     if (pState == NULL) {
         return -1;
@@ -85,7 +96,9 @@ int blokStateAddObstruct(State *pState, const VectorII point)
     return blokDynListAdd(&pState->obstructs, &newPoint);
 }
 
-int blokStateRemoveObstruct(State *pState, const VectorII point)
+int blokStateRemoveObstruct(
+    State *pState,
+    const VectorII point)
 {
     if (pState == NULL) {
         return 0;
@@ -95,7 +108,8 @@ int blokStateRemoveObstruct(State *pState, const VectorII point)
     return blokDynListRemove(&pState->obstructs, removePoint);
 }
 
-int blokStateClearObstructs(State *pState)
+int blokStateClearObstructs(
+    State *pState)
 {
     if (pState == NULL) {
         return 0;

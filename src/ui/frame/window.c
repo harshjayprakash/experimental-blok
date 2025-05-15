@@ -8,7 +8,10 @@
     }
 
 LRESULT CALLBACK _blokWindowProcedure(
-    HWND hWindow, UINT messageId, WPARAM dataWord, LPARAM dataLong)
+    HWND hWindow,
+    UINT messageId,
+    WPARAM dataWord,
+    LPARAM dataLong)
 {
     switch (messageId) {   
     case WM_DESTROY:
@@ -52,7 +55,9 @@ LRESULT CALLBACK _blokWindowProcedure(
     }
 }
 
-int blokWindowInit(Window *pWindow, HINSTANCE hInstance)
+int blokWindowInit(
+    Window *pWindow,
+    HINSTANCE hInstance)
 {
     if (pWindow == NULL) {
         return 0;
@@ -99,7 +104,9 @@ int blokWindowInit(Window *pWindow, HINSTANCE hInstance)
     return 1;
 }
 
-int blokWindowShow(Window *pWindow, DWORD showFlag)
+int blokWindowShow(
+    Window *pWindow,
+    DWORD showFlag)
 {
     if (pWindow == NULL) {
         return -1;
@@ -131,7 +138,9 @@ int blokWindowShow(Window *pWindow, DWORD showFlag)
     return (int)message.wParam;
 }
 
-int blokWindowFree(Window *pWindow, HINSTANCE hInstance)
+int blokWindowFree(
+    Window *pWindow,
+    HINSTANCE hInstance)
 {
     if (pWindow == NULL) {
         return 0;

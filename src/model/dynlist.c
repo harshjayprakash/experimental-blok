@@ -2,12 +2,15 @@
 #include <stdlib.h>
 #include <memory.h>
 
-static long _blokDynListGenerateNewSize(const long currentSize)
+static long _blokDynListGenerateNewSize(
+    const long currentSize)
 {
     return (long) (currentSize + (currentSize / 2));
 }
 
-static int _blokDynListResize(DynList *pList, const long newSize)
+static int _blokDynListResize(
+    DynList *pList,
+    const long newSize)
 {
     if (pList == NULL) {
         return 0;
@@ -33,7 +36,9 @@ static int _blokDynListResize(DynList *pList, const long newSize)
     return 1;
 }
 
-int blokDynListInit(DynList *pList, const long size)
+int blokDynListInit(
+    DynList *pList,
+    const long size)
 {
     if (pList == NULL) {
         return 0;
@@ -52,7 +57,8 @@ int blokDynListInit(DynList *pList, const long size)
     return 1;
 }
 
-int blokDynListIsFull(const DynList *pList)
+int blokDynListIsFull(
+    const DynList *pList)
 {
     if (pList == NULL) {
         return -1;
@@ -65,7 +71,8 @@ int blokDynListIsFull(const DynList *pList)
     return (pList->size == pList->max);
 }
 
-int blokDynListIsEmpty(const DynList *pList)
+int blokDynListIsEmpty(
+    const DynList *pList)
 {
     if (pList == NULL) {
         return -1;
@@ -78,7 +85,9 @@ int blokDynListIsEmpty(const DynList *pList)
     return (pList->head == -1);
 }
 
-long blokDynListAdd(DynList *pList, const Node *pNode)
+long blokDynListAdd(
+    DynList *pList,
+    const Node *pNode)
 {
     if (pList == NULL) {
         return -1L;
@@ -105,7 +114,8 @@ long blokDynListAdd(DynList *pList, const Node *pNode)
     return pList->head;
 }
 
-int blokDynListClear(DynList *pList)
+int blokDynListClear(
+    DynList *pList)
 {
     if (pList == NULL) {
         return 0;
@@ -121,7 +131,9 @@ int blokDynListClear(DynList *pList)
     return 1;
 }
 
-long blokDynListGetIndex(const DynList *pList, const Node *pNode)
+long blokDynListGetIndex(
+    const DynList *pList,
+    const Node *pNode)
 {
     if (pList == NULL) {
         return -2L;
@@ -144,7 +156,9 @@ long blokDynListGetIndex(const DynList *pList, const Node *pNode)
     return -1L;
 }  
 
-int blokDynListExists(const DynList *pList, const Node *pNode)
+int blokDynListExists(
+    const DynList *pList,
+    const Node *pNode)
 {
     if (pList == NULL) {
         return -1;
@@ -167,7 +181,9 @@ int blokDynListExists(const DynList *pList, const Node *pNode)
     return 1;
 }
 
-int blokDynListCombine(DynList *pDest, const DynList *pSrc)
+int blokDynListCombine(
+    DynList *pDest,
+    const DynList *pSrc)
 {
     if (pDest == NULL) {
         return 0;
@@ -194,7 +210,9 @@ int blokDynListCombine(DynList *pDest, const DynList *pSrc)
     return 1;
 }
 
-int blokDynListRemove(DynList *pList, const Node node)
+int blokDynListRemove(
+    DynList *pList,
+    const Node node)
 {
     if (pList == NULL) {
         return -1;
@@ -213,7 +231,8 @@ int blokDynListRemove(DynList *pList, const Node node)
     return idx;
 }
 
-int blokDynListFree(DynList *pList)
+int blokDynListFree(
+    DynList *pList)
 {
     if (pList == NULL) {
         return 0;

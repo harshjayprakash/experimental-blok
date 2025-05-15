@@ -1,6 +1,8 @@
 #include "graphics.h"
 
-int blokGraphicsInit(Graphics *pGraphics, const Theme theme)
+int blokGraphicsInit(
+    Graphics *pGraphics,
+    const Theme theme)
 {
     if (pGraphics == NULL) {
         return 0;
@@ -15,7 +17,8 @@ int blokGraphicsInit(Graphics *pGraphics, const Theme theme)
     return 1;
 }
 
-int blokGraphicsFree(Graphics *pGraphics)
+int blokGraphicsFree(
+    Graphics *pGraphics)
 {
     if (pGraphics == NULL) {
         return 0;

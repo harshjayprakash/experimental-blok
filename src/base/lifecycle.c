@@ -1,7 +1,11 @@
 #include "lifecycle.h"
 #include "../cmd/args.h"
 
-int blokInit(Context *pContext, HINSTANCE hInstance, LPWSTR pCommandLine, DWORD showFlag)
+int blokInit(
+    Context *pContext,
+    HINSTANCE hInstance,
+    LPWSTR pCommandLine,
+    DWORD showFlag)
 {
     if (pContext == NULL) {
         return 0;
@@ -18,14 +22,17 @@ int blokInit(Context *pContext, HINSTANCE hInstance, LPWSTR pCommandLine, DWORD 
         (void)blokConsoleInit(&pContext->console);
     }
 
-    (void)blokStateInit(&pContext->state, (VectorII){argsResult.scaleX, argsResult.scaleY});
+    (void)blokStateInit(&pContext->state, (VectorII){
+        argsResult.scaleX, 
+        argsResult.scaleY });
     (void)blokGraphicsInit(&pContext->graphics, argsResult.theme);
     (void)blokViewportInit(&pContext->viewport, pContext->hInstance);
 
     return 1;
 }
 
-int blokRun(Context *pContext)
+int blokRun(
+    Context *pContext)
 {
     if (pContext == NULL) {
         return 0;
@@ -36,7 +43,8 @@ int blokRun(Context *pContext)
     return 1;
 }
 
-int blokFree(Context *pContext)
+int blokFree(
+    Context *pContext)
 {
     if (pContext == NULL) {
         return 0;

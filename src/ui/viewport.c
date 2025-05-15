@@ -2,7 +2,9 @@
 #include <strsafe.h>
 #include <time.h>
 
-int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
+int blokViewportInit(
+    Viewport *pViewport,
+    HINSTANCE hInstance)
 {
     if (pViewport == NULL) {
         return 0;
@@ -100,7 +102,9 @@ int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance)
     return 1;
 }
 
-int blokViewportShow(Viewport *pViewport, DWORD showFlag)
+int blokViewportShow(
+    Viewport *pViewport,
+    DWORD showFlag)
 {
     if (pViewport == NULL) {
         return 0;
@@ -109,7 +113,9 @@ int blokViewportShow(Viewport *pViewport, DWORD showFlag)
     return blokWindowShow(&pViewport->window, showFlag);
 }
 
-int blokViewportFree(Viewport *pViewport, HINSTANCE hInstance)
+int blokViewportFree(
+    Viewport *pViewport,
+    HINSTANCE hInstance)
 {
     if (pViewport == NULL) {
         return 0;

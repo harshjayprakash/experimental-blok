@@ -11,7 +11,9 @@
     int scale = abs(_wtoi(value));                                                       \
     assignTo = (scale != 0) ? scale : BLOK_SCALE_DEF
 
-int blokArgsProcess(ArgsInfo *pArgs, LPCWSTR pCommandLine)
+int blokArgsProcess(
+    ArgsInfo *pArgs, 
+    LPCWSTR pCommandLine)
 {
     if (pCommandLine == NULL) {
         return 0;

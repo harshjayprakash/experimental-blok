@@ -1,6 +1,10 @@
 #include "button.h"
 
-int blokButtonUpdateEx(Button *pButton, const POINT *pPos, const SIZE *pSize, const SIZE *pMargin)
+int blokButtonUpdateEx(
+    Button *pButton,
+    const POINT *pPos,
+    const SIZE *pSize,
+    const SIZE *pMargin)
 {
     if (pButton == NULL) {
         return 0;
@@ -29,7 +33,9 @@ int blokButtonUpdateEx(Button *pButton, const POINT *pPos, const SIZE *pSize, co
     return 1;
 }
 
-int blokButtonUpdate(Button *pButton, const POINT *pPos)
+int blokButtonUpdate(
+    Button *pButton,
+    const POINT *pPos)
 {
     if (pButton == NULL) {
         return 0;

@@ -2,7 +2,11 @@
 #include "action.h"
 #include <strsafe.h>
 
-int blokActionMoveBox(Viewport *pViewport, State *pState, HWND hWindow, Direction direction)
+int blokActionMoveBox(
+    Viewport *pViewport,
+    State *pState,
+    HWND hWindow,
+    Direction direction)
 {
     if (pViewport == NULL) {
         return 0;
@@ -39,7 +43,9 @@ int blokActionMoveBox(Viewport *pViewport, State *pState, HWND hWindow, Directio
     return result;
 }
 
-int blokActionToggleGridLines(Viewport *pViewport, HWND hWindow)
+int blokActionToggleGridLines(
+    Viewport *pViewport,
+    HWND hWindow)
 {
     if (pViewport == NULL) {
         return 0;
@@ -56,7 +62,9 @@ int blokActionToggleGridLines(Viewport *pViewport, HWND hWindow)
     return 1;
 }
 
-int blokActionToggleInterface(Viewport *pViewport, HWND hWindow)
+int blokActionToggleInterface(
+    Viewport *pViewport,
+    HWND hWindow)
 {
     if (pViewport == NULL) {
         return 0;
@@ -73,7 +81,9 @@ int blokActionToggleInterface(Viewport *pViewport, HWND hWindow)
     return 1;
 }
 
-int blokActionToggleCanvasLock(Viewport *pViewport, HWND hWindow)
+int blokActionToggleCanvasLock(
+    Viewport *pViewport,
+    HWND hWindow)
 {
     if (pViewport == NULL) {
         return 0;
@@ -91,7 +101,9 @@ int blokActionToggleCanvasLock(Viewport *pViewport, HWND hWindow)
     return 1;
 }
 
-int blokActionChangeTheme(Graphics *pGraphics, HWND hWindow)
+int blokActionChangeTheme(
+    Graphics *pGraphics,
+    HWND hWindow)
 {
     if (pGraphics == NULL) {
         return 0;
@@ -108,7 +120,11 @@ int blokActionChangeTheme(Graphics *pGraphics, HWND hWindow)
     return 1;
 }
 
-int blokActionAddObstruct(Viewport *pViewport, State *pState, HWND hWindow, const POINT *pPoint)
+int blokActionAddObstruct(
+    Viewport *pViewport,
+    State *pState,
+    HWND hWindow,
+    const POINT *pPoint)
 {
     if (pViewport == NULL) {
         return 0;
@@ -151,7 +167,11 @@ int blokActionAddObstruct(Viewport *pViewport, State *pState, HWND hWindow, cons
     return (result > -1);
 }
 
-int blokActionRemoveObstruct(Viewport *pViewport, State *pState, HWND hWindow, const POINT point)
+int blokActionRemoveObstruct(
+    Viewport *pViewport,
+    State *pState,
+    HWND hWindow,
+    const POINT point)
 {
     if (pViewport == NULL) {
         return 0;
@@ -188,7 +208,10 @@ int blokActionRemoveObstruct(Viewport *pViewport, State *pState, HWND hWindow, c
     return (result > -1);
 }
 
-int blokActionClearObstructs(Viewport *pViewport, State *pState, HWND hWindow)
+int blokActionClearObstructs(
+    Viewport *pViewport,
+    State *pState,
+    HWND hWindow)
 {
     if (pViewport == NULL) {
         return 0;

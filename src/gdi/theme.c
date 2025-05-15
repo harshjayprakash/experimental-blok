@@ -3,7 +3,9 @@
 #define BLOK_LIGHT_DARK(light, dark)                                                     \
     (theme == BLOK_THEME_LIGHT) ? light : dark
 
-int blokColoursSet(ColourSpace *pColourSpace, const Theme theme)
+int blokColoursSet(
+    ColourSpace *pColourSpace,
+    const Theme theme)
 {
     if (pColourSpace == NULL) {
         return 0;

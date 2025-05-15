@@ -1,6 +1,8 @@
 #include "canvas.h"
 
-int blokCanvasUpdate(Canvas *pCanvas, const RECT *pWindowRgn)
+int blokCanvasUpdate(
+    Canvas *pCanvas,
+    const RECT *pWindowRgn)
 {
     if (pCanvas == NULL) {
         return 0;

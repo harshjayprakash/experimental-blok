@@ -8,7 +8,8 @@
 #define BLOK_MOUSE_AT(rect, pos) \
     (pos.x > rect.left && pos.x < rect.right && pos.y > rect.top && pos.y < rect.bottom)
 
-void blokProcessEventOnPaint(HWND hWindow)
+void blokProcessEventOnPaint(
+    HWND hWindow)
 {
     Graphics *pGraphics = blokContextGetGraphics();
     Viewport *pViewport = blokContextGetViewport();
@@ -166,7 +167,9 @@ void blokProcessEventOnPaint(HWND hWindow)
     (void)EndPaint(hWindow, &paintstruct);
 }
 
-void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
+void blokProcessEventOnKeyDown(
+    HWND hWindow,
+    WPARAM virtualKey)
 {
     State *pState = blokContextGetState();
     Viewport *pViewport = blokContextGetViewport();
@@ -219,7 +222,9 @@ void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
     }
 }
 
-void blokProcessEventOnLeftMouseDown(HWND hWindow, LPARAM mousepos)
+void blokProcessEventOnLeftMouseDown(
+    HWND hWindow,
+    LPARAM mousepos)
 {
     State *pState = blokContextGetState();
     Viewport *pViewport = blokContextGetViewport();
@@ -255,7 +260,9 @@ void blokProcessEventOnLeftMouseDown(HWND hWindow, LPARAM mousepos)
     (void)blokActionAddObstruct(pViewport, pState, hWindow, &mpos);
 }
 
-void blokProcessEventOnLeftMouseUp(HWND hWindow, LPARAM mousepos)
+void blokProcessEventOnLeftMouseUp(
+    HWND hWindow,
+    LPARAM mousepos)
 {
     State *pState = blokContextGetState();
     Viewport *pViewport = blokContextGetViewport();
@@ -263,7 +270,8 @@ void blokProcessEventOnLeftMouseUp(HWND hWindow, LPARAM mousepos)
     pViewport->isLeftMouseDown = FALSE;
 }
 
-void blokProcessEventOnResize(HWND hWindow)
+void blokProcessEventOnResize(
+    HWND hWindow)
 {
     Viewport *pViewport = blokContextGetViewport();
     State *pState = blokContextGetState();
@@ -312,7 +320,9 @@ void blokProcessEventOnResize(HWND hWindow)
             pViewport->lockedToggle.region.top });
 }
 
-void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos)
+void blokProcessEventOnMouseHover(
+    HWND hWindow,
+    LPARAM mousepos)
 {
     Viewport *pViewport = blokContextGetViewport();
     State *pState = blokContextGetState();
@@ -342,7 +352,9 @@ void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos)
     (void)InvalidateRect(hWindow, NULL, FALSE);
 }
 
-void blokProcessEventOnRightMouseDown(HWND hWindow, LPARAM mousepos)
+void blokProcessEventOnRightMouseDown(
+    HWND hWindow,
+    LPARAM mousepos)
 {
     State *pState = blokContextGetState();
     Viewport *pViewport = blokContextGetViewport();
@@ -356,7 +368,9 @@ void blokProcessEventOnRightMouseDown(HWND hWindow, LPARAM mousepos)
     (void)blokActionRemoveObstruct(pViewport, pState, hWindow, pViewport->mousePos);
 }
 
-void blokProcessEventOnRightMouseUp(HWND hWindow, LPARAM mousepos)
+void blokProcessEventOnRightMouseUp(
+    HWND hWindow,
+    LPARAM mousepos)
 {
     Viewport *pViewport = blokContextGetViewport();
 

@@ -6,7 +6,9 @@
         hObject = NULL;                                                                  \
     }                                           
 
-int blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours)
+int blokDrawingToolsInit(
+    DrawingTools *pTools,
+    const ColourSpace *pColours)
 {
     if (pTools == NULL) {
         return 0;
@@ -30,7 +32,8 @@ int blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours)
     return 1;
 }
 
-int blokDrawingToolsFree(DrawingTools *pTools)
+int blokDrawingToolsFree(
+    DrawingTools *pTools)
 {
     if (pTools == NULL) {
         return 0;

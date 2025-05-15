@@ -15,10 +15,6 @@ int blokStateInit(State *pState, const VectorII scale);
 
 int blokStateFree(State *pState);
 
-int blokStateMoveBox(Square *pBox, const Direction direction);
-
-int blokStateBoxMovableInDirection(State *pState, const Direction direction);
-
 int blokStateMoveBox2(State *pState, Direction direction);
 
 int blokStateIsBoxMovable(State *pState, Direction direction);

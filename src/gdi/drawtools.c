@@ -1,19 +1,20 @@
 #include "drawtools.h"
 
 #define BLOK_DELETE_OBJECT(hObject)                                                      \
-    if (hObject != NULL)                                                                 \
-    {                                                                                    \
-        (void)DeleteObject(hObject);                                                    \
+    if (hObject != NULL) {                                                               \
+        (void)DeleteObject(hObject);                                                     \
         hObject = NULL;                                                                  \
     }                                           
 
 int blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours)
 {
-    if (pTools == NULL)
+    if (pTools == NULL) {
         return 0;
+    }
 
-    if (pColours == NULL)
+    if (pColours == NULL) {
         return 0;
+    }
 
     pTools->hSurfaceBrush = CreateSolidBrush(pColours->surface);
     pTools->hSurfaceVariantBrush = CreateSolidBrush(pColours->surfaceVariant);
@@ -31,8 +32,9 @@ int blokDrawingToolsInit(DrawingTools *pTools, const ColourSpace *pColours)
 
 int blokDrawingToolsFree(DrawingTools *pTools)
 {
-    if (pTools == NULL)
+    if (pTools == NULL) {
         return 0;
+    }
 
     BLOK_DELETE_OBJECT(pTools->hSurfaceBrush);
     BLOK_DELETE_OBJECT(pTools->hSurfaceVariantBrush);

@@ -3,13 +3,13 @@
 
 int blokConsoleInit(Console *pConhost)
 {
-    if (pConhost == NULL)
+    if (pConhost == NULL) {
         return 0;
+    }
 
     pConhost->isInitialised = AllocConsole();
     
-    if (pConhost->isInitialised == 0)
-    {
+    if (pConhost->isInitialised == 0) {
         (void)MessageBoxW(
             NULL, L"Console initialisation failed", L"Blok", MB_OK | MB_ICONERROR);
         return 0;
@@ -18,8 +18,7 @@ int blokConsoleInit(Console *pConhost)
     pConhost->errorOnAlloc = _wfreopen_s(
         &pConhost->pStandardOut, L"CONOUT$", L"w", stdout);
     
-    if (pConhost->errorOnAlloc != 0)
-    {
+    if (pConhost->errorOnAlloc != 0) {
         (void)MessageBoxW(
             NULL, L"Opening standard out file stream failed", L"Blok", 
             MB_OK | MB_ICONERROR);
@@ -34,14 +33,17 @@ int blokConsoleInit(Console *pConhost)
 
 int blokConsoleFree(Console *pConhost)
 {
-    if (pConhost == NULL)
+    if (pConhost == NULL) {
         return 0;
+    }
 
-    if (pConhost->errorOnAlloc == 0)
+    if (pConhost->errorOnAlloc == 0) {
         (void)fclose(stdout);
+    }
 
-    if (pConhost->isInitialised != 0)
+    if (pConhost->isInitialised != 0) {
         (void)FreeConsole();
+    }
 
     return 1;
 }

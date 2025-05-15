@@ -4,29 +4,26 @@ int blokProgressBarUpdateEx(
     ProgressBar *pPbar, const POINT *pPosition, const SIZE *pSize, const SIZE *pMargin,
     const SIZE *pBarMargin)
 {
-    if (pPbar == NULL)
+    if (pPbar == NULL) {
         return 0;
+    }
 
-    if (pPosition != NULL)
-    {
+    if (pPosition != NULL) {
         pPbar->position.x = pPosition->x;
         pPbar->position.y = pPosition->y;
     }
 
-    if (pSize != NULL)
-    {
+    if (pSize != NULL) {
         pPbar->size.cx = pSize->cx;
         pPbar->size.cy = pSize->cy;
     }
 
-    if (pMargin != NULL)
-    {
+    if (pMargin != NULL) {
         pPbar->margin.cx = pMargin->cx;
         pPbar->margin.cy = pMargin->cy;
     }
 
-    if (pBarMargin != NULL)
-    {
+    if (pBarMargin != NULL) {
         pPbar->barMargin.cx = pBarMargin->cx;
         pPbar->barMargin.cy = pBarMargin->cy;
     }
@@ -52,11 +49,13 @@ int blokProgressBarUpdateEx(
 
 int blokProgressBarUpdate(ProgressBar *pPbar, const POINT *pPosition)
 {
-    if (pPbar == NULL)
+    if (pPbar == NULL) {
         return 0;
+    }
 
-    if (pPosition == NULL)
+    if (pPosition == NULL) {
         return 0;
+    }
 
     return blokProgressBarUpdateEx(pPbar, pPosition, NULL, NULL, NULL);
 }
@@ -64,8 +63,9 @@ int blokProgressBarUpdate(ProgressBar *pPbar, const POINT *pPosition)
 int blokProgressBarUpdateMinMax(
     ProgressBar *pPbar, const int minValue, const int maxValue)
 {
-    if (pPbar == NULL)
+    if (pPbar == NULL) {
         return 0;
+    }
 
     pPbar->barMinValue = minValue;
     pPbar->barMaxValue = maxValue;
@@ -75,8 +75,9 @@ int blokProgressBarUpdateMinMax(
 
 int blokProgressBarUpdateValue(ProgressBar *pPbar, const int value)
 {
-    if (pPbar == NULL)
+    if (pPbar == NULL) {
         return 0;
+    }
 
     pPbar->barValue = value;
     float percent = (float) pPbar->barValue / (pPbar->barMaxValue - pPbar->barMinValue);

@@ -2,11 +2,13 @@
 
 int blokCanvasUpdate(Canvas *pCanvas, const RECT *pWindowRgn)
 {
-    if (pCanvas == NULL)
+    if (pCanvas == NULL) {
         return 0;
+    }
 
-    if (pWindowRgn == NULL)
+    if (pWindowRgn == NULL) {
         return 0;
+    }
 
     (void)CopyRect(&pCanvas->region, pWindowRgn);
 

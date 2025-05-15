@@ -4,18 +4,22 @@
 
 int blokActionMoveBox(Viewport *pViewport, State *pState, HWND hWindow, Direction direction)
 {
-    if (pViewport == NULL)
+    if (pViewport == NULL) {
         return 0;
+    }
 
-    if (pState == NULL)
+    if (pState == NULL) {
         return 0;
+    }
 
-    if (hWindow == NULL)
+    if (hWindow == NULL) {
         return 0;
+    }
 
     int movable = blokStateIsBoxMovable(pState, direction);
-    if (!movable)
+    if (!movable) {
         return 0;
+    }
 
     int result = blokStateMoveBox(pState, direction);
 
@@ -30,69 +34,74 @@ int blokActionMoveBox(Viewport *pViewport, State *pState, HWND hWindow, Directio
     };
 
     (void)InvalidateRect(hWindow, &boxUpdateRgn, FALSE);
-    (void)InvalidateRect(hWindow, &(pViewport->panel.region), FALSE);
+    (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
 
     return result;
 }
 
 int blokActionToggleGridLines(Viewport *pViewport, HWND hWindow)
 {
-    if (pViewport == NULL)
+    if (pViewport == NULL) {
         return 0;
+    }
 
-    if (hWindow == NULL)
+    if (hWindow == NULL) {
         return 0;
+    }
 
     pViewport->isGridVisible = !pViewport->isGridVisible;
 
-    (void)InvalidateRect(hWindow, &(pViewport->canvas.region), FALSE);
+    (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
 
     return 1;
 }
 
 int blokActionToggleInterface(Viewport *pViewport, HWND hWindow)
 {
-    if (pViewport == NULL)
+    if (pViewport == NULL) {
         return 0;
+    }
 
-    if (hWindow == NULL)
+    if (hWindow == NULL) {
         return 0;
+    }
 
     pViewport->isInterfaceVisible = !pViewport->isInterfaceVisible;
 
-    (void)InvalidateRect(hWindow, &(pViewport->panel.region), FALSE);
+    (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
 
     return 1;
 }
 
 int blokActionToggleCanvasLock(Viewport *pViewport, HWND hWindow)
 {
-    if (pViewport == NULL)
+    if (pViewport == NULL) {
         return 0;
+    }
 
-    if (hWindow == NULL)
+    if (hWindow == NULL) {
         return 0;
+    }
 
     pViewport->isCanvasLocked = !pViewport->isCanvasLocked;
 
-    (void)blokToggleUpdateSelected(&(pViewport->lockedToggle), pViewport->isCanvasLocked);
-    (void)InvalidateRect(hWindow, &(pViewport->lockedToggle.region), FALSE);
+    (void)blokToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
+    (void)InvalidateRect(hWindow, &pViewport->lockedToggle.region, FALSE);
 
     return 1;
 }
 
 int blokActionChangeTheme(Graphics *pGraphics, HWND hWindow)
 {
-    if (pGraphics == NULL)
+    if (pGraphics == NULL) {
         return 0;
+    }
 
     Theme currrentTheme = pGraphics->theme;
         
     (void)blokGraphicsFree(pGraphics);
     (void)blokGraphicsInit(pGraphics,
         (currrentTheme == 1 || currrentTheme == 0) ? BLOK_THEME_LIGHT : BLOK_THEME_DARK);
-
-    wprintf(L"THEME: %d", pGraphics->theme);
 
     (void)InvalidateRect(hWindow, NULL, FALSE);
 
@@ -101,27 +110,27 @@ int blokActionChangeTheme(Graphics *pGraphics, HWND hWindow)
 
 int blokActionAddObstruct(Viewport *pViewport, State *pState, HWND hWindow, const POINT *pPoint)
 {
-    if (pViewport == NULL)
+    if (pViewport == NULL) {
         return 0;
+    }
 
-    if (pState == NULL)
+    if (pState == NULL) {
         return 0;
+    }
 
-    if (hWindow == NULL)
+    if (hWindow == NULL) {
         return 0;
+    }
 
-    VectorII newNode = {0, 0};
+    VectorII newNode = { 0, 0 };
     VectorII scale = pState->box.size;
 
-    if (pPoint == NULL)
-    {
+    if (pPoint == NULL) {
         newNode.x = ((rand() % pViewport->canvas.size.cx) / scale.x) * scale.x;
         newNode.y = ((rand() % pViewport->canvas.size.cy) / scale.y) * scale.y;
-    }
-    else
-    {
-        newNode.x = ((pPoint->x) / scale.x) * scale.x;
-        newNode.y = ((pPoint->y) / scale.y) * scale.y;
+    } else {
+        newNode.x = (pPoint->x / scale.x) * scale.x;
+        newNode.y = (pPoint->y / scale.y) * scale.y;
     }
     
     int result = blokStateAddObstruct(pState, newNode);
@@ -144,19 +153,22 @@ int blokActionAddObstruct(Viewport *pViewport, State *pState, HWND hWindow, cons
 
 int blokActionRemoveObstruct(Viewport *pViewport, State *pState, HWND hWindow, const POINT point)
 {
-    if (pViewport == NULL)
+    if (pViewport == NULL) {
         return 0;
+    }
 
-    if (pState == NULL)
+    if (pState == NULL) {
         return 0;
+    }
 
-    if (hWindow == NULL)
+    if (hWindow == NULL) {
         return 0;
+    }
 
     VectorII scale = pState->box.size;
     VectorII rp = {
-        ((point.x) / scale.x) * scale.x,
-        ((point.y) / scale.y) * scale.y
+        (point.x / scale.x) * scale.x,
+        (point.y / scale.y) * scale.y
     };
 
     int result = blokStateRemoveObstruct(pState, rp);
@@ -178,14 +190,17 @@ int blokActionRemoveObstruct(Viewport *pViewport, State *pState, HWND hWindow, c
 
 int blokActionClearObstructs(Viewport *pViewport, State *pState, HWND hWindow)
 {
-    if (pViewport == NULL)
+    if (pViewport == NULL) {
         return 0;
+    }
 
-    if (pState == NULL)
+    if (pState == NULL) {
         return 0;
+    }
 
-    if (hWindow == NULL)
+    if (hWindow == NULL) {
         return 0;
+    }
 
     int result = blokStateClearObstructs(pState);
     (void)blokProgressBarUpdateValue(

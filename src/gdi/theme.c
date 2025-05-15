@@ -5,8 +5,9 @@
 
 int blokColoursSet(ColourSpace *pColourSpace, const Theme theme)
 {
-    if (pColourSpace == NULL)
+    if (pColourSpace == NULL) {
         return 0;
+    }
 
     pColourSpace->surface = BLOK_LIGHT_DARK(BLOK_COLOUR_100S, BLOK_COLOUR_900S);
     pColourSpace->surfaceVariant = BLOK_LIGHT_DARK(BLOK_COLOUR_200S, BLOK_COLOUR_800S);

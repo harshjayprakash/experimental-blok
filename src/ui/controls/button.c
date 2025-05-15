@@ -2,23 +2,21 @@
 
 int blokButtonUpdateEx(Button *pButton, const POINT *pPos, const SIZE *pSize, const SIZE *pMargin)
 {
-    if (pButton == NULL)
+    if (pButton == NULL) {
         return 0;
+    }
 
-    if (pPos != NULL)
-    {
+    if (pPos != NULL) {
         pButton->position.x = pPos->x;
         pButton->position.y = pPos->y;
     }
 
-    if (pSize != NULL)
-    {
+    if (pSize != NULL) {
         pButton->size.cx = pSize->cx;
         pButton->size.cy = pSize->cy;
     }
 
-    if (pMargin != NULL)
-    {
+    if (pMargin != NULL) {
         pButton->margin.cx = pMargin->cx;
         pButton->margin.cy = pMargin->cy;
     }
@@ -33,11 +31,13 @@ int blokButtonUpdateEx(Button *pButton, const POINT *pPos, const SIZE *pSize, co
 
 int blokButtonUpdate(Button *pButton, const POINT *pPos)
 {
-    if (pButton == NULL)
+    if (pButton == NULL) {
         return 0;
+    }
 
-    if (pPos == NULL)
+    if (pPos == NULL) {
         return 0;
+    }
 
     return blokButtonUpdateEx(pButton, pPos, NULL, NULL);
 }

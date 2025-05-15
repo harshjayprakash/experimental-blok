@@ -8,15 +8,15 @@ Context *blokContextGet(void)
 
 Graphics *blokContextGetGraphics(void)
 {
-    return &(blokContextGet()->graphics);
+    return &blokContextGet()->graphics;
 }
 
 Viewport *blokContextGetViewport(void)
 {
-    return &(blokContextGet()->viewport);
+    return &blokContextGet()->viewport;
 }
 
 State *blokContextGetState(void)
 {
-    return &(blokContextGet()->state);
+    return &blokContextGet()->state;
 }

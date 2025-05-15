@@ -3,8 +3,9 @@
 
 int blokVectorIICopy(VectorII *pDest, const VectorII src)
 {
-    if (pDest == NULL)
+    if (pDest == NULL) {
         return 0;
+    }
 
     pDest->x = src.x;
     pDest->y = src.y;
@@ -19,20 +20,20 @@ int blokVectorIIEquals(const VectorII veca, const VectorII vecb)
 
 VectorII blokVectorIIOffset(const VectorII veca, const VectorII vecb)
 {
-    return (VectorII){veca.x + vecb.x, veca.y + vecb.y};
+    return (VectorII){ veca.x + vecb.x, veca.y + vecb.y };
 }
 
 VectorII blokVectorIIAdd(const VectorII veca, const VectorII vecb)
 {
-    return (VectorII){veca.x + vecb.x, veca.y + vecb.y};
+    return (VectorII){ veca.x + vecb.x, veca.y + vecb.y };
 }
 
 VectorII blokVectorIISubtract(const VectorII veca, const VectorII vecb)
 {
-    return (VectorII){veca.x - vecb.x, veca.y - vecb.y};
+    return (VectorII){ veca.x - vecb.x, veca.y - vecb.y };
 }
 
 VectorII blokVectorIIMultiply(const VectorII veca, const VectorII vecb)
 {
-    return (VectorII){veca.x * vecb.x, veca.y * vecb.y};
+    return (VectorII){ veca.x * vecb.x, veca.y * vecb.y };
 }

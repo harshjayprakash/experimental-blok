@@ -2,8 +2,7 @@
 #include "../events/process.h"
 
 #define BLOK_CLEANUP_RESOURCE(object, cleanFn)                                           \
-    if (object != NULL)                                                                  \
-    {                                                                                    \
+    if (object != NULL) {                                                                \
         (void)cleanFn(object);                                                           \
         object = NULL;                                                                   \
     }
@@ -11,8 +10,7 @@
 LRESULT CALLBACK _blokWindowProcedure(
     HWND hWindow, UINT messageId, WPARAM dataWord, LPARAM dataLong)
 {
-    switch (messageId)
-    {   
+    switch (messageId) {   
     case WM_DESTROY:
         PostQuitMessage(0);
         return TRUE;
@@ -56,11 +54,13 @@ LRESULT CALLBACK _blokWindowProcedure(
 
 int blokWindowInit(Window *pWindow, HINSTANCE hInstance)
 {
-    if (pWindow == NULL)
+    if (pWindow == NULL) {
         return 0;
+    }
 
-    if (hInstance == NULL)
+    if (hInstance == NULL) {
         return 0;
+    }
 
     pWindow->klassName = L"BlokViewportWindow";
     pWindow->caption = L"Blok 5.0 --25H2A";
@@ -80,8 +80,7 @@ int blokWindowInit(Window *pWindow, HINSTANCE hInstance)
 
     pWindow->klassAtomIdx = RegisterClassExW(&pWindow->klass);
     
-    if (pWindow->klassAtomIdx == 0)
-    {
+    if (pWindow->klassAtomIdx == 0) {
         (void)MessageBoxW(0, L"Window Class Registeration Failed", L"Blok", 
             MB_OK | MB_ICONERROR);
         blokWindowFree(pWindow, hInstance);
@@ -91,8 +90,7 @@ int blokWindowInit(Window *pWindow, HINSTANCE hInstance)
     pWindow->hHandle = CreateWindowExW(0L, pWindow->klassName, pWindow->caption, 
         WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 800, 600, 0, 0, hInstance, 0);
     
-    if (!pWindow->hHandle)
-    {
+    if (!pWindow->hHandle) {
         (void)MessageBoxW(0, L"Window Creation Failed", L"Blok", MB_OK | MB_ICONERROR);
         blokWindowFree(pWindow, hInstance);
         return 0;
@@ -103,25 +101,27 @@ int blokWindowInit(Window *pWindow, HINSTANCE hInstance)
 
 int blokWindowShow(Window *pWindow, DWORD showFlag)
 {
-    if (pWindow == NULL)
-        return (-1);
+    if (pWindow == NULL) {
+        return -1;
+    }
 
-    if (pWindow->hHandle == NULL)
-        return (-1);
+    if (pWindow->hHandle == NULL) {
+        return -1;
+    }
 
     (void)ShowWindow(pWindow->hHandle, showFlag);
 
-    MSG message = {0};
+    MSG message = { 0 };
 
-    for (;;)
-    {
-        if (PeekMessageW(&message, 0, 0, 0, PM_REMOVE))
-        {
+    for (;;) {
+
+        if (PeekMessageW(&message, 0, 0, 0, PM_REMOVE)) {
             (void)TranslateMessage(&message);
             (void)DispatchMessageW(&message);
 
-            if (message.message == WM_QUIT)
+            if (message.message == WM_QUIT) {
                 break;
+            }
         }
 
         (void)UpdateWindow(pWindow->hHandle);
@@ -133,8 +133,9 @@ int blokWindowShow(Window *pWindow, DWORD showFlag)
 
 int blokWindowFree(Window *pWindow, HINSTANCE hInstance)
 {
-    if (pWindow == NULL)
+    if (pWindow == NULL) {
         return 0;
+    }
     
     BLOK_CLEANUP_RESOURCE(pWindow->hHandle, DestroyWindow);
     BLOK_CLEANUP_RESOURCE(pWindow->klass.hIcon, DestroyIcon);
@@ -142,8 +143,9 @@ int blokWindowFree(Window *pWindow, HINSTANCE hInstance)
     BLOK_CLEANUP_RESOURCE(pWindow->klass.hCursor, DestroyCursor);
     BLOK_CLEANUP_RESOURCE(pWindow->klass.hbrBackground, DeleteObject);
     
-    if (pWindow->klassAtomIdx != 0)
+    if (pWindow->klassAtomIdx != 0) {
         (void)UnregisterClassW(pWindow->klassName, hInstance);
+    }
 
     return 1;
 }

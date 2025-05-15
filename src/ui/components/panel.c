@@ -3,20 +3,20 @@
 int blokPanelUpdateEx(
     Panel *pPanel, const RECT *pWindowRgn, const SIZE *pSize, const SIZE *pMargin)
 {
-    if (pPanel == NULL)
+    if (pPanel == NULL) {
         return 0;
+    }
 
-    if (pWindowRgn == NULL)
+    if (pWindowRgn == NULL) {
         return 0;
+    }
 
-    if (pSize != NULL)
-    {
+    if (pSize != NULL) {
         pPanel->size.cx = pSize->cx;
         pPanel->size.cy = pSize->cy;
     }
 
-    if (pMargin != NULL)
-    {
+    if (pMargin != NULL) {
         pPanel->margin.cx = pMargin->cx;
         pPanel->margin.cy = pMargin->cy;
     }
@@ -31,11 +31,13 @@ int blokPanelUpdateEx(
 
 int blokPanelUpdate(Panel *pPanel, const RECT *pWindowRgn)
 {
-    if (pPanel == NULL)
+    if (pPanel == NULL) {
         return 0;
+    }
 
-    if (pWindowRgn == NULL)
+    if (pWindowRgn == NULL) {
         return 0;
+    }
 
     return blokPanelUpdateEx(pPanel, pWindowRgn, NULL, NULL);
 }

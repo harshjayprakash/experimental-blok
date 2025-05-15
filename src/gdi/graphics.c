@@ -2,8 +2,9 @@
 
 int blokGraphicsInit(Graphics *pGraphics, const Theme theme)
 {
-    if (pGraphics == NULL)
+    if (pGraphics == NULL) {
         return 0;
+    }
 
     int disregardTheme = (theme >= BLOK_THEME_MIN && theme <= BLOK_THEME_MAX);
     pGraphics->theme = (!disregardTheme) ? BLOK_THEME_UNSET : theme;
@@ -16,8 +17,9 @@ int blokGraphicsInit(Graphics *pGraphics, const Theme theme)
 
 int blokGraphicsFree(Graphics *pGraphics)
 {
-    if (pGraphics == NULL)
+    if (pGraphics == NULL) {
         return 0;
+    }
 
     return blokDrawingToolsFree(&pGraphics->tools);
 }

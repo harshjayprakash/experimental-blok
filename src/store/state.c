@@ -23,7 +23,7 @@ int blokStateInit(State *pState, const VectorII scale)
     blokVectorIICopy(&pState->box.size, defaultBoxSize);
     blokVectorIICopy(&pState->box.position, defaultBoxState);
 
-    blokDynListInit(&pState->obstructives, 10);
+    blokDynListInit(&pState->obstructs, 10);
 
     return 1;
 }
@@ -33,7 +33,7 @@ int blokStateFree(State *pState)
     if (pState == NULL)
         return 0;
 
-    return blokDynListFree(&pState->obstructives);
+    return blokDynListFree(&pState->obstructs);
 }
 
 int blokStateBoxMovableInDirection(State *pState, const Direction direction)
@@ -45,7 +45,7 @@ int blokStateBoxMovableInDirection(State *pState, const Direction direction)
     blokStateMoveBox(&pState->boxProjected, direction);
 
     int checkIdx = blokDynListGetIndex(
-        &pState->obstructives, 
+        &pState->obstructs, 
         &((Node){pState->boxProjected.position}));
     
     if (checkIdx == -1)
@@ -73,7 +73,7 @@ int blokStateIsBoxMovable(State *pState, Direction direction)
         return 0;
 
     Node poschk = { projected.position };
-    int eidx = blokDynListGetIndex(&(pState->obstructives), &poschk);
+    int eidx = blokDynListGetIndex(&(pState->obstructs), &poschk);
 
     if (eidx == -1)
         return 1;
@@ -87,11 +87,11 @@ int blokStateAddObstruct(State *pState, const VectorII point)
         return (-1);
 
     Node newPoint = {point};
-    int exists = blokDynListExists(&(pState->obstructives), &newPoint);
+    int exists = blokDynListExists(&(pState->obstructs), &newPoint);
     if (exists)
         return (-1);
 
-    return blokDynListAdd(&(pState->obstructives), &newPoint);
+    return blokDynListAdd(&(pState->obstructs), &newPoint);
 }
 
 int blokStateRemoveObstruct(State *pState, const VectorII point)
@@ -100,7 +100,7 @@ int blokStateRemoveObstruct(State *pState, const VectorII point)
         return 0;
 
     Node removePoint = {point};
-    return blokDynListRemove(&(pState->obstructives), removePoint);
+    return blokDynListRemove(&(pState->obstructs), removePoint);
 }
 
 int blokStateClearObstructs(State *pState)
@@ -108,5 +108,5 @@ int blokStateClearObstructs(State *pState)
     if (pState == NULL)
         return 0;
 
-    return blokDynListClear(&(pState->obstructives));
+    return blokDynListClear(&(pState->obstructs));
 }

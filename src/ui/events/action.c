@@ -128,12 +128,12 @@ int blokActionAddObstruct(Viewport *pViewport, State *pState, HWND hWindow, cons
     RECT updateRegion = blokConvertVectorRect(newNode, pState->box.size);
 
     (void)StringCbPrintfW(
-        pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
+        pViewport->obstructCountText.data, 60, L"%ld", pState->obstructs.size);
 
     (void)blokProgressBarUpdateMinMax(
-        &pViewport->obstructMemoryBar, 0, pState->obstructives.max);
+        &pViewport->obstructMemoryBar, 0, pState->obstructs.max);
     (void)blokProgressBarUpdateValue(
-        &pViewport->obstructMemoryBar, pState->obstructives.size);
+        &pViewport->obstructMemoryBar, pState->obstructs.size);
 
     (void)InvalidateRect(hWindow, &updateRegion, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
@@ -162,12 +162,12 @@ int blokActionRemoveObstruct(Viewport *pViewport, State *pState, HWND hWindow, c
     int result = blokStateRemoveObstruct(pState, rp);
 
     (void)StringCbPrintfW(
-        pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
+        pViewport->obstructCountText.data, 60, L"%ld", pState->obstructs.size);
 
     (void)blokProgressBarUpdateMinMax(
-        &pViewport->obstructMemoryBar, 0, pState->obstructives.max);
+        &pViewport->obstructMemoryBar, 0, pState->obstructs.max);
     (void)blokProgressBarUpdateValue(
-        &pViewport->obstructMemoryBar, pState->obstructives.size);
+        &pViewport->obstructMemoryBar, pState->obstructs.size);
 
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
@@ -189,9 +189,9 @@ int blokActionClearObstructs(Viewport *pViewport, State *pState, HWND hWindow)
 
     int result = blokStateClearObstructs(pState);
     (void)blokProgressBarUpdateValue(
-        &pViewport->obstructMemoryBar, pState->obstructives.size);
+        &pViewport->obstructMemoryBar, pState->obstructs.size);
     (void)StringCbPrintfW(
-        pViewport->obstructCountText.data, 60, L"%ld", pState->obstructives.size);
+        pViewport->obstructCountText.data, 60, L"%ld", pState->obstructs.size);
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);

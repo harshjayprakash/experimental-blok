@@ -8,7 +8,7 @@
 typedef struct _State {
     Square box;
     Square boxProjected;
-    DynList obstructives;
+    DynList obstructs;
 } State;
 
 int blokStateInit(State *pState, const VectorII scale);

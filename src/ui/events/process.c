@@ -67,10 +67,10 @@ void blokProcessEventOnPaint(HWND hWindow)
     (void)FillRect(hOffSurface, &box, pGraphics->tools.hPrimaryBrush);
     (void)FillRect(hOffSurface, &innerBox, pGraphics->tools.hSurfaceBrush);
 
-    for (long obstructIdx = 0; obstructIdx < pState->obstructives.size; obstructIdx++)
+    for (long obstructIdx = 0; obstructIdx < pState->obstructs.size; obstructIdx++)
     {
         RECT obstructiveRc = blokConvertVectorRect(
-            pState->obstructives.pArr[obstructIdx].data, scaling);
+            pState->obstructs.pArr[obstructIdx].data, scaling);
         (void)FillRect(hOffSurface, &obstructiveRc, pGraphics->tools.hSecondaryBrush);
     }
 
@@ -303,9 +303,9 @@ void blokProcessEventOnResize(HWND hWindow)
             pViewport->obstructCountText.region.right+10, 
             pViewport->obstructCountText.region.top}));
     (void)blokProgressBarUpdateMinMax(
-        &pViewport->obstructMemoryBar, 0, pState->obstructives.max);
+        &pViewport->obstructMemoryBar, 0, pState->obstructs.max);
     (void)blokProgressBarUpdateValue(
-        &pViewport->obstructMemoryBar, pState->obstructives.size);
+        &pViewport->obstructMemoryBar, pState->obstructs.size);
     (void)blokToggleUpdate(
         &pViewport->lockedToggle,
         &((POINT){

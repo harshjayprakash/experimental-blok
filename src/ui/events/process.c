@@ -172,8 +172,7 @@ void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey)
     Viewport *pViewport = blokContextGetViewport();
     Graphics *pGraphics = blokContextGetGraphics();
 
-    switch (virtualKey)
-    {
+    switch (virtualKey) {
     case VK_UP:
     case 'W': 
         (void)blokActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_NORTH);

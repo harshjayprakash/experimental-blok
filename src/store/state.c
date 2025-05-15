@@ -67,7 +67,7 @@ int blokStateBoxMovableInDirection(State *pState, const Direction direction)
     return 0;
 }
 
-int blokStateMoveBox2(State *pState, Direction direction)
+int blokStateMoveBox(State *pState, Direction direction)
 {
     if (pState == NULL)
         return 0;

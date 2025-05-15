@@ -17,7 +17,7 @@ int blokActionMoveBox(Viewport *pViewport, State *pState, HWND hWindow, Directio
     if (!movable)
         return 0;
 
-    int result = blokStateMoveBox2(pState, direction);
+    int result = blokStateMoveBox(pState, direction);
 
     (void)StringCbPrintfW(pViewport->coordinatesText.data, 60,
         L"(%d, %d)", pState->box.position.x, pState->box.position.y);

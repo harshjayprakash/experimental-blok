@@ -7,7 +7,6 @@
 
 typedef struct _State {
     Square box;
-    Square boxProjected;
     DynList obstructs;
 } State;
 

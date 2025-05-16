@@ -93,36 +93,44 @@ state of the entire program as a sort of global through a singleton helper funct
 
 ## Compilation and Execution
 
-This project uses the CMake build system. I use MSVC.
+### Pre-requisites
 
-The executable can be run with extra arguments
+* **CMake** (Minimum Version: 3.10): Required for building the project.
+* **MSVC** (or a Compiler that Support C11).
+* **Windows OS** (It can be compiled with MinGW on Linux, though designed for Windows).
 
-```pwsh
-# Runs with the default configuration
-blok.exe
+Please note that Visual Studio, VSCode (with the CMake Extension), or CLion will
+automatically build the project on Windows.
 
-# Any of the following arguments can be passed to the program:
-#
-#     --light-theme
-#         Specifies the program to startup with the light theme.
-#
-#     --dark-theme
-#         Specifies the program to startup with the dark theme (default).
-#
-#     --show-console
-#         Shows the information console while the program is running.
-#         The console cannot be started after the program is running due to
-#             implementation.
-#
-#     --scale [integer]
-#         Specifies the scale in both x and y direction (default: 15).
-#
-#     --scale-x [integer]
-#         Specifies the scale in the x direction (default: 15).
-#
-#     --scale-y [integer]
-#         Specifies the scale in the y direction (default: 15).
+### Building the Project
+
+```sh
+# 1. Cloning the Repository and Move into Directory.
+git clone https://github.io/harshjayprakash/experimental-blok.git
+cd experimental-blok
+
+# 2. Generate build files with CMake.
+cmake -S . -B build
+
+# 3. Compile the project
+cmake --build build --config Release
+
+# 4. Run the project
+./build/Release/blok.exe
 ```
+
+### Command Line Arguments
+
+After compilation, the program can executed with various arguments to customise behaviour.
+The available arguments are shown below.
+
+| Argument | Description |
+| `--light-theme` | Starts with the light theme. |
+| `--dark-theme` | Starts with the dark theme. (default). |
+| `--show-console` | Displays the console while running. |
+| `--scale [int]` | Sets scale for both X and Y directions. |
+| `--scale-x [int]` | Sets the scale for the X direction. |
+| `--scale-y [int]` | Sets the scale for the Y direction. |
 
 ## Changelog
 

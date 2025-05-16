@@ -124,13 +124,14 @@ cmake --build build --config Release
 After compilation, the program can executed with various arguments to customise behaviour.
 The available arguments are shown below.
 
-| Argument | Description |
-| `--light-theme` | Starts with the light theme. |
-| `--dark-theme` | Starts with the dark theme. (default). |
-| `--show-console` | Displays the console while running. |
-| `--scale [int]` | Sets scale for both X and Y directions. |
-| `--scale-x [int]` | Sets the scale for the X direction. |
-| `--scale-y [int]` | Sets the scale for the Y direction. |
+| Argument          | Description                             |
+| :---------------- | :-------------------------------------- |
+| `--light-theme`   | Starts with the light theme.            |
+| `--dark-theme`    | Starts with the dark theme. (default).  |
+| `--show-console`  | Displays the console while running.     |
+| `--scale [int]`   | Sets scale for both X and Y directions. |
+| `--scale-x [int]` | Sets the scale for the X direction.     |
+| `--scale-y [int]` | Sets the scale for the Y direction.     |
 
 ## Changelog
 

@@ -126,7 +126,10 @@ blok.exe
 
 ## Changelog
 
-* Version 5.0 --25H2A "September 2025"
+### Version 5.0 (Snapshot 25H2A) - September 2025
+
+* **Overview**: This version is complete rewrite.
+
   * Functionality
     * Added new keyboard shortcuts.
     * Implemented drag click.
@@ -144,6 +147,9 @@ blok.exe
     * Refactored `Size` and `Position` to `VectorII`
     * Implemented direction to vectorii function.
     * Update text rendering to use `DrawTextW` instead of `TextOutW`.
+    * Updated function naming convention.
+    * Improved doxygen documentation.
+    * Improved modularity.
   * Visual
     * Implemented single instance mutex (mutant winobj).
     * Updated colour scheme.
@@ -155,6 +161,8 @@ blok.exe
     * Reduced gdi32 flickering.
     * Implemented panel visibility.
     * Implemented grid visibility.
+
+
 
 ## Limitations and Known Issues
 

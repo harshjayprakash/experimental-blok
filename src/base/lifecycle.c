@@ -22,9 +22,9 @@ int blokInit(
         (void)blokConsoleInit(&pContext->console);
     }
 
-    (void)blokStateInit(&pContext->state, (VectorII){
-        argsResult.scaleX, 
-        argsResult.scaleY });
+    (void)blokStateInit(
+        &pContext->state, 
+        (VectorII){ argsResult.scaleX, argsResult.scaleY });
     (void)blokGraphicsInit(&pContext->graphics, argsResult.theme);
     (void)blokViewportInit(&pContext->viewport, pContext->hInstance);
 

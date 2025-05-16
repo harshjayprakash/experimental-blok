@@ -169,7 +169,10 @@ blok.exe
 * **Top-Level UI Module**: Added a encapsulated Viewport UI module.
 * **Update Naming Conventions**:
   * Variables prefixed with 'p' if pointer, 'h' if handle.
-  * Function names follow 'blok' + '\<file-scope\>' + '\<function-name\>()'
+  * Function names follow 'blok' + '\<file-scope\>' + '\<function-name\>()'.
+  * Function names are prefix with '_' if static.
+  * Structures and enumerations are Pascal Case with '_' prefix.
+  * Typedef follow Pascal Case.
 * **List Node Removal**: Add Node Removal on DynList API.
 * **Add Conversion Util Functions**:
   * Implemented WinTypes to BlokTypes and vice versa.

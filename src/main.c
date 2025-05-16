@@ -13,7 +13,7 @@ int WINAPI wWinMain(
 
     if (hInstanceMutex == NULL) {
         (void)MessageBoxW(
-            NULL, L"Mutex creation failed. The program will now exit.", L"Blok", 
+            NULL, L"Instance check failed. The program will now exit.", L"Blok", 
             MB_OK | MB_ICONERROR);
         return 1;
     }

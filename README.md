@@ -106,7 +106,7 @@ automatically build the project on Windows.
 
 ```sh
 # 1. Cloning the Repository and Move into Directory.
-git clone https://github.io/harshjayprakash/experimental-blok.git
+git clone https://github.com/harshjayprakash/experimental-blok.git
 cd experimental-blok
 
 # 2. Generate build files with CMake.

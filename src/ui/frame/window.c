@@ -86,7 +86,7 @@ int blokWindowInit(
     pWindow->klassAtomIdx = RegisterClassExW(&pWindow->klass);
     
     if (pWindow->klassAtomIdx == 0) {
-        (void)MessageBoxW(0, L"Window Class Registeration Failed", L"Blok", 
+        (void)MessageBoxW(0, L"Window Class Registration Failed", L"Blok", 
             MB_OK | MB_ICONERROR);
         blokWindowFree(pWindow, hInstance);
         return 0;

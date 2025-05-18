@@ -3,10 +3,8 @@
 
 #include <Windows.h>
 
-#define _BLOK_TEXT_SIZE 60
-
 typedef struct _Text {
-    WCHAR data[_BLOK_TEXT_SIZE];
+    WCHAR data[60];
     RECT region;
     SIZE size;
     SIZE margin;

@@ -7,7 +7,6 @@
         object = NULL;                                                                   \
     }
 
-LRESULT CALLBACK _blokWindowProcedure(
 static LRESULT CALLBACK _blokWindowProcedure(
     HWND hWindow,
     UINT messageId,

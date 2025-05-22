@@ -29,6 +29,7 @@ long blokDynListGetIndex(const DynList *pList, const Node *pNode);
 int blokDynListExists(const DynList *pList, const Node *pNode);
 
 int blokDynListRemove(DynList *pList, const Node node);
+long blokDynListRemove(DynList *pList, const Node node);
 
 int blokDynListFree(DynList *pList);
 

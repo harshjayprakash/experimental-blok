@@ -181,7 +181,7 @@ int blokDynListExists(
     return 1;
 }
 
-int blokDynListRemove(
+long blokDynListRemove(
     DynList *pList,
     const Node node)
 {

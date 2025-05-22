@@ -181,35 +181,6 @@ int blokDynListExists(
     return 1;
 }
 
-int blokDynListCombine(
-    DynList *pDest,
-    const DynList *pSrc)
-{
-    if (pDest == NULL) {
-        return 0;
-    }
-
-    if (pDest->pArr == NULL) {
-        return 0;
-    }
-
-    if (pSrc == NULL) {
-        return 0;
-    }
-
-    if (pSrc->pArr == NULL) {
-        return 0;
-    }
-
-    for (long idx = 0; idx < pSrc->size; idx++) {
-        if (!blokDynListExists(pDest, pSrc->pArr + idx)) {
-            (void)blokDynListAdd(pDest, pSrc->pArr + idx);
-        }
-    }
-
-    return 1;
-}
-
 int blokDynListRemove(
     DynList *pList,
     const Node node)

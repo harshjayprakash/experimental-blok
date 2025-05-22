@@ -3,8 +3,6 @@
 
 #include "vector.h"
 
-typedef struct _Node Node;
-
 typedef struct _Node {
     VectorII data;
 } Node;

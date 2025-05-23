@@ -12,7 +12,7 @@ static int blokStateMoveBoxImpl(
 
     VectorII dirv = blokDirectionToVector(direction);
     VectorII scaled = blokVectorIIMultiply(dirv, pBox->size);
-    VectorII newpos = blokVectorIIAdd(pBox->position, scaled);
+    VectorII newpos = blokVectorIIOffset(pBox->position, scaled);
     return blokVectorIICopy(&pBox->position, newpos);
 }
 

@@ -29,20 +29,6 @@ VectorII blokVectorIIOffset(
     return (VectorII){ veca.x + vecb.x, veca.y + vecb.y };
 }
 
-VectorII blokVectorIIAdd(
-    const VectorII veca,
-    const VectorII vecb)
-{
-    return (VectorII){ veca.x + vecb.x, veca.y + vecb.y };
-}
-
-VectorII blokVectorIISubtract(
-    const VectorII veca,
-    const VectorII vecb)
-{
-    return (VectorII){ veca.x - vecb.x, veca.y - vecb.y };
-}
-
 VectorII blokVectorIIMultiply(
     const VectorII veca,
     const VectorII vecb)

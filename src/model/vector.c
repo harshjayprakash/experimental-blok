@@ -1,3 +1,9 @@
+/**
+ * \file VECTOR.C
+ * \date 24-05-2025
+ * \brief Implementation of the vector operation routines.
+ */
+
 #include "vector.h"
 #include <stdlib.h>
 

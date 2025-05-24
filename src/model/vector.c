@@ -23,10 +23,10 @@ int blokVectorIIEquals(
 }
 
 VectorII blokVectorIIOffset(
-    const VectorII veca,
-    const VectorII vecb)
+    const VectorII vec,
+    const VectorII offsetVec)
 {
-    return (VectorII){ veca.x + vecb.x, veca.y + vecb.y };
+    return (VectorII){ vec.x + offsetVec.x, vec.y + offsetVec.y };
 }
 
 VectorII blokVectorIIMultiply(

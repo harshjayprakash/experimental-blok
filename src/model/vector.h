@@ -10,7 +10,7 @@ int blokVectorIICopy(VectorII *pDest, const VectorII src);
 
 int blokVectorIIEquals(const VectorII veca, const VectorII vecb);
 
-VectorII blokVectorIIOffset(const VectorII veca, const VectorII vecb);
+VectorII blokVectorIIOffset(const VectorII vec, const VectorII offsetVec);
 
 VectorII blokVectorIIMultiply(const VectorII veca, const VectorII vecb);
 

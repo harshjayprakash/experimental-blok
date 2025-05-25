@@ -38,9 +38,7 @@ int blokRun(
         return 0;
     }
 
-    (void)blokViewportShow(&pContext->viewport, pContext->showFlag);
-
-    return 1;
+    return blokViewportShow(&pContext->viewport, pContext->showFlag);
 }
 
 int blokFree(

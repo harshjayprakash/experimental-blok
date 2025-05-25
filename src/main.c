@@ -10,6 +10,7 @@
 /**
  * \brief Windows Program Entrypoint.
  * 
+ * \details
  * First performs an instance check. If and only if the instance check succeeds, the
  * context will be initialised, starting the user interface.
  * 

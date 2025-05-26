@@ -1,7 +1,7 @@
 /**
- * \file STATE.C
- * \date 26-05-2025
- * \brief Implementation of object state functions.
+ * @file STATE.C
+ * @date 26-05-2025
+ * @brief Implementation of object state functions.
  */
 
 #include "state.h"
@@ -9,11 +9,11 @@
 #include <stdlib.h>
 
 /**
- * \brief Move the Box (Actual Implementation).
+ * @brief Move the Box (Actual Implementation).
  * 
- * \param[in out] pBox        The box to be moved.
- * \param[in]     direction   The direction the box to move.
- * \return                    0 for failure, 1 for success.
+ * @param[in out] pBox        The box to be moved.
+ * @param[in]     direction   The direction the box to move.
+ * @return                    0 for failure, 1 for success.
  */
 static int _blokStateMoveBoxImpl(
     Square *pBox,

@@ -1,7 +1,7 @@
 /**
- * \file CONTEXT.H
- * \date 26-05-2025
- * \brief Provides the context structure and helper functions.
+ * @file CONTEXT.H
+ * @date 26-05-2025
+ * @brief Provides the context structure and helper functions.
  */
 
 #ifndef _BLOK_CONTEXT_H_
@@ -14,9 +14,9 @@
 #include <Windows.h>
 
 /**
- * \brief Program context. 
+ * @brief Program context. 
  * 
- * \details
+ * @details
  * Represents global program data.
  */
 typedef struct _Context {
@@ -31,35 +31,35 @@ typedef struct _Context {
 } Context;
 
 /**
- * \brief Get the context instance.
+ * @brief Get the context instance.
  * 
- * \details
+ * @details
  * Retrieves the global context instance statically stored within this function. The user
  * should not directly modify this instance. The ownership of the memory is not
  * transferred to the caller. 
  *
- * \return A pointer to the context instance object.
+ * @return A pointer to the context instance object.
  */
 Context *blokContextGet(void);
 
 /**
- * \brief Get the graphics module instance.
+ * @brief Get the graphics module instance.
  * 
- * \return A pointer to the graphics instance object.
+ * @return A pointer to the graphics instance object.
  */
 Graphics *blokContextGetGraphics(void);
 
 /**
- * \brief Get the viewport module instance.
+ * @brief Get the viewport module instance.
  * 
- * \return A pointer to the viewport instance object.
+ * @return A pointer to the viewport instance object.
  */
 Viewport *blokContextGetViewport(void);
 
 /**
- * \brief Get the object state instance.
+ * @brief Get the object state instance.
  * 
- * \return A pointer to the state instance object.
+ * @return A pointer to the state instance object.
  */
 State *blokContextGetState(void);
 

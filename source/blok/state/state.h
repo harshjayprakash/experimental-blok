@@ -1,7 +1,7 @@
 /**
- * \file STATE.H
- * \date 26-05-2025
- * \brief Provides the object state structure and functions.
+ * @file STATE.H
+ * @date 26-05-2025
+ * @brief Provides the object state structure and functions.
  */
 
 #ifndef _BLOK_STATE_H_
@@ -12,9 +12,9 @@
 #include "../model/dynlist.h"
 
 /**
- * \brief Object State.
+ * @brief Object State.
  * 
- * \details
+ * @details
  * Represents the state of the runtime objects. 
  */
 typedef struct _State {
@@ -23,86 +23,86 @@ typedef struct _State {
 } State;
 
 /**
- * \brief Initialise the object state.
+ * @brief Initialise the object state.
  *
- * \details
+ * @details
  * Sets the default box state at (0, 0) and the given box size. An initial 10 items is
  * allocated to the dynamic obstructs list.
  * 
- * \param[in out] pState   The pointer to the object state.
- * \param[in]     scale    The grid scale.
- * \return                 0 for failure, 1 for success.
+ * @param[in out] pState   The pointer to the object state.
+ * @param[in]     scale    The grid scale.
+ * @return                 0 for failure, 1 for success.
  */
 int blokStateInit(State *pState, const VectorII scale);
 
 /**
- * \brief Free the object state.
+ * @brief Free the object state.
  * 
- * \details
+ * @details
  * Cleans up the dynamic obstructs list.
  *
- * \param[in out] pState   The pointer to the object state.
- * \return                 0 for failure, 1 for success. 
+ * @param[in out] pState   The pointer to the object state.
+ * @return                 0 for failure, 1 for success. 
  */
 int blokStateFree(State *pState);
 
 /**
- * \brief Move the box.
+ * @brief Move the box.
  * 
- * \details
+ * @details
  * Moves the box position in the given direction.
  *
- * \param[in out] pState      The pointer to the object state.
- * \param[in]     direction   The direction to be moved.
- * \return                    0 for failure, 1 for success.
+ * @param[in out] pState      The pointer to the object state.
+ * @param[in]     direction   The direction to be moved.
+ * @return                    0 for failure, 1 for success.
  */
 int blokStateMoveBox(State *pState, Direction direction);
 
 /**
- * \brief Check Box Movablity.
+ * @brief Check Box Movablity.
  *
- * \details
+ * @details
  * Checks if the box can be moved in the given direction, based on the list of obstructs.
  * 
- * \param[in out] pState      The pointer to the object state.
- * \param[in]     direction   The direction to be checked.
- * \return                    1 for movable, 0 for not movable.
+ * @param[in out] pState      The pointer to the object state.
+ * @param[in]     direction   The direction to be checked.
+ * @return                    1 for movable, 0 for not movable.
  */
 int blokStateIsBoxMovable(State *pState, Direction direction);
 
 /**
- * \brief Add an Obstruct.
+ * @brief Add an Obstruct.
  *
- * \details
+ * @details
  * Add an obstruct to the list, if and only if the given position has not been marked. 
  * 
- * \param[in out] pState   The pointer to the object state.
- * \param[in]     point    The point to be added.
- * \return                 Negative number for failure, 
+ * @param[in out] pState   The pointer to the object state.
+ * @param[in]     point    The point to be added.
+ * @return                 Negative number for failure, 
  *                         The index of the point in the list.
  */
 int blokStateAddObstruct(State *pState, const VectorII point);
 
 /**
- * \brief Remove an Obstruct.
+ * @brief Remove an Obstruct.
  *
- * \details
+ * @details
  * Removes the given point from the obstructs list.
  * 
- * \param[in out] pState   The pointer to the object state. 
- * \param[in]     point    The point to be removed.
- * \return                 (__CONFLICT__)
+ * @param[in out] pState   The pointer to the object state. 
+ * @param[in]     point    The point to be removed.
+ * @return                 (__CONFLICT__)
  */
 int blokStateRemoveObstruct(State *pState, const VectorII point);
 
 /**
- * \brief Clear Obstructs.
+ * @brief Clear Obstructs.
  *
- * \details
+ * @details
  * Clears all the obstructs in the list.
  * 
- * \param[in out] pState   The pointer to the object state.
- * \return                 0 for failure, 1 for success.
+ * @param[in out] pState   The pointer to the object state.
+ * @return                 0 for failure, 1 for success.
  */
 int blokStateClearObstructs(State *pState);
 

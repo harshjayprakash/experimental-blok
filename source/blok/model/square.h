@@ -1,7 +1,7 @@
 /**
- * \file SQUARE.H
- * \date 23-05-2023
- * \brief Provides the square structure.
+ * @file SQUARE.H
+ * @date 23-05-2023
+ * @brief Provides the square structure.
  */
 
 #ifndef _BLOK_SQUARE_H_
@@ -10,9 +10,9 @@
 #include "vector.h"
 
 /**
- * \brief Square.
+ * @brief Square.
  * 
- * \details
+ * @details
  * Represents the square object.
  */
 typedef struct _Square {

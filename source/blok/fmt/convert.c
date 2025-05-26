@@ -1,7 +1,7 @@
 /**
- * \file CONVERT.C
- * \date 26-05-2025
- * \brief Implementation of conversion routines.
+ * @file CONVERT.C
+ * @date 26-05-2025
+ * @brief Implementation of conversion routines.
  */
 
 #include "convert.h"

@@ -1,7 +1,7 @@
 /**
- * \file CONSOLE.C
- * \date 21-05-2025
- * \brief Implementation of the console lifecycle routines.
+ * @file CONSOLE.C
+ * @date 21-05-2025
+ * @brief Implementation of the console lifecycle routines.
  */
 
 #include "console.h"

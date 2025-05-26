@@ -1,7 +1,7 @@
 /**
- * \file ARGS.C
- * \date 21-05-2025
- * \brief Implementation of the processing arguments routine.
+ * @file ARGS.C
+ * @date 21-05-2025
+ * @brief Implementation of the processing arguments routine.
  */
 
 #include "args.h"

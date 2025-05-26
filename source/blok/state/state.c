@@ -2,7 +2,7 @@
 #include "../model/vector.h"
 #include <stdlib.h>
 
-static int blokStateMoveBoxImpl(
+static int _blokStateMoveBoxImpl(
     Square *pBox,
     Direction direction) 
 {
@@ -52,7 +52,7 @@ int blokStateMoveBox(
         return 0;
     }
 
-    return blokStateMoveBoxImpl(&pState->box, direction);
+    return _blokStateMoveBoxImpl(&pState->box, direction);
 }
 
 int blokStateIsBoxMovable(
@@ -64,7 +64,7 @@ int blokStateIsBoxMovable(
     }
 
     Square projected = pState->box;
-    int moved = blokStateMoveBoxImpl(&projected, direction);
+    int moved = _blokStateMoveBoxImpl(&projected, direction);
     if (!moved) {
         return 0;
     }

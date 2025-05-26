@@ -16,37 +16,48 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
 set(SOURCES
-    "src/main.c"
+    # AI MODULE
+    "source/blok/ai/pathfind.c" "source/blok/ai/pathfind.h"
 
-    "src/base/context.c" "src/base/context.h"
-    "src/base/lifecycle.c" "src/base/lifecycle.h"
+    # COMMAND LINE MODULE
+    "source/blok/cmd/args.c" "source/blok/cmd/args.h"
+    "source/blok/cmd/console.c" "source/blok/cmd/console.h"
 
-    "src/cmd/args.c" "src/cmd/args.h"
-    "src/cmd/console.c" "src/cmd/console.h"
+    # FORMAT MODULE
+    "source/blok/fmt/convert.c" "source/blok/fmt/convert.h"
 
-    "src/gdi/drawtools.c" "src/gdi/drawtools.h"
-    "src/gdi/graphics.c" "src/gdi/graphics.h"
-    "src/gdi/theme.c" "src/gdi/theme.h"
+    # GDI MODULE
+    "source/blok/gdi/drawtools.c" "source/blok/gdi/drawtools.h"
+    "source/blok/gdi/graphics.c" "source/blok/gdi/graphics.h"
+    "source/blok/gdi/theme.c" "source/blok/gdi/theme.h"
 
-    "src/model/direction.c" "src/model/direction.h"
-    "src/model/dynlist.c" "src/model/dynlist.h"
-    "src/model/square.h"
-    "src/model/vector.c" "src/model/vector.h"
+    # MODEL MODULE
+    "source/blok/model/direction.c" "source/blok/model/direction.h"
+    "source/blok/model/dynlist.c" "source/blok/model/dynlist.h"
+    "source/blok/model/square.h"
+    "source/blok/model/vector.c" "source/blok/model/vector.h"
 
-    "src/store/state.c" "src/store/state.h"
+    # STATE MODULE
+    "source/blok/state/state.c" "source/blok/state/state.h"
 
-    "src/ui/controls/button.c" "src/ui/controls/button.h"
-    "src/ui/controls/progressbar.c" "src/ui/controls/progressbar.h"
-    "src/ui/controls/text.c" "src/ui/controls/text.h"
-    "src/ui/controls/toggle.c" "src/ui/controls/toggle.h"
-    "src/ui/components/canvas.c" "src/ui/components/canvas.h"
-    "src/ui/components/panel.c" "src/ui/components/panel.h"
-    "src/ui/events/action.c" "src/ui/events/action.h"
-    "src/ui/events/process.c" "src/ui/events/process.h"
-    "src/ui/frame/window.c" "src/ui/frame/window.h"
-    "src/ui/viewport.c" "src/ui/viewport.h"
+    # UI MODULE
+    "source/blok/ui/components/canvas.c" "source/blok/ui/components/canvas.h"
+    "source/blok/ui/components/panel.c" "source/blok/ui/components/panel.h"
+    "source/blok/ui/controls/button.c" "source/blok/ui/controls/button.h"
+    "source/blok/ui/controls/progressbar.c" "source/blok/ui/controls/progressbar.h"
+    "source/blok/ui/controls/text.c" "source/blok/ui/controls/text.h"
+    "source/blok/ui/controls/toggle.c" "source/blok/ui/controls/toggle.h"
+    "source/blok/ui/events/action.c" "source/blok/ui/events/action.h"
+    "source/blok/ui/events/process.c" "source/blok/ui/events/process.h"
+    "source/blok/ui/frame/window.c" "source/blok/ui/frame/window.h"
+    "source/blok/ui/viewport.c" "source/blok/ui/viewport.h"
 
-    "src/utils/convert.c" "src/utils/convert.h"
+    # MAIN MODULE
+    "source/blok/context.c" "source/blok/context.h"
+    "source/blok/lifecycle.c" "source/blok/lifecycle.h"
+
+    # MAIN ENTRYPOINT
+    "source/main.c"
 )
 
 add_definitions(/DUNICODE /D_UNICODE /DSTRICT)

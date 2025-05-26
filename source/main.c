@@ -4,7 +4,7 @@
  * \brief Implementation of the wWinMain entrypoint routine.
  */
 
-#include "base/lifecycle.h"
+#include "blok/lifecycle.h"
 #include <Windows.h>
 
 /**

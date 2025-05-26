@@ -2,7 +2,7 @@
 #define _BLOK_ACTION_H_
 
 #include "../../model/direction.h"
-#include "../../base/context.h"
+#include "../../context.h"
 #include <windows.h>
 #include <windowsx.h>
 

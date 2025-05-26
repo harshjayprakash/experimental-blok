@@ -1,7 +1,6 @@
 #ifndef _BLOK_CANVAS_H_
 #define _BLOK_CANVAS_H_
 
-#include "../../model/vector.h"
 #include <Windows.h>
 
 typedef struct _Canvas {

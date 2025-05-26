@@ -34,9 +34,9 @@ typedef struct _ArgsInfo {
  *            be used for scaling an individual axis.
  *      "--show-console" displays the debug console to showing the wprintf messages.
  * 
- * \param[in] pArgs          The arguments processed result.
- * \param[in] pCommandLine   The command line arguments.
- * \return                   0 for failure, 1 for success.
+ * \param[in out] pArgs          The arguments processed result.
+ * \param[in]     pCommandLine   The command line arguments.
+ * \return                       0 for failure, 1 for success.
  */
 int blokArgsProcess(ArgsInfo *pArgs, LPCWSTR pCommandLine);
 

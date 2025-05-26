@@ -5,7 +5,7 @@
  */
 
 #include "lifecycle.h"
-#include "../cmd/args.h"
+#include "cmd/args.h"
 
 int blokInit(
     Context *pContext,

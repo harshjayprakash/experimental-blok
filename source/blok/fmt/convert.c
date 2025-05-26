@@ -1,3 +1,9 @@
+/**
+ * \file CONVERT.C
+ * \date 26-05-2025
+ * \brief Implementation of conversion routines.
+ */
+
 #include "convert.h"
 
 VectorII blokConvertPointV(

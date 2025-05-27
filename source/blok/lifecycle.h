@@ -13,8 +13,9 @@
  * @brief Initialises the program.
  *
  * @details
- * Saves the given WinMain arguments, then proceeds to process the command line arguments.
- * After this the console is initialised if and only if requested. Then the other modules
+ * Saves the windows entrypoint arguments for later reference. After this, the arguments
+ * are processed, setting the configuration of the program. The console is initialised
+ * only if requested via arguments. Then the object state, graphics and viewport modules
  * are initialised.
  * 
  * @param[in out] pContext       The mutable pointer to the context.

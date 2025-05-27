@@ -77,8 +77,6 @@ while the program is running.
 The architecture of the program is based around the `Context` structure, storing the
 state of the entire program as a sort of global through a singleton helper function.
 
-![Program Architecture (Shows Interaction Between Layers)](./doc/xbk-arch-raster.png)
-
 * **main.c**: Provides the entrypoint.
 * **blok/{context, lifecycle}**: The base context structure (storing all program data) and
 lifecycle functions.

@@ -20,7 +20,7 @@
 static long _blokDynListGenerateNewSize(
     const long currentSize)
 {
-    return (long) (currentSize + (currentSize / 2));
+    return (long)(currentSize + (currentSize / 2));
 }
 
 /**

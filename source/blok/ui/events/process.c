@@ -3,7 +3,7 @@
 #include "../../fmt/convert.h"
 #include "action.h"
 #include <strsafe.h>
-#include <Windowsx.h>
+#include <windowsx.h>
 
 #define BLOK_MOUSE_AT(rect, pos) \
     (pos.x > rect.left && pos.x < rect.right && pos.y > rect.top && pos.y < rect.bottom)

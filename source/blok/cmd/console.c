@@ -5,7 +5,7 @@
  */
 
 #include "console.h"
-#include <Windows.h>
+#include <windows.h>
 
 int blokConsoleInit(
     Console *pConhost)

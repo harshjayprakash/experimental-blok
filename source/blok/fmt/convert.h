@@ -8,7 +8,7 @@
 #define _BLOK_CONVERT_H_
 
 #include "../model/vector.h"
-#include <Windows.h>
+#include <windows.h>
 
 /**
  * @brief Map POINT to Vector.

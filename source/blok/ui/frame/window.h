@@ -1,7 +1,7 @@
 #ifndef _BLOK_WINDOW_H_
 #define _BLOK_WINDOW_H_
 
-#include <Windows.h>
+#include <windows.h>
 
 typedef struct _Window {
     HWND hHandle;

@@ -2,7 +2,7 @@
 #define _BLOK_DRAWTOOLS_H_
 
 #include "theme.h"
-#include <Windows.h>
+#include <windows.h>
 
 typedef struct _DrawingTools {
     HBRUSH hSurfaceBrush;

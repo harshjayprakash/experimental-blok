@@ -1,7 +1,7 @@
 #ifndef _BLOK_PROCESS_H_
 #define _BLOK_PROCESS_H_
 
-#include <Windows.h>
+#include <windows.h>
 
 void blokProcessEventOnPaint(HWND hWindow);
 

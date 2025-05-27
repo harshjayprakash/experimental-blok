@@ -1,7 +1,7 @@
 #ifndef _BLOK_BUTTON_H_
 #define _BLOK_BUTTON_H_
 
-#include <Windows.h>
+#include <windows.h>
 
 typedef struct _Button {
     WCHAR text[60];

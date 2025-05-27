@@ -1,7 +1,7 @@
 #ifndef _BLOK_TOGGLE_H_
 #define _BLOK_TOGGLE_H_
 
-#include <Windows.h>
+#include <windows.h>
 
 typedef struct _Toggle {
     RECT region;

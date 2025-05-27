@@ -1,7 +1,7 @@
 #ifndef _BLOK_TEXT_H_
 #define _BLOK_TEXT_H_
 
-#include <Windows.h>
+#include <windows.h>
 
 typedef struct _Text {
     WCHAR data[60];

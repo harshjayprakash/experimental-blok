@@ -14,7 +14,7 @@
 #include "components/canvas.h"
 #include "components/panel.h"
 #include "frame/window.h"
-#include <Windows.h>
+#include <windows.h>
 
 /**
  * @brief The Viewport.

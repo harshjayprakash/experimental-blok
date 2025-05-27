@@ -11,7 +11,7 @@
 #include "state/state.h"
 #include "gdi/graphics.h"
 #include "cmd/console.h"
-#include <Windows.h>
+#include <windows.h>
 
 /**
  * @brief Program context. 

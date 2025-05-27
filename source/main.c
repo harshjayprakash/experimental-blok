@@ -5,7 +5,7 @@
  */
 
 #include "blok/lifecycle.h"
-#include <Windows.h>
+#include <windows.h>
 
 /**
  * @brief Windows Program Entrypoint.

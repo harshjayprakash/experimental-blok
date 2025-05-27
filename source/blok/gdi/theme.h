@@ -1,7 +1,7 @@
 #ifndef _BLOK_THEME_H_
 #define _BLOK_THEME_H_
 
-#include <Windows.h>
+#include <windows.h>
 
 typedef enum _Theme {
     BLOK_THEME_UNSET = 0,

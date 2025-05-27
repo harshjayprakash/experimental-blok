@@ -1,7 +1,7 @@
 #ifndef _BLOK_PROGRESSBAR_H_
 #define _BLOK_PROGRESSBAR_H_
 
-#include <Windows.h>
+#include <windows.h>
 
 typedef struct _ProgressBar {
     RECT region;

@@ -41,7 +41,7 @@ int blokRun(
     Context *pContext)
 {
     if (pContext == NULL) {
-        return 0;
+        return -1;
     }
 
     return blokViewportShow(&pContext->viewport, pContext->showFlag);

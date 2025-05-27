@@ -113,7 +113,7 @@ int blokViewportShow(
     DWORD showFlag)
 {
     if (pViewport == NULL) {
-        return 0;
+        return -1;
     }
 
     return blokWindowShow(&pViewport->window, showFlag);

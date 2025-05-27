@@ -1,3 +1,9 @@
+/**
+ * @file VIEWPORT.C
+ * @date 27-05-2025
+ * @brief Implementation of the viewport lifecycle functions.
+ */
+
 #include "viewport.h"
 #include <strsafe.h>
 #include <time.h>

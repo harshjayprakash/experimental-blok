@@ -1,3 +1,9 @@
+/**
+ * @file WINDOW.C
+ * @date 27-05-2025
+ * @brief Implementation of the window lifecycle functions and static window procedure.
+ */
+
 #include "window.h"
 #include "../events/process.h"
 
@@ -7,6 +13,18 @@
         object = NULL;                                                                   \
     }
 
+/**
+ * @brief Window procedure.
+ * 
+ * @details
+ * Processes the dispatched window messages and calls the event functions.
+ * 
+ * @param[in] hWindow     The window handle.
+ * @param[in] messageId   The message id.
+ * @param[in] dataWord    Additional data
+ * @param[in] dataLong    Additional data
+ * @return                If the message has been handled.
+ */
 static LRESULT CALLBACK _blokWindowProcedure(
     HWND hWindow,
     UINT messageId,

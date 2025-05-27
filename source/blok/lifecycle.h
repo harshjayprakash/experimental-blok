@@ -33,7 +33,7 @@ int blokInit(Context *pContext, HINSTANCE hInstance, LPWSTR pCommandLine, DWORD 
  * A wrapper for calling the show viewport function.
  *
  * @param[in out] pContext   The mutable pointer to the context.
- * @return                   (__CONFLICT__)
+ * @return                   -1 for failure, or the quit message exit code.
  */
 int blokRun(Context *pContext);
 

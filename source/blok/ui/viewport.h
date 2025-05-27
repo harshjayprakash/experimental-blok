@@ -67,7 +67,7 @@ int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance);
  * 
  * @param[in out] pViewport   The pointer to the viewport.
  * @param[in]     showFlag    The window show flag.
- * @return                    (__CONFLICT__)
+ * @return                    The quit message exit code, or -1 for failure.
  */
 int blokViewportShow(Viewport *pViewport, DWORD showFlag);
 

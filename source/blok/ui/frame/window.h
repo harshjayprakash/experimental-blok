@@ -44,7 +44,7 @@ int blokWindowInit(Window *pWindow, HINSTANCE hInstance);
  * 
  * @param[in out] pWindow    The pointer to the window.
  * @param[in]     showFlag   The window show flag.
- * @return int 
+ * @return                   -1 for failure, or the quit message exit code.
  */
 int blokWindowShow(Window *pWindow, DWORD showFlag);
 
@@ -57,7 +57,7 @@ int blokWindowShow(Window *pWindow, DWORD showFlag);
  * 
  * @param[in out] pWindow     The pointer to the window.
  * @param[in]     hInstance   The instance handle.
- * @return int 
+ * @return                    0 for failure, 1 for success.
  */
 int blokWindowFree(Window *pWindow, HINSTANCE hInstance);
 

@@ -64,6 +64,20 @@ typedef enum _Colours {
     BLOK_COLOUR_100A = RGB(0xbe, 0x12, 0x3c),
 } Colours;
 
+typedef struct _ThemePalette {
+    COLORREF baseBackground;
+    COLORREF baseBackgroundFaded;
+    COLORREF baseBackgroundMedium;
+    COLORREF baseForeground;
+    COLORREF baseBorder;
+    COLORREF baseBorderFaded;
+
+    COLORREF primaryBackground;
+    COLORREF primaryBackgroundFaded;
+    COLORREF primaryForeground;
+    COLORREF primaryBorder;
+} ThemePalette;
+
 typedef struct _ColourSpace {
     COLORREF surface;
     COLORREF surfaceVariant;

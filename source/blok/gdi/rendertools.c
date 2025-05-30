@@ -6,7 +6,7 @@
         hObject = NULL;                                                                  \
     }              
 
-int zblokRenderToolsInit(RenderTools *pTools, const ThemePalette *pColours)
+int blokRenderToolsInit(RenderTools *pTools, const ThemePalette *pColours)
 {
     if (pTools == NULL) {
         return 0;
@@ -31,7 +31,7 @@ int zblokRenderToolsInit(RenderTools *pTools, const ThemePalette *pColours)
     return 1;
 }
 
-int zblokRenderToolsFree(RenderTools *pTools)
+int blokRenderToolsFree(RenderTools *pTools)
 {
     if (pTools == NULL) {
         return 0;

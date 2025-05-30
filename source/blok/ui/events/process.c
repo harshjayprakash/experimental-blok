@@ -29,20 +29,20 @@ void blokProcessEventOnPaint(
         hSurface, pViewport->region.right, pViewport->region.bottom);
     HBITMAP hSurfaceBitmap = SelectObject(hOffSurface, hOffSurfaceBitmap);
     HFONT hOldFont = NULL;
-    HBRUSH hOldBrush = (HBRUSH)SelectObject(hOffSurface, pGraphics->ztools.brushes.hBaseBackground);
-    HPEN hOldPen = (HPEN)SelectObject(hOffSurface, pGraphics->ztools.pens.hBaseForeground);
+    HBRUSH hOldBrush = (HBRUSH)SelectObject(hOffSurface, pGraphics->tools.brushes.hBaseBackground);
+    HPEN hOldPen = (HPEN)SelectObject(hOffSurface, pGraphics->tools.pens.hBaseForeground);
     INT oldBkMode = SetBkMode(hOffSurface, TRANSPARENT);
-    COLORREF oldBkColour = SetBkColor(hOffSurface, pGraphics->zcolours.baseBackground);
-    COLORREF oldTextColour = SetTextColor(hOffSurface, pGraphics->zcolours.baseForeground);
+    COLORREF oldBkColour = SetBkColor(hOffSurface, pGraphics->colours.baseBackground);
+    COLORREF oldTextColour = SetTextColor(hOffSurface, pGraphics->colours.baseForeground);
 
     if (pViewport->hFont != NULL) {
         HFONT oldFont = (HFONT)SelectObject(hOffSurface, pViewport->hFont);
     }
 
     (void)FillRect(
-        hOffSurface, &pViewport->region, pGraphics->ztools.brushes.hBaseBackground);
+        hOffSurface, &pViewport->region, pGraphics->tools.brushes.hBaseBackground);
 
-    (void)SelectObject(hOffSurface, pGraphics->ztools.pens.hBaseBorderFaded);
+    (void)SelectObject(hOffSurface, pGraphics->tools.pens.hBaseBorderFaded);
 
     if (pViewport->isGridVisible) {
         for (long xAxisIdx = 0; 
@@ -60,7 +60,7 @@ void blokProcessEventOnPaint(
         }
     }
 
-    (void)SelectObject(hOffSurface, pGraphics->ztools.pens.hBaseForeground);
+    (void)SelectObject(hOffSurface, pGraphics->tools.pens.hBaseForeground);
 
     RECT box = blokConvertVectorRect(pState->box.position, pState->box.size);
     INT innerBoxSF = 3;
@@ -70,20 +70,20 @@ void blokProcessEventOnPaint(
         box.right - (scaling.x / innerBoxSF),
         box.bottom - (scaling.y / innerBoxSF)
     };
-    (void)FillRect(hOffSurface, &box, pGraphics->ztools.brushes.hPrimaryBackground);
-    (void)FillRect(hOffSurface, &innerBox, pGraphics->ztools.brushes.hBaseBackground);
+    (void)FillRect(hOffSurface, &box, pGraphics->tools.brushes.hPrimaryBackground);
+    (void)FillRect(hOffSurface, &innerBox, pGraphics->tools.brushes.hBaseBackground);
 
     for (long obstructIdx = 0; obstructIdx < pState->obstructs.size; obstructIdx++) {
         RECT obstructiveRc = blokConvertVectorRect(
             pState->obstructs.pArr[obstructIdx].data, scaling);
         (void)FillRect(
-            hOffSurface, &obstructiveRc, pGraphics->ztools.brushes.hBaseBackgroundMedium);
+            hOffSurface, &obstructiveRc, pGraphics->tools.brushes.hBaseBackgroundMedium);
     }
 
     if (pViewport->isInterfaceVisible) {
         (void)FillRect(
             hOffSurface, &pViewport->panel.region, 
-            pGraphics->ztools.brushes.hBaseBackgroundFaded);
+            pGraphics->tools.brushes.hBaseBackgroundFaded);
 
         (void)DrawTextW(
             hOffSurface, pViewport->coordinatesText.data, -1, 
@@ -92,12 +92,12 @@ void blokProcessEventOnPaint(
 
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->clearAllButton.region, pViewport->mousePos)
-            ? pGraphics->ztools.pens.hPrimaryBorder
-            : pGraphics->ztools.pens.hBaseBorder);
+            ? pGraphics->tools.pens.hPrimaryBorder
+            : pGraphics->tools.pens.hBaseBorder);
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->clearAllButton.region, pViewport->mousePos)
-            ? pGraphics->ztools.brushes.hPrimaryBackgroundFaded
-            : pGraphics->ztools.brushes.hBaseBackground);
+            ? pGraphics->tools.brushes.hPrimaryBackgroundFaded
+            : pGraphics->tools.brushes.hBaseBackground);
 
         (void)Rectangle(
             hOffSurface, pViewport->clearAllButton.region.left, 
@@ -110,12 +110,12 @@ void blokProcessEventOnPaint(
 
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->generateButton.region, pViewport->mousePos)
-            ? pGraphics->ztools.pens.hPrimaryBorder
-            : pGraphics->ztools.pens.hBaseBorder);
+            ? pGraphics->tools.pens.hPrimaryBorder
+            : pGraphics->tools.pens.hBaseBorder);
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->generateButton.region, pViewport->mousePos)
-            ? pGraphics->ztools.brushes.hPrimaryBackgroundFaded
-            : pGraphics->ztools.brushes.hBaseBackground);
+            ? pGraphics->tools.brushes.hPrimaryBackgroundFaded
+            : pGraphics->tools.brushes.hBaseBackground);
 
         (void)Rectangle(
             hOffSurface, pViewport->generateButton.region.left, 
@@ -126,8 +126,8 @@ void blokProcessEventOnPaint(
             &pViewport->generateButton.region, 
             DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOCLIP);
 
-        (void)SelectObject(hOffSurface, pGraphics->ztools.pens.hBaseBorder);
-        (void)SelectObject(hOffSurface, pGraphics->ztools.brushes.hBaseBackground);
+        (void)SelectObject(hOffSurface, pGraphics->tools.pens.hBaseBorder);
+        (void)SelectObject(hOffSurface, pGraphics->tools.brushes.hBaseBackground);
 
         (void)DrawTextW(
             hOffSurface, pViewport->obstructCountText.data, -1, 
@@ -141,16 +141,16 @@ void blokProcessEventOnPaint(
             pViewport->obstructMemoryBar.region.bottom);
         (void)FillRect(
             hOffSurface, &pViewport->obstructMemoryBar.barRegion, 
-            pGraphics->ztools.brushes.hPrimaryBackground);
+            pGraphics->tools.brushes.hPrimaryBackground);
         
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->lockedToggle.region, pViewport->mousePos)
-            ? pGraphics->ztools.pens.hPrimaryBorder
-            : pGraphics->ztools.pens.hBaseBorder);
+            ? pGraphics->tools.pens.hPrimaryBorder
+            : pGraphics->tools.pens.hBaseBorder);
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->lockedToggle.region, pViewport->mousePos)
-            ? pGraphics->ztools.brushes.hPrimaryBackgroundFaded
-            : pGraphics->ztools.brushes.hBaseBackground);
+            ? pGraphics->tools.brushes.hPrimaryBackgroundFaded
+            : pGraphics->tools.brushes.hBaseBackground);
     
         (void)Rectangle(
             hOffSurface, pViewport->lockedToggle.region.left, 
@@ -158,13 +158,13 @@ void blokProcessEventOnPaint(
             pViewport->lockedToggle.region.right, 
             pViewport->lockedToggle.region.bottom);
 
-        (void)SelectObject(hOffSurface, pGraphics->ztools.pens.hBaseBorder);
-        (void)SelectObject(hOffSurface, pGraphics->ztools.brushes.hBaseBackground);
+        (void)SelectObject(hOffSurface, pGraphics->tools.pens.hBaseBorder);
+        (void)SelectObject(hOffSurface, pGraphics->tools.brushes.hBaseBackground);
 
         if (pViewport->lockedToggle.selected) {
             (void)FillRect(
                 hOffSurface, &pViewport->lockedToggle.selectRegion, 
-                pGraphics->ztools.brushes.hPrimaryBackground);
+                pGraphics->tools.brushes.hPrimaryBackground);
         }
 
         (void)DrawTextW(

@@ -62,6 +62,6 @@ typedef struct _ThemePalette {
     COLORREF primaryBorder;
 } ThemePalette;
 
-int zblokColoursSet(ThemePalette *pThemePalette, const Theme theme);
+int blokColoursSet(ThemePalette *pThemePalette, const Theme theme);
 
 #endif // _BLOK_THEME_H_

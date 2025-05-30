@@ -21,8 +21,8 @@ typedef struct _RenderTools {
     } pens;
 } RenderTools;
 
-int zblokRenderToolsInit(RenderTools *pTools, const ThemePalette *pColours);
+int blokRenderToolsInit(RenderTools *pTools, const ThemePalette *pColours);
 
-int zblokRenderToolsFree(RenderTools *pTools);
+int blokRenderToolsFree(RenderTools *pTools);
 
 #endif // _BLOK_GDI_RENDER_TOOLS_H_

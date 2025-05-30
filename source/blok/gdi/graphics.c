@@ -11,8 +11,8 @@ int blokGraphicsInit(
     int disregardTheme = (theme >= BLOK_THEME_MIN && theme <= BLOK_THEME_MAX);
     pGraphics->theme = (!disregardTheme) ? BLOK_THEME_UNSET : theme;
 
-    (void)zblokColoursSet(&pGraphics->zcolours, pGraphics->theme);
-    (void)zblokRenderToolsInit(&pGraphics->ztools, &pGraphics->zcolours);
+    (void)blokColoursSet(&pGraphics->colours, pGraphics->theme);
+    (void)blokRenderToolsInit(&pGraphics->tools, &pGraphics->colours);
 
     return 1;
 }
@@ -24,5 +24,5 @@ int blokGraphicsFree(
         return 0;
     }
 
-    return zblokRenderToolsFree(&pGraphics->ztools);
+    return blokRenderToolsFree(&pGraphics->tools);
 }

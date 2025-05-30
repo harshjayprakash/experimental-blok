@@ -6,8 +6,8 @@
 
 typedef struct _Graphics {
     Theme theme;
-    RenderTools ztools;
-    ThemePalette zcolours;
+    RenderTools tools;
+    ThemePalette colours;
 } Graphics;
 
 int blokGraphicsInit(Graphics *pGraphics, const Theme theme);

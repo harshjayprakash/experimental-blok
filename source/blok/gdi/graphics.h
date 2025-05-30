@@ -3,11 +3,14 @@
 
 #include "theme.h"
 #include "drawtools.h"
+#include "rendertools.h"
 
 typedef struct _Graphics {
     Theme theme;
     ColourSpace colours;
     DrawingTools tools;
+    RenderTools ztools;
+    ThemePalette zcolours;
 } Graphics;
 
 int blokGraphicsInit(Graphics *pGraphics, const Theme theme);

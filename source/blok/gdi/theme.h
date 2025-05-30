@@ -91,4 +91,6 @@ typedef struct _ColourSpace {
 
 int blokColoursSet(ColourSpace *pColourSpace, const Theme theme);
 
+int zblokColoursSet(ThemePalette *pThemePalette, const Theme theme);
+
 #endif // _BLOK_THEME_H_

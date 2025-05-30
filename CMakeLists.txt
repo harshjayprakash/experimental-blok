@@ -27,7 +27,6 @@ set(SOURCES
     "source/blok/fmt/convert.c" "source/blok/fmt/convert.h"
 
     # GDI MODULE
-    "source/blok/gdi/drawtools.c" "source/blok/gdi/drawtools.h"
     "source/blok/gdi/graphics.c" "source/blok/gdi/graphics.h"
     "source/blok/gdi/rendertools.c" "source/blok/gdi/rendertools.h"
     "source/blok/gdi/theme.c" "source/blok/gdi/theme.h"

@@ -1,3 +1,9 @@
+/**
+ * @file PANEL.C
+ * @date 04-05-2025
+ * @brief Implementation of panel update routines.
+ */
+
 #include "panel.h"
 
 int blokPanelUpdateEx(

@@ -25,4 +25,7 @@ int blokActionRemoveObstruct(
 
 int blokActionClearObstructs(TViewport *pViewport, TObjectState *pState, HWND hWindow);
 
+int blokActionGenerateRandomObstructs(
+    TViewport *pViewport, TObjectState *pState, HWND hWindow);
+
 #endif /* _BLOK_ACTION_H_ */

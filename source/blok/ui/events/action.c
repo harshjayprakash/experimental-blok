@@ -236,3 +236,35 @@ int blokActionClearObstructs(
 
     return result;
 }
+
+int blokActionGenerateRandomObstructs(
+    TViewport *pViewport,
+    TObjectState *pState,
+    HWND hWindow)
+{
+    if (pViewport == NULL || pState == NULL) {
+        return 0;
+    }
+
+    (void)blokActionClearObstructs(pViewport, pState, hWindow);
+
+    TVector2 maxRgnObstructs = { 0, 0 };
+    TVector2 scale = pState->box.size;
+    TVector2 _d = blokConvertRectSizeV(pViewport->canvas.region);
+
+    maxRgnObstructs.x = _d.x / scale.x;
+    maxRgnObstructs.y = _d.y / scale.y;
+
+    long _nNodes = (
+        (rand() % maxRgnObstructs.x) +
+        (rand() % maxRgnObstructs.y)
+    );
+
+    int result = 0;
+    
+    for (int idx = 0; idx < _nNodes; idx++) {
+        result = (blokActionAddObstruct(pViewport, pState, hWindow, NULL) || result);
+    }
+
+    return 1;
+}

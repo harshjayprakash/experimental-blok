@@ -238,6 +238,10 @@ void blokProcessEventOnKeyDown(
     case 'L':
         (void)blokActionToggleCanvasLock(pViewport, hWindow);
         break;
+
+    case 'M':
+        (void)blokActionGenerateRandomObstructs(pViewport, pState, hWindow);
+        break;
     }
 }
 

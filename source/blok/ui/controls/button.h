@@ -16,4 +16,4 @@ int blokButtonUpdateEx(
 
 int blokButtonUpdate(Button *pButton, const POINT *pPos);
 
-#endif // _BLOK_BUTTON_H_
+#endif /* _BLOK_BUTTON_H_ */

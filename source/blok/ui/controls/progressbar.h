@@ -29,4 +29,4 @@ int blokProgressBarUpdateMinMax(
 
 int blokProgressBarUpdateValue(ProgressBar *pPbar, const int value);
 
-#endif // _BLOK_PROGRESSBAR_H_
+#endif /* _BLOK_PROGRESSBAR_H_ */

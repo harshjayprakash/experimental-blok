@@ -64,4 +64,4 @@ typedef struct _ThemePalette {
 
 int blokColoursSet(ThemePalette *pThemePalette, const Theme theme);
 
-#endif // _BLOK_THEME_H_
+#endif /* _BLOK_THEME_H_ */

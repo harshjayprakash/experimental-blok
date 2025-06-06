@@ -21,4 +21,4 @@ int blokToggleUpdate(Toggle *pToggle, const POINT *pPosition);
 
 int blokToggleUpdateSelected(Toggle *pToggle, const BOOL selected);
 
-#endif // _BLOK_TOGGLE_H_
+#endif /* _BLOK_TOGGLE_H_ */

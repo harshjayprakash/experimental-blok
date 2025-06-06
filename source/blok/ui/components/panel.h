@@ -15,4 +15,4 @@ int blokPanelUpdateEx(
 
 int blokPanelUpdate(Panel *pPanel, const RECT *pWindowRgn);
 
-#endif // _BLOK_PANEL_H_
+#endif /* _BLOK_PANEL_H_ */

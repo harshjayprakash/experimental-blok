@@ -16,4 +16,4 @@ VectorII blokConvertRectPositionV(const RECT rect);
 
 VectorII blokConvertRectSizeV(const RECT rect);
 
-#endif // _BLOK_CONVERT_H_
+#endif /* _BLOK_CONVERT_H_ */

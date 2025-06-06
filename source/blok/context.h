@@ -26,4 +26,4 @@ Viewport *blokContextGetViewport(void);
 
 State *blokContextGetState(void);
 
-#endif // _BLOK_CONTEXT_H_
+#endif /* _BLOK_CONTEXT_H_ */

@@ -1,5 +1,5 @@
-#ifndef _BLOK_GDI_RENDER_TOOLS_H_
-#define _BLOK_GDI_RENDER_TOOLS_H_
+#ifndef _BLOK_RENDERTOOLS_H_
+#define _BLOK_RENDERTOOLS_H_
 
 #include "theme.h"
 #include <windows.h>
@@ -25,4 +25,4 @@ int blokRenderToolsInit(RenderTools *pTools, const ThemePalette *pColours);
 
 int blokRenderToolsFree(RenderTools *pTools);
 
-#endif // _BLOK_GDI_RENDER_TOOLS_H_
+#endif /* _BLOK_RENDERTOOLS_H_ */

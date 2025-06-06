@@ -13,4 +13,4 @@ int blokConsoleInit(Console *pConhost);
 
 int blokConsoleFree(Console *pConhost);
 
-#endif // _BLOK_CONSOLE_H_
+#endif /* _BLOK_CONSOLE_H_ */

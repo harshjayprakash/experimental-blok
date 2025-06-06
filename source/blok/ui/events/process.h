@@ -19,4 +19,4 @@ void blokProcessEventOnResize(HWND hWindow);
 
 void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos);
 
-#endif // _BLOK_PROCESS_H_
+#endif /* _BLOK_PROCESS_H_ */

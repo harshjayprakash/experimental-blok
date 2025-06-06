@@ -12,4 +12,4 @@ typedef struct _ArgsInfo {
 
 int blokArgsProcess(ArgsInfo *pArgs, LPCWSTR pCommandLine);
 
-#endif // _BLOK_ARGS_H_
+#endif /* _BLOK_ARGS_H_ */

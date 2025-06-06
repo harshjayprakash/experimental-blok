@@ -17,4 +17,4 @@ int blokWindowShow(Window *pWindow, DWORD showFlag);
 
 int blokWindowFree(Window *pWindow, HINSTANCE hInstance);
 
-#endif // _BLOK_WINDOW_H_
+#endif /* _BLOK_WINDOW_H_ */

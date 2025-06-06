@@ -25,4 +25,4 @@ int blokActionRemoveObstruct(
 
 int blokActionClearObstructs(Viewport *pViewport, State *pState, HWND hWindow);
 
-#endif // _BLOK_ACTION_H_
+#endif /* _BLOK_ACTION_H_ */

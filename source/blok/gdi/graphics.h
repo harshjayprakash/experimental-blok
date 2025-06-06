@@ -14,4 +14,4 @@ int blokGraphicsInit(Graphics *pGraphics, const Theme theme);
 
 int blokGraphicsFree(Graphics *pGraphics);
 
-#endif // _BLOK_GRAPHICS_H_
+#endif /* _BLOK_GRAPHICS_H_ */

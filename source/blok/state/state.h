@@ -24,4 +24,4 @@ int blokStateRemoveObstruct(State *pState, const VectorII point);
 
 int blokStateClearObstructs(State *pState);
 
-#endif // _BLOK_STATE_H_
+#endif /* _BLOK_STATE_H_ */

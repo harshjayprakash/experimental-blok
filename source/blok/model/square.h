@@ -8,4 +8,4 @@ typedef struct _Square {
     VectorII size;
 } Square;
 
-#endif // _BLOK_SQUARE_H_
+#endif /* _BLOK_SQUARE_H_ */

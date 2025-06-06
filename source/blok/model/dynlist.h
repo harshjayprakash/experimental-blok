@@ -32,4 +32,4 @@ long blokDynListRemove(DynList *pList, const Node node);
 
 int blokDynListFree(DynList *pList);
 
-#endif // _BLOK_DYNLIST_H_
+#endif /* _BLOK_DYNLIST_H_ */

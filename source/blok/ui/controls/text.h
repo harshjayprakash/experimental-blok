@@ -16,4 +16,4 @@ int blokTextUpdateEx(
 
 int blokTextUpdate(Text *pText, const POINT *pPosition);
 
-#endif // _BLOK_TEXT_H_
+#endif /* _BLOK_TEXT_H_ */

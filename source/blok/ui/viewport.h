@@ -39,4 +39,4 @@ int blokViewportShow(Viewport *pViewport, DWORD showFlag);
 
 int blokViewportFree(Viewport *pViewport, HINSTANCE hInstance);
 
-#endif // _BLOK_VIEWPORT_H_
+#endif /* _BLOK_VIEWPORT_H_ */

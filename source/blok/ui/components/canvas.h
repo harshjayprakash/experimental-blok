@@ -10,4 +10,4 @@ typedef struct _Canvas {
 
 int blokCanvasUpdate(Canvas *pCanvas, const RECT *pWindowRgn);
 
-#endif // _BLOK_CANVAS_H_
+#endif /* _BLOK_CANVAS_H_ */

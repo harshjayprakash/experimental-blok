@@ -14,4 +14,4 @@ VectorII blokVectorIIOffset(const VectorII vec, const VectorII offsetVec);
 
 VectorII blokVectorIIMultiply(const VectorII veca, const VectorII vecb);
 
-#endif // _BLOK_VECTOR_H_
+#endif /* _BLOK_VECTOR_H_ */

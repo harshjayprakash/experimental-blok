@@ -3,7 +3,8 @@
 
 #include "context.h"
 
-int blokInit(TContext *pContext, HINSTANCE hInstance, LPWSTR pCommandLine, DWORD showFlag);
+int blokInit(
+    TContext *pContext, HINSTANCE hInstance, LPWSTR pCommandLine, DWORD showFlag);
 
 int blokRun(TContext *pContext);
 

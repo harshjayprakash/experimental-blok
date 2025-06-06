@@ -1,9 +1,3 @@
-/**
- * @file ACTION.C
- * @date 27-05-2025
- * @brief Implementation of action routines.
- */
-
 #include "../../fmt/convert.h"
 #include "action.h"
 #include <strsafe.h>

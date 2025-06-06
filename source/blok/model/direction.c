@@ -1,9 +1,3 @@
-/**
- * @file DIRECTION.C
- * @date 22-05-2025
- * @brief Implementation of the direction to vector routine.
- */
-
 #include "direction.h"
 
 VectorII blokDirectionToVector(

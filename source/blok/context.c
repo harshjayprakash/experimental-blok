@@ -1,9 +1,3 @@
-/**
- * @file CONTEXT.C
- * @date 26-05-2025
- * @brief Implementation of context helper functions.
- */
-
 #include "context.h"
 
 Context *blokContextGet(void)

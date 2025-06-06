@@ -1,9 +1,3 @@
-/**
- * @file CANVAS.C
- * @date 01-06-2025
- * @brief Implementation of the canvas update routine.
- */
-
 #include "canvas.h"
 
 int blokCanvasUpdate(

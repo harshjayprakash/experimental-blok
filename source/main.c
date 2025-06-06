@@ -1,25 +1,6 @@
-/**
- * @file MAIN.C
- * @date 18.05.2025
- * @brief Implementation of the wWinMain entrypoint routine.
- */
-
 #include "blok/lifecycle.h"
 #include <windows.h>
 
-/**
- * @brief Windows Program Entrypoint.
- * 
- * @details
- * First performs an instance check. If and only if the instance check succeeds, the
- * context will be initialised, starting the user interface.
- * 
- * @param[in] hInstance       The instance handle.
- * @param[in] hPrevInstance   NULL. Not used in modern Windows.
- * @param[in] lpCmdLine       The command line arguments.
- * @param[in] nShowCmd        The window display flag.
- * @return                    A zero value for success, non-zero for failure.
- */
 int WINAPI wWinMain(
     HINSTANCE hInstance,
     HINSTANCE hPrevInstance,

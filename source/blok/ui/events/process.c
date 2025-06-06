@@ -1,9 +1,3 @@
-/**
- * @file PROCESS.C
- * @date 27-05-2025
- * @brief Implementation of the event provessing routines.
- */
-
 #include "process.h"
 #include "../../context.h"
 #include "../../fmt/convert.h"

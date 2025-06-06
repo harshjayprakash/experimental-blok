@@ -1,38 +1,13 @@
-/**
- * @file DYNLIST.C
- * @date 22-05-2025
- * @brief Implementation of list routines.
- */
-
 #include "dynlist.h"
 #include <stdlib.h>
 #include <memory.h>
 
-/**
- * @brief Generate new list size.
- * 
- * @details
- * The new returned size if 1.5 times larger.
- * 
- * @param[in] currentSize   The current size.
- * @return                  The new size.
- */
 static long _blokDynListGenerateNewSize(
     const long currentSize)
 {
     return (long)(currentSize + (currentSize / 2));
 }
 
-/**
- * @brief Resizes the list.
- * 
- * @details
- * Attempts to reallocate the memory based on the new provided size.
- * 
- * @param[in out] pList     The pointer to the list.
- * @param[in]     newSize   The new size.
- * @return                  0 for failure, 1 for success.
- */
 static int _blokDynListResize(
     DynList *pList,
     const long newSize)

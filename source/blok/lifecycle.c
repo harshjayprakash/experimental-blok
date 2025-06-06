@@ -1,9 +1,3 @@
-/**
- * @file LIFECYCLE.C
- * @date 26-05-2025
- * @brief Implementation of the program lifecycle routines.
- */
-
 #include "lifecycle.h"
 #include "cmd/args.h"
 

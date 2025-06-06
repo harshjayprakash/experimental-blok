@@ -6,22 +6,22 @@
 #include "../model/dynlist.h"
 
 typedef struct _State {
-    Square box;
-    DynList obstructs;
-} State;
+    TSquare box;
+    TDynList obstructs;
+} TObjectState;
 
-int blokStateInit(State *pState, const VectorII scale);
+int blokStateInit(TObjectState *pState, const TVector2 scale);
 
-int blokStateFree(State *pState);
+int blokStateFree(TObjectState *pState);
 
-int blokStateMoveBox(State *pState, Direction direction);
+int blokStateMoveBox(TObjectState *pState, TDirection direction);
 
-int blokStateIsBoxMovable(State *pState, Direction direction);
+int blokStateIsBoxMovable(TObjectState *pState, TDirection direction);
 
-int blokStateAddObstruct(State *pState, const VectorII point);
+int blokStateAddObstruct(TObjectState *pState, const TVector2 point);
 
-int blokStateRemoveObstruct(State *pState, const VectorII point);
+int blokStateRemoveObstruct(TObjectState *pState, const TVector2 point);
 
-int blokStateClearObstructs(State *pState);
+int blokStateClearObstructs(TObjectState *pState);
 
 #endif /* _BLOK_STATE_H_ */

@@ -3,14 +3,14 @@
 
 #include <stdio.h>
 
-typedef struct _Console {
+typedef struct _ConsoleInfo {
     int isInitialised;
     int errorOnAlloc;
     FILE *pStandardOut;
-} Console;
+} TConsoleInfo;
 
-int blokConsoleInit(Console *pConhost);
+int blokConsoleInit(TConsoleInfo *pConhost);
 
-int blokConsoleFree(Console *pConhost);
+int blokConsoleFree(TConsoleInfo *pConhost);
 
 #endif /* _BLOK_CONSOLE_H_ */

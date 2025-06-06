@@ -3,29 +3,29 @@
 #include <stdlib.h>
 
 static int _blokStateMoveBoxImpl(
-    Square *pBox,
-    Direction direction) 
+    TSquare *pBox,
+    TDirection direction) 
 {
     if (pBox == NULL) {
         return 0;
     }
 
-    VectorII dirv = blokDirectionToVector(direction);
-    VectorII scaled = blokVectorIIMultiply(dirv, pBox->size);
-    VectorII newpos = blokVectorIIOffset(pBox->position, scaled);
+    TVector2 dirv = blokDirectionToVector(direction);
+    TVector2 scaled = blokVectorIIMultiply(dirv, pBox->size);
+    TVector2 newpos = blokVectorIIOffset(pBox->position, scaled);
     return blokVectorIICopy(&pBox->position, newpos);
 }
 
 int blokStateInit(
-    State *pState,
-    const VectorII scale)
+    TObjectState *pState,
+    const TVector2 scale)
 {
     if (pState == NULL) {
         return 0;
     }
 
-    VectorII defaultBoxState = { 0, 0 };
-    VectorII defaultBoxSize = scale;
+    TVector2 defaultBoxState = { 0, 0 };
+    TVector2 defaultBoxSize = scale;
     blokVectorIICopy(&pState->box.size, defaultBoxSize);
     blokVectorIICopy(&pState->box.position, defaultBoxState);
 
@@ -35,7 +35,7 @@ int blokStateInit(
 }
 
 int blokStateFree(
-    State *pState)
+    TObjectState *pState)
 {
     if (pState == NULL) {
         return 0;
@@ -45,8 +45,8 @@ int blokStateFree(
 }
 
 int blokStateMoveBox(
-    State *pState,
-    Direction direction)
+    TObjectState *pState,
+    TDirection direction)
 {
     if (pState == NULL) {
         return 0;
@@ -56,20 +56,20 @@ int blokStateMoveBox(
 }
 
 int blokStateIsBoxMovable(
-    State *pState,
-    Direction direction)
+    TObjectState *pState,
+    TDirection direction)
 {
     if (pState == NULL) {
         return 0;
     }
 
-    Square projected = pState->box;
+    TSquare projected = pState->box;
     int moved = _blokStateMoveBoxImpl(&projected, direction);
     if (!moved) {
         return 0;
     }
 
-    Node poschk = { projected.position };
+    TNode poschk = { projected.position };
     int eidx = blokDynListGetIndex(&pState->obstructs, &poschk);
 
     if (eidx == -1) {
@@ -80,14 +80,14 @@ int blokStateIsBoxMovable(
 }
 
 int blokStateAddObstruct(
-    State *pState,
-    const VectorII point)
+    TObjectState *pState,
+    const TVector2 point)
 {
     if (pState == NULL) {
         return -1;
     }
 
-    Node newPoint = { point };
+    TNode newPoint = { point };
     int exists = blokDynListExists(&pState->obstructs, &newPoint);
     if (exists) {
         return -1;
@@ -97,19 +97,19 @@ int blokStateAddObstruct(
 }
 
 int blokStateRemoveObstruct(
-    State *pState,
-    const VectorII point)
+    TObjectState *pState,
+    const TVector2 point)
 {
     if (pState == NULL) {
         return 0;
     }
 
-    Node removePoint = { point };
+    TNode removePoint = { point };
     return blokDynListRemove(&pState->obstructs, removePoint);
 }
 
 int blokStateClearObstructs(
-    State *pState)
+    TObjectState *pState)
 {
     if (pState == NULL) {
         return 0;

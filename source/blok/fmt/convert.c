@@ -1,38 +1,38 @@
 #include "convert.h"
 
-VectorII blokConvertPointV(
+TVector2 blokConvertPointV(
     const POINT point)
 {
-    return (VectorII){ point.x, point.y };
+    return (TVector2){ point.x, point.y };
 }
 
 POINT blokConvertVectorPoint(
-    const VectorII vec)
+    const TVector2 vec)
 {
     return (POINT){ vec.x, vec.y };
 }
 
 SIZE blokConvertVectorSize(
-    const VectorII vec)
+    const TVector2 vec)
 {
     return (SIZE){ vec.x, vec.y };
 }
 
 RECT blokConvertVectorRect(
-    const VectorII pos,
-    const VectorII size)
+    const TVector2 pos,
+    const TVector2 size)
 {
     return (RECT){ pos.x, pos.y, pos.x + size.x, pos.y + size.y };
 }
 
-VectorII blokConvertRectPositionV(
+TVector2 blokConvertRectPositionV(
     const RECT rect)
 {
-    return (VectorII){ rect.top, rect.left };
+    return (TVector2){ rect.top, rect.left };
 }
 
-VectorII blokConvertRectSizeV(
+TVector2 blokConvertRectSizeV(
     const RECT rect)
 {
-    return (VectorII){ rect.right - rect.left, rect.bottom - rect.top };
+    return (TVector2){ rect.right - rect.left, rect.bottom - rect.top };
 }

@@ -5,13 +5,13 @@
 #include "rendertools.h"
 
 typedef struct _Graphics {
-    Theme theme;
-    RenderTools tools;
-    ThemePalette colours;
-} Graphics;
+    TTheme currentTheme;
+    TRenderTools renderTools;
+    TThemePalette palette;
+} TGraphics;
 
-int blokGraphicsInit(Graphics *pGraphics, const Theme theme);
+int blokGraphicsInit(TGraphics *pGraphics, const TTheme theme);
 
-int blokGraphicsFree(Graphics *pGraphics);
+int blokGraphicsFree(TGraphics *pGraphics);
 
 #endif /* _BLOK_GRAPHICS_H_ */

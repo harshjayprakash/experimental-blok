@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 int blokVectorIICopy(
-    VectorII *pDest,
-    const VectorII src)
+    TVector2 *pDest,
+    const TVector2 src)
 {
     if (pDest == NULL) {
         return 0;
@@ -16,22 +16,22 @@ int blokVectorIICopy(
 }
 
 int blokVectorIIEquals(
-    const VectorII veca,
-    const VectorII vecb)
+    const TVector2 veca,
+    const TVector2 vecb)
 {
     return (veca.x == vecb.x && veca.y == vecb.y);
 }
 
-VectorII blokVectorIIOffset(
-    const VectorII vec,
-    const VectorII offsetVec)
+TVector2 blokVectorIIOffset(
+    const TVector2 vec,
+    const TVector2 offsetVec)
 {
-    return (VectorII){ vec.x + offsetVec.x, vec.y + offsetVec.y };
+    return (TVector2){ vec.x + offsetVec.x, vec.y + offsetVec.y };
 }
 
-VectorII blokVectorIIMultiply(
-    const VectorII veca,
-    const VectorII vecb)
+TVector2 blokVectorIIMultiply(
+    const TVector2 veca,
+    const TVector2 vecb)
 {
-    return (VectorII){ veca.x * vecb.x, veca.y * vecb.y };
+    return (TVector2){ veca.x * vecb.x, veca.y * vecb.y };
 }

@@ -1,7 +1,7 @@
 #include "text.h"
 
 int blokTextUpdateEx(
-    Text *pText,
+    TText *pText,
     const POINT *pPoint,
     const SIZE *pSize,
     const SIZE *pMargin)
@@ -34,7 +34,7 @@ int blokTextUpdateEx(
 }
 
 int blokTextUpdate(
-    Text *pText,
+    TText *pText,
     const POINT *pPosition)
 {
     if (pText == NULL) {

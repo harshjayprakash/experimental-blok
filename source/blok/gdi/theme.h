@@ -7,7 +7,7 @@ typedef enum _Theme {
     BLOK_THEME_UNSET = 0,
     BLOK_THEME_DARK = 1,
     BLOK_THEME_LIGHT = 2,
-} Theme;
+} TTheme;
 
 #define BLOK_THEME_MIN 0
 #define BLOK_THEME_MAX 2
@@ -46,7 +46,7 @@ typedef enum _ColourPalette {
     BLOK_COLOUR_SECONDARY_800 = RGB(0x11, 0x5e, 0x59),
     BLOK_COLOUR_SECONDARY_900 = RGB(0x13, 0x4e, 0x4a),
     BLOK_COLOUR_SECONDARY_950 = RGB(0x04, 0x2f, 0x2e)
-} ColourPalette;
+} TColourPalette;
 
 typedef struct _ThemePalette {
     COLORREF baseBackground;
@@ -60,8 +60,8 @@ typedef struct _ThemePalette {
     COLORREF primaryBackgroundFaded;
     COLORREF primaryForeground;
     COLORREF primaryBorder;
-} ThemePalette;
+} TThemePalette;
 
-int blokColoursSet(ThemePalette *pThemePalette, const Theme theme);
+int blokColoursSet(TThemePalette *pThemePalette, const TTheme theme);
 
 #endif /* _BLOK_THEME_H_ */

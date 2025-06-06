@@ -27,7 +27,7 @@ int WINAPI wWinMain(
         return 1;
     }
 
-    Context *pContext = blokContextGet();
+    TContext *pContext = blokContextGet();
     (void)blokInit(pContext, hInstance, lpCmdLine, nShowCmd);
     (void)blokRun(pContext);
     (void)blokFree(pContext);

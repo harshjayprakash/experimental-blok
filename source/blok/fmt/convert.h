@@ -4,16 +4,16 @@
 #include "../model/vector.h"
 #include <windows.h>
 
-VectorII blokConvertPointV(const POINT point);
+TVector2 blokConvertPointV(const POINT point);
 
-POINT blokConvertVectorPoint(const VectorII vec);
+POINT blokConvertVectorPoint(const TVector2 vec);
 
-SIZE blokConvertVectorSize(const VectorII vec);
+SIZE blokConvertVectorSize(const TVector2 vec);
 
-RECT blokConvertVectorRect(const VectorII pos, const VectorII size);
+RECT blokConvertVectorRect(const TVector2 pos, const TVector2 size);
 
-VectorII blokConvertRectPositionV(const RECT rect);
+TVector2 blokConvertRectPositionV(const RECT rect);
 
-VectorII blokConvertRectSizeV(const RECT rect);
+TVector2 blokConvertRectSizeV(const RECT rect);
 
 #endif /* _BLOK_CONVERT_H_ */

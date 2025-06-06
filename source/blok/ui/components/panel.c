@@ -1,7 +1,7 @@
 #include "panel.h"
 
 int blokPanelUpdateEx(
-    Panel *pPanel,
+    TPanel *pPanel,
     const RECT *pWindowRgn,
     const SIZE *pSize,
     const SIZE *pMargin)
@@ -33,7 +33,7 @@ int blokPanelUpdateEx(
 }
 
 int blokPanelUpdate(
-    Panel *pPanel,
+    TPanel *pPanel,
     const RECT *pWindowRgn)
 {
     if (pPanel == NULL) {

@@ -1,22 +1,22 @@
 #include "context.h"
 
-Context *blokContextGet(void)
+TContext *blokContextGet(void)
 {
-    static Context context;
+    static TContext context;
     return &context;
 }
 
-Graphics *blokContextGetGraphics(void)
+TGraphics *blokContextGetGraphics(void)
 {
     return &blokContextGet()->graphics;
 }
 
-Viewport *blokContextGetViewport(void)
+TViewport *blokContextGetViewport(void)
 {
     return &blokContextGet()->viewport;
 }
 
-State *blokContextGetState(void)
+TObjectState *blokContextGetObjectState(void)
 {
     return &blokContextGet()->state;
 }

@@ -3,10 +3,10 @@
 #include <strsafe.h>
 
 int blokActionMoveBox(
-    Viewport *pViewport,
-    State *pState,
+    TViewport *pViewport,
+    TObjectState *pState,
     HWND hWindow,
-    Direction direction)
+    TDirection direction)
 {
     if (pViewport == NULL) {
         return 0;
@@ -44,7 +44,7 @@ int blokActionMoveBox(
 }
 
 int blokActionToggleGridLines(
-    Viewport *pViewport,
+    TViewport *pViewport,
     HWND hWindow)
 {
     if (pViewport == NULL) {
@@ -63,7 +63,7 @@ int blokActionToggleGridLines(
 }
 
 int blokActionToggleInterface(
-    Viewport *pViewport,
+    TViewport *pViewport,
     HWND hWindow)
 {
     if (pViewport == NULL) {
@@ -82,7 +82,7 @@ int blokActionToggleInterface(
 }
 
 int blokActionToggleCanvasLock(
-    Viewport *pViewport,
+    TViewport *pViewport,
     HWND hWindow)
 {
     if (pViewport == NULL) {
@@ -102,14 +102,14 @@ int blokActionToggleCanvasLock(
 }
 
 int blokActionChangeTheme(
-    Graphics *pGraphics,
+    TGraphics *pGraphics,
     HWND hWindow)
 {
     if (pGraphics == NULL) {
         return 0;
     }
 
-    Theme currrentTheme = pGraphics->theme;
+    TTheme currrentTheme = pGraphics->currentTheme;
         
     (void)blokGraphicsFree(pGraphics);
     (void)blokGraphicsInit(pGraphics,
@@ -121,8 +121,8 @@ int blokActionChangeTheme(
 }
 
 int blokActionAddObstruct(
-    Viewport *pViewport,
-    State *pState,
+    TViewport *pViewport,
+    TObjectState *pState,
     HWND hWindow,
     const POINT *pPoint)
 {
@@ -138,8 +138,8 @@ int blokActionAddObstruct(
         return 0;
     }
 
-    VectorII newNode = { 0, 0 };
-    VectorII scale = pState->box.size;
+    TVector2 newNode = { 0, 0 };
+    TVector2 scale = pState->box.size;
 
     if (pPoint == NULL) {
         newNode.x = ((rand() % pViewport->canvas.size.cx) / scale.x) * scale.x;
@@ -168,8 +168,8 @@ int blokActionAddObstruct(
 }
 
 int blokActionRemoveObstruct(
-    Viewport *pViewport,
-    State *pState,
+    TViewport *pViewport,
+    TObjectState *pState,
     HWND hWindow,
     const POINT point)
 {
@@ -185,8 +185,8 @@ int blokActionRemoveObstruct(
         return 0;
     }
 
-    VectorII scale = pState->box.size;
-    VectorII rp = {
+    TVector2 scale = pState->box.size;
+    TVector2 rp = {
         (point.x / scale.x) * scale.x,
         (point.y / scale.y) * scale.y
     };
@@ -209,8 +209,8 @@ int blokActionRemoveObstruct(
 }
 
 int blokActionClearObstructs(
-    Viewport *pViewport,
-    State *pState,
+    TViewport *pViewport,
+    TObjectState *pState,
     HWND hWindow)
 {
     if (pViewport == NULL) {

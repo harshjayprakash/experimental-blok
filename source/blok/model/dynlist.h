@@ -4,32 +4,32 @@
 #include "vector.h"
 
 typedef struct _Node {
-    VectorII data;
-} Node;
+    TVector2 data;
+} TNode;
 
 typedef struct _DynList {
-    Node *pArr;
+    TNode *pArr;
     long head;
     long size;
     long max;
-} DynList;
+} TDynList;
 
-int blokDynListInit(DynList *pList, const long size);
+int blokDynListInit(TDynList *pList, const long size);
 
-int blokDynListIsFull(const DynList *pList);
+int blokDynListIsFull(const TDynList *pList);
 
-int blokDynListIsEmpty(const DynList *pList);
+int blokDynListIsEmpty(const TDynList *pList);
 
-long blokDynListAdd(DynList *pList, const Node *pNode);
+long blokDynListAdd(TDynList *pList, const TNode *pNode);
 
-int blokDynListClear(DynList *pList);
+int blokDynListClear(TDynList *pList);
 
-long blokDynListGetIndex(const DynList *pList, const Node *pNode);
+long blokDynListGetIndex(const TDynList *pList, const TNode *pNode);
 
-int blokDynListExists(const DynList *pList, const Node *pNode);
+int blokDynListExists(const TDynList *pList, const TNode *pNode);
 
-long blokDynListRemove(DynList *pList, const Node node);
+long blokDynListRemove(TDynList *pList, const TNode node);
 
-int blokDynListFree(DynList *pList);
+int blokDynListFree(TDynList *pList);
 
 #endif /* _BLOK_DYNLIST_H_ */

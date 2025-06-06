@@ -1,22 +1,22 @@
 #include "direction.h"
 
-VectorII blokDirectionToVector(
-    const Direction direction)
+TVector2 blokDirectionToVector(
+    const TDirection direction)
 {
     switch (direction) {
     case BLOK_DIRECTION_NORTH:
-        return (VectorII){ 0, -1 };
+        return (TVector2){ 0, -1 };
 
     case BLOK_DIRECTION_EAST:
-        return (VectorII){ 1, 0 };
+        return (TVector2){ 1, 0 };
 
     case BLOK_DIRECTION_SOUTH:
-        return (VectorII){ 0, 1 };
+        return (TVector2){ 0, 1 };
 
     case BLOK_DIRECTION_WEST:
-        return (VectorII){ -1, 0 };
+        return (TVector2){ -1, 0 };
 
     default:
-        return (VectorII){ 0, 0 };
+        return (TVector2){ 0, 0 };
     }
 }

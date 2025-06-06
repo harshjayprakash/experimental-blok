@@ -1,7 +1,7 @@
 #include "toggle.h"
 
 int blokToggleUpdateEx(
-    Toggle *pToggle,
+    TToggle *pToggle,
     const POINT *pPosition,
     const SIZE *pSize,
     const SIZE *pMargin, 
@@ -48,7 +48,7 @@ int blokToggleUpdateEx(
 }
 
 int blokToggleUpdate(
-    Toggle *pToggle,
+    TToggle *pToggle,
     const POINT *pPosition)
 {
     if (pToggle == NULL) {
@@ -63,7 +63,7 @@ int blokToggleUpdate(
 }
 
 int blokToggleUpdateSelected(
-    Toggle *pToggle,
+    TToggle *pToggle,
     const BOOL selected)
 {
     if (pToggle == NULL) {

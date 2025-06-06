@@ -11,19 +11,19 @@ typedef struct _Context {
     HINSTANCE hInstance;
     LPWSTR pCommandLine;
     DWORD showFlag;
-    Console console;
-    Graphics graphics;
-    Viewport viewport;
-    State state;
+    TConsoleInfo console;
+    TGraphics graphics;
+    TViewport viewport;
+    TObjectState state;
     void *pResult;
-} Context;
+} TContext;
 
-Context *blokContextGet(void);
+TContext *blokContextGet(void);
 
-Graphics *blokContextGetGraphics(void);
+TGraphics *blokContextGetGraphics(void);
 
-Viewport *blokContextGetViewport(void);
+TViewport *blokContextGetViewport(void);
 
-State *blokContextGetState(void);
+TObjectState *blokContextGetObjectState(void);
 
 #endif /* _BLOK_CONTEXT_H_ */

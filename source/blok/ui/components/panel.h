@@ -8,11 +8,11 @@ typedef struct _Panel {
     SIZE margin;
     POINT position;
     SIZE size;
-} Panel;
+} TPanel;
 
 int blokPanelUpdateEx(
-    Panel *pPanel, const RECT *pWindowRgn, const SIZE *pSize, const SIZE *pMargin);
+    TPanel *pPanel, const RECT *pWindowRgn, const SIZE *pSize, const SIZE *pMargin);
 
-int blokPanelUpdate(Panel *pPanel, const RECT *pWindowRgn);
+int blokPanelUpdate(TPanel *pPanel, const RECT *pWindowRgn);
 
 #endif /* _BLOK_PANEL_H_ */

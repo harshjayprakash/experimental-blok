@@ -9,11 +9,11 @@ typedef struct _Text {
     SIZE size;
     SIZE margin;
     POINT position;
-} Text;
+} TText;
 
 int blokTextUpdateEx(
-    Text *pText, const POINT *pPoint, const SIZE *pSize, const SIZE *pMargin);
+    TText *pText, const POINT *pPoint, const SIZE *pSize, const SIZE *pMargin);
 
-int blokTextUpdate(Text *pText, const POINT *pPosition);
+int blokTextUpdate(TText *pText, const POINT *pPosition);
 
 #endif /* _BLOK_TEXT_H_ */

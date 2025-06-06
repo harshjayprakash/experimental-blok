@@ -11,32 +11,32 @@
 #include <windows.h>
 
 typedef struct _Viewport {
-    Window window;
+    TWindow window;
     RECT region;
     POINT mousePos;
     HFONT hFont;
     BOOL isLeftMouseDown;
     BOOL isRightMouseDown;
 
-    Canvas canvas;
-    int isCanvasLocked;
-    int isGridVisible;
+    TCanvas canvas;
+    BOOL isCanvasLocked;
+    BOOL isGridVisible;
 
-    Panel panel;
-    int isInterfaceVisible;
-    Text coordinatesText;
-    Button clearAllButton;
-    Button generateButton;
-    Text obstructCountText;
-    ProgressBar obstructMemoryBar;
-    Text lockedToggleText;
-    Toggle lockedToggle;
-} Viewport;
+    TPanel panel;
+    BOOL isInterfaceVisible;
+    TText coordinatesText;
+    TButton clearAllButton;
+    TButton generateButton;
+    TText obstructCountText;
+    TProgressBar obstructMemoryBar;
+    TText lockedToggleText;
+    TToggle lockedToggle;
+} TViewport;
 
-int blokViewportInit(Viewport *pViewport, HINSTANCE hInstance);
+int blokViewportInit(TViewport *pViewport, HINSTANCE hInstance);
 
-int blokViewportShow(Viewport *pViewport, DWORD showFlag);
+int blokViewportShow(TViewport *pViewport, DWORD showFlag);
 
-int blokViewportFree(Viewport *pViewport, HINSTANCE hInstance);
+int blokViewportFree(TViewport *pViewport, HINSTANCE hInstance);
 
 #endif /* _BLOK_VIEWPORT_H_ */

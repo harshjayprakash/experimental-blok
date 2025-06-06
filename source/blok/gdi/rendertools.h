@@ -5,24 +5,24 @@
 #include <windows.h>
 
 typedef struct _RenderTools {
-    struct {
+    struct _Brushes {
         HBRUSH hBaseBackground;
         HBRUSH hBaseBackgroundFaded;
         HBRUSH hBaseBackgroundMedium;
         HBRUSH hPrimaryBackground;
         HBRUSH hPrimaryBackgroundFaded;
     } brushes;
-    struct {
+    struct _Pens {
         HPEN hBaseForeground;
         HPEN hBaseBorder;
         HPEN hBaseBorderFaded;
         HPEN hPrimaryBorder;
         HPEN hPrimaryForeground;
     } pens;
-} RenderTools;
+} TRenderTools;
 
-int blokRenderToolsInit(RenderTools *pTools, const ThemePalette *pColours);
+int blokRenderToolsInit(TRenderTools *pTools, const TThemePalette *pColours);
 
-int blokRenderToolsFree(RenderTools *pTools);
+int blokRenderToolsFree(TRenderTools *pTools);
 
 #endif /* _BLOK_RENDERTOOLS_H_ */

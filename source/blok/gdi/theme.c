@@ -4,8 +4,8 @@
     (theme == BLOK_THEME_LIGHT) ? light : dark
 
 int blokColoursSet(
-    ThemePalette *pThemePalette,
-    const Theme theme)
+    TThemePalette *pThemePalette,
+    const TTheme theme)
 {
     if (pThemePalette == NULL) {
         return 0;

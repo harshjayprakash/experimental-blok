@@ -12,7 +12,7 @@
     assignTo = (scale != 0) ? scale : BLOK_SCALE_DEF
 
 int blokArgsProcess(
-    ArgsInfo *pArgs, 
+    TArgsResult *pArgs, 
     LPCWSTR pCommandLine)
 {
     if (pCommandLine == NULL) {

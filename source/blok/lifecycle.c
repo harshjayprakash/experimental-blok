@@ -2,7 +2,7 @@
 #include "cmd/args.h"
 
 int blokInit(
-    Context *pContext,
+    TContext *pContext,
     HINSTANCE hInstance,
     LPWSTR pCommandLine,
     DWORD showFlag)
@@ -15,7 +15,7 @@ int blokInit(
     pContext->pCommandLine = pCommandLine;
     pContext->showFlag = showFlag;
 
-    ArgsInfo argsResult;
+    TArgsResult argsResult;
     (void)blokArgsProcess(&argsResult, pContext->pCommandLine);
 
     if (argsResult.showConsole) {
@@ -24,7 +24,7 @@ int blokInit(
 
     (void)blokStateInit(
         &pContext->state, 
-        (VectorII){ argsResult.scaleX, argsResult.scaleY });
+        (TVector2){ argsResult.scaleX, argsResult.scaleY });
     (void)blokGraphicsInit(&pContext->graphics, argsResult.theme);
     (void)blokViewportInit(&pContext->viewport, pContext->hInstance);
 
@@ -32,7 +32,7 @@ int blokInit(
 }
 
 int blokRun(
-    Context *pContext)
+    TContext *pContext)
 {
     if (pContext == NULL) {
         return -1;
@@ -42,7 +42,7 @@ int blokRun(
 }
 
 int blokFree(
-    Context *pContext)
+    TContext *pContext)
 {
     if (pContext == NULL) {
         return 0;

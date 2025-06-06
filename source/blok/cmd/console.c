@@ -2,7 +2,7 @@
 #include <windows.h>
 
 int blokConsoleInit(
-    Console *pConhost)
+    TConsoleInfo *pConhost)
 {
     if (pConhost == NULL) {
         return 0;
@@ -33,7 +33,7 @@ int blokConsoleInit(
 }
 
 int blokConsoleFree(
-    Console *pConhost)
+    TConsoleInfo *pConhost)
 {
     if (pConhost == NULL) {
         return 0;

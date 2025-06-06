@@ -9,7 +9,7 @@ static long _blokDynListGenerateNewSize(
 }
 
 static int _blokDynListResize(
-    DynList *pList,
+    TDynList *pList,
     const long newSize)
 {
     if (pList == NULL) {
@@ -24,7 +24,7 @@ static int _blokDynListResize(
         return 0;
     }
 
-    Node *pNewMemory = realloc(pList->pArr, newSize * sizeof(Node));
+    TNode *pNewMemory = realloc(pList->pArr, newSize * sizeof(TNode));
 
     if (pNewMemory == NULL) {
         return 0;
@@ -37,14 +37,14 @@ static int _blokDynListResize(
 }
 
 int blokDynListInit(
-    DynList *pList,
+    TDynList *pList,
     const long size)
 {
     if (pList == NULL) {
         return 0;
     }
 
-    pList->pArr = calloc(size, sizeof(Node));
+    pList->pArr = calloc(size, sizeof(TNode));
 
     if (pList->pArr == NULL) {
         return 0;
@@ -58,7 +58,7 @@ int blokDynListInit(
 }
 
 int blokDynListIsFull(
-    const DynList *pList)
+    const TDynList *pList)
 {
     if (pList == NULL) {
         return -1;
@@ -72,7 +72,7 @@ int blokDynListIsFull(
 }
 
 int blokDynListIsEmpty(
-    const DynList *pList)
+    const TDynList *pList)
 {
     if (pList == NULL) {
         return -1;
@@ -86,8 +86,8 @@ int blokDynListIsEmpty(
 }
 
 long blokDynListAdd(
-    DynList *pList,
-    const Node *pNode)
+    TDynList *pList,
+    const TNode *pNode)
 {
     if (pList == NULL) {
         return -1L;
@@ -115,7 +115,7 @@ long blokDynListAdd(
 }
 
 int blokDynListClear(
-    DynList *pList)
+    TDynList *pList)
 {
     if (pList == NULL) {
         return 0;
@@ -132,8 +132,8 @@ int blokDynListClear(
 }
 
 long blokDynListGetIndex(
-    const DynList *pList,
-    const Node *pNode)
+    const TDynList *pList,
+    const TNode *pNode)
 {
     if (pList == NULL) {
         return -2L;
@@ -157,8 +157,8 @@ long blokDynListGetIndex(
 }  
 
 int blokDynListExists(
-    const DynList *pList,
-    const Node *pNode)
+    const TDynList *pList,
+    const TNode *pNode)
 {
     if (pList == NULL) {
         return -1;
@@ -182,8 +182,8 @@ int blokDynListExists(
 }
 
 long blokDynListRemove(
-    DynList *pList,
-    const Node node)
+    TDynList *pList,
+    const TNode node)
 {
     if (pList == NULL) {
         return -1;
@@ -203,7 +203,7 @@ long blokDynListRemove(
 }
 
 int blokDynListFree(
-    DynList *pList)
+    TDynList *pList)
 {
     if (pList == NULL) {
         return 0;

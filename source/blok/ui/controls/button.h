@@ -9,11 +9,11 @@ typedef struct _Button {
     SIZE size;
     SIZE margin;
     POINT position;
-} Button;
+} TButton;
 
 int blokButtonUpdateEx(
-    Button *pButton, const POINT *pPos, const SIZE *pSize, const SIZE *pMargin);
+    TButton *pButton, const POINT *pPos, const SIZE *pSize, const SIZE *pMargin);
 
-int blokButtonUpdate(Button *pButton, const POINT *pPos);
+int blokButtonUpdate(TButton *pButton, const POINT *pPos);
 
 #endif /* _BLOK_BUTTON_H_ */

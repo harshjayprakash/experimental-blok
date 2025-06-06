@@ -1,17 +1,17 @@
 #ifndef _BLOK_VECTOR_H_
 #define _BLOK_VECTOR_H_
 
-typedef struct _VectorII {
+typedef struct _Vector2 {
     long x;
     long y;
-} VectorII;
+} TVector2;
 
-int blokVectorIICopy(VectorII *pDest, const VectorII src);
+int blokVectorIICopy(TVector2 *pDest, const TVector2 src);
 
-int blokVectorIIEquals(const VectorII veca, const VectorII vecb);
+int blokVectorIIEquals(const TVector2 veca, const TVector2 vecb);
 
-VectorII blokVectorIIOffset(const VectorII vec, const VectorII offsetVec);
+TVector2 blokVectorIIOffset(const TVector2 vec, const TVector2 offsetVec);
 
-VectorII blokVectorIIMultiply(const VectorII veca, const VectorII vecb);
+TVector2 blokVectorIIMultiply(const TVector2 veca, const TVector2 vecb);
 
 #endif /* _BLOK_VECTOR_H_ */

@@ -3,13 +3,13 @@
 
 #include <windows.h>
 
-typedef struct _ArgsInfo {
+typedef struct _ArgsResult {
     int theme;
     int scaleX;
     int scaleY;
     int showConsole;
-} ArgsInfo;
+} TArgsResult;
 
-int blokArgsProcess(ArgsInfo *pArgs, LPCWSTR pCommandLine);
+int blokArgsProcess(TArgsResult *pArgs, LPCWSTR pCommandLine);
 
 #endif /* _BLOK_ARGS_H_ */

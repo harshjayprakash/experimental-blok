@@ -9,12 +9,12 @@ typedef struct _Window {
     LPWSTR klassName;
     LPWSTR caption;
     ATOM klassAtomIdx;
-} Window;
+} TWindow;
 
-int blokWindowInit(Window *pWindow, HINSTANCE hInstance);
+int blokWindowInit(TWindow *pWindow, HINSTANCE hInstance);
 
-int blokWindowShow(Window *pWindow, DWORD showFlag);
+int blokWindowShow(TWindow *pWindow, DWORD showFlag);
 
-int blokWindowFree(Window *pWindow, HINSTANCE hInstance);
+int blokWindowFree(TWindow *pWindow, HINSTANCE hInstance);
 
 #endif /* _BLOK_WINDOW_H_ */

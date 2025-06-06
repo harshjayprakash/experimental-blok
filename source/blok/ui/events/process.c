@@ -11,10 +11,10 @@
 void blokProcessEventOnPaint(
     HWND hWindow)
 {
-    Graphics *pGraphics = blokContextGetGraphics();
-    Viewport *pViewport = blokContextGetViewport();
-    State *pState = blokContextGetState();
-    VectorII scaling = pState->box.size;
+    TGraphics *pGraphics = blokContextGetGraphics();
+    TViewport *pViewport = blokContextGetViewport();
+    TObjectState *pState = blokContextGetObjectState();
+    TVector2 scaling = pState->box.size;
 
     PAINTSTRUCT paintstruct;
     HDC hSurface = BeginPaint(hWindow, &paintstruct);
@@ -23,20 +23,20 @@ void blokProcessEventOnPaint(
         hSurface, pViewport->region.right, pViewport->region.bottom);
     HBITMAP hSurfaceBitmap = SelectObject(hOffSurface, hOffSurfaceBitmap);
     HFONT hOldFont = NULL;
-    HBRUSH hOldBrush = (HBRUSH)SelectObject(hOffSurface, pGraphics->tools.brushes.hBaseBackground);
-    HPEN hOldPen = (HPEN)SelectObject(hOffSurface, pGraphics->tools.pens.hBaseForeground);
+    HBRUSH hOldBrush = (HBRUSH)SelectObject(hOffSurface, pGraphics->renderTools.brushes.hBaseBackground);
+    HPEN hOldPen = (HPEN)SelectObject(hOffSurface, pGraphics->renderTools.pens.hBaseForeground);
     INT oldBkMode = SetBkMode(hOffSurface, TRANSPARENT);
-    COLORREF oldBkColour = SetBkColor(hOffSurface, pGraphics->colours.baseBackground);
-    COLORREF oldTextColour = SetTextColor(hOffSurface, pGraphics->colours.baseForeground);
+    COLORREF oldBkColour = SetBkColor(hOffSurface, pGraphics->palette.baseBackground);
+    COLORREF oldTextColour = SetTextColor(hOffSurface, pGraphics->palette.baseForeground);
 
     if (pViewport->hFont != NULL) {
         HFONT oldFont = (HFONT)SelectObject(hOffSurface, pViewport->hFont);
     }
 
     (void)FillRect(
-        hOffSurface, &pViewport->region, pGraphics->tools.brushes.hBaseBackground);
+        hOffSurface, &pViewport->region, pGraphics->renderTools.brushes.hBaseBackground);
 
-    (void)SelectObject(hOffSurface, pGraphics->tools.pens.hBaseBorderFaded);
+    (void)SelectObject(hOffSurface, pGraphics->renderTools.pens.hBaseBorderFaded);
 
     if (pViewport->isGridVisible) {
         for (long xAxisIdx = 0; 
@@ -54,7 +54,7 @@ void blokProcessEventOnPaint(
         }
     }
 
-    (void)SelectObject(hOffSurface, pGraphics->tools.pens.hBaseForeground);
+    (void)SelectObject(hOffSurface, pGraphics->renderTools.pens.hBaseForeground);
 
     RECT box = blokConvertVectorRect(pState->box.position, pState->box.size);
     INT innerBoxSF = 3;
@@ -64,20 +64,20 @@ void blokProcessEventOnPaint(
         box.right - (scaling.x / innerBoxSF),
         box.bottom - (scaling.y / innerBoxSF)
     };
-    (void)FillRect(hOffSurface, &box, pGraphics->tools.brushes.hPrimaryBackground);
-    (void)FillRect(hOffSurface, &innerBox, pGraphics->tools.brushes.hBaseBackground);
+    (void)FillRect(hOffSurface, &box, pGraphics->renderTools.brushes.hPrimaryBackground);
+    (void)FillRect(hOffSurface, &innerBox, pGraphics->renderTools.brushes.hBaseBackground);
 
     for (long obstructIdx = 0; obstructIdx < pState->obstructs.size; obstructIdx++) {
         RECT obstructiveRc = blokConvertVectorRect(
             pState->obstructs.pArr[obstructIdx].data, scaling);
         (void)FillRect(
-            hOffSurface, &obstructiveRc, pGraphics->tools.brushes.hBaseBackgroundMedium);
+            hOffSurface, &obstructiveRc, pGraphics->renderTools.brushes.hBaseBackgroundMedium);
     }
 
     if (pViewport->isInterfaceVisible) {
         (void)FillRect(
             hOffSurface, &pViewport->panel.region, 
-            pGraphics->tools.brushes.hBaseBackgroundFaded);
+            pGraphics->renderTools.brushes.hBaseBackgroundFaded);
 
         (void)DrawTextW(
             hOffSurface, pViewport->coordinatesText.data, -1, 
@@ -86,12 +86,12 @@ void blokProcessEventOnPaint(
 
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->clearAllButton.region, pViewport->mousePos)
-            ? pGraphics->tools.pens.hPrimaryBorder
-            : pGraphics->tools.pens.hBaseBorder);
+            ? pGraphics->renderTools.pens.hPrimaryBorder
+            : pGraphics->renderTools.pens.hBaseBorder);
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->clearAllButton.region, pViewport->mousePos)
-            ? pGraphics->tools.brushes.hPrimaryBackgroundFaded
-            : pGraphics->tools.brushes.hBaseBackground);
+            ? pGraphics->renderTools.brushes.hPrimaryBackgroundFaded
+            : pGraphics->renderTools.brushes.hBaseBackground);
 
         (void)Rectangle(
             hOffSurface, pViewport->clearAllButton.region.left, 
@@ -104,12 +104,12 @@ void blokProcessEventOnPaint(
 
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->generateButton.region, pViewport->mousePos)
-            ? pGraphics->tools.pens.hPrimaryBorder
-            : pGraphics->tools.pens.hBaseBorder);
+            ? pGraphics->renderTools.pens.hPrimaryBorder
+            : pGraphics->renderTools.pens.hBaseBorder);
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->generateButton.region, pViewport->mousePos)
-            ? pGraphics->tools.brushes.hPrimaryBackgroundFaded
-            : pGraphics->tools.brushes.hBaseBackground);
+            ? pGraphics->renderTools.brushes.hPrimaryBackgroundFaded
+            : pGraphics->renderTools.brushes.hBaseBackground);
 
         (void)Rectangle(
             hOffSurface, pViewport->generateButton.region.left, 
@@ -120,8 +120,8 @@ void blokProcessEventOnPaint(
             &pViewport->generateButton.region, 
             DT_CENTER | DT_VCENTER | DT_SINGLELINE | DT_NOCLIP);
 
-        (void)SelectObject(hOffSurface, pGraphics->tools.pens.hBaseBorder);
-        (void)SelectObject(hOffSurface, pGraphics->tools.brushes.hBaseBackground);
+        (void)SelectObject(hOffSurface, pGraphics->renderTools.pens.hBaseBorder);
+        (void)SelectObject(hOffSurface, pGraphics->renderTools.brushes.hBaseBackground);
 
         (void)DrawTextW(
             hOffSurface, pViewport->obstructCountText.data, -1, 
@@ -135,16 +135,16 @@ void blokProcessEventOnPaint(
             pViewport->obstructMemoryBar.region.bottom);
         (void)FillRect(
             hOffSurface, &pViewport->obstructMemoryBar.barRegion, 
-            pGraphics->tools.brushes.hPrimaryBackground);
+            pGraphics->renderTools.brushes.hPrimaryBackground);
         
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->lockedToggle.region, pViewport->mousePos)
-            ? pGraphics->tools.pens.hPrimaryBorder
-            : pGraphics->tools.pens.hBaseBorder);
+            ? pGraphics->renderTools.pens.hPrimaryBorder
+            : pGraphics->renderTools.pens.hBaseBorder);
         (void)SelectObject(hOffSurface, 
             BLOK_MOUSE_AT(pViewport->lockedToggle.region, pViewport->mousePos)
-            ? pGraphics->tools.brushes.hPrimaryBackgroundFaded
-            : pGraphics->tools.brushes.hBaseBackground);
+            ? pGraphics->renderTools.brushes.hPrimaryBackgroundFaded
+            : pGraphics->renderTools.brushes.hBaseBackground);
     
         (void)Rectangle(
             hOffSurface, pViewport->lockedToggle.region.left, 
@@ -152,13 +152,13 @@ void blokProcessEventOnPaint(
             pViewport->lockedToggle.region.right, 
             pViewport->lockedToggle.region.bottom);
 
-        (void)SelectObject(hOffSurface, pGraphics->tools.pens.hBaseBorder);
-        (void)SelectObject(hOffSurface, pGraphics->tools.brushes.hBaseBackground);
+        (void)SelectObject(hOffSurface, pGraphics->renderTools.pens.hBaseBorder);
+        (void)SelectObject(hOffSurface, pGraphics->renderTools.brushes.hBaseBackground);
 
         if (pViewport->lockedToggle.selected) {
             (void)FillRect(
                 hOffSurface, &pViewport->lockedToggle.selectRegion, 
-                pGraphics->tools.brushes.hPrimaryBackground);
+                pGraphics->renderTools.brushes.hPrimaryBackground);
         }
 
         (void)DrawTextW(
@@ -190,9 +190,9 @@ void blokProcessEventOnKeyDown(
     HWND hWindow,
     WPARAM virtualKey)
 {
-    State *pState = blokContextGetState();
-    Viewport *pViewport = blokContextGetViewport();
-    Graphics *pGraphics = blokContextGetGraphics();
+    TObjectState *pState = blokContextGetObjectState();
+    TViewport *pViewport = blokContextGetViewport();
+    TGraphics *pGraphics = blokContextGetGraphics();
 
     switch (virtualKey) {
     case VK_UP:
@@ -245,9 +245,9 @@ void blokProcessEventOnLeftMouseDown(
     HWND hWindow,
     LPARAM mousepos)
 {
-    State *pState = blokContextGetState();
-    Viewport *pViewport = blokContextGetViewport();
-    VectorII span = pState->box.size;
+    TObjectState *pState = blokContextGetObjectState();
+    TViewport *pViewport = blokContextGetViewport();
+    TVector2 span = pState->box.size;
     POINT mpos = {
         (GET_X_LPARAM(mousepos) / span.x) * span.x,
         (GET_Y_LPARAM(mousepos) / span.y) * span.y
@@ -283,8 +283,8 @@ void blokProcessEventOnLeftMouseUp(
     HWND hWindow,
     LPARAM mousepos)
 {
-    State *pState = blokContextGetState();
-    Viewport *pViewport = blokContextGetViewport();
+    TObjectState *pState = blokContextGetObjectState();
+    TViewport *pViewport = blokContextGetViewport();
 
     pViewport->isLeftMouseDown = FALSE;
 }
@@ -292,8 +292,8 @@ void blokProcessEventOnLeftMouseUp(
 void blokProcessEventOnResize(
     HWND hWindow)
 {
-    Viewport *pViewport = blokContextGetViewport();
-    State *pState = blokContextGetState();
+    TViewport *pViewport = blokContextGetViewport();
+    TObjectState *pState = blokContextGetObjectState();
 
     (void)GetClientRect(hWindow, &pViewport->region);
     (void)blokPanelUpdate(&pViewport->panel, &pViewport->region);
@@ -343,8 +343,8 @@ void blokProcessEventOnMouseHover(
     HWND hWindow,
     LPARAM mousepos)
 {
-    Viewport *pViewport = blokContextGetViewport();
-    State *pState = blokContextGetState();
+    TViewport *pViewport = blokContextGetViewport();
+    TObjectState *pState = blokContextGetObjectState();
 
     pViewport->mousePos.x = GET_X_LPARAM(mousepos);
     pViewport->mousePos.y = GET_Y_LPARAM(mousepos);
@@ -375,8 +375,8 @@ void blokProcessEventOnRightMouseDown(
     HWND hWindow,
     LPARAM mousepos)
 {
-    State *pState = blokContextGetState();
-    Viewport *pViewport = blokContextGetViewport();
+    TObjectState *pState = blokContextGetObjectState();
+    TViewport *pViewport = blokContextGetViewport();
 
     pViewport->isRightMouseDown = TRUE;
 
@@ -391,7 +391,7 @@ void blokProcessEventOnRightMouseUp(
     HWND hWindow,
     LPARAM mousepos)
 {
-    Viewport *pViewport = blokContextGetViewport();
+    TViewport *pViewport = blokContextGetViewport();
 
     pViewport->isRightMouseDown = FALSE;
 }

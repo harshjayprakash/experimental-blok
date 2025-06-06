@@ -4,8 +4,8 @@
 #include "vector.h"
 
 typedef struct _Square {
-    VectorII position;
-    VectorII size;
-} Square;
+    TVector2 position;
+    TVector2 size;
+} TSquare;
 
 #endif /* _BLOK_SQUARE_H_ */

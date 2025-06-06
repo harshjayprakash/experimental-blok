@@ -3,7 +3,7 @@
 #include <time.h>
 
 int blokViewportInit(
-    Viewport *pViewport,
+    TViewport *pViewport,
     HINSTANCE hInstance)
 {
     if (pViewport == NULL) {
@@ -103,7 +103,7 @@ int blokViewportInit(
 }
 
 int blokViewportShow(
-    Viewport *pViewport,
+    TViewport *pViewport,
     DWORD showFlag)
 {
     if (pViewport == NULL) {
@@ -114,7 +114,7 @@ int blokViewportShow(
 }
 
 int blokViewportFree(
-    Viewport *pViewport,
+    TViewport *pViewport,
     HINSTANCE hInstance)
 {
     if (pViewport == NULL) {

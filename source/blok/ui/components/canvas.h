@@ -6,8 +6,8 @@
 typedef struct _Canvas {
     RECT region;
     SIZE size;
-} Canvas;
+} TCanvas;
 
-int blokCanvasUpdate(Canvas *pCanvas, const RECT *pWindowRgn);
+int blokCanvasUpdate(TCanvas *pCanvas, const RECT *pWindowRgn);
 
 #endif /* _BLOK_CANVAS_H_ */

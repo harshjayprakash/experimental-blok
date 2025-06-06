@@ -56,7 +56,7 @@ static LRESULT CALLBACK _blokWindowProcedure(
 }
 
 int blokWindowInit(
-    Window *pWindow,
+    TWindow *pWindow,
     HINSTANCE hInstance)
 {
     if (pWindow == NULL) {
@@ -105,7 +105,7 @@ int blokWindowInit(
 }
 
 int blokWindowShow(
-    Window *pWindow,
+    TWindow *pWindow,
     DWORD showFlag)
 {
     if (pWindow == NULL) {
@@ -139,7 +139,7 @@ int blokWindowShow(
 }
 
 int blokWindowFree(
-    Window *pWindow,
+    TWindow *pWindow,
     HINSTANCE hInstance)
 {
     if (pWindow == NULL) {

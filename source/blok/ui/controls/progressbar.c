@@ -1,7 +1,7 @@
 #include "progressbar.h"
 
 int blokProgressBarUpdateEx(
-    ProgressBar *pPbar,
+    TProgressBar *pPbar,
     const POINT *pPosition,
     const SIZE *pSize,
     const SIZE *pMargin,
@@ -51,7 +51,7 @@ int blokProgressBarUpdateEx(
 }
 
 int blokProgressBarUpdate(
-    ProgressBar *pPbar,
+    TProgressBar *pPbar,
     const POINT *pPosition)
 {
     if (pPbar == NULL) {
@@ -66,7 +66,7 @@ int blokProgressBarUpdate(
 }
 
 int blokProgressBarUpdateMinMax(
-    ProgressBar *pPbar,
+    TProgressBar *pPbar,
     const int minValue,
     const int maxValue)
 {
@@ -81,7 +81,7 @@ int blokProgressBarUpdateMinMax(
 }
 
 int blokProgressBarUpdateValue(
-    ProgressBar *pPbar,
+    TProgressBar *pPbar,
     const int value)
 {
     if (pPbar == NULL) {

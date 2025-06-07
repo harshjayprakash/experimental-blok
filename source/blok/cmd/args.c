@@ -1,5 +1,4 @@
 #include "args.h"
-#include <strsafe.h>
 
 #define BLOK_SCALE_DEF    15
 #define BLOK_ARGM_UNSET   0

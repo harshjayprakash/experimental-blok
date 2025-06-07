@@ -54,7 +54,7 @@ int blokConsoleFree(TConsoleInfo *pConsoleInfo)
 
     if (result == 1)
     {
-        pConsoleInfo->isInitialised == 0;
+        pConsoleInfo->isInitialised = 0;
     }
 
     return result;

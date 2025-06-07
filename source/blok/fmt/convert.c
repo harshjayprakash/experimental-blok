@@ -1,9 +1,9 @@
 #include "convert.h"
 
 TVector2 blokConvertPointV(
-    const POINT point)
+    const POINT pt)
 {
-    return (TVector2){ point.x, point.y };
+    return (TVector2){ pt.x, pt.y };
 }
 
 POINT blokConvertVectorPoint(

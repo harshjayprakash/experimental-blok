@@ -1,3 +1,10 @@
+/**
+ * @file   args.c
+ * @brief  Implementation of Argument Processing.
+ * @author harshjayprakash
+ * @date   2025-06-07
+ ****************************************************************************************/
+
 #include "args.h"
 
 #define BLOK_SCALE_DEF    15

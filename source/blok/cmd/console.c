@@ -52,8 +52,7 @@ int blokConsoleFree(TConsoleInfo *pConsoleInfo)
 
     int result = (!streamNotClosed && consoleClosed);
 
-    if (result == 1)
-    {
+    if (result == 1) {
         pConsoleInfo->isInitialised = 0;
     }
 

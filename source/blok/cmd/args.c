@@ -73,7 +73,7 @@ int blokArgsProcess(
         }
     }
 
-    (void)LocalFree(ppArgv);
+    (void)LocalFree((HLOCAL)ppArgv);
 
     return 1;
 }

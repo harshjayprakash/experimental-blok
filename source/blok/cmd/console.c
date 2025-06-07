@@ -15,8 +15,6 @@ int blokConsoleInit(
     pConhost->isInitialised = AllocConsole();
     
     if (pConhost->isInitialised == 0) {
-        (void)MessageBoxW(
-            NULL, L"Console initialisation failed", L"Blok", MB_OK | MB_ICONERROR);
         return 0;
     }
 
@@ -24,9 +22,6 @@ int blokConsoleInit(
         &pConhost->pStandardOut, L"CONOUT$", L"w", stdout);
     
     if (pConhost->errorOnAlloc != 0) {
-        (void)MessageBoxW(
-            NULL, L"Opening standard out file stream failed", L"Blok", 
-            MB_OK | MB_ICONERROR);
         blokConsoleFree(pConhost);
         return 0;
     }

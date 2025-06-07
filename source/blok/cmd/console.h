@@ -10,7 +10,9 @@ typedef struct _ConsoleInfo {
 } TConsoleInfo;
 
 int blokConsoleInit(TConsoleInfo *pConhost);
+int blokConsoleInit(TConsoleInfo *pConsoleInfo);
 
 int blokConsoleFree(TConsoleInfo *pConhost);
+int blokConsoleFree(TConsoleInfo *pConsoleInfo);
 
 #endif /* _BLOK_CONSOLE_H_ */

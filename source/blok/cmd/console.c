@@ -1,28 +1,27 @@
 #include "console.h"
 #include <windows.h>
 
-int blokConsoleInit(
-    TConsoleInfo *pConhost)
+int blokConsoleInit(TConsoleInfo *pConsoleInfo)
 {
-    if (pConhost == NULL) {
+    if (pConsoleInfo == NULL) {
         return 0;
     }
 
-    if (pConhost->isInitialised) {
+    if (pConsoleInfo->isInitialised) {
         return 0;
     }
 
-    pConhost->isInitialised = AllocConsole();
-    
-    if (pConhost->isInitialised == 0) {
+    pConsoleInfo->isInitialised = AllocConsole();
+
+    if (pConsoleInfo->isInitialised == 0) {
         return 0;
     }
 
-    pConhost->errorOnAlloc = _wfreopen_s(
-        &pConhost->pStandardOut, L"CONOUT$", L"w", stdout);
-    
-    if (pConhost->errorOnAlloc != 0) {
-        blokConsoleFree(pConhost);
+    pConsoleInfo->errorOnAlloc =
+        _wfreopen_s(&pConsoleInfo->pStandardOut, L"CONOUT$", L"w", stdout);
+
+    if (pConsoleInfo->errorOnAlloc != 0) {
+        blokConsoleFree(pConsoleInfo);
         return 0;
     }
 
@@ -31,21 +30,20 @@ int blokConsoleInit(
     return 1;
 }
 
-int blokConsoleFree(
-    TConsoleInfo *pConhost)
+int blokConsoleFree(TConsoleInfo *pConsoleInfo)
 {
-    if (pConhost == NULL) {
+    if (pConsoleInfo == NULL) {
         return 0;
     }
 
     int streamNotClosed = 1;
     int consoleClosed = 0;
 
-    if (pConhost->errorOnAlloc == 0) {
+    if (pConsoleInfo->errorOnAlloc == 0) {
         streamNotClosed = fclose(stdout);
     }
 
-    if (pConhost->isInitialised != 0) {
+    if (pConsoleInfo->isInitialised != 0) {
         consoleClosed = FreeConsole();
     }
 

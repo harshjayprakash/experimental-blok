@@ -8,6 +8,10 @@ int blokConsoleInit(
         return 0;
     }
 
+    if (pConhost->isInitialised) {
+        return 0;
+    }
+
     pConhost->isInitialised = AllocConsole();
     
     if (pConhost->isInitialised == 0) {

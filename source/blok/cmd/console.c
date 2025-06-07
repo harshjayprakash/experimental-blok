@@ -40,11 +40,8 @@ int blokConsoleFree(TConsoleInfo *pConsoleInfo)
         return 0;
     }
 
-    int streamNotClosed = 1;
-    int consoleClosed = 0;
-
-        streamNotClosed = fclose(stdout);
-        consoleClosed = FreeConsole();
+    int streamNotClosed = fclose(stdout);
+    int consoleClosed = FreeConsole();
 
     return (!streamNotClosed && consoleClosed);
 }

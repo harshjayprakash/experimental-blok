@@ -59,7 +59,7 @@ typedef struct _ArgsResult {
 /**
  * @brief Process the command line.
  * 
- * @pre pCommandLine must be a valid obtained from `wWinMain` or `GetCommandLineW`.
+ * @pre pCommandLine must be a valid string obtained from `wWinMain` or `GetCommandLineW`.
  * @pre pArgs must be a non-null pointer to a `TArgsResult` structure.
  * @post pArgs contains the parsed arguments.
  * @post Duplicate arguments overwrite the previous occurrences.

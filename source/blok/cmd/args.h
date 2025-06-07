@@ -14,7 +14,7 @@
  * @brief Resulting arguments.
  * 
  * @details
- * Contains the resulting processed arguments by the "blokArgsProcess" routine. This
+ * Contains the resulting processed arguments by the `blokArgsProcess` routine. This
  * result provides the configuration to the rest of the program modules. These values
  * must not be modified by the user.
  */
@@ -50,7 +50,7 @@ typedef struct _ArgsResult {
      * @brief If the console should be visible.
      * 
      * @details
-     * Denotes whether the console should initialised on startup. This shows the log
+     * Denotes whether the console should initialised on start-up. This shows the log
      * messages of the program.
      */
     int showConsole;
@@ -59,21 +59,21 @@ typedef struct _ArgsResult {
 /**
  * @brief Process the command line.
  * 
- * @pre pCommandLine must be a valid string obtained from `wWinMain` or `GetCommandLineW`.
- * @pre pArgs must be a non-null pointer to a `TArgsResult` structure.
- * @post pArgs contains the parsed arguments.
- * @post Duplicate arguments overwrite the previous occurrences.
- * @post Returns a status code:
- *       - `0` if parsing failed due to any of the arguments with the value of NULL.
- *       - `1` if parsing was successful.
- *
  * @param[in,out] pArgs Pointer to the `TArgsResult` structure.
  * @param[in] pCommandLine Command line string.
- * @return Status code (0 = failure, 1 = success).
- *
+ * @return A status code:
+ *         - `0` if parsing failed due to any of the function arguments are NULL.
+ *         - `1` if parsing was successful.
+ * 
+ * @pre pArgs must be a non-null pointer to the `TArgsResult` structure.
+ * @pre pCommandLine must be a valid string obtained from `wWinMain` or `GetCommandLineW`.
+ * 
+ * @post pArgs contains the parsed arguments.
+ * @post Returns a status code indicating success or failure.
+ * 
  * @details
- * Applies default values before proceeding to process arguments. Argument detection is
- * case insensitive. The `pArgs` memory is managed by the caller.
+ * Applies default values to `pArgs` before proceeding to process arguments. Argument
+ * detection is case insensitive. Duplicate arguments overwrites the last occurrence.
  */
 int blokArgsProcess(TArgsResult *pArgs, LPCWSTR pCommandLine);
 

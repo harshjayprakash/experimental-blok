@@ -39,13 +39,16 @@ int blokConsoleFree(
         return 0;
     }
 
+    int streamNotClosed = 1;
+    int consoleClosed = 0;
+
     if (pConhost->errorOnAlloc == 0) {
-        (void)fclose(stdout);
+        streamNotClosed = fclose(stdout);
     }
 
     if (pConhost->isInitialised != 0) {
-        (void)FreeConsole();
+        consoleClosed = FreeConsole();
     }
 
-    return 1;
+    return (!streamNotClosed && consoleClosed);
 }

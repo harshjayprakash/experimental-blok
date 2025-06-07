@@ -43,13 +43,8 @@ int blokConsoleFree(TConsoleInfo *pConsoleInfo)
     int streamNotClosed = 1;
     int consoleClosed = 0;
 
-    if (pConsoleInfo->errorOnAlloc == 0) {
         streamNotClosed = fclose(stdout);
-    }
-
-    if (pConsoleInfo->isInitialised != 0) {
         consoleClosed = FreeConsole();
-    }
 
     return (!streamNotClosed && consoleClosed);
 }

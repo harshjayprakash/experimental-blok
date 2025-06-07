@@ -11,9 +11,9 @@ static int _blokStateMoveBoxImpl(
     }
 
     TVector2 dirv = blokDirectionToVector(direction);
-    TVector2 scaled = blokVectorIIMultiply(dirv, pBox->size);
-    TVector2 newpos = blokVectorIIOffset(pBox->position, scaled);
-    return blokVectorIICopy(&pBox->position, newpos);
+    TVector2 scaled = blokVector2Multiply(dirv, pBox->size);
+    TVector2 newpos = blokVector2Offset(pBox->position, scaled);
+    return blokVector2Copy(&pBox->position, newpos);
 }
 
 int blokStateInit(
@@ -26,8 +26,8 @@ int blokStateInit(
 
     TVector2 defaultBoxState = { 0, 0 };
     TVector2 defaultBoxSize = scale;
-    blokVectorIICopy(&pState->box.size, defaultBoxSize);
-    blokVectorIICopy(&pState->box.position, defaultBoxState);
+    blokVector2Copy(&pState->box.size, defaultBoxSize);
+    blokVector2Copy(&pState->box.position, defaultBoxState);
 
     blokDynListInit(&pState->obstructs, 10);
 

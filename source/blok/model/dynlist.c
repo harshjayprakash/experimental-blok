@@ -109,7 +109,7 @@ long blokDynListAdd(
     ++pList->head;
     ++pList->size;
 
-    blokVectorIICopy(&(pList->pArr + pList->head)->data, pNode->data);
+    blokVector2Copy(&(pList->pArr + pList->head)->data, pNode->data);
 
     return pList->head;
 }
@@ -148,7 +148,7 @@ long blokDynListGetIndex(
     }
 
     for (long idx = 0; idx < pList->size; idx++) {
-        if (blokVectorIIEquals(pList->pArr[idx].data, pNode->data)) {
+        if (blokVector2Equals(pList->pArr[idx].data, pNode->data)) {
             return idx;
         }
     }
@@ -195,7 +195,7 @@ long blokDynListRemove(
         return -1;
     }
 
-    blokVectorIICopy(&(pList->pArr + idx)->data, (pList->pArr + pList->head)->data);
+    blokVector2Copy(&(pList->pArr + idx)->data, (pList->pArr + pList->head)->data);
     --pList->head;
     --pList->size;
 

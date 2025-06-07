@@ -17,8 +17,8 @@ int blokConsoleInit(TConsoleInfo *pConsoleInfo)
         return 0;
     }
 
-    pConsoleInfo->errorOnAlloc =
-        _wfreopen_s(&pConsoleInfo->pStandardOut, L"CONOUT$", L"w", stdout);
+    pConsoleInfo->errorOnAlloc = _wfreopen_s(
+        &pConsoleInfo->pStandardOut, L"CONOUT$", L"w", stdout);
 
     if (pConsoleInfo->errorOnAlloc != 0) {
         blokConsoleFree(pConsoleInfo);

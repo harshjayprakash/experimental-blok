@@ -3,7 +3,7 @@
 #define BLOK_LIGHT_DARK(light, dark)                                                     \
     (theme == BLOK_THEME_LIGHT) ? light : dark
 
-int blokColoursSet(
+int blokThemeSet(
     TThemePalette *pThemePalette,
     const TTheme theme)
 {

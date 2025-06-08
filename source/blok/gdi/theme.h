@@ -62,6 +62,6 @@ typedef struct _ThemePalette {
     COLORREF primaryBorder;
 } TThemePalette;
 
-int blokColoursSet(TThemePalette *pThemePalette, const TTheme theme);
+int blokThemeSet(TThemePalette *pThemePalette, const TTheme theme);
 
 #endif /* _BLOK_THEME_H_ */

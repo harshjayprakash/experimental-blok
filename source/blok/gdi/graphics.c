@@ -11,7 +11,7 @@ int blokGraphicsInit(
     int disregardTheme = (theme >= BLOK_THEME_MIN && theme <= BLOK_THEME_MAX);
     pGraphics->currentTheme = (!disregardTheme) ? BLOK_THEME_UNSET : theme;
 
-    (void)blokColoursSet(&pGraphics->palette, pGraphics->currentTheme);
+    (void)blokThemeSet(&pGraphics->palette, pGraphics->currentTheme);
     (void)blokRenderToolsInit(&pGraphics->renderTools, &pGraphics->palette);
 
     return 1;

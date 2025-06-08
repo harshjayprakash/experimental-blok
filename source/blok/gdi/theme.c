@@ -43,5 +43,5 @@ int blokThemeSet(
         BLOK_COLOUR_PRIMARY_700,
         BLOK_COLOUR_PRIMARY_400);
 
-    return 0;
+    return 1;
 }

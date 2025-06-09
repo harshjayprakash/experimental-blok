@@ -55,7 +55,6 @@ typedef struct _ThemePalette {
     COLORREF baseForeground;
     COLORREF baseBorder;
     COLORREF baseBorderFaded;
-
     COLORREF primaryBackground;
     COLORREF primaryBackgroundFaded;
     COLORREF primaryForeground;

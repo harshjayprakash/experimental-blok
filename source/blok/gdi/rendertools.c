@@ -63,5 +63,5 @@ int blokRenderToolsFree(TRenderTools *pTools)
     BLOK_DELETE_OBJECT(pTools->pens.hPrimaryBorder);
     BLOK_DELETE_OBJECT(pTools->pens.hPrimaryForeground);
 
-    return 0;
+    return 1;
 }

@@ -28,7 +28,22 @@ int blokRenderToolsInit(TRenderTools *pTools, const TThemePalette *pColours)
     pTools->pens.hPrimaryBorder = CreatePen(PS_SOLID, 1, pColours->primaryBorder);
     pTools->pens.hPrimaryForeground = CreatePen(PS_SOLID, 1, pColours->primaryForeground);
 
-    return 1;
+    int brushCheck = (pTools->brushes.hBaseBackground != NULL 
+        && pTools->brushes.hBaseBackgroundFaded != NULL
+        && pTools->brushes.hBaseBackgroundMedium != NULL
+        && pTools->brushes.hPrimaryBackground != NULL
+        && pTools->brushes.hPrimaryBackgroundFaded != NULL
+    );
+
+    int penCheck = (pTools->pens.hBaseForeground != NULL
+        && pTools->pens.hBaseBorder != NULL
+        && pTools->pens.hBaseBorderFaded != NULL
+        && pTools->pens.hPrimaryBorder != NULL
+        && pTools->pens.hPrimaryForeground != NULL
+    );
+
+
+    return (brushCheck && penCheck);
 }
 
 int blokRenderToolsFree(TRenderTools *pTools)

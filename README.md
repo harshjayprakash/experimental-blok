@@ -37,6 +37,8 @@ resulting in parts of lines becoming hidden.
 * A right click will remove an obstruct at the current position.
 * A right drag click will remove a series of obstructs.
 
+![Canvas Demo](./doc/xbk-canvas-demo.gif)
+
 ### The Information and Action Panel
 
 The "Panel" is the component that shows information and provides controls to manipulate

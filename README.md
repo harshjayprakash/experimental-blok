@@ -21,7 +21,7 @@ leave a trail due to lacking window updates.
 The motivation for creating this project is not entirely clear; however, I've always had
 a strong interest in the Windows Operating System.
 
-![Light Dark Mode Screenshot](./doc/xbk-preview-light-dark.png)
+![Light Dark Mode Screenshot](./doc/xbk-preview-light.png)
 
 ### The Canvas Grid
 

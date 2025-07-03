@@ -53,6 +53,8 @@ the canvas.
   * Enabled - any clicks or drags on the canvas are ignored.
   * Disabled - normal operation.
 
+![Info Panel](./doc/xbk-info-panel.png)
+
 ### The Console
 
 The "Console" is a separate window displaying information, warning and/or error messages

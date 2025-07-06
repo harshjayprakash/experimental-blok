@@ -136,7 +136,7 @@ The available arguments are shown below.
 
 ## Changelog
 
-### Version 5.0 (Snapshot 25H2A) - September 2025
+### Version 1005.0 - September 2025
 
 **Overview**: This version is complete rewrite.
 

@@ -109,7 +109,11 @@ long blokDynListAdd(
     ++pList->head;
     ++pList->size;
 
-    blokVector2Copy(&(pList->pArr + pList->head)->data, pNode->data);
+    int success = blokVector2Copy(&(pList->pArr + pList->head)->data, pNode->data);
+    
+    if (!success) {
+        return -1L;
+    }
 
     return pList->head;
 }
@@ -186,16 +190,23 @@ long blokDynListRemove(
     const TNode node)
 {
     if (pList == NULL) {
-        return -1;
+        return -1L;
     }
 
     long idx = blokDynListGetIndex(pList, &node);
 
     if (idx < 0) {
-        return -1;
+        return -1L;
     }
 
-    blokVector2Copy(&(pList->pArr + idx)->data, (pList->pArr + pList->head)->data);
+    int success = blokVector2Copy(
+        &(pList->pArr + idx)->data, 
+        (pList->pArr + pList->head)->data);
+
+    if (!success) {
+        return -1L;
+    }
+
     --pList->head;
     --pList->size;
 

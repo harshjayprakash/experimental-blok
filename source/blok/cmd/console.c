@@ -1,10 +1,3 @@
-/**
- * @file   console.c
- * @brief  Implementation of Console Allocation.
- * @author harshjayprakash
- * @date   2025-06-07
- ****************************************************************************************/
-
 #include "console.h"
 #include <windows.h>
 

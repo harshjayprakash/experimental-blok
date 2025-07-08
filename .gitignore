@@ -4,3 +4,6 @@ build/
 
 # Visual Studio
 .vs/
+
+# JetBrains
+.idea/

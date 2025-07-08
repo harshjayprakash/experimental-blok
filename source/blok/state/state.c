@@ -26,12 +26,14 @@ int blokStateInit(
 
     TVector2 defaultBoxState = { 0, 0 };
     TVector2 defaultBoxSize = scale;
-    blokVector2Copy(&pState->box.size, defaultBoxSize);
-    blokVector2Copy(&pState->box.position, defaultBoxState);
+    int success = (blokVector2Copy(&pState->box.size, defaultBoxSize)
+        && blokVector2Copy(&pState->box.position, defaultBoxState));
 
-    blokDynListInit(&pState->obstructs, 10);
+    if (!success) {
+        return 0;
+    }
 
-    return 1;
+    return blokDynListInit(&pState->obstructs, 10);
 }
 
 int blokStateFree(

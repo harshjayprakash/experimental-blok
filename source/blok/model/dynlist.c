@@ -210,7 +210,7 @@ int blokDynListFree(
     }
 
     if (pList->pArr != NULL) {
-        (void)free(pList->pArr);
+        free(pList->pArr);
     }
 
     return 1;

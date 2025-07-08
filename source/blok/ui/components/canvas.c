@@ -12,7 +12,11 @@ int blokCanvasUpdate(
         return 0;
     }
 
-    (void)CopyRect(&pCanvas->region, pWindowRgn);
+    BOOL success = CopyRect(&pCanvas->region, pWindowRgn);
+    
+    if (!success) {
+        return 0;
+    }
 
     pCanvas->size.cx = pCanvas->region.right - pCanvas->region.left;
     pCanvas->size.cy = pCanvas->region.bottom - pCanvas->region.top;

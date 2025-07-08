@@ -12,7 +12,11 @@ int blokViewportInit(
 
     srand((unsigned int)time(0));
 
-    (void)blokWindowInit(&pViewport->window, hInstance);
+    int success = blokWindowInit(&pViewport->window, hInstance);
+
+    if (!success) {
+        return 0;
+    }
 
     pViewport->isLeftMouseDown = 0;
     pViewport->isRightMouseDown = 0;

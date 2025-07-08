@@ -37,7 +37,11 @@ int blokToggleUpdateEx(
     pToggle->region.right = (pToggle->position.x + pToggle->size.cx) - pToggle->margin.cx;
     pToggle->region.bottom = (pToggle->position.y + pToggle->size.cy) - pToggle->margin.cx;
 
-    (void)CopyRect(&pToggle->selectRegion, &pToggle->region);
+    BOOL success = CopyRect(&pToggle->selectRegion, &pToggle->region);
+
+    if (!success) {
+        return 0;
+    }
 
     pToggle->selectRegion.left += pToggle->selectMargin.cx;
     pToggle->selectRegion.top += pToggle->selectMargin.cy;

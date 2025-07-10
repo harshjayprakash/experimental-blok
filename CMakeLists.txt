@@ -16,9 +16,6 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
 set(SOURCES
-    # AI MODULE
-    "source/blok/ai/pathfind.c" "source/blok/ai/pathfind.h"
-
     # COMMAND LINE MODULE
     "source/blok/cmd/args.c" "source/blok/cmd/args.h"
     "source/blok/cmd/console.c" "source/blok/cmd/console.h"

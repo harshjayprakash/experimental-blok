@@ -4,10 +4,10 @@
 #include <windows.h>
 
 typedef struct _ArgsResult {
-    int theme;
-    int scaleX;
-    int scaleY;
-    int showConsole;
+    unsigned int theme;
+    unsigned int scaleX;
+    unsigned int scaleY;
+    unsigned int showConsole;
 } TArgsResult;
 
 int blokArgsProcess(TArgsResult *pArgs, LPCWSTR pCommandLine);

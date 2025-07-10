@@ -6,7 +6,9 @@
         hObject = NULL;                                                                  \
     }              
 
-int blokRenderToolsInit(TRenderTools *pTools, const TThemePalette *pColours)
+int blokRenderToolsInit(
+    TRenderTools *pTools,
+    const TThemePalette *pColours)
 {
     if (pTools == NULL) {
         return 0;
@@ -46,7 +48,8 @@ int blokRenderToolsInit(TRenderTools *pTools, const TThemePalette *pColours)
     return (brushCheck && penCheck);
 }
 
-int blokRenderToolsFree(TRenderTools *pTools)
+int blokRenderToolsFree(
+    TRenderTools *pTools)
 {
     if (pTools == NULL) {
         return 0;

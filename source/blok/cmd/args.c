@@ -1,4 +1,27 @@
+/**
+ * @file args.c
+ * @brief Argument parsing implementation for command-line options.
+ * 
+ * Provides a basic argument interpreter for the application, supporting flags such as
+ * `--dark-theme`, `--scale-x`, and `--show-console`. Defaults are applied where values
+ * are missing or malformed. Uses `CommandLineToArgvW` internally.
+ * 
+ * @author harshjayprakash
+ * @date 2025-07-16
+ * 
+ * @remarks
+ * - All numeric arguments are validated and defaulted using @ref BLOK_SCALE_DEF.
+ * - Scale values are independently configurable via `--scale`, `--scale-x`, and 
+ *   `--scale-y`
+ ****************************************************************************************/
+
 #include "args.h"
+
+/**
+ * @defgroup Argument Parsing Macros.
+ * @brief Utility macros used during parsing and scale evaluation.
+ * @{
+ */
 
 #define BLOK_SCALE_DEF    15
 #define BLOK_ARGM_UNSET   0
@@ -9,6 +32,8 @@
 #define BLOK_EVALUATE_SCALE(assignTo, value)                                             \
     int scale = abs(_wtoi(value));                                                       \
     assignTo = (scale != 0) ? scale : BLOK_SCALE_DEF
+
+/** @} */
 
 int blokArgsProcess(
     TArgsResult *pArgs, 

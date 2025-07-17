@@ -4,7 +4,7 @@
  * 
  * Defines the configuration structure and API used to process command-line arguments for
  * theme selection, grid scaling and console visibility. All input is expected in the
- * unicode format and parsed using Windows-specific command-line functions.
+ * Unicode format and parsed using Windows-specific command-line functions.
  * 
  * @author harshjayprakash
  * @date 2025-07-17
@@ -18,8 +18,8 @@
 /**
  * @brief Holds the parsed command-line configuration values.
  * 
- * This structure receieves the output of @ref blokArgsProcess and is used to configure
- * theme selectio, grid and box scale, and console visibility.
+ * This structure receives the output of `blokArgsProcess` and is used to configure
+ * theme selection, grid and box scale, and console visibility.
  */
 typedef struct _ArgsResult {
     /**
@@ -54,18 +54,18 @@ typedef struct _ArgsResult {
 } TArgsResult;
 
 /**
- * @brief Parses command-line arguments into a populated @ref TArgsResult structure.
+ * @brief Parses command-line arguments into a populated TArgsResult structure.
  * 
- * This function interprets a unicode command line and sets configuration flags for the
+ * This function interprets a Unicode command line and sets configuration flags for the
  * theme, scale, and console visibility. There are no short form flags.
  * 
- * @param[out] pArgs        A pointer to a valid @ref TArgsResult structure.
+ * @param[out] pArgs        A pointer to a valid TArgsResult structure.
  * @param[in]  pCommandLine A null-terminated wide string from `wWinMain` or 
  *                          `GetCommandLineW`.
  * @return One if argument parsing was successful; zero otherwise.
  * 
  * @remarks
- * - The caller is responsible for allocating a vlid @ref TArgsResult.
+ * - The caller is responsible for allocating a valid `TArgsResult`.
  * - Default flags are applied if certain flags are omitted.
  * - Undefined behaviour for command-line strings from other sources.
  */

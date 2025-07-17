@@ -205,17 +205,14 @@ The available arguments are shown below.
 * Drag click can continue if the cursor leaves the window.
 * Holding down the generate button will not continue to generate obstructs.
 
-## Potential Future Features
+## Potential Future Features (No Specific Date).
 
-* Move around canvas.
-* Movable panel.
-* Re-sizable panel.
-* Custom theming.
-* Loading configuration from file.
-* File-based logging.
-* Small alert box system.
-* Keyboard shortcut guide screen.
-* Save state to file.
-* Import state from file.
-* Generate entire maze.
-* Find path from box to point.
+* **Path Finding**: Finding the shortest path between two points.
+* **Movable Panel**: Allow the user to move the panel by introducing a draggable area.
+* **Notify System**: Providing feedback for operations that failed, especially when the console is disabled.
+* **Custom Theming**: Allow user to theme the application to their liking.
+* **Help Guide**: Provide in-application guidance on how to use it.
+* **Save State**: Save and Import state from a file.
+* **Configuration File**: Provide a method to import settings from file on start up.
+* **Generate Maze**: Allow entire maze generation.
+

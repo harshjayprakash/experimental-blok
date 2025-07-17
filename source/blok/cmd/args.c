@@ -7,12 +7,7 @@
  * are missing or malformed. Uses `CommandLineToArgvW` internally.
  * 
  * @author harshjayprakash
- * @date 2025-07-16
- * 
- * @remarks
- * - All numeric arguments are validated and defaulted using @ref BLOK_SCALE_DEF.
- * - Scale values are independently configurable via `--scale`, `--scale-x`, and 
- *   `--scale-y`
+ * @date 2025-07-17
  ****************************************************************************************/
 
 #include "args.h"

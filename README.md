@@ -26,7 +26,7 @@ a strong interest in the Windows Operating System.
 </p>
 
 The "Canvas Grid" is a components that provides a coordinate grid, scaled at fifteen
-pixels or another specified value at startup (via CLI). This grid contains the box entity
+pixels or another specified value at start up (via CLI). This grid contains the box entity
 and a surface to create walls ("obstructs") that blocks the box's movement.
 
 * The canvas is adapts to the full window client area.
@@ -61,7 +61,7 @@ The "Console" is a separate window displaying information, warning and/or error 
 while the program is running.
 
 * Does not accept user input.
-* Must be enabled on startup by passing the `--show-console` argument.
+* Must be enabled on start up by passing the `--show-console` argument.
 
 ### Keyboard Shortcuts
 
@@ -73,7 +73,7 @@ while the program is running.
 * `O`: Generate an obstructive at a random location.
 * `I`: Toggle interface visibility.
 * `T`: Change theme.
-* `C`: Clear all obstructives.
+* `C`: Clear all obstructs.
 * `L`: Toggle canvas lock.
 
 ## The Architecture
@@ -143,7 +143,7 @@ The available arguments are shown below.
 #### Functionality
 
 * **New Shortcuts**: Added new keyboard shortcuts for extra functionality.
-* **Drag Click**: Implementated canvas drag-click for rapid obstruct creation and removal.
+* **Drag Click**: Implemented canvas drag-click for rapid obstruct creation and removal.
 * **Obstruct Handling**: Re-added obstruct removal.
 * **Instance Check**: Implemented a Mutex for a single running instance.
 * **Custom Scaling Arguments**:
@@ -167,7 +167,7 @@ The available arguments are shown below.
 
 * **Updated Architecture**: Focused on a more modular architecture based on the `Context` structure.
 * **Build System Update**: Switch to CMake and Microsoft Cl Compiler.
-* **Fully Unicode**: Switched to the `wWinMain` entrypoint.
+* **Fully Unicode**: Switched to the `wWinMain` entry point.
 * **Enhanced Documentation**: Updated technical documentation for clarity.
 * **Static Data**: Removed all file-scope static variables.
 * **Simplified Return Values**: Function return an integer instead of a result. (if not applicable, otherwise data is returned).
@@ -175,7 +175,7 @@ The available arguments are shown below.
 * **Extracted Modules**: Modularised additional modules
   * **State Module**: An abstraction from direct data modification for the UI and stores the object data.
   * **Graphics**: A store for gdi graphics tools and colours decoupled from the UI.
-  * **Arguments**: Updated to not rely on global application-specific funcions.
+  * **Arguments**: Updated to not rely on global application-specific functions.
 * **Top-Level UI Module**: Added a encapsulated Viewport UI module.
 * **Update Naming Conventions**:
   * Variables prefixed with 'p' if pointer, 'h' if handle.
@@ -194,7 +194,7 @@ The available arguments are shown below.
   * Add separate update functions.
   * Updated to not rely on caller updating control/component attributes.
 * **Simplify Model Grouping**: Flatten folder model structure.
-* **Remove Unused**: Removed any unusued functions or structures.
+* **Remove Unused**: Removed any unused functions or structures.
 
 ## Limitations and Known Issues
 

@@ -1,3 +1,14 @@
+/**
+ * @file console.c
+ * @brief Console lifecycle implementation.
+ * 
+ * Provides the implementation for console host management, handling allocation and file
+ * stream redirection to the console.
+ * 
+ * @author harshjayprakash
+ * @date 2025-07-17
+ ****************************************************************************************/
+
 #include "console.h"
 #include <windows.h>
 

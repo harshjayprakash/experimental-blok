@@ -1,10 +1,10 @@
 /**
  * @file console.c
  * @brief Console lifecycle implementation.
- * 
+ *
  * Provides the implementation for console host management, handling allocation and file
  * stream redirection to the console.
- * 
+ *
  * @author harshjayprakash
  * @date 2025-07-17
  ****************************************************************************************/
@@ -14,24 +14,22 @@
 
 int blokConsoleInit(TConsoleInfo *pConsoleInfo)
 {
-    if (pConsoleInfo == NULL) {
+    if (pConsoleInfo == NULL)
         return 0;
-    }
 
-    if (pConsoleInfo->isInitialised) {
+    if (pConsoleInfo->isInitialised)
         return 0;
-    }
 
     pConsoleInfo->isInitialised = AllocConsole();
 
-    if (pConsoleInfo->isInitialised == 0) {
+    if (pConsoleInfo->isInitialised == 0)
         return 0;
-    }
 
-    pConsoleInfo->errorOnAlloc = _wfreopen_s(
-        &pConsoleInfo->pStandardOut, L"CONOUT$", L"w", stdout);
+    pConsoleInfo->errorOnAlloc =
+        _wfreopen_s(&pConsoleInfo->pStandardOut, L"CONOUT$", L"w", stdout);
 
-    if (pConsoleInfo->errorOnAlloc != 0) {
+    if (pConsoleInfo->errorOnAlloc != 0)
+    {
         blokConsoleFree(pConsoleInfo);
         return 0;
     }
@@ -43,22 +41,19 @@ int blokConsoleInit(TConsoleInfo *pConsoleInfo)
 
 int blokConsoleFree(TConsoleInfo *pConsoleInfo)
 {
-    if (pConsoleInfo == NULL) {
+    if (pConsoleInfo == NULL)
         return 0;
-    }
 
-    if (!pConsoleInfo->isInitialised) {
+    if (!pConsoleInfo->isInitialised)
         return 0;
-    }
 
     int streamNotClosed = fclose(stdout);
     int consoleClosed = FreeConsole();
 
     int result = (!streamNotClosed && consoleClosed);
 
-    if (result == 1) {
+    if (result == 1)
         pConsoleInfo->isInitialised = 0;
-    }
 
     return result;
 }

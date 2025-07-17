@@ -151,10 +151,8 @@ The available arguments are shown below.
 * **Obstruct Handling**: Re-added obstruct removal.
 * **Instance Check**: Implemented a Mutex for a single running instance.
 * **Custom Scaling Arguments**:
-
   * Implemented optional separate x and y scaling arguments.
   * Added absolute value check to handle negative inputs.
-
 * **Non-Case Sensitive CLI Arguments**: Updated to use the `_wcsnicmp` function.
 
 #### Visual

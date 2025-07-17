@@ -12,7 +12,8 @@
 #include "console.h"
 #include <windows.h>
 
-int blokConsoleInit(TConsoleInfo *pConsoleInfo)
+int blokConsoleInit(
+    TConsoleInfo *pConsoleInfo)
 {
     if (pConsoleInfo == NULL)
         return 0;
@@ -39,7 +40,8 @@ int blokConsoleInit(TConsoleInfo *pConsoleInfo)
     return 1;
 }
 
-int blokConsoleFree(TConsoleInfo *pConsoleInfo)
+int blokConsoleFree(
+    TConsoleInfo *pConsoleInfo)
 {
     if (pConsoleInfo == NULL)
         return 0;

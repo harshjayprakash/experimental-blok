@@ -40,6 +40,9 @@ int blokActionMoveBox(
     (void)InvalidateRect(hWindow, &boxUpdateRgn, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
 
+    (void)wprintf(L"Move Box: Direction - %d, New Position (%d, %d)\n", direction,
+        pState->box.position.x, pState->box.position.y);
+
     return result;
 }
 
@@ -59,6 +62,9 @@ int blokActionToggleGridLines(
 
     (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
 
+    (void)wprintf(L"Toggle Gridlines: %ls\n",
+        pViewport->isGridVisible ? L"Visible" : L"Invisible");
+
     return 1;
 }
 
@@ -77,6 +83,9 @@ int blokActionToggleInterface(
     pViewport->isInterfaceVisible = !pViewport->isInterfaceVisible;
 
     (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
+
+    (void)wprintf(L"Toggle Interface: %ls\n",
+        pViewport->isInterfaceVisible ? L"Visible" : L"Invisible");
 
     return 1;
 }
@@ -98,6 +107,9 @@ int blokActionToggleCanvasLock(
     (void)blokToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
     (void)InvalidateRect(hWindow, &pViewport->lockedToggle.region, FALSE);
 
+    (void)wprintf(L"Toggle Canvas Lock: %ls\n",
+        (pViewport->isCanvasLocked) ? L"Locked" : L"Unlocked");
+
     return 1;
 }
 
@@ -116,6 +128,8 @@ int blokActionChangeTheme(
         (currrentTheme == 1 || currrentTheme == 0) ? BLOK_THEME_LIGHT : BLOK_THEME_DARK);
 
     (void)InvalidateRect(hWindow, NULL, FALSE);
+
+    (void)wprintf(L"Re-initialising Graphics Context: Update Theme\n");
 
     return 1;
 }
@@ -164,6 +178,13 @@ int blokActionAddObstruct(
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
 
+    (void)wprintf(L"Add Obstruct: ");
+
+    if (result > -1)
+        (void)wprintf(L"New Node (%d, %d), Idx %d\n", newNode.x, newNode.y, result);
+    else
+        (void)wprintf(L"Exists - Skipping\n");
+
     return (result > -1);
 }
 
@@ -205,6 +226,8 @@ int blokActionRemoveObstruct(
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
 
+    (void)wprintf(L"Remove Obstruct: At Node (%d, %d) at IDX %d\n", rp.x, rp.y, result);
+
     return (result > -1);
 }
 
@@ -233,6 +256,8 @@ int blokActionClearObstructs(
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
+
+    (void)wprintf(L"Clear Obstructs: %d\n", result);
 
     return result;
 }
@@ -265,6 +290,8 @@ int blokActionGenerateRandomObstructs(
     for (int idx = 0; idx < _nNodes; idx++) {
         result = (blokActionAddObstruct(pViewport, pState, hWindow, NULL) || result);
     }
+
+    (void)wprintf(L"Generate Random Obstruct: %d New Nodes\n", _nNodes);
 
     return 1;
 }

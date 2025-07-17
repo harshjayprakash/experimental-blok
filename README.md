@@ -1,11 +1,5 @@
 # Experimental Blok
 
-![Banner (Decorative)](./doc/xbk-banner-raster.png)
-
-> [!NOTE]
-> This version ("5.0") is currently still in development, the features described may not
-> work correctly, at all, or subject to change.
-
 ## Overview
 
 "Experimental Blok", or simply "Blok" is a small and minimal simulation of a user

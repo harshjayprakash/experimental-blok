@@ -198,12 +198,11 @@ The available arguments are shown below.
 
 ## Limitations and Known Issues
 
-* Generating an obstructs (Button/Keyboard) may create a duplicate positioned wall.
-* Box can go under the panel.
-* Box can go out of bounds of the window.
-* Specified scaling can be too small or too big.
+* Box can be positioned outside of the bounds of the window.
+* Box can be covered by the panel.
+* Specified scaling can be too small or big.
 * Drag click can continue if the cursor leaves the window.
-* Holding down the generate button will not continue to generate obstructs.
+* The hitbox for the buttons and toggle.
 
 ## Potential Future Features (No Specific Date).
 

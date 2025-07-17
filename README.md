@@ -3,18 +3,18 @@
 ## Overview
 
 <p align="center">
-	<img src="./docs/assets/xbk-preview-raster.png" alt="Screenshot of Program Running">
+  <img src="./docs/assets/xbk-preview-raster.png" alt="Screenshot of Program Running">
 </p>
 
-"Experimental Blok", or simply "Blok" is a small and minimal simulation of a user
-generated maze, and a box that moves around with the WASD or Arrow Keys.
+"Experimental Blok", or simply "Blok", is a minimal simulation of a user-generated maze,
+featuring a box that moves around with the WASD or Arrow Keys.
 
-This project originated as a way to learn C and the Windows API, although it was initially
-written in C++, starting in February of 2021. _It was not available on GitHub at this_
-_time_. This project had no specific goals or direction. The name "Blok" resulted from an
-accidental misspelling of "block" during its initial phase, when I called it the "C
-Project". The program could render a square that moved within a native window but would
-leave a trail due to lacking window updates.
+This project originated as a way to learn C and the Windows API, although it was
+initially in C++, in February of 2021. *It was not available on GitHub at this time*.
+Initially, this project had no specific goals or direction. The name "Blok" resulted from
+an accidental misspelling of the word "Block" during this phase, when I referred to it as
+the "C Project". The program could render a square that moved within a native window, but
+would leave a trail due to a lack of window updates.
 
 The motivation for creating this project is not entirely clear; however, I've always had
 a strong interest in the Windows Operating System.
@@ -22,16 +22,16 @@ a strong interest in the Windows Operating System.
 ### The Canvas Grid
 
 <p align="center">
-	<img src="./docs/assets/xbk-canvas-demo.gif" alt="Canvas Interaction Demo">
+  <img src="./docs/assets/xbk-canvas-demo.gif" alt="Canvas Interaction Demo">
 </p>
 
-The "Canvas Grid" is a components that provides a coordinate grid, scaled at fifteen
-pixels or another specified value at start up (via CLI). This grid contains the box entity
-and a surface to create walls ("obstructs") that blocks the box's movement.
+The "Canvas Grid" is a component that provides a coordinate grid, scaled at fifteen
+pixels or another specified value at startup via the CLI. This grid contains the box
+entity and a surface to create walls ("obstructs") that block the box's movement.
 
-* The canvas is adapts to the full window client area.
-* The grid lines can be toggled with `G` key, but is drawn before the box and obstructs -
-resulting in parts of lines becoming hidden.
+* The canvas adapts to the full window client area.
+* The grid lines can be toggled with the `G` key, but are drawn before the box and obstructs,
+  resulting in parts of the lines becoming hidden.
 * A left click will create an obstruct at the current position.
 * A left drag click will create a series of obstructs.
 * A right click will remove an obstruct at the current position.
@@ -40,28 +40,32 @@ resulting in parts of lines becoming hidden.
 ### The Information and Action Panel
 
 <p align="center">
-	<img src="./docs/assets/xbk-info-panel.png">
+  <img src="./docs/assets/xbk-info-panel.png" alt="Information Panel">
 </p>
 
 The "Panel" is the component that shows information and provides controls to manipulate
 the canvas.
 
-* The current coordinates of box is shown.
+* The current coordinates of the box are shown.
 * The "Clear All" button removes all obstructs.
 * The "Generate" button adds an obstruct at a random position.
 * Shows the current number of obstructs on the canvas.
 * The progress bar shows the internal dynamic array memory size storing the obstructs.
-* The locked toggle, shows whether the canvas has been locked
+* The locked toggle shows whether the canvas has been locked
   * Enabled - any clicks or drags on the canvas are ignored.
   * Disabled - normal operation.
 
 ### The Console
 
+<p align="center">
+  <img src="./docs/assets/xbk-console.png" alt="Debug Console">
+</p>
+
 The "Console" is a separate window displaying information, warning and/or error messages
 while the program is running.
 
 * Does not accept user input.
-* Must be enabled on start up by passing the `--show-console` argument.
+* Must be enabled on startup by passing the `--show-console` argument.
 
 ### Keyboard Shortcuts
 
@@ -78,15 +82,15 @@ while the program is running.
 
 ## The Architecture
 
-The architecture of the program is based around the `Context` structure, storing the
-state of the entire program as a sort of global through a singleton helper function.
+The architecture of the program is based on the `Context` structure, storing the state of
+the entire program as a sort of global through a singleton helper function.
 
-* **main.c**: Provides the entrypoint.
+* **main.c**: Provides the entry point.
 * **blok/{context, lifecycle}**: The base context structure (storing all program data) and
 lifecycle functions.
-* **ai**: Handles path finding operations. _Not Implemented Yet_.
+* **ai**: Handles path-finding operations. *Not Implemented Yet*.
 * **cmd**: Command line argument parsing and console host allocation.
-* **fmt**: Conversion between blok to win -types and vise versa.
+* **fmt**: Conversion between blok to win -types and vice versa.
 * **gdi**: Graphics tools lifetime management and theme colours.
 * **model**: Models data structures.
 * **state**: Object state tracking.
@@ -138,7 +142,7 @@ The available arguments are shown below.
 
 ### Version 1005.0 - September 2025
 
-**Overview**: This version is complete rewrite.
+**Overview**: This version is a complete rewrite.
 
 #### Functionality
 
@@ -147,8 +151,10 @@ The available arguments are shown below.
 * **Obstruct Handling**: Re-added obstruct removal.
 * **Instance Check**: Implemented a Mutex for a single running instance.
 * **Custom Scaling Arguments**:
+
   * Implemented optional separate x and y scaling arguments.
   * Added absolute value check to handle negative inputs.
+
 * **Non-Case Sensitive CLI Arguments**: Updated to use the `_wcsnicmp` function.
 
 #### Visual
@@ -165,42 +171,47 @@ The available arguments are shown below.
 
 #### Internal
 
-* **Updated Architecture**: Focused on a more modular architecture based on the `Context` structure.
+* **Updated Architecture**: Focused on a more modular architecture based on the `Context`
+structure.
 * **Build System Update**: Switch to CMake and Microsoft Cl Compiler.
 * **Fully Unicode**: Switched to the `wWinMain` entry point.
 * **Enhanced Documentation**: Updated technical documentation for clarity.
 * **Static Data**: Removed all file-scope static variables.
-* **Simplified Return Values**: Function return an integer instead of a result. (if not applicable, otherwise data is returned).
-* **Refactor Types**: Renamed `Vector` to `DynList`, and `position` and `size` to `VectorII`.
+* **Simplified Return Values**: Functions return an integer instead of a result. (If not
+applicable, data is returned.)
+* **Refactor Types**: Renamed `Vector` to `DynList`, and `position` and `size` to
+`VectorII`.
 * **Extracted Modules**: Modularised additional modules
-  * **State Module**: An abstraction from direct data modification for the UI and stores the object data.
-  * **Graphics**: A store for gdi graphics tools and colours decoupled from the UI.
+  * **State Module**: An abstraction from direct data modification for the UI and stores
+the object data.
+  * **Graphics**: A store for GDI graphics tools and colours decoupled from the UI.
   * **Arguments**: Updated to not rely on global application-specific functions.
-* **Top-Level UI Module**: Added a encapsulated Viewport UI module.
+* **Top-Level UI Module**: Added an encapsulated Viewport UI module.
 * **Update Naming Conventions**:
-  * Variables prefixed with 'p' if pointer, 'h' if handle.
-  * Function names follow 'blok' + '\<file-scope\>' + '\<function-name\>()'.
-  * Function names are prefix with '_' if static.
-  * Structures and enumerations are Pascal Case with '_' prefix.
-  * Typedef follow Pascal Case.
+  * Variables prefixed with `p` if pointer, `h` if handle.
+  * Function names follow `blok` + `<file-scope>` + `<function-name>()`.
+  * Function names are prefix with `_` if static.
+  * Structures and enumerations are Pascal Case with `_` prefix.
+  * Typedef follow Pascal Case and prefixed with `T`.
 * **List Node Removal**: Add Node Removal on DynList API.
 * **Add Conversion Util Functions**:
   * Implemented WinTypes to BlokTypes and vice versa.
   * Implemented Direction to Vector function.
 * **Extracted UI Logic**
   * **Process Event Methods**: Re-implemented event functions.
-  * **Action UI Methods**: Re-implemented a set of abstracted functions for the UI to call state functions and updates.
+  * **Action UI Methods**: Re-implemented a set of abstracted functions for the UI to
+call state functions and updates.
 * **Modular Controls and Components**:
   * Add separate update functions.
-  * Updated to not rely on caller updating control/component attributes.
+  * Updated to not rely on the caller updating control/component attributes.
 * **Simplify Model Grouping**: Flatten folder model structure.
 * **Remove Unused**: Removed any unused functions or structures.
 
 ## Limitations and Known Issues
 
-* Box can be positioned outside of the bounds of the window.
-* Box can be covered by the panel.
-* Specified scaling can be too small or big.
+* The box can be positioned outside of the bounds of the window.
+* The box can be covered by the panel.
+* Specified scaling can be too small or too big.
 * Drag click can continue if the cursor leaves the window.
 * The hitbox for the buttons and toggle.
 
@@ -208,10 +219,10 @@ The available arguments are shown below.
 
 * **Path Finding**: Finding the shortest path between two points.
 * **Movable Panel**: Allow the user to move the panel by introducing a draggable area.
-* **Notify System**: Providing feedback for operations that failed, especially when the console is disabled.
+* **Notify System**: Providing feedback for operations that failed, especially when the
+console is disabled.
 * **Custom Theming**: Allow user to theme the application to their liking.
 * **Help Guide**: Provide in-application guidance on how to use it.
 * **Save State**: Save and Import state from a file.
-* **Configuration File**: Provide a method to import settings from file on start up.
+* **Configuration File**: Provide a method to import settings from a file on startup.
 * **Generate Maze**: Allow entire maze generation.
-

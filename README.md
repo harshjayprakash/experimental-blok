@@ -2,6 +2,10 @@
 
 ## Overview
 
+<p align="center">
+	<img src="./docs/assets/xbk-preview-raster.png" alt="Screenshot of Program Running">
+</p>
+
 "Experimental Blok", or simply "Blok" is a small and minimal simulation of a user
 generated maze, and a box that moves around with the WASD or Arrow Keys.
 
@@ -15,9 +19,11 @@ leave a trail due to lacking window updates.
 The motivation for creating this project is not entirely clear; however, I've always had
 a strong interest in the Windows Operating System.
 
-![Light Dark Mode Screenshot](./doc/xbk-preview-light.png)
-
 ### The Canvas Grid
+
+<p align="center">
+	<img src="./docs/assets/xbk-canvas-demo.gif" alt="Canvas Interaction Demo">
+</p>
 
 The "Canvas Grid" is a components that provides a coordinate grid, scaled at fifteen
 pixels or another specified value at startup (via CLI). This grid contains the box entity
@@ -31,9 +37,11 @@ resulting in parts of lines becoming hidden.
 * A right click will remove an obstruct at the current position.
 * A right drag click will remove a series of obstructs.
 
-![Canvas Demo](./doc/xbk-canvas-demo.gif)
-
 ### The Information and Action Panel
+
+<p align="center">
+	<img src="./docs/assets/xbk-info-panel.png">
+</p>
 
 The "Panel" is the component that shows information and provides controls to manipulate
 the canvas.
@@ -46,8 +54,6 @@ the canvas.
 * The locked toggle, shows whether the canvas has been locked
   * Enabled - any clicks or drags on the canvas are ignored.
   * Disabled - normal operation.
-
-![Info Panel](./doc/xbk-info-panel.png)
 
 ### The Console
 

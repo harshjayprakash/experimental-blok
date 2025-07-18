@@ -40,7 +40,7 @@ int blokArgsProcess(
     pArgs->theme = 0;
     pArgs->scaleX = BLOK_SCALE_DEF;
     pArgs->scaleY = BLOK_SCALE_DEF;
-    pArgs->showConsole = 1;
+    pArgs->showConsole = 0;
 
     int argc = 0;
     int argm = BLOK_ARGM_UNSET;

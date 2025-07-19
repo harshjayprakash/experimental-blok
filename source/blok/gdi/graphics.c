@@ -1,3 +1,10 @@
+/**
+ * @file graphics.c
+ * @brief Graphics lifecycle implementation.
+ * @author harshjayprakash
+ * @date 2025-07-19
+ ****************************************************************************************/
+
 #include "graphics.h"
 
 int blokGraphicsInit(

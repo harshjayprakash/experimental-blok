@@ -1,3 +1,10 @@
+/**
+ * @file rendertools.c
+ * @brief Render tools lifecycle implementation.
+ * @author harshjayprakash
+ * @date 2025-07-19
+ ****************************************************************************************/
+
 #include "rendertools.h"
 
 #define BLOK_DELETE_OBJECT(hObject)                                                      \

@@ -5,6 +5,8 @@
 #include "rendertools.h"
 
 typedef struct _Graphics {
+typedef struct _Graphics
+{
     TTheme currentTheme;
     TRenderTools renderTools;
     TThemePalette palette;

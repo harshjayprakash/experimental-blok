@@ -1,6 +1,6 @@
 #include "panel.h"
 
-int blokPanelUpdateEx(
+int stPanelUpdateEx(
     TPanel *pPanel,
     const RECT *pWindowRgn,
     const SIZE *pSize,
@@ -36,7 +36,7 @@ int blokPanelUpdateEx(
     return 1;
 }
 
-int blokPanelUpdate(
+int stPanelUpdate(
     TPanel *pPanel,
     const RECT *pWindowRgn)
 {
@@ -50,5 +50,5 @@ int blokPanelUpdate(
         return 0;
     }
 
-    return blokPanelUpdateEx(pPanel, pWindowRgn, NULL, NULL);
+    return stPanelUpdateEx(pPanel, pWindowRgn, NULL, NULL);
 }

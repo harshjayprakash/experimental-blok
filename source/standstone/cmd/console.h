@@ -5,8 +5,8 @@
  * @date 2025-07-19
  ****************************************************************************************/
 
-#ifndef _BLOK_CONSOLE_H_
-#define _BLOK_CONSOLE_H_
+#ifndef ST_CONSOLE_H
+#define ST_CONSOLE_H
 
 #include <stdio.h>
 
@@ -58,7 +58,7 @@ typedef struct _ConsoleInfo
  * - The caller is responsible for calling `blokConsoleFree` when cleaning up.
  * - This can only be called once as a limitation of `AllocConsole`.
  */
-int blokConsoleInit(TConsoleInfo *pConsoleInfo);
+int stConsoleInit(TConsoleInfo *pConsoleInfo);
 
 /**
  * @brief Free the console.
@@ -73,6 +73,6 @@ int blokConsoleInit(TConsoleInfo *pConsoleInfo);
  * - The caller is responsible for using the same structure instance used within the
  *   `blokConsoleInit`.
  */
-int blokConsoleFree(TConsoleInfo *pConsoleInfo);
+int stConsoleFree(TConsoleInfo *pConsoleInfo);
 
-#endif /* _BLOK_CONSOLE_H_ */
+#endif /* ST_CONSOLE_H */

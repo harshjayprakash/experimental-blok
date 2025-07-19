@@ -1,5 +1,5 @@
-#ifndef _BLOK_CANVAS_H_
-#define _BLOK_CANVAS_H_
+#ifndef ST_CANVAS_H
+#define ST_CANVAS_H
 
 #include <windows.h>
 
@@ -9,6 +9,6 @@ typedef struct _Canvas
     SIZE size;
 } TCanvas;
 
-int blokCanvasUpdate(TCanvas *pCanvas, const RECT *pWindowRgn);
+int stCanvasUpdate(TCanvas *pCanvas, const RECT *pWindowRgn);
 
-#endif /* _BLOK_CANVAS_H_ */
+#endif /* ST_CANVAS_H */

@@ -5,8 +5,8 @@
  * @date 2025-07-19
  ****************************************************************************************/
 
-#ifndef _BLOK_CONVERT_H_
-#define _BLOK_CONVERT_H_
+#ifndef ST_CONVERT_H
+#define ST_CONVERT_H
 
 #include "../model/vector.h"
 #include <windows.h>
@@ -19,7 +19,7 @@
  * @param[in] pt The point to be converted.
  * @return A TVector2.
  */
-TVector2 blokConvertPointV(const POINT pt);
+TVector2 stConvertPointV(const POINT pt);
 
 /**
  * @brief Converts TVector2 to Win32 POINT.
@@ -29,7 +29,7 @@ TVector2 blokConvertPointV(const POINT pt);
  * @param[in] vec The vector to be converted.
  * @return A POINT.
  */
-POINT blokConvertVectorPoint(const TVector2 vec);
+POINT stConvertVectorPoint(const TVector2 vec);
 
 /**
  * @brief Converts TVector2 to Win32 SIZE.
@@ -39,7 +39,7 @@ POINT blokConvertVectorPoint(const TVector2 vec);
  * @param[in] vec The vector to be converted.
  * @return A SIZE.
  */
-SIZE blokConvertVectorSize(const TVector2 vec);
+SIZE stConvertVectorSize(const TVector2 vec);
 
 /**
  * @brief Converts two TVector2s to Win32 RECT.
@@ -51,7 +51,7 @@ SIZE blokConvertVectorSize(const TVector2 vec);
  * @param[in] size The size of the rectangle.
  * @return A RECT.
  */
-RECT blokConvertVectorRect(const TVector2 pos, const TVector2 size);
+RECT stConvertVectorRect(const TVector2 pos, const TVector2 size);
 
 /**
  * @brief Retrieves position from Win32 RECT.
@@ -61,7 +61,7 @@ RECT blokConvertVectorRect(const TVector2 pos, const TVector2 size);
  * @param[in] rect The rectangle to retrieve the position from.
  * @return A TVector2 denoting position.
  */
-TVector2 blokConvertRectPositionV(const RECT rect);
+TVector2 stConvertRectPositionV(const RECT rect);
 
 /**
  * @brief Retrieves size from Win32 RECT.
@@ -72,6 +72,6 @@ TVector2 blokConvertRectPositionV(const RECT rect);
  * @param[in] rect The rectangle to retrieve the size from.
  * @return A TVector2 denoting size.
  */
-TVector2 blokConvertRectSizeV(const RECT rect);
+TVector2 stConvertRectSizeV(const RECT rect);
 
-#endif /* _BLOK_CONVERT_H_ */
+#endif /* ST_CONVERT_H */

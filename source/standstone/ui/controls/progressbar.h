@@ -1,5 +1,5 @@
-#ifndef _BLOK_PROGRESSBAR_H_
-#define _BLOK_PROGRESSBAR_H_
+#ifndef ST_PROGRESSBAR_H
+#define ST_PROGRESSBAR_H
 
 #include <windows.h>
 
@@ -19,15 +19,15 @@ typedef struct _ProgressBar
     INT barValue;
 } TProgressBar;
 
-int blokProgressBarUpdateEx(
+int stProgressBarUpdateEx(
     TProgressBar *pPbar, const POINT *pPosition, const SIZE *pSize, const SIZE *pMargin,
     const SIZE *pBarMargin);
 
-int blokProgressBarUpdate(TProgressBar *pPbar, const POINT *pPosition);
+int stProgressBarUpdate(TProgressBar *pPbar, const POINT *pPosition);
 
-int blokProgressBarUpdateMinMax(
+int stProgressBarUpdateMinMax(
     TProgressBar *pPbar, const int minValue, const int maxValue);
 
-int blokProgressBarUpdateValue(TProgressBar *pPbar, const int value);
+int stProgressBarUpdateValue(TProgressBar *pPbar, const int value);
 
-#endif /* _BLOK_PROGRESSBAR_H_ */
+#endif /* ST_PROGRESSBAR_H */

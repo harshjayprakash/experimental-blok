@@ -5,8 +5,8 @@
  * @date 2025-07-19
  ****************************************************************************************/
 
-#ifndef _BLOK_ARGS_H_
-#define _BLOK_ARGS_H_
+#ifndef ST_ARGS_H
+#define ST_ARGS_H
 
 #include <windows.h>
 
@@ -65,6 +65,6 @@ typedef struct _ArgsResult
  * - Default flags are applied if certain flags are omitted.
  * - Undefined behaviour for command-line strings from other sources.
  */
-int blokArgsProcess(TArgsResult *pArgs, LPCWSTR pCommandLine);
+int stArgsProcess(TArgsResult *pArgs, LPCWSTR pCommandLine);
 
-#endif /* _BLOK_ARGS_H_ */
+#endif /* ST_ARGS_H */

@@ -1,5 +1,5 @@
-#ifndef _BLOK_TEXT_H_
-#define _BLOK_TEXT_H_
+#ifndef ST_TEXT_H
+#define ST_TEXT_H
 
 #include <windows.h>
 
@@ -12,9 +12,9 @@ typedef struct _Text
     POINT position;
 } TText;
 
-int blokTextUpdateEx(
+int stTextUpdateEx(
     TText *pText, const POINT *pPoint, const SIZE *pSize, const SIZE *pMargin);
 
-int blokTextUpdate(TText *pText, const POINT *pPosition);
+int stTextUpdate(TText *pText, const POINT *pPosition);
 
-#endif /* _BLOK_TEXT_H_ */
+#endif /* ST_TEXT_H */

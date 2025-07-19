@@ -1,5 +1,5 @@
-#ifndef _BLOK_DYNLIST_H_
-#define _BLOK_DYNLIST_H_
+#ifndef ST_DYNLIST_H
+#define ST_DYNLIST_H
 
 #include "vector.h"
 
@@ -16,22 +16,22 @@ typedef struct _DynList
     long max;
 } TDynList;
 
-int blokDynListInit(TDynList *pList, const long size);
+int stDynListInit(TDynList *pList, const long size);
 
-int blokDynListIsFull(const TDynList *pList);
+int stDynListIsFull(const TDynList *pList);
 
-int blokDynListIsEmpty(const TDynList *pList);
+int stDynListIsEmpty(const TDynList *pList);
 
-long blokDynListAdd(TDynList *pList, const TNode *pNode);
+long stDynListAdd(TDynList *pList, const TNode *pNode);
 
-int blokDynListClear(TDynList *pList);
+int stDynListClear(TDynList *pList);
 
-long blokDynListGetIndex(const TDynList *pList, const TNode *pNode);
+long stDynListGetIndex(const TDynList *pList, const TNode *pNode);
 
-int blokDynListExists(const TDynList *pList, const TNode *pNode);
+int stDynListExists(const TDynList *pList, const TNode *pNode);
 
-long blokDynListRemove(TDynList *pList, const TNode node);
+long stDynListRemove(TDynList *pList, const TNode node);
 
-int blokDynListFree(TDynList *pList);
+int stDynListFree(TDynList *pList);
 
-#endif /* _BLOK_DYNLIST_H_ */
+#endif /* ST_DYNLIST_H */

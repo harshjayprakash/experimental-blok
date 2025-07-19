@@ -8,12 +8,12 @@
 #define BLOK_MOUSE_AT(rect, pos) \
     (pos.x > rect.left && pos.x < rect.right && pos.y > rect.top && pos.y < rect.bottom)
 
-void blokProcessEventOnPaint(
+void stProcessEventOnPaint(
     HWND hWindow)
 {
-    TGraphics *pGraphics = blokContextGetGraphics();
-    TViewport *pViewport = blokContextGetViewport();
-    TObjectState *pState = blokContextGetObjectState();
+    TGraphics *pGraphics = stContextGetGraphics();
+    TViewport *pViewport = stContextGetViewport();
+    TObjectState *pState = stContextGetObjectState();
     TVector2 scaling = pState->box.size;
 
     PAINTSTRUCT paintstruct;
@@ -60,7 +60,7 @@ void blokProcessEventOnPaint(
 
     (void)SelectObject(hOffSurface, pGraphics->renderTools.pens.hBaseForeground);
 
-    RECT box = blokConvertVectorRect(pState->box.position, pState->box.size);
+    RECT box = stConvertVectorRect(pState->box.position, pState->box.size);
     INT innerBoxSF = 3;
     RECT innerBox = {
         box.left + (scaling.x / innerBoxSF),
@@ -73,7 +73,7 @@ void blokProcessEventOnPaint(
 
     for (long obstructIdx = 0; obstructIdx < pState->obstructs.size; obstructIdx++)
     {
-        RECT obstructiveRc = blokConvertVectorRect(
+        RECT obstructiveRc = stConvertVectorRect(
             pState->obstructs.pArr[obstructIdx].data, scaling);
         (void)FillRect(
             hOffSurface, &obstructiveRc, pGraphics->renderTools.brushes.hBaseBackgroundMedium);
@@ -194,72 +194,72 @@ void blokProcessEventOnPaint(
     (void)EndPaint(hWindow, &paintstruct);
 }
 
-void blokProcessEventOnKeyDown(
+void stProcessEventOnKeyDown(
     HWND hWindow,
     WPARAM virtualKey)
 {
-    TObjectState *pState = blokContextGetObjectState();
-    TViewport *pViewport = blokContextGetViewport();
-    TGraphics *pGraphics = blokContextGetGraphics();
+    TObjectState *pState = stContextGetObjectState();
+    TViewport *pViewport = stContextGetViewport();
+    TGraphics *pGraphics = stContextGetGraphics();
 
     switch (virtualKey)
     {
     case VK_UP:
     case 'W': 
-        (void)blokActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_NORTH);
+        (void)stActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_NORTH);
         break;
     
     case VK_LEFT:
     case 'A':
-        (void)blokActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_WEST);
+        (void)stActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_WEST);
         break;
     
     case VK_DOWN:
     case 'S':
-        (void)blokActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_SOUTH);
+        (void)stActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_SOUTH);
         break;
     
     case VK_RIGHT:
     case 'D':
-        (void)blokActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_EAST);
+        (void)stActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_EAST);
         break;
 
     case 'G':
-        (void)blokActionToggleGridLines(pViewport, hWindow);
+        (void)stActionToggleGridLines(pViewport, hWindow);
         break;
     
     case 'O':
-        (void)blokActionAddObstruct(pViewport, pState, hWindow, NULL);
+        (void)stActionAddObstruct(pViewport, pState, hWindow, NULL);
         break;
 
     case 'I':
-        (void)blokActionToggleInterface(pViewport, hWindow);
+        (void)stActionToggleInterface(pViewport, hWindow);
         break;
     
     case 'T':
-        (void)blokActionChangeTheme(pGraphics, hWindow);
+        (void)stActionChangeTheme(pGraphics, hWindow);
         break;
     
     case 'C':
-        (void)blokActionClearObstructs(pViewport, pState, hWindow);
+        (void)stActionClearObstructs(pViewport, pState, hWindow);
         break;
     
     case 'L':
-        (void)blokActionToggleCanvasLock(pViewport, hWindow);
+        (void)stActionToggleCanvasLock(pViewport, hWindow);
         break;
 
     case 'M':
-        (void)blokActionGenerateRandomObstructs(pViewport, pState, hWindow);
+        (void)stActionGenerateRandomObstructs(pViewport, pState, hWindow);
         break;
     }
 }
 
-void blokProcessEventOnLeftMouseDown(
+void stProcessEventOnLeftMouseDown(
     HWND hWindow,
     LPARAM mousepos)
 {
-    TObjectState *pState = blokContextGetObjectState();
-    TViewport *pViewport = blokContextGetViewport();
+    TObjectState *pState = stContextGetObjectState();
+    TViewport *pViewport = stContextGetViewport();
     TVector2 span = pState->box.size;
     POINT mpos = {
         (GET_X_LPARAM(mousepos) / span.x) * span.x,
@@ -272,17 +272,17 @@ void blokProcessEventOnLeftMouseDown(
     {
         if (BLOK_MOUSE_AT(pViewport->generateButton.region, mpos))
         {
-            (void)blokActionAddObstruct(pViewport, pState, hWindow, NULL);
+            (void)stActionAddObstruct(pViewport, pState, hWindow, NULL);
         }
 
         if (BLOK_MOUSE_AT(pViewport->clearAllButton.region, mpos))
         {
-            (void)blokActionClearObstructs(pViewport, pState, hWindow);
+            (void)stActionClearObstructs(pViewport, pState, hWindow);
         }
 
         if (BLOK_MOUSE_AT(pViewport->lockedToggle.region, mpos))
         {
-            (void)blokActionToggleCanvasLock(pViewport, hWindow);
+            (void)stActionToggleCanvasLock(pViewport, hWindow);
         }
 
         (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
@@ -294,75 +294,75 @@ void blokProcessEventOnLeftMouseDown(
         return;
     }
 
-    (void)blokActionAddObstruct(pViewport, pState, hWindow, &mpos);
+    (void)stActionAddObstruct(pViewport, pState, hWindow, &mpos);
 }
 
-void blokProcessEventOnLeftMouseUp(
+void stProcessEventOnLeftMouseUp(
     HWND hWindow,
     LPARAM mousepos)
 {
-    TObjectState *pState = blokContextGetObjectState();
-    TViewport *pViewport = blokContextGetViewport();
+    TObjectState *pState = stContextGetObjectState();
+    TViewport *pViewport = stContextGetViewport();
 
     pViewport->isLeftMouseDown = FALSE;
 }
 
-void blokProcessEventOnResize(
+void stProcessEventOnResize(
     HWND hWindow)
 {
-    TViewport *pViewport = blokContextGetViewport();
-    TObjectState *pState = blokContextGetObjectState();
+    TViewport *pViewport = stContextGetViewport();
+    TObjectState *pState = stContextGetObjectState();
 
     (void)GetClientRect(hWindow, &pViewport->region);
-    (void)blokPanelUpdate(&pViewport->panel, &pViewport->region);
-    (void)blokCanvasUpdate(&pViewport->canvas, &pViewport->region);
-    (void)blokTextUpdate(
+    (void)stPanelUpdate(&pViewport->panel, &pViewport->region);
+    (void)stCanvasUpdate(&pViewport->canvas, &pViewport->region);
+    (void)stTextUpdate(
         &pViewport->coordinatesText, 
         &(POINT){
             pViewport->panel.region.left + 10, 
             pViewport->panel.region.top + 10 });
-    (void)blokButtonUpdate(
+    (void)stButtonUpdate(
         &pViewport->clearAllButton, 
         &(POINT){
             pViewport->coordinatesText.region.right + 10, 
             pViewport->coordinatesText.region.top });
-    (void)blokButtonUpdate(
+    (void)stButtonUpdate(
         &pViewport->generateButton, 
         &(POINT){
             pViewport->clearAllButton.region.right + 10, 
             pViewport->clearAllButton.region.top });
-    (void)blokTextUpdate(
+    (void)stTextUpdate(
         &pViewport->obstructCountText,
         &(POINT){
             pViewport->generateButton.region.right + 10, 
             pViewport->generateButton.region.top });
-    (void)blokProgressBarUpdate(
+    (void)stProgressBarUpdate(
         &pViewport->obstructMemoryBar, 
         &(POINT){
             pViewport->obstructCountText.region.right + 10, 
             pViewport->obstructCountText.region.top });
-    (void)blokProgressBarUpdateMinMax(
+    (void)stProgressBarUpdateMinMax(
         &pViewport->obstructMemoryBar, 0, pState->obstructs.max);
-    (void)blokProgressBarUpdateValue(
+    (void)stProgressBarUpdateValue(
         &pViewport->obstructMemoryBar, pState->obstructs.size);
-    (void)blokToggleUpdate(
+    (void)stToggleUpdate(
         &pViewport->lockedToggle,
         &(POINT){
             pViewport->obstructMemoryBar.region.right + 10,
             pViewport->obstructMemoryBar.region.top });
-    (void)blokTextUpdate(
+    (void)stTextUpdate(
         &pViewport->lockedToggleText, 
         &(POINT){
             pViewport->lockedToggle.region.right + 10, 
             pViewport->lockedToggle.region.top });
 }
 
-void blokProcessEventOnMouseHover(
+void stProcessEventOnMouseHover(
     HWND hWindow,
     LPARAM mousepos)
 {
-    TViewport *pViewport = blokContextGetViewport();
-    TObjectState *pState = blokContextGetObjectState();
+    TViewport *pViewport = stContextGetViewport();
+    TObjectState *pState = stContextGetObjectState();
 
     pViewport->mousePos.x = GET_X_LPARAM(mousepos);
     pViewport->mousePos.y = GET_Y_LPARAM(mousepos);
@@ -382,23 +382,23 @@ void blokProcessEventOnMouseHover(
 
     if (pViewport->isLeftMouseDown)
     {
-        (void)blokActionAddObstruct(pViewport, pState, hWindow, &pViewport->mousePos);
+        (void)stActionAddObstruct(pViewport, pState, hWindow, &pViewport->mousePos);
     }
 
     if (pViewport->isRightMouseDown)
     {
-        (void)blokActionRemoveObstruct(pViewport, pState, hWindow, pViewport->mousePos);
+        (void)stActionRemoveObstruct(pViewport, pState, hWindow, pViewport->mousePos);
     }
 
     (void)InvalidateRect(hWindow, NULL, FALSE);
 }
 
-void blokProcessEventOnRightMouseDown(
+void stProcessEventOnRightMouseDown(
     HWND hWindow,
     LPARAM mousepos)
 {
-    TObjectState *pState = blokContextGetObjectState();
-    TViewport *pViewport = blokContextGetViewport();
+    TObjectState *pState = stContextGetObjectState();
+    TViewport *pViewport = stContextGetViewport();
 
     pViewport->isRightMouseDown = TRUE;
 
@@ -407,14 +407,14 @@ void blokProcessEventOnRightMouseDown(
         return;
     }
 
-    (void)blokActionRemoveObstruct(pViewport, pState, hWindow, pViewport->mousePos);
+    (void)stActionRemoveObstruct(pViewport, pState, hWindow, pViewport->mousePos);
 }
 
-void blokProcessEventOnRightMouseUp(
+void stProcessEventOnRightMouseUp(
     HWND hWindow,
     LPARAM mousepos)
 {
-    TViewport *pViewport = blokContextGetViewport();
+    TViewport *pViewport = stContextGetViewport();
 
     pViewport->isRightMouseDown = FALSE;
 }

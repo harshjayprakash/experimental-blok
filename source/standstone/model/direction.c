@@ -7,7 +7,7 @@
 
 #include "direction.h"
 
-TVector2 blokDirectionToVector(
+TVector2 stDirectionToVector(
     const TDirection direction)
 {
     switch (direction)

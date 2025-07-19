@@ -1,5 +1,5 @@
-#ifndef _BLOK_TOGGLE_H_
-#define _BLOK_TOGGLE_H_
+#ifndef ST_TOGGLE_H
+#define ST_TOGGLE_H
 
 #include <windows.h>
 
@@ -14,12 +14,12 @@ typedef struct _Toggle
     BOOL selected;
 } TToggle;
 
-int blokToggleUpdateEx(
+int stToggleUpdateEx(
     TToggle *pToggle, const POINT *pPosition, const SIZE *pSize, const SIZE *pMargin, 
     const SIZE *pSelectMargin);
 
-int blokToggleUpdate(TToggle *pToggle, const POINT *pPosition);
+int stToggleUpdate(TToggle *pToggle, const POINT *pPosition);
 
-int blokToggleUpdateSelected(TToggle *pToggle, const BOOL selected);
+int stToggleUpdateSelected(TToggle *pToggle, const BOOL selected);
 
-#endif /* _BLOK_TOGGLE_H_ */
+#endif /* ST_TOGGLE_H */

@@ -1,7 +1,7 @@
 #include "vector.h"
 #include <stdlib.h>
 
-int blokVector2Copy(
+int stVector2Copy(
     TVector2 *pDest,
     const TVector2 src)
 {
@@ -16,21 +16,21 @@ int blokVector2Copy(
     return 1;
 }
 
-int blokVector2Equals(
+int stVector2Equals(
     const TVector2 veca,
     const TVector2 vecb)
 {
     return (veca.x == vecb.x && veca.y == vecb.y);
 }
 
-TVector2 blokVector2Offset(
+TVector2 stVector2Offset(
     const TVector2 vec,
     const TVector2 offsetVec)
 {
     return (TVector2){ vec.x + offsetVec.x, vec.y + offsetVec.y };
 }
 
-TVector2 blokVector2Multiply(
+TVector2 stVector2Multiply(
     const TVector2 veca,
     const TVector2 vecb)
 {

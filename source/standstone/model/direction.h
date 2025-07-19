@@ -5,8 +5,8 @@
  * @date 2025-07-19
  ****************************************************************************************/
 
-#ifndef _BLOK_DIRECTION_H_
-#define _BLOK_DIRECTION_H_
+#ifndef ST_DIRECTION_H
+#define ST_DIRECTION_H
 
 #include "vector.h"
 
@@ -31,6 +31,6 @@ typedef enum _Direction
  * @param[in] direction Direction to be converted.
  * @return The resulting vector.
  */
-TVector2 blokDirectionToVector(const TDirection direction);
+TVector2 stDirectionToVector(const TDirection direction);
 
-#endif /* _BLOK_DIRECTION_H_ */
+#endif /* ST_DIRECTION_H */

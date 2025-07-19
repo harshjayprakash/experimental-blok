@@ -1,5 +1,5 @@
-#ifndef _BLOK_BUTTON_H_
-#define _BLOK_BUTTON_H_
+#ifndef ST_BUTTON_H
+#define ST_BUTTON_H
 
 #include <windows.h>
 
@@ -12,9 +12,9 @@ typedef struct _Button
     POINT position;
 } TButton;
 
-int blokButtonUpdateEx(
+int stButtonUpdateEx(
     TButton *pButton, const POINT *pPos, const SIZE *pSize, const SIZE *pMargin);
 
-int blokButtonUpdate(TButton *pButton, const POINT *pPos);
+int stButtonUpdate(TButton *pButton, const POINT *pPos);
 
-#endif /* _BLOK_BUTTON_H_ */
+#endif /* ST_BUTTON_H */

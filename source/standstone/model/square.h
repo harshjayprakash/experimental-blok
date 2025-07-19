@@ -1,5 +1,5 @@
-#ifndef _BLOK_SQUARE_H_
-#define _BLOK_SQUARE_H_
+#ifndef ST_SQUARE_H
+#define ST_SQUARE_H
 
 #include "vector.h"
 
@@ -9,4 +9,4 @@ typedef struct _Square
     TVector2 size;
 } TSquare;
 
-#endif /* _BLOK_SQUARE_H_ */
+#endif /* ST_SQUARE_H */

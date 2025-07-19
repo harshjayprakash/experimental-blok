@@ -1,6 +1,6 @@
 #include "toggle.h"
 
-int blokToggleUpdateEx(
+int stToggleUpdateEx(
     TToggle *pToggle,
     const POINT *pPosition,
     const SIZE *pSize,
@@ -57,7 +57,7 @@ int blokToggleUpdateEx(
     return 1;
 }
 
-int blokToggleUpdate(
+int stToggleUpdate(
     TToggle *pToggle,
     const POINT *pPosition)
 {
@@ -71,10 +71,10 @@ int blokToggleUpdate(
         return 0;
     }
 
-    return blokToggleUpdateEx(pToggle, pPosition, NULL, NULL, NULL);
+    return stToggleUpdateEx(pToggle, pPosition, NULL, NULL, NULL);
 }
 
-int blokToggleUpdateSelected(
+int stToggleUpdateSelected(
     TToggle *pToggle,
     const BOOL selected)
 {

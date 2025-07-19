@@ -5,8 +5,8 @@
  * @date 2025-07-19
  ****************************************************************************************/
 
-#ifndef _BLOK_RENDERTOOLS_H_
-#define _BLOK_RENDERTOOLS_H_
+#ifndef ST_RENDERTOOLS_H
+#define ST_RENDERTOOLS_H
 
 #include "theme.h"
 #include <windows.h>
@@ -62,7 +62,7 @@ typedef struct _RenderTools
  * - Memory is allocated, the corresponding `blokRenderToolsFree` function must be
  *   called on clean up.
  */
-int blokRenderToolsInit(TRenderTools *pTools, const TThemePalette *pColours);
+int stRenderToolsInit(TRenderTools *pTools, const TThemePalette *pColours);
 
 /**
  * @brief Free the render tools.
@@ -72,6 +72,6 @@ int blokRenderToolsInit(TRenderTools *pTools, const TThemePalette *pColours);
  * @param[out] pTools A valid pointer to `TRenderTools`.
  * @return One if clean up is successful; zero otherwise.
  */
-int blokRenderToolsFree(TRenderTools *pTools);
+int stRenderToolsFree(TRenderTools *pTools);
 
-#endif /* _BLOK_RENDERTOOLS_H_ */
+#endif /* ST_RENDERTOOLS_H */

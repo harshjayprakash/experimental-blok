@@ -1,6 +1,6 @@
 #include "text.h"
 
-int blokTextUpdateEx(
+int stTextUpdateEx(
     TText *pText,
     const POINT *pPoint,
     const SIZE *pSize,
@@ -37,7 +37,7 @@ int blokTextUpdateEx(
     return 1;
 }
 
-int blokTextUpdate(
+int stTextUpdate(
     TText *pText,
     const POINT *pPosition)
 {
@@ -51,5 +51,5 @@ int blokTextUpdate(
         return 0;
     }
 
-    return blokTextUpdateEx(pText, pPosition, NULL, NULL);
+    return stTextUpdateEx(pText, pPosition, NULL, NULL);
 }

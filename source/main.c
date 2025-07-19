@@ -53,10 +53,10 @@ int WINAPI wWinMain(
         return 1;
     }
 
-    TContext *pContext = blokContextGet();
-    (void)blokInit(pContext, hInstance, lpCmdLine, nShowCmd);
-    (void)blokRun(pContext);
-    (void)blokFree(pContext);
+    TContext *pContext = stContextGet();
+    (void)stInit(pContext, hInstance, lpCmdLine, nShowCmd);
+    (void)stRun(pContext);
+    (void)stFree(pContext);
 
     (void)CloseHandle(hInstanceMutex);
     

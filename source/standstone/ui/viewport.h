@@ -1,5 +1,5 @@
-#ifndef _BLOK_VIEWPORT_H_
-#define _BLOK_VIEWPORT_H_
+#ifndef ST_VIEWPORT_H
+#define ST_VIEWPORT_H
 
 #include "controls/button.h"
 #include "controls/text.h"
@@ -34,10 +34,10 @@ typedef struct _Viewport
     TToggle lockedToggle;
 } TViewport;
 
-int blokViewportInit(TViewport *pViewport, HINSTANCE hInstance);
+int stViewportInit(TViewport *pViewport, HINSTANCE hInstance);
 
-int blokViewportShow(TViewport *pViewport, DWORD showFlag);
+int stViewportShow(TViewport *pViewport, DWORD showFlag);
 
-int blokViewportFree(TViewport *pViewport, HINSTANCE hInstance);
+int stViewportFree(TViewport *pViewport, HINSTANCE hInstance);
 
-#endif /* _BLOK_VIEWPORT_H_ */
+#endif /* ST_VIEWPORT_H */

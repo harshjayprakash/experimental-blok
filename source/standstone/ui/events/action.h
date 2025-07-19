@@ -1,31 +1,31 @@
-#ifndef _BLOK_ACTION_H_
-#define _BLOK_ACTION_H_
+#ifndef ST_ACTION_H
+#define ST_ACTION_H
 
 #include "../../model/direction.h"
 #include "../../context.h"
 #include <windows.h>
 #include <windowsx.h>
 
-int blokActionMoveBox(
+int stActionMoveBox(
     TViewport *pViewport, TObjectState *pState, HWND hWindow, TDirection direction);
 
-int blokActionToggleGridLines(TViewport *pViewport, HWND hWindow);
+int stActionToggleGridLines(TViewport *pViewport, HWND hWindow);
 
-int blokActionToggleInterface(TViewport *pViewport, HWND hWindow);
+int stActionToggleInterface(TViewport *pViewport, HWND hWindow);
 
-int blokActionToggleCanvasLock(TViewport *pViewport, HWND hWindow);
+int stActionToggleCanvasLock(TViewport *pViewport, HWND hWindow);
 
-int blokActionChangeTheme(TGraphics *pGraphics, HWND hWindow);
+int stActionChangeTheme(TGraphics *pGraphics, HWND hWindow);
 
-int blokActionAddObstruct(
+int stActionAddObstruct(
     TViewport *pViewport, TObjectState *pState, HWND hWindow, const POINT *pPoint);
 
-int blokActionRemoveObstruct(
+int stActionRemoveObstruct(
     TViewport *pViewport, TObjectState *pState, HWND hWindow, const POINT point);
 
-int blokActionClearObstructs(TViewport *pViewport, TObjectState *pState, HWND hWindow);
+int stActionClearObstructs(TViewport *pViewport, TObjectState *pState, HWND hWindow);
 
-int blokActionGenerateRandomObstructs(
+int stActionGenerateRandomObstructs(
     TViewport *pViewport, TObjectState *pState, HWND hWindow);
 
-#endif /* _BLOK_ACTION_H_ */
+#endif /* ST_ACTION_H */

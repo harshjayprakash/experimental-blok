@@ -7,7 +7,7 @@
 
 #include "graphics.h"
 
-int blokGraphicsInit(
+int stGraphicsInit(
     TGraphics *pGraphics,
     const TTheme theme)
 {
@@ -16,19 +16,19 @@ int blokGraphicsInit(
         return 0;
     }
 
-    int disregardTheme = (theme >= BLOK_THEME_MIN && theme <= BLOK_THEME_MAX);
-    pGraphics->currentTheme = (!disregardTheme) ? BLOK_THEME_UNSET : theme;
+    int disregardTheme = (theme >= ST_THEME_MIN && theme <= ST_THEME_MAX);
+    pGraphics->currentTheme = (!disregardTheme) ? ST_THEME_UNSET : theme;
 
-    int success = blokThemeSet(&pGraphics->palette, pGraphics->currentTheme);
+    int success = stThemeSet(&pGraphics->palette, pGraphics->currentTheme);
     if (!success)
     {
         return 0;
     }
 
-    return blokRenderToolsInit(&pGraphics->renderTools, &pGraphics->palette);
+    return stRenderToolsInit(&pGraphics->renderTools, &pGraphics->palette);
 }
 
-int blokGraphicsFree(
+int stGraphicsFree(
     TGraphics *pGraphics)
 {
     if (pGraphics == NULL)
@@ -36,5 +36,5 @@ int blokGraphicsFree(
         return 0;
     }
 
-    return blokRenderToolsFree(&pGraphics->renderTools);
+    return stRenderToolsFree(&pGraphics->renderTools);
 }

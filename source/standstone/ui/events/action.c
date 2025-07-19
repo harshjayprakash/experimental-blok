@@ -2,7 +2,7 @@
 #include "action.h"
 #include <strsafe.h>
 
-int blokActionMoveBox(
+int stActionMoveBox(
     TViewport *pViewport,
     TObjectState *pState,
     HWND hWindow,
@@ -23,13 +23,13 @@ int blokActionMoveBox(
         return 0;
     }
 
-    int movable = blokStateIsBoxMovable(pState, direction);
+    int movable = stStateIsBoxMovable(pState, direction);
     if (!movable)
     {
         return 0;
     }
 
-    int result = blokStateMoveBox(pState, direction);
+    int result = stStateMoveBox(pState, direction);
 
     (void)StringCbPrintfW(pViewport->coordinatesText.data, 60,
         L"(%d, %d)", pState->box.position.x, pState->box.position.y);
@@ -50,7 +50,7 @@ int blokActionMoveBox(
     return result;
 }
 
-int blokActionToggleGridLines(
+int stActionToggleGridLines(
     TViewport *pViewport,
     HWND hWindow)
 {
@@ -74,7 +74,7 @@ int blokActionToggleGridLines(
     return 1;
 }
 
-int blokActionToggleInterface(
+int stActionToggleInterface(
     TViewport *pViewport,
     HWND hWindow)
 {
@@ -98,7 +98,7 @@ int blokActionToggleInterface(
     return 1;
 }
 
-int blokActionToggleCanvasLock(
+int stActionToggleCanvasLock(
     TViewport *pViewport,
     HWND hWindow)
 {
@@ -114,7 +114,7 @@ int blokActionToggleCanvasLock(
 
     pViewport->isCanvasLocked = !pViewport->isCanvasLocked;
 
-    (void)blokToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
+    (void)stToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
     (void)InvalidateRect(hWindow, &pViewport->lockedToggle.region, FALSE);
 
     (void)wprintf(L"Toggle Canvas Lock: %ls\n",
@@ -123,7 +123,7 @@ int blokActionToggleCanvasLock(
     return 1;
 }
 
-int blokActionChangeTheme(
+int stActionChangeTheme(
     TGraphics *pGraphics,
     HWND hWindow)
 {
@@ -134,9 +134,9 @@ int blokActionChangeTheme(
 
     TTheme currrentTheme = pGraphics->currentTheme;
         
-    (void)blokGraphicsFree(pGraphics);
-    (void)blokGraphicsInit(pGraphics,
-        (currrentTheme == 1 || currrentTheme == 0) ? BLOK_THEME_LIGHT : BLOK_THEME_DARK);
+    (void)stGraphicsFree(pGraphics);
+    (void)stGraphicsInit(pGraphics,
+        (currrentTheme == 1 || currrentTheme == 0) ? ST_THEME_LIGHT : ST_THEME_DARK);
 
     (void)InvalidateRect(hWindow, NULL, FALSE);
 
@@ -145,7 +145,7 @@ int blokActionChangeTheme(
     return 1;
 }
 
-int blokActionAddObstruct(
+int stActionAddObstruct(
     TViewport *pViewport,
     TObjectState *pState,
     HWND hWindow,
@@ -180,15 +180,15 @@ int blokActionAddObstruct(
         newNode.y = (pPoint->y / scale.y) * scale.y;
     }
     
-    int result = blokStateAddObstruct(pState, newNode);
-    RECT updateRegion = blokConvertVectorRect(newNode, pState->box.size);
+    int result = stStateAddObstruct(pState, newNode);
+    RECT updateRegion = stConvertVectorRect(newNode, pState->box.size);
 
     (void)StringCbPrintfW(
         pViewport->obstructCountText.data, 60, L"%ld", pState->obstructs.size);
 
-    (void)blokProgressBarUpdateMinMax(
+    (void)stProgressBarUpdateMinMax(
         &pViewport->obstructMemoryBar, 0, pState->obstructs.max);
-    (void)blokProgressBarUpdateValue(
+    (void)stProgressBarUpdateValue(
         &pViewport->obstructMemoryBar, pState->obstructs.size);
 
     (void)InvalidateRect(hWindow, &updateRegion, FALSE);
@@ -209,7 +209,7 @@ int blokActionAddObstruct(
     return (result > -1);
 }
 
-int blokActionRemoveObstruct(
+int stActionRemoveObstruct(
     TViewport *pViewport,
     TObjectState *pState,
     HWND hWindow,
@@ -236,14 +236,14 @@ int blokActionRemoveObstruct(
         (point.y / scale.y) * scale.y
     };
 
-    int result = blokStateRemoveObstruct(pState, rp);
+    int result = stStateRemoveObstruct(pState, rp);
 
     (void)StringCbPrintfW(
         pViewport->obstructCountText.data, 60, L"%ld", pState->obstructs.size);
 
-    (void)blokProgressBarUpdateMinMax(
+    (void)stProgressBarUpdateMinMax(
         &pViewport->obstructMemoryBar, 0, pState->obstructs.max);
-    (void)blokProgressBarUpdateValue(
+    (void)stProgressBarUpdateValue(
         &pViewport->obstructMemoryBar, pState->obstructs.size);
 
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
@@ -255,7 +255,7 @@ int blokActionRemoveObstruct(
     return (result > -1);
 }
 
-int blokActionClearObstructs(
+int stActionClearObstructs(
     TViewport *pViewport,
     TObjectState *pState,
     HWND hWindow)
@@ -275,8 +275,8 @@ int blokActionClearObstructs(
         return 0;
     }
 
-    int result = blokStateClearObstructs(pState);
-    (void)blokProgressBarUpdateValue(
+    int result = stStateClearObstructs(pState);
+    (void)stProgressBarUpdateValue(
         &pViewport->obstructMemoryBar, pState->obstructs.size);
     (void)StringCbPrintfW(
         pViewport->obstructCountText.data, 60, L"%ld", pState->obstructs.size);
@@ -289,7 +289,7 @@ int blokActionClearObstructs(
     return result;
 }
 
-int blokActionGenerateRandomObstructs(
+int stActionGenerateRandomObstructs(
     TViewport *pViewport,
     TObjectState *pState,
     HWND hWindow)
@@ -299,11 +299,11 @@ int blokActionGenerateRandomObstructs(
         return 0;
     }
 
-    (void)blokActionClearObstructs(pViewport, pState, hWindow);
+    (void)stActionClearObstructs(pViewport, pState, hWindow);
 
     TVector2 maxRgnObstructs = { 0, 0 };
     TVector2 scale = pState->box.size;
-    TVector2 _d = blokConvertRectSizeV(pViewport->canvas.region);
+    TVector2 _d = stConvertRectSizeV(pViewport->canvas.region);
 
     maxRgnObstructs.x = _d.x / scale.x;
     maxRgnObstructs.y = _d.y / scale.y;
@@ -317,7 +317,7 @@ int blokActionGenerateRandomObstructs(
     
     for (int idx = 0; idx < _nNodes; idx++)
     {
-        result = (blokActionAddObstruct(pViewport, pState, hWindow, NULL) || result);
+        result = (stActionAddObstruct(pViewport, pState, hWindow, NULL) || result);
     }
 
     (void)wprintf(L"Generate Random Obstruct: %d New Nodes\n", _nNodes);

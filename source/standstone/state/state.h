@@ -1,5 +1,5 @@
-#ifndef _BLOK_STATE_H_
-#define _BLOK_STATE_H_
+#ifndef ST_STATE_H
+#define ST_STATE_H
 
 #include "../model/direction.h"
 #include "../model/square.h"
@@ -11,18 +11,18 @@ typedef struct _State
     TDynList obstructs;
 } TObjectState;
 
-int blokStateInit(TObjectState *pState, const TVector2 scale);
+int stStateInit(TObjectState *pState, const TVector2 scale);
 
-int blokStateFree(TObjectState *pState);
+int stStateFree(TObjectState *pState);
 
-int blokStateMoveBox(TObjectState *pState, TDirection direction);
+int stStateMoveBox(TObjectState *pState, TDirection direction);
 
-int blokStateIsBoxMovable(TObjectState *pState, TDirection direction);
+int stStateIsBoxMovable(TObjectState *pState, TDirection direction);
 
-int blokStateAddObstruct(TObjectState *pState, const TVector2 point);
+int stStateAddObstruct(TObjectState *pState, const TVector2 point);
 
-int blokStateRemoveObstruct(TObjectState *pState, const TVector2 point);
+int stStateRemoveObstruct(TObjectState *pState, const TVector2 point);
 
-int blokStateClearObstructs(TObjectState *pState);
+int stStateClearObstructs(TObjectState *pState);
 
-#endif /* _BLOK_STATE_H_ */
+#endif /* ST_STATE_H */

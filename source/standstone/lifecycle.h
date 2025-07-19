@@ -1,13 +1,13 @@
-#ifndef _BLOK_LIFECYCLE_H_
-#define _BLOK_LIFECYCLE_H_
+#ifndef ST_LIFECYCLE_H
+#define ST_LIFECYCLE_H
 
 #include "context.h"
 
-int blokInit(
+int stInit(
     TContext *pContext, HINSTANCE hInstance, LPWSTR pCommandLine, DWORD showFlag);
 
-int blokRun(TContext *pContext);
+int stRun(TContext *pContext);
 
-int blokFree(TContext *pContext);
+int stFree(TContext *pContext);
 
-#endif /* _BLOK_LIFECYCLE_H_ */
+#endif /* ST_LIFECYCLE_H */

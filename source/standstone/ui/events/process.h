@@ -1,22 +1,22 @@
-#ifndef _BLOK_PROCESS_H_
-#define _BLOK_PROCESS_H_
+#ifndef ST_PROCESS_H
+#define ST_PROCESS_H
 
 #include <windows.h>
 
-void blokProcessEventOnPaint(HWND hWindow);
+void stProcessEventOnPaint(HWND hWindow);
 
-void blokProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey);
+void stProcessEventOnKeyDown(HWND hWindow, WPARAM virtualKey);
 
-void blokProcessEventOnLeftMouseDown(HWND hWindow, LPARAM mousepos);
+void stProcessEventOnLeftMouseDown(HWND hWindow, LPARAM mousepos);
 
-void blokProcessEventOnRightMouseDown(HWND hWindow, LPARAM mousepos);
+void stProcessEventOnRightMouseDown(HWND hWindow, LPARAM mousepos);
 
-void blokProcessEventOnLeftMouseUp(HWND hWindow, LPARAM mousepos);
+void stProcessEventOnLeftMouseUp(HWND hWindow, LPARAM mousepos);
 
-void blokProcessEventOnRightMouseUp(HWND hWindow, LPARAM mousepos);
+void stProcessEventOnRightMouseUp(HWND hWindow, LPARAM mousepos);
 
-void blokProcessEventOnResize(HWND hWindow);
+void stProcessEventOnResize(HWND hWindow);
 
-void blokProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos);
+void stProcessEventOnMouseHover(HWND hWindow, LPARAM mousepos);
 
-#endif /* _BLOK_PROCESS_H_ */
+#endif /* ST_PROCESS_H */

@@ -13,19 +13,19 @@
  * @{
  */
 
-#define BLOK_SCALE_DEF 15
-#define BLOK_ARGM_UNSET 0
-#define BLOK_ARGM_SCALE_X 10
-#define BLOK_ARGM_SCALE_Y 20
-#define BLOK_ARGM_SCALE_A 30
+#define ST_SCALE_DEF 15
+#define ST_ARGM_UNSET 0
+#define ST_ARGM_SCALE_X 10
+#define ST_ARGM_SCALE_Y 20
+#define ST_ARGM_SCALE_A 30
 
-#define BLOK_EVALUATE_SCALE(assignTo, value)                                             \
+#define ST_EVALUATE_SCALE(assignTo, value)                                             \
     int scale = abs(_wtoi(value));                                                       \
-    assignTo = (scale != 0) ? scale : BLOK_SCALE_DEF
+    assignTo = (scale != 0) ? scale : ST_SCALE_DEF
 
 /** @} */
 
-int blokArgsProcess(
+int stArgsProcess(
     TArgsResult *pArgs, 
     LPCWSTR pCommandLine)
 {
@@ -35,12 +35,12 @@ int blokArgsProcess(
     }
 
     pArgs->theme = 0;
-    pArgs->scaleX = BLOK_SCALE_DEF;
-    pArgs->scaleY = BLOK_SCALE_DEF;
+    pArgs->scaleX = ST_SCALE_DEF;
+    pArgs->scaleY = ST_SCALE_DEF;
     pArgs->showConsole = 0;
 
     int argc = 0;
-    int argm = BLOK_ARGM_UNSET;
+    int argm = ST_ARGM_UNSET;
     LPWSTR *ppArgv = CommandLineToArgvW(pCommandLine, &argc);
 
     if (ppArgv == NULL)
@@ -65,30 +65,30 @@ int blokArgsProcess(
             pArgs->showConsole = 1;
         }
 
-        if (argm == BLOK_ARGM_SCALE_A || argm == BLOK_ARGM_SCALE_X)
+        if (argm == ST_ARGM_SCALE_A || argm == ST_ARGM_SCALE_X)
         {
-            BLOK_EVALUATE_SCALE(pArgs->scaleX, ppArgv[idx]);
+            ST_EVALUATE_SCALE(pArgs->scaleX, ppArgv[idx]);
         }
-        if (argm == BLOK_ARGM_SCALE_A || argm == BLOK_ARGM_SCALE_Y)
+        if (argm == ST_ARGM_SCALE_A || argm == ST_ARGM_SCALE_Y)
         {
-            BLOK_EVALUATE_SCALE(pArgs->scaleY, ppArgv[idx]);
+            ST_EVALUATE_SCALE(pArgs->scaleY, ppArgv[idx]);
         }
 
-        argm = BLOK_ARGM_UNSET;
+        argm = ST_ARGM_UNSET;
 
         if (_wcsnicmp(ppArgv[idx], L"--scale-x", 10 * sizeof(unsigned short)) == 0)
         {
-            argm = BLOK_ARGM_SCALE_X;
+            argm = ST_ARGM_SCALE_X;
         }
 
         if (_wcsnicmp(ppArgv[idx], L"--scale-y", 10 * sizeof(unsigned short)) == 0)
         {
-            argm = BLOK_ARGM_SCALE_Y;
+            argm = ST_ARGM_SCALE_Y;
         }
 
         if (_wcsnicmp(ppArgv[idx], L"--scale", 8 * sizeof(unsigned short)) == 0)
         {
-            argm = BLOK_ARGM_SCALE_A;
+            argm = ST_ARGM_SCALE_A;
         }
     }
 

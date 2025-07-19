@@ -1,5 +1,5 @@
-#ifndef _BLOK_CONTEXT_H_
-#define _BLOK_CONTEXT_H_
+#ifndef ST_CONTEXT_H
+#define ST_CONTEXT_H
 
 #include "ui/viewport.h"
 #include "state/state.h"
@@ -19,12 +19,12 @@ typedef struct _Context
     void *pResult;
 } TContext;
 
-TContext *blokContextGet(void);
+TContext *stContextGet(void);
 
-TGraphics *blokContextGetGraphics(void);
+TGraphics *stContextGetGraphics(void);
 
-TViewport *blokContextGetViewport(void);
+TViewport *stContextGetViewport(void);
 
-TObjectState *blokContextGetObjectState(void);
+TObjectState *stContextGetObjectState(void);
 
-#endif /* _BLOK_CONTEXT_H_ */
+#endif /* ST_CONTEXT_H */

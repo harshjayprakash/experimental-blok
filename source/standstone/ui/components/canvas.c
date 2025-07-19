@@ -1,6 +1,6 @@
 #include "canvas.h"
 
-int blokCanvasUpdate(
+int stCanvasUpdate(
     TCanvas *pCanvas,
     const RECT *pWindowRgn)
 {

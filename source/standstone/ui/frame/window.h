@@ -1,5 +1,5 @@
-#ifndef _BLOK_WINDOW_H_
-#define _BLOK_WINDOW_H_
+#ifndef ST_WINDOW_H
+#define ST_WINDOW_H
 
 #include <windows.h>
 
@@ -12,10 +12,10 @@ typedef struct _Window
     ATOM klassAtomIdx;
 } TWindow;
 
-int blokWindowInit(TWindow *pWindow, HINSTANCE hInstance);
+int stWindowInit(TWindow *pWindow, HINSTANCE hInstance);
 
-int blokWindowShow(TWindow *pWindow, DWORD showFlag);
+int stWindowShow(TWindow *pWindow, DWORD showFlag);
 
-int blokWindowFree(TWindow *pWindow, HINSTANCE hInstance);
+int stWindowFree(TWindow *pWindow, HINSTANCE hInstance);
 
-#endif /* _BLOK_WINDOW_H_ */
+#endif /* ST_WINDOW_H */

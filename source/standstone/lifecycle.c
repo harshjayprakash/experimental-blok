@@ -1,7 +1,7 @@
 #include "lifecycle.h"
 #include "cmd/args.h"
 
-int blokInit(
+int stInit(
     TContext *pContext,
     HINSTANCE hInstance,
     LPWSTR pCommandLine,
@@ -17,23 +17,23 @@ int blokInit(
     pContext->showFlag = showFlag;
 
     TArgsResult argsResult;
-    (void)blokArgsProcess(&argsResult, pContext->pCommandLine);
+    (void)stArgsProcess(&argsResult, pContext->pCommandLine);
 
     if (argsResult.showConsole)
     {
-        (void)blokConsoleInit(&pContext->console);
+        (void)stConsoleInit(&pContext->console);
     }
 
-    (void)blokStateInit(
+    (void)stStateInit(
         &pContext->state, 
         (TVector2){ argsResult.scaleX, argsResult.scaleY });
-    (void)blokGraphicsInit(&pContext->graphics, argsResult.theme);
-    (void)blokViewportInit(&pContext->viewport, pContext->hInstance);
+    (void)stGraphicsInit(&pContext->graphics, argsResult.theme);
+    (void)stViewportInit(&pContext->viewport, pContext->hInstance);
 
     return 1;
 }
 
-int blokRun(
+int stRun(
     TContext *pContext)
 {
     if (pContext == NULL)
@@ -41,10 +41,10 @@ int blokRun(
         return -1;
     }
 
-    return blokViewportShow(&pContext->viewport, pContext->showFlag);
+    return stViewportShow(&pContext->viewport, pContext->showFlag);
 }
 
-int blokFree(
+int stFree(
     TContext *pContext)
 {
     if (pContext == NULL) 
@@ -52,10 +52,10 @@ int blokFree(
         return 0;
     }
 
-    (void)blokViewportFree(&pContext->viewport, pContext->hInstance);
-    (void)blokGraphicsFree(&pContext->graphics);
-    (void)blokStateFree(&pContext->state);
-    (void)blokConsoleFree(&pContext->console);
+    (void)stViewportFree(&pContext->viewport, pContext->hInstance);
+    (void)stGraphicsFree(&pContext->graphics);
+    (void)stStateFree(&pContext->state);
+    (void)stConsoleFree(&pContext->console);
 
     return 1;
 }

@@ -5,8 +5,8 @@
  * @date 2025-07-19
  ****************************************************************************************/
 
-#ifndef _BLOK_GRAPHICS_H_
-#define _BLOK_GRAPHICS_H_
+#ifndef ST_GRAPHICS_H
+#define ST_GRAPHICS_H
 
 #include "theme.h"
 #include "rendertools.h"
@@ -56,7 +56,7 @@ typedef struct _Graphics
  * - An invalid theme will default in the dark theme.
  * - Memory is allocated, the corresponding free function must be called on clean up.
  */
-int blokGraphicsInit(TGraphics *pGraphics, const TTheme theme);
+int stGraphicsInit(TGraphics *pGraphics, const TTheme theme);
 
 /**
  * @brief Free the graphics.
@@ -66,6 +66,6 @@ int blokGraphicsInit(TGraphics *pGraphics, const TTheme theme);
  * @param[out] pGraphics A valid pointer to the `TGraphics` structure.
  * @return One if clean up was successful; zero otherwise.
  */
-int blokGraphicsFree(TGraphics *pGraphics);
+int stGraphicsFree(TGraphics *pGraphics);
 
-#endif /* _BLOK_GRAPHICS_H_ */
+#endif /* ST_GRAPHICS_H */

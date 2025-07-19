@@ -1,14 +1,14 @@
 #include "window.h"
 #include "../events/process.h"
 
-#define BLOK_CLEANUP_RESOURCE(object, cleanFn)                                           \
+#define ST_CLEANUP_RESOURCE(object, cleanFn)                                           \
     if (object != NULL)                                                                  \
     {                                                                                    \
         (void)cleanFn(object);                                                           \
         object = NULL;                                                                   \
     }
 
-static LRESULT CALLBACK _blokWindowProcedure(
+static LRESULT CALLBACK _stWindowProcedure(
     HWND hWindow,
     UINT messageId,
     WPARAM dataWord,
@@ -21,35 +21,35 @@ static LRESULT CALLBACK _blokWindowProcedure(
         return TRUE;
 
     case WM_PAINT:
-        blokProcessEventOnPaint(hWindow);
+        stProcessEventOnPaint(hWindow);
         return TRUE;
 
     case WM_SIZE:
-        blokProcessEventOnResize(hWindow);
+        stProcessEventOnResize(hWindow);
         return TRUE;
 
     case WM_KEYDOWN:
-        blokProcessEventOnKeyDown(hWindow, dataWord);
+        stProcessEventOnKeyDown(hWindow, dataWord);
         return TRUE;
 
     case WM_LBUTTONDOWN:
-        blokProcessEventOnLeftMouseDown(hWindow, dataLong);
+        stProcessEventOnLeftMouseDown(hWindow, dataLong);
         return TRUE;
 
     case WM_RBUTTONDOWN:
-        blokProcessEventOnRightMouseDown(hWindow, dataLong);
+        stProcessEventOnRightMouseDown(hWindow, dataLong);
         return TRUE;
 
     case WM_LBUTTONUP:
-        blokProcessEventOnLeftMouseUp(hWindow, dataLong);
+        stProcessEventOnLeftMouseUp(hWindow, dataLong);
         return TRUE;
 
     case WM_RBUTTONUP:
-        blokProcessEventOnRightMouseUp(hWindow, dataLong);
+        stProcessEventOnRightMouseUp(hWindow, dataLong);
         return TRUE;
 
     case WM_MOUSEMOVE:
-        blokProcessEventOnMouseHover(hWindow, dataLong);
+        stProcessEventOnMouseHover(hWindow, dataLong);
         return TRUE;
 
     default:
@@ -57,7 +57,7 @@ static LRESULT CALLBACK _blokWindowProcedure(
     }
 }
 
-int blokWindowInit(
+int stWindowInit(
     TWindow *pWindow,
     HINSTANCE hInstance)
 {
@@ -76,7 +76,7 @@ int blokWindowInit(
 
     pWindow->klass.cbSize = sizeof(WNDCLASSEXW);
     pWindow->klass.style = CS_HREDRAW | CS_VREDRAW;
-    pWindow->klass.lpfnWndProc = _blokWindowProcedure;
+    pWindow->klass.lpfnWndProc = _stWindowProcedure;
     pWindow->klass.cbClsExtra = 0;
     pWindow->klass.cbWndExtra = 0;
     pWindow->klass.hInstance = hInstance;
@@ -93,7 +93,7 @@ int blokWindowInit(
     {
         (void)MessageBoxW(0, L"Window Class Registration Failed", L"Blok", 
             MB_OK | MB_ICONERROR);
-        blokWindowFree(pWindow, hInstance);
+        stWindowFree(pWindow, hInstance);
         return 0;
     }
 
@@ -103,14 +103,14 @@ int blokWindowInit(
     if (!pWindow->hHandle)
     {
         (void)MessageBoxW(0, L"Window Creation Failed", L"Blok", MB_OK | MB_ICONERROR);
-        blokWindowFree(pWindow, hInstance);
+        stWindowFree(pWindow, hInstance);
         return 0;
     }
 
     return 1;
 }
 
-int blokWindowShow(
+int stWindowShow(
     TWindow *pWindow,
     DWORD showFlag)
 {
@@ -148,7 +148,7 @@ int blokWindowShow(
     return (int)message.wParam;
 }
 
-int blokWindowFree(
+int stWindowFree(
     TWindow *pWindow,
     HINSTANCE hInstance)
 {
@@ -157,11 +157,11 @@ int blokWindowFree(
         return 0;
     }
     
-    BLOK_CLEANUP_RESOURCE(pWindow->hHandle, DestroyWindow);
-    BLOK_CLEANUP_RESOURCE(pWindow->klass.hIcon, DestroyIcon);
-    BLOK_CLEANUP_RESOURCE(pWindow->klass.hIconSm, DestroyIcon);
-    BLOK_CLEANUP_RESOURCE(pWindow->klass.hCursor, DestroyCursor);
-    BLOK_CLEANUP_RESOURCE(pWindow->klass.hbrBackground, DeleteObject);
+    ST_CLEANUP_RESOURCE(pWindow->hHandle, DestroyWindow);
+    ST_CLEANUP_RESOURCE(pWindow->klass.hIcon, DestroyIcon);
+    ST_CLEANUP_RESOURCE(pWindow->klass.hIconSm, DestroyIcon);
+    ST_CLEANUP_RESOURCE(pWindow->klass.hCursor, DestroyCursor);
+    ST_CLEANUP_RESOURCE(pWindow->klass.hbrBackground, DeleteObject);
     
     if (pWindow->klassAtomIdx != 0)
     {

@@ -1,6 +1,6 @@
 #include "button.h"
 
-int blokButtonUpdateEx(
+int stButtonUpdateEx(
     TButton *pButton,
     const POINT *pPos,
     const SIZE *pSize,
@@ -37,7 +37,7 @@ int blokButtonUpdateEx(
     return 1;
 }
 
-int blokButtonUpdate(
+int stButtonUpdate(
     TButton *pButton,
     const POINT *pPos)
 {
@@ -51,5 +51,5 @@ int blokButtonUpdate(
         return 0;
     }
 
-    return blokButtonUpdateEx(pButton, pPos, NULL, NULL);
+    return stButtonUpdateEx(pButton, pPos, NULL, NULL);
 }

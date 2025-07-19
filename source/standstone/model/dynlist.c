@@ -40,7 +40,7 @@ static int _blokDynListResize(
     return 1;
 }
 
-int blokDynListInit(
+int stDynListInit(
     TDynList *pList,
     const long size)
 {
@@ -63,7 +63,7 @@ int blokDynListInit(
     return 1;
 }
 
-int blokDynListIsFull(
+int stDynListIsFull(
     const TDynList *pList)
 {
     if (pList == NULL)
@@ -79,7 +79,7 @@ int blokDynListIsFull(
     return (pList->size == pList->max);
 }
 
-int blokDynListIsEmpty(
+int stDynListIsEmpty(
     const TDynList *pList)
 {
     if (pList == NULL)
@@ -95,7 +95,7 @@ int blokDynListIsEmpty(
     return (pList->head == -1);
 }
 
-long blokDynListAdd(
+long stDynListAdd(
     TDynList *pList,
     const TNode *pNode)
 {
@@ -109,7 +109,7 @@ long blokDynListAdd(
         return -1L;
     }
 
-    if (blokDynListIsFull(pList)) 
+    if (stDynListIsFull(pList)) 
     { 
         int newSize = _blokDynListGenerateNewSize(pList->max);
         int success = _blokDynListResize(pList, newSize);
@@ -123,7 +123,7 @@ long blokDynListAdd(
     ++pList->head;
     ++pList->size;
 
-    int success = blokVector2Copy(&(pList->pArr + pList->head)->data, pNode->data);
+    int success = stVector2Copy(&(pList->pArr + pList->head)->data, pNode->data);
     
     if (!success)
     {
@@ -133,7 +133,7 @@ long blokDynListAdd(
     return pList->head;
 }
 
-int blokDynListClear(
+int stDynListClear(
     TDynList *pList)
 {
     if (pList == NULL)
@@ -152,7 +152,7 @@ int blokDynListClear(
     return 1;
 }
 
-long blokDynListGetIndex(
+long stDynListGetIndex(
     const TDynList *pList,
     const TNode *pNode)
 {
@@ -173,7 +173,7 @@ long blokDynListGetIndex(
 
     for (long idx = 0; idx < pList->size; idx++)
     {
-        if (blokVector2Equals(pList->pArr[idx].data, pNode->data))
+        if (stVector2Equals(pList->pArr[idx].data, pNode->data))
         {
             return idx;
         }
@@ -182,7 +182,7 @@ long blokDynListGetIndex(
     return -1L;
 }  
 
-int blokDynListExists(
+int stDynListExists(
     const TDynList *pList,
     const TNode *pNode)
 {
@@ -196,7 +196,7 @@ int blokDynListExists(
         return -1;
     }
 
-    int result = blokDynListGetIndex(pList, pNode);
+    int result = stDynListGetIndex(pList, pNode);
     
     if (result == -2)
     {
@@ -211,7 +211,7 @@ int blokDynListExists(
     return 1;
 }
 
-long blokDynListRemove(
+long stDynListRemove(
     TDynList *pList,
     const TNode node)
 {
@@ -220,14 +220,14 @@ long blokDynListRemove(
         return -1L;
     }
 
-    long idx = blokDynListGetIndex(pList, &node);
+    long idx = stDynListGetIndex(pList, &node);
 
     if (idx < 0)
     {
         return -1L;
     }
 
-    int success = blokVector2Copy(
+    int success = stVector2Copy(
         &(pList->pArr + idx)->data, 
         (pList->pArr + pList->head)->data);
 
@@ -242,7 +242,7 @@ long blokDynListRemove(
     return idx;
 }
 
-int blokDynListFree(
+int stDynListFree(
     TDynList *pList)
 {
     if (pList == NULL)

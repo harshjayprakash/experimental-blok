@@ -7,14 +7,14 @@
 
 #include "rendertools.h"
 
-#define BLOK_DELETE_OBJECT(hObject)                                                      \
+#define ST_DELETE_OBJECT(hObject)                                                      \
     if (hObject != NULL)                                                                 \
     {                                                                                    \
         (void)DeleteObject(hObject);                                                     \
         hObject = NULL;                                                                  \
     }              
 
-int blokRenderToolsInit(
+int stRenderToolsInit(
     TRenderTools *pTools,
     const TThemePalette *pColours)
 {
@@ -59,7 +59,7 @@ int blokRenderToolsInit(
     return (brushCheck && penCheck);
 }
 
-int blokRenderToolsFree(
+int stRenderToolsFree(
     TRenderTools *pTools)
 {
     if (pTools == NULL)
@@ -67,16 +67,16 @@ int blokRenderToolsFree(
         return 0;
     }
 
-    BLOK_DELETE_OBJECT(pTools->brushes.hBaseBackground);
-    BLOK_DELETE_OBJECT(pTools->brushes.hBaseBackgroundFaded);
-    BLOK_DELETE_OBJECT(pTools->brushes.hBaseBackgroundMedium);
-    BLOK_DELETE_OBJECT(pTools->brushes.hPrimaryBackground);
-    BLOK_DELETE_OBJECT(pTools->brushes.hPrimaryBackgroundFaded);
-    BLOK_DELETE_OBJECT(pTools->pens.hBaseForeground);
-    BLOK_DELETE_OBJECT(pTools->pens.hBaseBorder);
-    BLOK_DELETE_OBJECT(pTools->pens.hBaseBorderFaded);
-    BLOK_DELETE_OBJECT(pTools->pens.hPrimaryBorder);
-    BLOK_DELETE_OBJECT(pTools->pens.hPrimaryForeground);
+    ST_DELETE_OBJECT(pTools->brushes.hBaseBackground);
+    ST_DELETE_OBJECT(pTools->brushes.hBaseBackgroundFaded);
+    ST_DELETE_OBJECT(pTools->brushes.hBaseBackgroundMedium);
+    ST_DELETE_OBJECT(pTools->brushes.hPrimaryBackground);
+    ST_DELETE_OBJECT(pTools->brushes.hPrimaryBackgroundFaded);
+    ST_DELETE_OBJECT(pTools->pens.hBaseForeground);
+    ST_DELETE_OBJECT(pTools->pens.hBaseBorder);
+    ST_DELETE_OBJECT(pTools->pens.hBaseBorderFaded);
+    ST_DELETE_OBJECT(pTools->pens.hPrimaryBorder);
+    ST_DELETE_OBJECT(pTools->pens.hPrimaryForeground);
 
     return 1;
 }

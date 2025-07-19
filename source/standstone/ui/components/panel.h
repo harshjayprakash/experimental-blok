@@ -1,5 +1,5 @@
-#ifndef _BLOK_PANEL_H_
-#define _BLOK_PANEL_H_
+#ifndef ST_PANEL_H
+#define ST_PANEL_H
 
 #include <windows.h>
 
@@ -11,9 +11,9 @@ typedef struct _Panel
     SIZE size;
 } TPanel;
 
-int blokPanelUpdateEx(
+int stPanelUpdateEx(
     TPanel *pPanel, const RECT *pWindowRgn, const SIZE *pSize, const SIZE *pMargin);
 
-int blokPanelUpdate(TPanel *pPanel, const RECT *pWindowRgn);
+int stPanelUpdate(TPanel *pPanel, const RECT *pWindowRgn);
 
-#endif /* _BLOK_PANEL_H_ */
+#endif /* ST_PANEL_H */

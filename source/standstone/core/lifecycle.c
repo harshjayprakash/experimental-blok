@@ -8,13 +8,13 @@ int stSetup(HINSTANCE hInstance, LPWSTR pCommandLine, int showFlag)
         return 1;
     }
 
-    stContext *pContext = blokContextGet();
-    stParsedArgs pArgs;
+    TContext *pContext = stContextGet();
+    void *pArgs;
 
     return stEntry(pContext, &pArgs);
 }
 
-int stEntry(stContext* pContext, stParsedArgs* pArgs)
+int stEntry(TContext* pContext, void *pArgs)
 {
     return 0;
 }

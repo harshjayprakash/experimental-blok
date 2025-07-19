@@ -1,12 +1,8 @@
 /**
  * @file console.h
  * @brief Console lifecycle declarations.
- * 
- * Defines the data structure holding the console initialisation information and
- * lifecycle functions. Provides initialisation and clean up operations.
- * 
  * @author harshjayprakash
- * @date 2025-07-17
+ * @date 2025-07-19
  ****************************************************************************************/
 
 #ifndef _BLOK_CONSOLE_H_

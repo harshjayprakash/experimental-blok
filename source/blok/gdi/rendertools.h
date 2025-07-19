@@ -6,6 +6,10 @@
 
 typedef struct _RenderTools {
     struct _Brushes {
+typedef struct _RenderTools
+    {
+    struct _Brushes
+    {
         HBRUSH hBaseBackground;
         HBRUSH hBaseBackgroundFaded;
         HBRUSH hBaseBackgroundMedium;
@@ -13,6 +17,8 @@ typedef struct _RenderTools {
         HBRUSH hPrimaryBackgroundFaded;
     } brushes;
     struct _Pens {
+    struct _Pens
+    {
         HPEN hBaseForeground;
         HPEN hBaseBorder;
         HPEN hBaseBorderFaded;

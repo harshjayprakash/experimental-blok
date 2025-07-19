@@ -19,7 +19,8 @@
  * @remarks
  * - The data within this structure must not be modified.
  */
-typedef struct _ConsoleInfo {
+typedef struct _ConsoleInfo
+{
     /**
      * @brief Whether the console has been initialised.
      * 

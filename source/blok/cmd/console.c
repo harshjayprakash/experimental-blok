@@ -12,18 +12,24 @@ int blokConsoleInit(
     TConsoleInfo *pConsoleInfo)
 {
     if (pConsoleInfo == NULL)
+    {
         return 0;
+    }
 
     if (pConsoleInfo->isInitialised)
+    {
         return 0;
+    }
 
     pConsoleInfo->isInitialised = AllocConsole();
 
     if (pConsoleInfo->isInitialised == 0)
+    {
         return 0;
+    }
 
-    pConsoleInfo->errorOnAlloc =
-        _wfreopen_s(&pConsoleInfo->pStandardOut, L"CONOUT$", L"w", stdout);
+    pConsoleInfo->errorOnAlloc = _wfreopen_s(
+        &pConsoleInfo->pStandardOut, L"CONOUT$", L"w", stdout);
 
     if (pConsoleInfo->errorOnAlloc != 0)
     {
@@ -40,10 +46,14 @@ int blokConsoleFree(
     TConsoleInfo *pConsoleInfo)
 {
     if (pConsoleInfo == NULL)
+    {
         return 0;
+    }
 
     if (!pConsoleInfo->isInitialised)
+    {
         return 0;
+    }
 
     int streamNotClosed = fclose(stdout);
     int consoleClosed = FreeConsole();
@@ -51,7 +61,9 @@ int blokConsoleFree(
     int result = (!streamNotClosed && consoleClosed);
 
     if (result == 1)
+    {
         pConsoleInfo->isInitialised = 0;
+    }
 
     return result;
 }

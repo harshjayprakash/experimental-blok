@@ -2,7 +2,7 @@
 #define ST_ACTION_H
 
 #include "../../model/direction.h"
-#include "../../context.h"
+#include "../../core/context.h"
 #include <windows.h>
 #include <windowsx.h>
 

@@ -7,26 +7,20 @@
 
 #include "args.h"
 
-/**
- * @defgroup Argument Parsing Macros.
- * @brief Utility macros used during parsing and scale evaluation.
- * @{
- */
+typedef enum _ArgMode
+{
+    ST_ARGM_UNSET = 0,
+    ST_ARGM_SCALE_X = 10,
+    ST_ARGM_SCALE_Y = 20,
+    ST_ARGM_SCALE_A = 30
+} TArgMode;
 
-#define ST_SCALE_DEF 15
-#define ST_ARGM_UNSET 0
-#define ST_ARGM_SCALE_X 10
-#define ST_ARGM_SCALE_Y 20
-#define ST_ARGM_SCALE_A 30
-
-#define ST_EVALUATE_SCALE(assignTo, value)                                             \
+#define ST_EVALUATE_SCALE(assignTo, value)                                               \
     int scale = abs(_wtoi(value));                                                       \
-    assignTo = (scale != 0) ? scale : ST_SCALE_DEF
-
-/** @} */
+    assignTo = (scale != 0) ? scale : ST_ARGS_SCALE_DEFAULT
 
 int stArgsProcess(
-    TArgsResult *pArgs, 
+    TParsedArgs *pArgs, 
     LPCWSTR pCommandLine)
 {
     if (pArgs == NULL || pCommandLine == NULL)
@@ -34,13 +28,10 @@ int stArgsProcess(
         return 0;
     }
 
-    pArgs->theme = 0;
-    pArgs->scaleX = ST_SCALE_DEF;
-    pArgs->scaleY = ST_SCALE_DEF;
-    pArgs->showConsole = 0;
+    ST_ARGS_SET_DEFAULT((*pArgs));
 
     int argc = 0;
-    int argm = ST_ARGM_UNSET;
+    TArgMode argm = ST_ARGM_UNSET;
     LPWSTR *ppArgv = CommandLineToArgvW(pCommandLine, &argc);
 
     if (ppArgv == NULL)
@@ -58,11 +49,6 @@ int stArgsProcess(
         if (_wcsnicmp(ppArgv[idx], L"--light-theme", 14 * sizeof(unsigned short)) == 0)
         {
             pArgs->theme = 2;
-        }
-
-        if (_wcsnicmp(ppArgv[idx], L"--show-console", 15 * sizeof(unsigned short)) == 0)
-        {
-            pArgs->showConsole = 1;
         }
 
         if (argm == ST_ARGM_SCALE_A || argm == ST_ARGM_SCALE_X)

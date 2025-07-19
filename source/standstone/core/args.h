@@ -16,7 +16,7 @@
  * This structure receives the output of `blokArgsProcess` and is used to configure
  * theme selection, grid and box scale, and console visibility.
  */
-typedef struct _ArgsResult
+typedef struct _ParsedArgs
 {
     /**
      * @brief Theme preference selected via `--dark-theme` or `--light-theme`.
@@ -40,14 +40,14 @@ typedef struct _ArgsResult
      * Set via the `--scale-y` flag.
      */
     unsigned int scaleY;
+} TParsedArgs;
 
-    /**
-     * @brief Whether to show the console at launch.
-     *
-     * Set via the `--show-console` flag.
-     */
-    unsigned int showConsole;
-} TArgsResult;
+#define ST_ARGS_SCALE_DEFAULT 15
+
+#define ST_ARGS_SET_DEFAULT(a)                                                          \
+    a.theme = 0;                                                                        \
+    a.scaleX = ST_ARGS_SCALE_DEFAULT;                                                   \
+    a.scaleY = ST_ARGS_SCALE_DEFAULT                                                                       
 
 /**
  * @brief Parses command-line arguments into a populated TArgsResult structure.
@@ -65,6 +65,6 @@ typedef struct _ArgsResult
  * - Default flags are applied if certain flags are omitted.
  * - Undefined behaviour for command-line strings from other sources.
  */
-int stArgsProcess(TArgsResult *pArgs, LPCWSTR pCommandLine);
+int stArgsProcess(TParsedArgs *pParsedArgs, LPCWSTR pCommandLine);
 
 #endif /* ST_ARGS_H */

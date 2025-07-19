@@ -1,13 +1,8 @@
 /**
  * @file args.c
  * @brief Argument parsing implementation for command-line options.
- *
- * Provides a basic argument interpreter for the application, supporting flags such as
- * `--dark-theme`, `--scale-x`, and `--show-console`. Defaults are applied where values
- * are missing or malformed. Uses `CommandLineToArgvW` internally.
- *
  * @author harshjayprakash
- * @date 2025-07-17
+ * @date 2025-07-19
  ****************************************************************************************/
 
 #include "args.h"

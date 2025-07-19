@@ -1,13 +1,8 @@
 /**
  * @file args.h
  * @brief Argument parsing declarations.
- * 
- * Defines the configuration structure and API used to process command-line arguments for
- * theme selection, grid scaling and console visibility. All input is expected in the
- * Unicode format and parsed using Windows-specific command-line functions.
- * 
  * @author harshjayprakash
- * @date 2025-07-17
+ * @date 2025-07-19
  ****************************************************************************************/
 
 #ifndef _BLOK_ARGS_H_

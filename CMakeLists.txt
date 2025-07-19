@@ -16,10 +16,6 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
 set(SOURCES
-    # COMMAND LINE MODULE
-    "source/standstone/cmd/args.c" "source/standstone/cmd/args.h"
-    "source/standstone/cmd/console.c" "source/standstone/cmd/console.h"
-
     # FORMAT MODULE
     "source/standstone/fmt/convert.c" "source/standstone/fmt/convert.h"
 
@@ -50,12 +46,13 @@ set(SOURCES
     "source/standstone/ui/viewport.c" "source/standstone/ui/viewport.h"
 
     # MAIN MODULE
-    "source/standstone/context.c" "source/standstone/context.h"
-    "source/standstone/lifecycle.c" "source/standstone/lifecycle.h"
+    "source/standstone/core/context.c" "source/standstone/core/context.h"
+     "source/standstone/core/lifecycle.h" "source/standstone/core/lifecycle.c"
+    "source/standstone/core/args.c" "source/standstone/core/args.h"
 
     # MAIN ENTRYPOINT
     "source/main.c"
-)
+ )
 
 add_definitions(/DUNICODE /D_UNICODE /DSTRICT)
 add_executable(${PROJECT_NAME} WIN32 ${SOURCES})

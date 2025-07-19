@@ -77,6 +77,7 @@ int blokArgsProcess(
     }
 
     (void)LocalFree((HLOCAL)ppArgv);
+    ppArgv = NULL;
 
     return 1;
 }

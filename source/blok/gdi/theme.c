@@ -1,3 +1,10 @@
+/**
+ * @file theme.c
+ * @brief Theme setting implementation.
+ * @author harshjayprakash
+ * @date 2025-07-19
+ ****************************************************************************************/
+
 #include "theme.h"
 
 #define BLOK_LIGHT_DARK(light, dark)                                                     \

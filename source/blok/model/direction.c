@@ -1,3 +1,10 @@
+/**
+ * @file direction.c
+ * @brief Direction to vector conversion implementation.
+ * @author harshjayprakash
+ * @date 2025-07-19
+ ****************************************************************************************/
+
 #include "direction.h"
 
 TVector2 blokDirectionToVector(

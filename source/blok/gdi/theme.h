@@ -1,9 +1,20 @@
+/**
+ * @file theme.h
+ * @brief Theme and colour palette definitions.
+ * @author harshjayprakash
+ * @date 2025-07-19
+ ****************************************************************************************/
+
 #ifndef _BLOK_THEME_H_
 #define _BLOK_THEME_H_
 
 #include <windows.h>
 
-typedef enum _Theme {
+/**
+ * @brief Theme.
+ * 
+ * Denotes the application theme.
+ */
 typedef enum _Theme
 {
     BLOK_THEME_UNSET = 0,
@@ -11,13 +22,37 @@ typedef enum _Theme
     BLOK_THEME_LIGHT = 2,
 } TTheme;
 
+/**
+ * @defgroup Theme Min Max.
+ * @brief The minimum and maximum values of theme.
+ * @{
+ */
+
 #define BLOK_THEME_MIN 0
 #define BLOK_THEME_MAX 2
 
-/* BASE - STONE, PRIMARY - ROSE */
-typedef enum _ColourPalette {
+/** @} */
+
+/**
+ * @brief Defines semantic colours constants.
+ * 
+ * Provides tone-scaled values from Tailwind's `stone` and `rose` palette used throughout
+ * the application to represent the layered neutral and accent colours. Each colour uses
+ * the `RGB()` macro from the Windows API and follows a consistant naming pattern.
+ * 
+ * @remarks
+ * - `BASE_*` shades refects the surface colours.
+ * - `PRIMARY_*` shades correspond to the accent colours.
+ * - All values are compatible with Win32 `COLORREF`.
+ * - This enumeration should not be used to style the user interface directly.
+ */
 typedef enum _ColourPalette
 {
+    /**
+     * @defgroup Base surface colours.
+     * @{
+     */
+
     BLOK_COLOUR_BASE_050 = RGB(0xfa, 0xfa, 0xf9),
     BLOK_COLOUR_BASE_100 = RGB(0xf5, 0xf5, 0xf4),
     BLOK_COLOUR_BASE_200 = RGB(0xe7, 0xe5, 0xe4),
@@ -29,6 +64,14 @@ typedef enum _ColourPalette
     BLOK_COLOUR_BASE_800 = RGB(0x29, 0x25, 0x24),
     BLOK_COLOUR_BASE_900 = RGB(0x1c, 0x19, 0x17),
     BLOK_COLOUR_BASE_950 = RGB(0x0c, 0x0a, 0x09),
+
+    /** @} */
+
+    /**
+     * @defgroup Primary accent colours.
+     * @{
+     */
+
     BLOK_COLOUR_PRIMARY_050 = RGB(0xff, 0xf1, 0xf2),
     BLOK_COLOUR_PRIMARY_100 = RGB(0xff, 0xe4, 0xe6),
     BLOK_COLOUR_PRIMARY_200 = RGB(0xfe, 0xcd, 0xd3),
@@ -40,9 +83,20 @@ typedef enum _ColourPalette
     BLOK_COLOUR_PRIMARY_800 = RGB(0x9f, 0x12, 0x39),
     BLOK_COLOUR_PRIMARY_900 = RGB(0x88, 0x13, 0x37),
     BLOK_COLOUR_PRIMARY_950 = RGB(0x4c, 0x05, 0x19)
+
+    /** @} */
+
 } TColourPalette;
 
-typedef struct _ThemePalette {
+/**
+ * @brief Defines the semantic theme palette.
+ * 
+ * Provides the colour values available based on the selected theme. This is set via
+ * the `blokThemeSet` function.
+ * 
+ * @remarks
+ * - Avoid direct modification.
+ */
 typedef struct _ThemePalette
 {
     COLORREF baseBackground;
@@ -57,6 +111,15 @@ typedef struct _ThemePalette
     COLORREF primaryBorder;
 } TThemePalette;
 
+/**
+ * @brief Sets the theme.
+ * 
+ * Assigns the colours within the theme palette based on the provided theme.
+ * 
+ * @param[out] pThemePalette A valid pointer to the `TThemePalette`.
+ * @param[in]  theme         The theme to be set. 
+ * @return One if assignment was succesful. zero otherwise.
+ */
 int blokThemeSet(TThemePalette *pThemePalette, const TTheme theme);
 
 #endif /* _BLOK_THEME_H_ */

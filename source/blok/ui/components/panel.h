@@ -3,7 +3,8 @@
 
 #include <windows.h>
 
-typedef struct _Panel {
+typedef struct _Panel
+{
     RECT region;
     SIZE margin;
     POINT position;

@@ -3,7 +3,8 @@
 TVector2 blokDirectionToVector(
     const TDirection direction)
 {
-    switch (direction) {
+    switch (direction)
+    {
     case BLOK_DIRECTION_NORTH:
         return (TVector2){ 0, -1 };
 

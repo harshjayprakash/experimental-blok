@@ -7,26 +7,31 @@ int blokProgressBarUpdateEx(
     const SIZE *pMargin,
     const SIZE *pBarMargin)
 {
-    if (pPbar == NULL) {
+    if (pPbar == NULL)
+    {
         return 0;
     }
 
-    if (pPosition != NULL) {
+    if (pPosition != NULL)
+    {
         pPbar->position.x = pPosition->x;
         pPbar->position.y = pPosition->y;
     }
 
-    if (pSize != NULL) {
+    if (pSize != NULL)
+    {
         pPbar->size.cx = pSize->cx;
         pPbar->size.cy = pSize->cy;
     }
 
-    if (pMargin != NULL) {
+    if (pMargin != NULL)
+    {
         pPbar->margin.cx = pMargin->cx;
         pPbar->margin.cy = pMargin->cy;
     }
 
-    if (pBarMargin != NULL) {
+    if (pBarMargin != NULL)
+    {
         pPbar->barMargin.cx = pBarMargin->cx;
         pPbar->barMargin.cy = pBarMargin->cy;
     }
@@ -38,7 +43,8 @@ int blokProgressBarUpdateEx(
 
     BOOL success = CopyRect(&pPbar->barRegion, &pPbar->region);
         
-    if (!success) {
+    if (!success)
+    {
         return 0;
     }
 
@@ -58,11 +64,13 @@ int blokProgressBarUpdate(
     TProgressBar *pPbar,
     const POINT *pPosition)
 {
-    if (pPbar == NULL) {
+    if (pPbar == NULL)
+    {
         return 0;
     }
 
-    if (pPosition == NULL) {
+    if (pPosition == NULL)
+    {
         return 0;
     }
 
@@ -74,7 +82,8 @@ int blokProgressBarUpdateMinMax(
     const int minValue,
     const int maxValue)
 {
-    if (pPbar == NULL) {
+    if (pPbar == NULL)
+    {
         return 0;
     }
 
@@ -88,7 +97,8 @@ int blokProgressBarUpdateValue(
     TProgressBar *pPbar,
     const int value)
 {
-    if (pPbar == NULL) {
+    if (pPbar == NULL)
+    {
         return 0;
     }
 

@@ -6,7 +6,8 @@ int blokViewportInit(
     TViewport *pViewport,
     HINSTANCE hInstance)
 {
-    if (pViewport == NULL) {
+    if (pViewport == NULL)
+    {
         return 0;
     }
 
@@ -14,7 +15,8 @@ int blokViewportInit(
 
     int success = blokWindowInit(&pViewport->window, hInstance);
 
-    if (!success) {
+    if (!success)
+    {
         return 0;
     }
 
@@ -29,7 +31,8 @@ int blokViewportInit(
         OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS, CLEARTYPE_QUALITY, FF_DONTCARE, 
         L"Segoe UI");
     
-    if (pViewport->hFont == NULL) {
+    if (pViewport->hFont == NULL)
+    {
         (void)MessageBoxW(0, L"Font Loading Failed.", L"Blok", MB_OK | MB_ICONERROR);
     }
 
@@ -110,7 +113,8 @@ int blokViewportShow(
     TViewport *pViewport,
     DWORD showFlag)
 {
-    if (pViewport == NULL) {
+    if (pViewport == NULL)
+    {
         return -1;
     }
 
@@ -121,11 +125,13 @@ int blokViewportFree(
     TViewport *pViewport,
     HINSTANCE hInstance)
 {
-    if (pViewport == NULL) {
+    if (pViewport == NULL)
+    {
         return 0;
     }
 
-    if (pViewport->hFont != NULL) {
+    if (pViewport->hFont != NULL)
+    {
         (void)DeleteObject(pViewport->hFont);
     }
 

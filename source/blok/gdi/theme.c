@@ -7,7 +7,8 @@ int blokThemeSet(
     TThemePalette *pThemePalette,
     const TTheme theme)
 {
-    if (pThemePalette == NULL) {
+    if (pThemePalette == NULL)
+    {
         return 0;
     }
 

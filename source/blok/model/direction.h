@@ -3,7 +3,8 @@
 
 #include "vector.h"
 
-typedef enum _Direction {
+typedef enum _Direction
+{
     BLOK_DIRECTION_UNSET = 0,
     BLOK_DIRECTION_NORTH = 12,
     BLOK_DIRECTION_EAST = 3,

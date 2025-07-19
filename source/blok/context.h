@@ -7,7 +7,8 @@
 #include "cmd/console.h"
 #include <windows.h>
 
-typedef struct _Context {
+typedef struct _Context
+{
     HINSTANCE hInstance;
     LPWSTR pCommandLine;
     DWORD showFlag;

@@ -10,7 +10,8 @@
 #include "frame/window.h"
 #include <windows.h>
 
-typedef struct _Viewport {
+typedef struct _Viewport
+{
     TWindow window;
     RECT region;
     POINT mousePos;

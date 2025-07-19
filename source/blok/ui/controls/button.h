@@ -3,7 +3,8 @@
 
 #include <windows.h>
 
-typedef struct _Button {
+typedef struct _Button
+{
     WCHAR text[60];
     RECT region;
     SIZE size;

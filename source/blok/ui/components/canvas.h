@@ -3,7 +3,8 @@
 
 #include <windows.h>
 
-typedef struct _Canvas {
+typedef struct _Canvas
+{
     RECT region;
     SIZE size;
 } TCanvas;

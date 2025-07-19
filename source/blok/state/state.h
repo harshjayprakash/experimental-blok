@@ -5,7 +5,8 @@
 #include "../model/square.h"
 #include "../model/dynlist.h"
 
-typedef struct _State {
+typedef struct _State
+{
     TSquare box;
     TDynList obstructs;
 } TObjectState;

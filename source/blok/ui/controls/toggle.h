@@ -3,7 +3,8 @@
 
 #include <windows.h>
 
-typedef struct _Toggle {
+typedef struct _Toggle
+{
     RECT region;
     POINT position;
     SIZE size;

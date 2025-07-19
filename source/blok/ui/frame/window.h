@@ -3,7 +3,8 @@
 
 #include <windows.h>
 
-typedef struct _Window {
+typedef struct _Window
+{
     HWND hHandle;
     WNDCLASSEXW klass;
     LPWSTR klassName;

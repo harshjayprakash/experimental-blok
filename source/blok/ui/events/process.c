@@ -29,7 +29,8 @@ void blokProcessEventOnPaint(
     COLORREF oldBkColour = SetBkColor(hOffSurface, pGraphics->palette.baseBackground);
     COLORREF oldTextColour = SetTextColor(hOffSurface, pGraphics->palette.baseForeground);
 
-    if (pViewport->hFont != NULL) {
+    if (pViewport->hFont != NULL)
+    {
         HFONT oldFont = (HFONT)SelectObject(hOffSurface, pViewport->hFont);
     }
 
@@ -38,17 +39,20 @@ void blokProcessEventOnPaint(
 
     (void)SelectObject(hOffSurface, pGraphics->renderTools.pens.hBaseBorderFaded);
 
-    if (pViewport->isGridVisible) {
+    if (pViewport->isGridVisible)
+    {
         for (long xAxisIdx = 0; 
             xAxisIdx < pViewport->canvas.region.right; 
-            xAxisIdx += scaling.x) {
+            xAxisIdx += scaling.x)
+        {
             (void)MoveToEx(hOffSurface, xAxisIdx, 0, NULL);
             (void)LineTo(hOffSurface, xAxisIdx, pViewport->canvas.region.bottom);
         }
 
         for (long yAxisIdx = 0; 
             yAxisIdx < pViewport->canvas.region.bottom; 
-            yAxisIdx += scaling.y) {
+            yAxisIdx += scaling.y)
+        {
             (void)MoveToEx(hOffSurface, 0, yAxisIdx, NULL);
             (void)LineTo(hOffSurface, pViewport->canvas.region.right, yAxisIdx);
         }
@@ -67,14 +71,16 @@ void blokProcessEventOnPaint(
     (void)FillRect(hOffSurface, &box, pGraphics->renderTools.brushes.hPrimaryBackground);
     (void)FillRect(hOffSurface, &innerBox, pGraphics->renderTools.brushes.hBaseBackground);
 
-    for (long obstructIdx = 0; obstructIdx < pState->obstructs.size; obstructIdx++) {
+    for (long obstructIdx = 0; obstructIdx < pState->obstructs.size; obstructIdx++)
+    {
         RECT obstructiveRc = blokConvertVectorRect(
             pState->obstructs.pArr[obstructIdx].data, scaling);
         (void)FillRect(
             hOffSurface, &obstructiveRc, pGraphics->renderTools.brushes.hBaseBackgroundMedium);
     }
 
-    if (pViewport->isInterfaceVisible) {
+    if (pViewport->isInterfaceVisible)
+    {
         (void)FillRect(
             hOffSurface, &pViewport->panel.region, 
             pGraphics->renderTools.brushes.hBaseBackgroundFaded);
@@ -155,7 +161,8 @@ void blokProcessEventOnPaint(
         (void)SelectObject(hOffSurface, pGraphics->renderTools.pens.hBaseBorder);
         (void)SelectObject(hOffSurface, pGraphics->renderTools.brushes.hBaseBackground);
 
-        if (pViewport->lockedToggle.selected) {
+        if (pViewport->lockedToggle.selected)
+        {
             (void)FillRect(
                 hOffSurface, &pViewport->lockedToggle.selectRegion, 
                 pGraphics->renderTools.brushes.hPrimaryBackground);
@@ -171,7 +178,8 @@ void blokProcessEventOnPaint(
         hSurface, 0, 0, pViewport->region.right, pViewport->region.bottom, 
         hOffSurface, 0, 0, SRCCOPY);
     
-    if (pViewport->hFont != NULL) { 
+    if (pViewport->hFont != NULL)
+    { 
         (void)SelectObject(hOffSurface, hOldFont); 
     }
 
@@ -194,7 +202,8 @@ void blokProcessEventOnKeyDown(
     TViewport *pViewport = blokContextGetViewport();
     TGraphics *pGraphics = blokContextGetGraphics();
 
-    switch (virtualKey) {
+    switch (virtualKey)
+    {
     case VK_UP:
     case 'W': 
         (void)blokActionMoveBox(pViewport, pState, hWindow, BLOK_DIRECTION_NORTH);
@@ -259,16 +268,20 @@ void blokProcessEventOnLeftMouseDown(
     
     pViewport->isLeftMouseDown = TRUE;
 
-    if (BLOK_MOUSE_AT(pViewport->panel.region, mpos) && pViewport->isInterfaceVisible) {
-        if (BLOK_MOUSE_AT(pViewport->generateButton.region, mpos)) {
+    if (BLOK_MOUSE_AT(pViewport->panel.region, mpos) && pViewport->isInterfaceVisible)
+    {
+        if (BLOK_MOUSE_AT(pViewport->generateButton.region, mpos))
+        {
             (void)blokActionAddObstruct(pViewport, pState, hWindow, NULL);
         }
 
-        if (BLOK_MOUSE_AT(pViewport->clearAllButton.region, mpos)) {
+        if (BLOK_MOUSE_AT(pViewport->clearAllButton.region, mpos))
+        {
             (void)blokActionClearObstructs(pViewport, pState, hWindow);
         }
 
-        if (BLOK_MOUSE_AT(pViewport->lockedToggle.region, mpos)) {
+        if (BLOK_MOUSE_AT(pViewport->lockedToggle.region, mpos))
+        {
             (void)blokActionToggleCanvasLock(pViewport, hWindow);
         }
 
@@ -276,7 +289,8 @@ void blokProcessEventOnLeftMouseDown(
         return;
     }
 
-    if (pViewport->isCanvasLocked) {
+    if (pViewport->isCanvasLocked)
+    {
         return;
     }
 
@@ -353,22 +367,26 @@ void blokProcessEventOnMouseHover(
     pViewport->mousePos.x = GET_X_LPARAM(mousepos);
     pViewport->mousePos.y = GET_Y_LPARAM(mousepos);
 
-    if (pViewport->isCanvasLocked) {
+    if (pViewport->isCanvasLocked)
+    {
         (void)InvalidateRect(hWindow, NULL, FALSE);
         return;
     }
 
     if (BLOK_MOUSE_AT(pViewport->panel.region, pViewport->mousePos) 
-        && pViewport->isInterfaceVisible) {
+        && pViewport->isInterfaceVisible)
+    {
         (void)InvalidateRect(hWindow, NULL, FALSE);
         return;
     }
 
-    if (pViewport->isLeftMouseDown) {
+    if (pViewport->isLeftMouseDown)
+    {
         (void)blokActionAddObstruct(pViewport, pState, hWindow, &pViewport->mousePos);
     }
 
-    if (pViewport->isRightMouseDown) {
+    if (pViewport->isRightMouseDown)
+    {
         (void)blokActionRemoveObstruct(pViewport, pState, hWindow, pViewport->mousePos);
     }
 
@@ -384,7 +402,8 @@ void blokProcessEventOnRightMouseDown(
 
     pViewport->isRightMouseDown = TRUE;
 
-    if (pViewport->isCanvasLocked) {
+    if (pViewport->isCanvasLocked)
+    {
         return;
     }
 

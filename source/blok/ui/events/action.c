@@ -8,20 +8,24 @@ int blokActionMoveBox(
     HWND hWindow,
     TDirection direction)
 {
-    if (pViewport == NULL) {
+    if (pViewport == NULL)
+    {
         return 0;
     }
 
-    if (pState == NULL) {
+    if (pState == NULL)
+    {
         return 0;
     }
 
-    if (hWindow == NULL) {
+    if (hWindow == NULL)
+    {
         return 0;
     }
 
     int movable = blokStateIsBoxMovable(pState, direction);
-    if (!movable) {
+    if (!movable)
+    {
         return 0;
     }
 
@@ -50,11 +54,13 @@ int blokActionToggleGridLines(
     TViewport *pViewport,
     HWND hWindow)
 {
-    if (pViewport == NULL) {
+    if (pViewport == NULL)
+    {
         return 0;
     }
 
-    if (hWindow == NULL) {
+    if (hWindow == NULL)
+    {
         return 0;
     }
 
@@ -72,11 +78,13 @@ int blokActionToggleInterface(
     TViewport *pViewport,
     HWND hWindow)
 {
-    if (pViewport == NULL) {
+    if (pViewport == NULL)
+    {
         return 0;
     }
 
-    if (hWindow == NULL) {
+    if (hWindow == NULL)
+    {
         return 0;
     }
 
@@ -94,11 +102,13 @@ int blokActionToggleCanvasLock(
     TViewport *pViewport,
     HWND hWindow)
 {
-    if (pViewport == NULL) {
+    if (pViewport == NULL)
+    {
         return 0;
     }
 
-    if (hWindow == NULL) {
+    if (hWindow == NULL)
+    {
         return 0;
     }
 
@@ -117,7 +127,8 @@ int blokActionChangeTheme(
     TGraphics *pGraphics,
     HWND hWindow)
 {
-    if (pGraphics == NULL) {
+    if (pGraphics == NULL)
+    {
         return 0;
     }
 
@@ -140,25 +151,31 @@ int blokActionAddObstruct(
     HWND hWindow,
     const POINT *pPoint)
 {
-    if (pViewport == NULL) {
+    if (pViewport == NULL)
+    {
         return 0;
     }
 
-    if (pState == NULL) {
+    if (pState == NULL)
+    {
         return 0;
     }
 
-    if (hWindow == NULL) {
+    if (hWindow == NULL)
+    {
         return 0;
     }
 
     TVector2 newNode = { 0, 0 };
     TVector2 scale = pState->box.size;
 
-    if (pPoint == NULL) {
+    if (pPoint == NULL) 
+    {
         newNode.x = ((rand() % pViewport->canvas.size.cx) / scale.x) * scale.x;
         newNode.y = ((rand() % pViewport->canvas.size.cy) / scale.y) * scale.y;
-    } else {
+    } 
+    else 
+    {
         newNode.x = (pPoint->x / scale.x) * scale.x;
         newNode.y = (pPoint->y / scale.y) * scale.y;
     }
@@ -181,9 +198,13 @@ int blokActionAddObstruct(
     (void)wprintf(L"Add Obstruct: ");
 
     if (result > -1)
+    {
         (void)wprintf(L"New Node (%d, %d), Idx %d\n", newNode.x, newNode.y, result);
+    }
     else
+    {
         (void)wprintf(L"Exists - Skipping\n");
+    }
 
     return (result > -1);
 }
@@ -194,15 +215,18 @@ int blokActionRemoveObstruct(
     HWND hWindow,
     const POINT point)
 {
-    if (pViewport == NULL) {
+    if (pViewport == NULL)
+    {
         return 0;
     }
 
-    if (pState == NULL) {
+    if (pState == NULL)
+    {
         return 0;
     }
 
-    if (hWindow == NULL) {
+    if (hWindow == NULL)
+    {
         return 0;
     }
 
@@ -236,15 +260,18 @@ int blokActionClearObstructs(
     TObjectState *pState,
     HWND hWindow)
 {
-    if (pViewport == NULL) {
+    if (pViewport == NULL)
+    {
         return 0;
     }
 
-    if (pState == NULL) {
+    if (pState == NULL)
+    {
         return 0;
     }
 
-    if (hWindow == NULL) {
+    if (hWindow == NULL)
+    {
         return 0;
     }
 
@@ -267,7 +294,8 @@ int blokActionGenerateRandomObstructs(
     TObjectState *pState,
     HWND hWindow)
 {
-    if (pViewport == NULL || pState == NULL) {
+    if (pViewport == NULL || pState == NULL)
+    {
         return 0;
     }
 
@@ -287,7 +315,8 @@ int blokActionGenerateRandomObstructs(
 
     int result = 0;
     
-    for (int idx = 0; idx < _nNodes; idx++) {
+    for (int idx = 0; idx < _nNodes; idx++)
+    {
         result = (blokActionAddObstruct(pViewport, pState, hWindow, NULL) || result);
     }
 

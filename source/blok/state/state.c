@@ -6,7 +6,8 @@ static int _blokStateMoveBoxImpl(
     TSquare *pBox,
     TDirection direction) 
 {
-    if (pBox == NULL) {
+    if (pBox == NULL)
+    {
         return 0;
     }
 
@@ -20,7 +21,8 @@ int blokStateInit(
     TObjectState *pState,
     const TVector2 scale)
 {
-    if (pState == NULL) {
+    if (pState == NULL)
+    {
         return 0;
     }
 
@@ -29,7 +31,8 @@ int blokStateInit(
     int success = (blokVector2Copy(&pState->box.size, defaultBoxSize)
         && blokVector2Copy(&pState->box.position, defaultBoxState));
 
-    if (!success) {
+    if (!success)
+    {
         return 0;
     }
 
@@ -39,7 +42,8 @@ int blokStateInit(
 int blokStateFree(
     TObjectState *pState)
 {
-    if (pState == NULL) {
+    if (pState == NULL)
+    {
         return 0;
     }
 
@@ -50,7 +54,8 @@ int blokStateMoveBox(
     TObjectState *pState,
     TDirection direction)
 {
-    if (pState == NULL) {
+    if (pState == NULL)
+    {
         return 0;
     }
 
@@ -61,20 +66,23 @@ int blokStateIsBoxMovable(
     TObjectState *pState,
     TDirection direction)
 {
-    if (pState == NULL) {
+    if (pState == NULL)
+    {
         return 0;
     }
 
     TSquare projected = pState->box;
     int moved = _blokStateMoveBoxImpl(&projected, direction);
-    if (!moved) {
+    if (!moved)
+    {
         return 0;
     }
 
     TNode poschk = { projected.position };
     int eidx = blokDynListGetIndex(&pState->obstructs, &poschk);
 
-    if (eidx == -1) {
+    if (eidx == -1)
+    {
         return 1;
     }
 
@@ -85,13 +93,15 @@ int blokStateAddObstruct(
     TObjectState *pState,
     const TVector2 point)
 {
-    if (pState == NULL) {
+    if (pState == NULL)
+    {
         return -1;
     }
 
     TNode newPoint = { point };
     int exists = blokDynListExists(&pState->obstructs, &newPoint);
-    if (exists) {
+    if (exists)
+    {
         return -1;
     }
 
@@ -102,7 +112,8 @@ int blokStateRemoveObstruct(
     TObjectState *pState,
     const TVector2 point)
 {
-    if (pState == NULL) {
+    if (pState == NULL)
+    {
         return 0;
     }
 
@@ -113,7 +124,8 @@ int blokStateRemoveObstruct(
 int blokStateClearObstructs(
     TObjectState *pState)
 {
-    if (pState == NULL) {
+    if (pState == NULL)
+    {
         return 0;
     }
 

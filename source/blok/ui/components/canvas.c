@@ -4,17 +4,20 @@ int blokCanvasUpdate(
     TCanvas *pCanvas,
     const RECT *pWindowRgn)
 {
-    if (pCanvas == NULL) {
+    if (pCanvas == NULL)
+    {
         return 0;
     }
 
-    if (pWindowRgn == NULL) {
+    if (pWindowRgn == NULL)
+    {
         return 0;
     }
 
     BOOL success = CopyRect(&pCanvas->region, pWindowRgn);
     
-    if (!success) {
+    if (!success)
+    {
         return 0;
     }
 

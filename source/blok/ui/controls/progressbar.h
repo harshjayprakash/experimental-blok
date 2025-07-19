@@ -3,7 +3,8 @@
 
 #include <windows.h>
 
-typedef struct _ProgressBar {
+typedef struct _ProgressBar
+{
     RECT region;
     POINT position;
     SIZE size;

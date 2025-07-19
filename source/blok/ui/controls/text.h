@@ -3,7 +3,8 @@
 
 #include <windows.h>
 
-typedef struct _Text {
+typedef struct _Text
+{
     WCHAR data[60];
     RECT region;
     SIZE size;

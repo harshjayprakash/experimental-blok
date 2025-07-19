@@ -6,21 +6,25 @@ int blokTextUpdateEx(
     const SIZE *pSize,
     const SIZE *pMargin)
 {
-    if (pText == NULL) {
+    if (pText == NULL)
+    {
         return 0;
     }
 
-    if (pPoint != NULL) {
+    if (pPoint != NULL)
+    {
         pText->position.x = pPoint->x;
         pText->position.y = pPoint->y;
     }
 
-    if (pSize != NULL) {
+    if (pSize != NULL)
+    {
         pText->size.cx = pSize->cx;
         pText->size.cy = pSize->cy;
     }
 
-    if (pMargin != NULL) {
+    if (pMargin != NULL)
+    {
         pText->margin.cx = pMargin->cx;
         pText->margin.cy = pMargin->cy;
     }
@@ -37,11 +41,13 @@ int blokTextUpdate(
     TText *pText,
     const POINT *pPosition)
 {
-    if (pText == NULL) {
+    if (pText == NULL)
+    {
         return 0;
     }
 
-    if (pPosition == NULL) {
+    if (pPosition == NULL)
+    {
         return 0;
     }
 

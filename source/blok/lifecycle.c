@@ -7,7 +7,8 @@ int blokInit(
     LPWSTR pCommandLine,
     DWORD showFlag)
 {
-    if (pContext == NULL) {
+    if (pContext == NULL)
+    {
         return 0;
     }
 
@@ -18,7 +19,8 @@ int blokInit(
     TArgsResult argsResult;
     (void)blokArgsProcess(&argsResult, pContext->pCommandLine);
 
-    if (argsResult.showConsole) {
+    if (argsResult.showConsole)
+    {
         (void)blokConsoleInit(&pContext->console);
     }
 
@@ -34,7 +36,8 @@ int blokInit(
 int blokRun(
     TContext *pContext)
 {
-    if (pContext == NULL) {
+    if (pContext == NULL)
+    {
         return -1;
     }
 
@@ -44,7 +47,8 @@ int blokRun(
 int blokFree(
     TContext *pContext)
 {
-    if (pContext == NULL) {
+    if (pContext == NULL) 
+    {
         return 0;
     }
 

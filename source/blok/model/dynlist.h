@@ -3,11 +3,13 @@
 
 #include "vector.h"
 
-typedef struct _Node {
+typedef struct _Node
+{
     TVector2 data;
 } TNode;
 
-typedef struct _DynList {
+typedef struct _DynList
+{
     TNode *pArr;
     long head;
     long size;

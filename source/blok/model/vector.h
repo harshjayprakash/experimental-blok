@@ -1,7 +1,8 @@
 #ifndef _BLOK_VECTOR_H_
 #define _BLOK_VECTOR_H_
 
-typedef struct _Vector2 {
+typedef struct _Vector2
+{
     long x;
     long y;
 } TVector2;

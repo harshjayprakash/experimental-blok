@@ -7,27 +7,32 @@ int blokToggleUpdateEx(
     const SIZE *pMargin, 
     const SIZE *pSelectMargin)
 {
-    if (pToggle == NULL) {
+    if (pToggle == NULL)
+    {
         return 0;
     }
 
-    if (pPosition != NULL) {
+    if (pPosition != NULL)
+    {
         pToggle->position.x = pPosition->x;
         pToggle->position.y = pPosition->y;
     }
 
-    if (pSize != NULL) {
+    if (pSize != NULL)
+    {
         pToggle->size.cx = pSize->cx;
         pToggle->size.cy = pSize->cy;
     }
 
-    if (pMargin != NULL) {
+    if (pMargin != NULL)
+    {
         pToggle->margin.cx = pMargin->cx;
         pToggle->margin.cy = pMargin->cy;
     }
 
     
-    if (pSelectMargin != NULL) {
+    if (pSelectMargin != NULL)
+    {
         pToggle->selectMargin.cx = pSelectMargin->cx;
         pToggle->selectMargin.cy = pSelectMargin->cy;
     }
@@ -39,7 +44,8 @@ int blokToggleUpdateEx(
 
     BOOL success = CopyRect(&pToggle->selectRegion, &pToggle->region);
 
-    if (!success) {
+    if (!success)
+    {
         return 0;
     }
 
@@ -55,11 +61,13 @@ int blokToggleUpdate(
     TToggle *pToggle,
     const POINT *pPosition)
 {
-    if (pToggle == NULL) {
+    if (pToggle == NULL)
+    {
         return 0;
     }
 
-    if (pPosition == NULL) {
+    if (pPosition == NULL)
+    {
         return 0;
     }
 
@@ -70,7 +78,8 @@ int blokToggleUpdateSelected(
     TToggle *pToggle,
     const BOOL selected)
 {
-    if (pToggle == NULL) {
+    if (pToggle == NULL)
+    {
         return 0;
     }
 

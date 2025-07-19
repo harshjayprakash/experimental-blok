@@ -4,6 +4,8 @@
 #include <windows.h>
 
 typedef enum _Theme {
+typedef enum _Theme
+{
     BLOK_THEME_UNSET = 0,
     BLOK_THEME_DARK = 1,
     BLOK_THEME_LIGHT = 2,
@@ -14,6 +16,8 @@ typedef enum _Theme {
 
 /* BASE - STONE, PRIMARY - ROSE */
 typedef enum _ColourPalette {
+typedef enum _ColourPalette
+{
     BLOK_COLOUR_BASE_050 = RGB(0xfa, 0xfa, 0xf9),
     BLOK_COLOUR_BASE_100 = RGB(0xf5, 0xf5, 0xf4),
     BLOK_COLOUR_BASE_200 = RGB(0xe7, 0xe5, 0xe4),
@@ -39,6 +43,8 @@ typedef enum _ColourPalette {
 } TColourPalette;
 
 typedef struct _ThemePalette {
+typedef struct _ThemePalette
+{
     COLORREF baseBackground;
     COLORREF baseBackgroundFaded;
     COLORREF baseBackgroundMedium;

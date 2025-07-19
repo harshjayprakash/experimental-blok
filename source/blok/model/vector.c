@@ -5,7 +5,8 @@ int blokVector2Copy(
     TVector2 *pDest,
     const TVector2 src)
 {
-    if (pDest == NULL) {
+    if (pDest == NULL)
+    {
         return 0;
     }
 

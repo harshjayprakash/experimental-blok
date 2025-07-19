@@ -11,11 +11,8 @@ int blokRenderToolsInit(
     TRenderTools *pTools,
     const TThemePalette *pColours)
 {
-    if (pTools == NULL) {
-        return 0;
-    }
-
-    if (pColours == NULL) {
+    if (pTools == NULL || pColours == NULL)
+    {
         return 0;
     }
 

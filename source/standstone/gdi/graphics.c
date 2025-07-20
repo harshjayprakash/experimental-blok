@@ -1,8 +1,8 @@
 /**
  * @file graphics.c
- * @brief Graphics lifecycle implementation.
+ * @brief Graphics Lifecycle Implementation.
  * @author harshjayprakash
- * @date 2025-07-19
+ * @date 2025-07-20
  ****************************************************************************************/
 
 #include "graphics.h"

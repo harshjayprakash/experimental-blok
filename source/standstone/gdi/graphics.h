@@ -1,8 +1,8 @@
 /**
  * @file graphics.h
- * @brief Graphics context and lifecycle declarations.
+ * @brief Graphics Declarations.
  * @author harshjayprakash
- * @date 2025-07-19
+ * @date 2025-07-20
  ****************************************************************************************/
 
 #ifndef ST_GRAPHICS_H
@@ -14,29 +14,34 @@
 /**
  * @brief Graphics context.
  * 
- * This structure contains the colour theme and the tools used to paint the user
- * interface.
+ * @details
+ *  Contains the theming and tools used to paint the user interface. This is managed via
+ *  the stGraphicsInit and stGraphicsFree functions.
  */
 typedef struct _Graphics
 {
     /**
      * @brief The current application theme.
      * 
-     * This is set by the result within the `TArgsResult` on startup.
+     * @details
+     *  Set by the parsed arguments on start-up.
      */
     TTheme currentTheme;
 
     /**
      * @brief The rendering tools.
      * 
-     * Provides the pens and brushes used to paint on the window.
+     * @details
+     *  Provides the pens and brushes used to paint on the window. This type contains
+     *  its own lifetime functions.
      */
     TRenderTools renderTools;
 
     /**
      * @brief The theme palette.
      * 
-     * Provides the available colours based on the application theme.
+     * @details
+     *  Provides the available colours based on the application theme.
      */
     TThemePalette palette;
 } TGraphics;
@@ -44,27 +49,30 @@ typedef struct _Graphics
 /**
  * @brief Initialise the graphics.
  * 
- * This function validates the given theme and initialise the theme palette and render
- * tools.
+ * @details
+ *  Validates the given theme, and then proceeds to set the theme palette and initialise
+ *  the render tools.
  * 
- * @param[out] pGraphics A valid pointer to the `TGraphics` structure.
+ * @param[out] pGraphics A valid pointer to TGraphics.
  * @param[in]  theme     The theme to be set.
- * @return One if initialisation was successful; zero otherwise.
+ * @return One on success, zero on failure.
  * 
- * @remarks
- * - The caller is responsible for allocating a valid `TGraphics` structure.
- * - An invalid theme will default in the dark theme.
- * - Memory is allocated, the corresponding free function must be called on clean up.
+ * @remark
+ *  An invalid theme will default to the dark theme as a fallback.
+ * @remark
+ *  Memory is allocated, the corresponding free function stGraphics Free must be called
+ *  on clean up.
  */
 int stGraphicsInit(TGraphics *pGraphics, const TTheme theme);
 
 /**
  * @brief Free the graphics.
  * 
- * This function provides a wrapper for freeing the allocated render tools.
+ * @details
+ *  Provides a wrapper for cleaning up the render tools.
  * 
- * @param[out] pGraphics A valid pointer to the `TGraphics` structure.
- * @return One if clean up was successful; zero otherwise.
+ * @param[out] pGraphics A valid pointer to TGraphics.
+ * @return One on success, zero on failure.
  */
 int stGraphicsFree(TGraphics *pGraphics);
 

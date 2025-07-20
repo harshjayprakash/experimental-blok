@@ -181,7 +181,7 @@ int stActionAddObstruct(
     }
     
     int result = stStateAddObstruct(pState, newNode);
-    RECT updateRegion = stConvertVectorRect(newNode, pState->box.size);
+    RECT updateRegion = stConvertRectFromVector2s(newNode, pState->box.size);
 
     (void)StringCbPrintfW(
         pViewport->obstructCountText.data, 60, L"%ld", pState->obstructs.size);
@@ -303,7 +303,7 @@ int stActionGenerateRandomObstructs(
 
     TVector2 maxRgnObstructs = { 0, 0 };
     TVector2 scale = pState->box.size;
-    TVector2 _d = stConvertRectSizeV(pViewport->canvas.region);
+    TVector2 _d = stConvertSizeVector2FromRect(pViewport->canvas.region);
 
     maxRgnObstructs.x = _d.x / scale.x;
     maxRgnObstructs.y = _d.y / scale.y;

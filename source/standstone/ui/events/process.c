@@ -60,7 +60,7 @@ void stProcessEventOnPaint(
 
     (void)SelectObject(hOffSurface, pGraphics->renderTools.pens.hBaseForeground);
 
-    RECT box = stConvertVectorRect(pState->box.position, pState->box.size);
+    RECT box = stConvertRectFromVector2s(pState->box.position, pState->box.size);
     INT innerBoxSF = 3;
     RECT innerBox = {
         box.left + (scaling.x / innerBoxSF),
@@ -73,7 +73,7 @@ void stProcessEventOnPaint(
 
     for (long obstructIdx = 0; obstructIdx < pState->obstructs.size; obstructIdx++)
     {
-        RECT obstructiveRc = stConvertVectorRect(
+        RECT obstructiveRc = stConvertRectFromVector2s(
             pState->obstructs.pArr[obstructIdx].data, scaling);
         (void)FillRect(
             hOffSurface, &obstructiveRc, pGraphics->renderTools.brushes.hBaseBackgroundMedium);

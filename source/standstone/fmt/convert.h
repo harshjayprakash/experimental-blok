@@ -19,7 +19,7 @@
  * @param[in] pt The point to be converted.
  * @return A TVector2.
  */
-TVector2 stConvertPointV(const POINT pt);
+TVector2 stConvertVector2FromPoint(const POINT pt);
 
 /**
  * @brief Converts TVector2 to Win32 POINT.
@@ -29,7 +29,7 @@ TVector2 stConvertPointV(const POINT pt);
  * @param[in] vec The vector to be converted.
  * @return A POINT.
  */
-POINT stConvertVectorPoint(const TVector2 vec);
+POINT stConvertPointFromVector2(const TVector2 vec);
 
 /**
  * @brief Converts TVector2 to Win32 SIZE.
@@ -39,7 +39,7 @@ POINT stConvertVectorPoint(const TVector2 vec);
  * @param[in] vec The vector to be converted.
  * @return A SIZE.
  */
-SIZE stConvertVectorSize(const TVector2 vec);
+SIZE stConvertSizeFromVector2(const TVector2 vec);
 
 /**
  * @brief Converts two TVector2s to Win32 RECT.
@@ -51,7 +51,7 @@ SIZE stConvertVectorSize(const TVector2 vec);
  * @param[in] size The size of the rectangle.
  * @return A RECT.
  */
-RECT stConvertVectorRect(const TVector2 pos, const TVector2 size);
+RECT stConvertRectFromVector2s(const TVector2 pos, const TVector2 size);
 
 /**
  * @brief Retrieves position from Win32 RECT.
@@ -61,7 +61,7 @@ RECT stConvertVectorRect(const TVector2 pos, const TVector2 size);
  * @param[in] rect The rectangle to retrieve the position from.
  * @return A TVector2 denoting position.
  */
-TVector2 stConvertRectPositionV(const RECT rect);
+TVector2 stConvertVector2PositionFromRect(const RECT rect);
 
 /**
  * @brief Retrieves size from Win32 RECT.
@@ -72,6 +72,6 @@ TVector2 stConvertRectPositionV(const RECT rect);
  * @param[in] rect The rectangle to retrieve the size from.
  * @return A TVector2 denoting size.
  */
-TVector2 stConvertRectSizeV(const RECT rect);
+TVector2 stConvertSizeVector2FromRect(const RECT rect);
 
 #endif /* ST_CONVERT_H */

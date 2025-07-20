@@ -1,8 +1,8 @@
 /**
  * @file theme.h
- * @brief Theme and colour palette definitions.
+ * @brief Theme and Colour Palette Declaration.
  * @author harshjayprakash
- * @date 2025-07-19
+ * @date 2025-07-20
  ****************************************************************************************/
 
 #ifndef ST_THEME_H
@@ -11,14 +11,26 @@
 #include <windows.h>
 
 /**
- * @brief Theme.
- * 
- * Denotes the application theme.
+ * @brief Application Theme.
  */
 typedef enum _Theme
 {
+    /**
+     * @brief Unset theme.
+     * 
+     * @details
+     *  Fallback default value at corresponds to ST_THEME_DARK.
+     */
     ST_THEME_UNSET = 0,
+
+    /**
+     * @brief Dark variant.
+     */
     ST_THEME_DARK = 1,
+
+    /**
+     * @brief Light variant.
+     */
     ST_THEME_LIGHT = 2,
 } TTheme;
 
@@ -36,15 +48,17 @@ typedef enum _Theme
 /**
  * @brief Defines semantic colours constants.
  * 
- * Provides tone-scaled values from Tailwind's `stone` and `rose` palette used throughout
- * the application to represent the layered neutral and accent colours. Each colour uses
- * the `RGB()` macro from the Windows API and follows a consistant naming pattern.
+ * @details
+ *  Provides tone-scaled values from Tailwind's grey and blue palette used throughout
+ *  the application to represent the layered neutral and accent colours. Each colour uses
+ *  the `RGB()` macro from the Windows API and follows a consistent naming pattern.
  * 
+ * @remark
+ *  The BASE_* shades reflect the surface colours. The PRIMARY_* shades corresponds to the
+    accent colour. All values are compatible with Win32 COLORREF.
  * @remarks
- * - `BASE_*` shades refects the surface colours.
- * - `PRIMARY_*` shades correspond to the accent colours.
- * - All values are compatible with Win32 `COLORREF`.
- * - This enumeration should not be used to style the user interface directly.
+ *  This should not be used directly to style the user interface. Please refer to the
+ *  TThemePalette enum.
  */
 typedef enum _ColourPalette
 {
@@ -91,11 +105,12 @@ typedef enum _ColourPalette
 /**
  * @brief Defines the semantic theme palette.
  * 
- * Provides the colour values available based on the selected theme. This is set via
- * the `blokThemeSet` function.
+ * @details
+ *  Provides the colour values available based on the selected theme. This is set via
+ *  the `stThemeApply` function.
  * 
  * @remarks
- * - Avoid direct modification.
+ *  Avoid direct modification.
  */
 typedef struct _ThemePalette
 {
@@ -114,11 +129,15 @@ typedef struct _ThemePalette
 /**
  * @brief Sets the theme.
  * 
- * Assigns the colours within the theme palette based on the provided theme.
+ * @details
+ *  Assigns the colours within the theme palette based on the provided theme.
  * 
- * @param[out] pThemePalette A valid pointer to the `TThemePalette`.
+ * @param[out] pThemePalette A valid pointer to TThemePalette.
  * @param[in]  theme         The theme to be set. 
- * @return One if assignment was succesful. zero otherwise.
+ * @return One for success, zero for failure.
+ * 
+ * @remark
+ *  The TRenderTools relies upon a set theme palette for initialisation.
  */
 int stThemeApply(TThemePalette *pThemePalette, const TTheme theme);
 

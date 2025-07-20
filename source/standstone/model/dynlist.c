@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <memory.h>
 
-static long _blokDynListGenerateNewSize(
+static long _stDynListGenerateNewSize(
     const long currentSize)
 {
     return (long)(currentSize + (currentSize / 2));
 }
 
-static int _blokDynListResize(
+static int _stDynListResize(
     TDynList *pList,
     const long newSize)
 {
@@ -111,8 +111,8 @@ long stDynListAdd(
 
     if (stDynListIsFull(pList)) 
     { 
-        int newSize = _blokDynListGenerateNewSize(pList->max);
-        int success = _blokDynListResize(pList, newSize);
+        int newSize = _stDynListGenerateNewSize(pList->max);
+        int success = _stDynListResize(pList, newSize);
 
         if (!success)
         {

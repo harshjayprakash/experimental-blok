@@ -2,7 +2,7 @@
  * @file main.c
  * @brief Entrypoint.
  * @author harshjayprakash
- * @date 2025-07-19
+ * @date 2025-07-20
  ****************************************************************************************/
 
 #include "standstone/core/lifecycle.h"
@@ -10,20 +10,16 @@
 
 /**
  * @brief Windows application entrypoint.
- * 
+ *
  * @details
- * Attempts to perform an instance check. If there is no other instance running, the
- * program will continue to execute, else it will exit.
- * 
+ * Provides a wrapper for calling the setup function for sandstone.
+ *
  * @param[in] hInstance     The handle to the application instance.
  * @param[in] hPrevInstance Always NULL.
- * @param[in] lpCmdLine     The zero-terminated string of command line arguments.
- * @param[in] nShowCmd      The flag on how the window will be displayed.
- * @return Zero for success, non-zero for failure.
- * 
- * @remarks
- * - Application start-up can be prevented by using the same mutex string.
- * - Unicode-only. Wide character version functions are specifically used.
+ * @param[in] lpCmdLine     The null-terminated string of command line arguments.
+ * @param[in] nShowCmd      How the window will be displayed.
+ * @return Zero on success, non-zero indicates failure. For specific return values, refer
+ *         to the `TExitStatus` enum.
  */
 int WINAPI wWinMain(
     HINSTANCE hInstance,

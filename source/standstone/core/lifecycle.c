@@ -18,7 +18,7 @@ int stSetup(HINSTANCE hInstance, LPWSTR pCommandLine, int showFlag)
     ZeroMemory(pContext, sizeof(*pContext));
 
     TParsedArgs args = {0};
-    int ok = stArgsProcess(&args, pCommandLine);
+    int ok = stArgsParse(&args, pCommandLine);
 
     if (!ok)
     {

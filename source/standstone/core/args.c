@@ -47,7 +47,7 @@ typedef enum _ArgMode
     ST_ARGM_SCALE_A = 30
 } TArgMode;
 
-int stArgsProcess(
+int stArgsParse(
     TParsedArgs *pParsedArgs, 
     LPCWSTR pCommandLine)
 {

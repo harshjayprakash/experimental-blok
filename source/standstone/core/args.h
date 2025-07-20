@@ -81,6 +81,6 @@ typedef struct _ParsedArgs
  *  function. Any value from other sources performs undefined behaviour as this value
  *  is passed to CommandLineToArgv.
  */
-int stArgsProcess(TParsedArgs *pParsedArgs, LPCWSTR pCommandLine);
+int stArgsParse(TParsedArgs *pParsedArgs, LPCWSTR pCommandLine);
 
 #endif /* ST_ARGS_H */

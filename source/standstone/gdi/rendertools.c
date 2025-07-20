@@ -1,8 +1,8 @@
 /**
  * @file rendertools.c
- * @brief Render tools lifecycle implementation.
+ * @brief Render Tools Lifecycle Implementation.
  * @author harshjayprakash
- * @date 2025-07-19
+ * @date 2025-07-20
  ****************************************************************************************/
 
 #include "rendertools.h"

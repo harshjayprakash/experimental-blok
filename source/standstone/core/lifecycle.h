@@ -1,5 +1,5 @@
-#ifndef ST_CORE_LIFECYCLE_H
-#define ST_CORE_LIFECYCLE_H
+#ifndef ST_LIFECYCLE_H
+#define ST_LIFECYCLE_H
 
 #include "args.h"
 #include "context.h"
@@ -18,4 +18,4 @@ int stSetup(HINSTANCE hInstance, LPWSTR pCommandLine, int showFlag);
 
 int stEntry(TContext *pContext, TParsedArgs *pArgs);
 
-#endif /* ST_CORE_LIFECYCLE_H */
+#endif /* ST_LIFECYCLE_H */

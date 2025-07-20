@@ -7,7 +7,7 @@
 
 #include "rendertools.h"
 
-#define ST_DELETE_OBJECT(hObject)                                                      \
+#define ST_DELETE_OBJECT(hObject)                                                        \
     if (hObject != NULL)                                                                 \
     {                                                                                    \
         (void)DeleteObject(hObject);                                                     \

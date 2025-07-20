@@ -7,7 +7,7 @@
 
 #include "theme.h"
 
-#define ST_LIGHT_DARK(light, dark)                                                     \
+#define ST_LIGHT_DARK(light, dark)                                                       \
     (theme == ST_THEME_LIGHT) ? light : dark
 
 int stThemeApply(

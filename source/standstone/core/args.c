@@ -20,15 +20,15 @@ typedef enum _ArgMode
 } TArgMode;
 
 int stArgsProcess(
-    TParsedArgs *pArgs, 
+    TParsedArgs *pParsedArgs, 
     LPCWSTR pCommandLine)
 {
-    if (pArgs == NULL || pCommandLine == NULL)
+    if (pParsedArgs == NULL || pCommandLine == NULL)
     {
         return 0;
     }
 
-    ST_ARGS_SET_DEFAULT((*pArgs));
+    ST_ARGS_SET_DEFAULT((*pParsedArgs));
 
     int argc = 0;
     TArgMode argm = ST_ARGM_UNSET;
@@ -43,21 +43,21 @@ int stArgsProcess(
     {
         if (_wcsnicmp(ppArgv[idx], L"--dark-theme", 13 * sizeof(unsigned short)) == 0)
         {
-            pArgs->theme = 1;
+            pParsedArgs->theme = 1;
         }
 
         if (_wcsnicmp(ppArgv[idx], L"--light-theme", 14 * sizeof(unsigned short)) == 0)
         {
-            pArgs->theme = 2;
+            pParsedArgs->theme = 2;
         }
 
         if (argm == ST_ARGM_SCALE_A || argm == ST_ARGM_SCALE_X)
         {
-            ST_EVALUATE_SCALE(pArgs->scaleX, ppArgv[idx]);
+            ST_EVALUATE_SCALE(pParsedArgs->scaleX, ppArgv[idx]);
         }
         if (argm == ST_ARGM_SCALE_A || argm == ST_ARGM_SCALE_Y)
         {
-            ST_EVALUATE_SCALE(pArgs->scaleY, ppArgv[idx]);
+            ST_EVALUATE_SCALE(pParsedArgs->scaleY, ppArgv[idx]);
         }
 
         argm = ST_ARGM_UNSET;

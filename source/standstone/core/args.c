@@ -7,6 +7,10 @@
 
 #include "args.h"
 
+#define ST_EVALUATE_SCALE(assignTo, value)                                               \
+    int scale = abs(_wtoi(value));                                                       \
+    assignTo = (scale != 0) ? scale : ST_ARGS_SCALE_DEFAULT
+
 typedef enum _ArgMode
 {
     ST_ARGM_UNSET = 0,
@@ -14,10 +18,6 @@ typedef enum _ArgMode
     ST_ARGM_SCALE_Y = 20,
     ST_ARGM_SCALE_A = 30
 } TArgMode;
-
-#define ST_EVALUATE_SCALE(assignTo, value)                                               \
-    int scale = abs(_wtoi(value));                                                       \
-    assignTo = (scale != 0) ? scale : ST_ARGS_SCALE_DEFAULT
 
 int stArgsProcess(
     TParsedArgs *pArgs, 

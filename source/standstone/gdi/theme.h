@@ -120,6 +120,6 @@ typedef struct _ThemePalette
  * @param[in]  theme         The theme to be set. 
  * @return One if assignment was succesful. zero otherwise.
  */
-int stThemeSet(TThemePalette *pThemePalette, const TTheme theme);
+int stThemeApply(TThemePalette *pThemePalette, const TTheme theme);
 
 #endif /* ST_THEME_H */

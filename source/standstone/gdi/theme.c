@@ -10,7 +10,7 @@
 #define ST_LIGHT_DARK(light, dark)                                                     \
     (theme == ST_THEME_LIGHT) ? light : dark
 
-int stThemeSet(
+int stThemeApply(
     TThemePalette *pThemePalette,
     const TTheme theme)
 {

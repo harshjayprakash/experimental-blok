@@ -19,7 +19,7 @@ int stGraphicsInit(
     int disregardTheme = (theme >= ST_THEME_MIN && theme <= ST_THEME_MAX);
     pGraphics->currentTheme = (!disregardTheme) ? ST_THEME_UNSET : theme;
 
-    int success = stThemeSet(&pGraphics->palette, pGraphics->currentTheme);
+    int success = stThemeApply(&pGraphics->palette, pGraphics->currentTheme);
     if (!success)
     {
         return 0;

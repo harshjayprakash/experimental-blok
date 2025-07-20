@@ -1,3 +1,10 @@
+/**
+ * @file lifecycle.c
+ * @brief Setup and Entry Implementation.
+ * @author harshjayprakash
+ * @date 2025-07-20
+ ****************************************************************************************/
+
 #include "lifecycle.h"
 
 int stSetup(HINSTANCE hInstance, LPWSTR pCommandLine, int showFlag)

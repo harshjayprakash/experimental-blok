@@ -44,10 +44,10 @@ typedef struct _ParsedArgs
 
 #define ST_ARGS_SCALE_DEFAULT 15
 
-#define ST_ARGS_SET_DEFAULT(a)                                                          \
-    a.theme = 0;                                                                        \
-    a.scaleX = ST_ARGS_SCALE_DEFAULT;                                                   \
-    a.scaleY = ST_ARGS_SCALE_DEFAULT                                                                       
+#define ST_ARGS_SET_DEFAULT(tParsedArgs)                                                \
+    tParsedArgs.theme = 0;                                                              \
+    tParsedArgs.scaleX = ST_ARGS_SCALE_DEFAULT;                                         \
+    tParsedArgs.scaleY = ST_ARGS_SCALE_DEFAULT                                                                       
 
 /**
  * @brief Parses command-line arguments into a populated TArgsResult structure.

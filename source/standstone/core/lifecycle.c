@@ -32,7 +32,7 @@ int stEntry(TContext* pContext, TParsedArgs *pArgs)
     }
 
     int ok = 0;
-    int status = 0;
+    int status = ST_EXIT_SUCCESS;
 
     TVector2 scale = {(long)pArgs->scaleX, (long)pArgs->scaleY};
     ok = stStateInit(&pContext->state, scale);

@@ -4,7 +4,7 @@ int stSetup(HINSTANCE hInstance, LPWSTR pCommandLine, int showFlag)
 {
     if (hInstance == NULL || hInstance == INVALID_HANDLE_VALUE || pCommandLine == NULL)
     {
-        return 1;
+        return ST_EXIT_NULLPTR;
     }
 
     TContext *pContext = stContextGet();
@@ -28,7 +28,7 @@ int stEntry(TContext* pContext, TParsedArgs *pArgs)
 {
     if (pContext == NULL || pArgs == NULL)
     {
-        return 2;
+        return ST_EXIT_NULLPTR;
     }
 
     int ok = 0;
@@ -39,7 +39,7 @@ int stEntry(TContext* pContext, TParsedArgs *pArgs)
 
     if (!ok)
     {
-        status = 3;
+        status = ST_EXIT_STATE_ERROR;
         goto stEntryCleanOnError;
     }
 
@@ -47,7 +47,7 @@ int stEntry(TContext* pContext, TParsedArgs *pArgs)
     
     if (!ok)
     {
-        status = 4;
+        status = ST_EXIT_GRAPHICS_ERROR;
         goto stEntryCleanOnError;
     }
 
@@ -55,7 +55,7 @@ int stEntry(TContext* pContext, TParsedArgs *pArgs)
 
     if (!ok)
     {
-        status = 5;
+        status = ST_EXIT_VIEWPORT_ERROR;
         goto stEntryCleanOnError;
     }
 

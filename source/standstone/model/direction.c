@@ -1,8 +1,8 @@
 /**
  * @file direction.c
- * @brief Direction to vector conversion implementation.
+ * @brief Direction to Vector Conversion Implementation.
  * @author harshjayprakash
- * @date 2025-07-19
+ * @date 2025-07-20
  ****************************************************************************************/
 
 #include "direction.h"

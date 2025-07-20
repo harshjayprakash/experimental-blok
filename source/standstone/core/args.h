@@ -1,8 +1,8 @@
 /**
  * @file args.h
- * @brief Argument parsing declarations.
+ * @brief Argument Parsing Declarations.
  * @author harshjayprakash
- * @date 2025-07-19
+ * @date 2025-07-20
  ****************************************************************************************/
 
 #ifndef ST_ARGS_H
@@ -13,34 +13,45 @@
 /**
  * @brief Holds the parsed command-line configuration values.
  *
- * This structure receives the output of `blokArgsProcess` and is used to configure
- * theme selection, grid and box scale, and console visibility.
+ * @details
+ *  This structure receives the output of `stArgsProcess` and is used to configure
+ *  theme selection and grid scaling.
  */
 typedef struct _ParsedArgs
 {
     /**
      * @brief Theme preference selected via `--dark-theme` or `--light-theme`.
      *
-     * - `0` -> Unset / Default Dark.
-     * - `1` -> Dark theme.
-     * - `2` -> Light theme.
+     * @details
+     *  This value corresponds to the TTheme enum:
+     *  - `0` -> Unset / Default Dark.
+     *  - `1` -> Dark theme.
+     *  - `2` -> Light theme.
      */
     unsigned int theme;
 
     /**
      * @brief Horizontal scale factor for the grid.
      *
-     * Set via the `--scale-x` flag.
+     * @details
+     *  Set via the `--scale-x` flag.
      */
     unsigned int scaleX;
 
     /**
      * @brief Vertical scale factor for the grid.
      *
-     * Set via the `--scale-y` flag.
+     * @details
+     *  Set via the `--scale-y` flag.
      */
     unsigned int scaleY;
 } TParsedArgs;
+
+
+/**
+ * @defgroup Argument Default Values
+ * @{
+ */
 
 #define ST_ARGS_SCALE_DEFAULT 15
 
@@ -49,21 +60,26 @@ typedef struct _ParsedArgs
     tParsedArgs.scaleX = ST_ARGS_SCALE_DEFAULT;                                         \
     tParsedArgs.scaleY = ST_ARGS_SCALE_DEFAULT                                                                       
 
+/** @} */
+
 /**
- * @brief Parses command-line arguments into a populated TArgsResult structure.
+ * @brief Parses Command Line Arguments.
  *
- * This function interprets a Unicode command line and sets configuration flags for the
- * theme, scale, and console visibility. There are no short form flags.
+ * @details
+ *  Interprets a Unicode command line and sets the configuration flags for theme and
+ *  scale. There are no short form flags.
  *
- * @param[out] pArgs        A pointer to a valid TArgsResult structure.
- * @param[in]  pCommandLine A null-terminated wide string from `wWinMain` or
- *                          `GetCommandLineW`.
- * @return One if argument parsing was successful; zero otherwise.
+ * @param[out] pParsedArgs  A pointer to a valid `TArgsResult` structure.
+ * @param[in]  pCommandLine A null-terminated wide string with command line arguments.
+ * @return One if argument parsing was successful, otherwise zero for failure.
  *
- * @remarks
- * - The caller is responsible for allocating a valid `TArgsResult`.
- * - Default flags are applied if certain flags are omitted.
- * - Undefined behaviour for command-line strings from other sources.
+ * @remark
+ *  Default flags are applied if certain flags are omitted. Any duplicate flags
+ *  overwrite the previous.
+ * @remark
+ *  The command line must be from the wWinMain entrypoint or from the GetCommandLineW
+ *  function. Any value from other sources performs undefined behaviour as this value
+ *  is passed to CommandLineToArgv.
  */
 int stArgsProcess(TParsedArgs *pParsedArgs, LPCWSTR pCommandLine);
 

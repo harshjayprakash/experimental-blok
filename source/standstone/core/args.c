@@ -1,21 +1,49 @@
 /**
  * @file args.c
- * @brief Argument parsing implementation for command-line options.
+ * @brief Argument Parsing Implementation.
  * @author harshjayprakash
- * @date 2025-07-19
+ * @date 2025-07-20
  ****************************************************************************************/
 
 #include "args.h"
+
+/**
+ * @defgroup stArgsEvaluateScale Argument Scaling Validation
+ * @{
+ */
 
 #define ST_EVALUATE_SCALE(assignTo, value)                                               \
     int scale = abs(_wtoi(value));                                                       \
     assignTo = (scale != 0) ? scale : ST_ARGS_SCALE_DEFAULT
 
+/** @} */
+
+/**
+ * @brief Argument Parsing Mode.
+ * 
+ * @details
+ *  Used as a series of flags for the argument parser, when looking for values to store.
+ */
 typedef enum _ArgMode
 {
+    /**
+     * @brief Unset.
+     */
     ST_ARGM_UNSET = 0,
+
+    /**
+     * @brief X Scaling Parsing Mode.
+     */
     ST_ARGM_SCALE_X = 10,
+
+    /**
+     * @brief Y Scaling Parsing Mode.
+     */
     ST_ARGM_SCALE_Y = 20,
+
+    /**
+     * @brief X and Y Scaling Parsing Mode.
+     */
     ST_ARGM_SCALE_A = 30
 } TArgMode;
 

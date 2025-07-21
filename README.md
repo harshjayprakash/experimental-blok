@@ -55,18 +55,6 @@ the canvas.
   * Enabled - any clicks or drags on the canvas are ignored.
   * Disabled - normal operation.
 
-### The Console
-
-<p align="center">
-  <img src="./docs/assets/xbk-console.png" alt="Debug Console">
-</p>
-
-The "Console" is a separate window displaying information, warning and/or error messages
-while the program is running.
-
-* Does not accept user input.
-* Must be enabled on startup by passing the `--show-console` argument.
-
 ### Keyboard Shortcuts
 
 * `W`: Move box up by current scale.

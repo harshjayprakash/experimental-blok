@@ -67,6 +67,7 @@ the canvas.
 * `T`: Change theme.
 * `C`: Clear all obstructs.
 * `L`: Toggle canvas lock.
+* `M`: Generate a set of random obstructs. _experimental: to generate whole maze_.
 
 ## The Architecture
 

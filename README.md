@@ -75,10 +75,8 @@ The architecture of the program is based on the `Context` structure, storing the
 the entire program as a sort of global through a singleton helper function.
 
 * **main.c**: Provides the entry point.
-* **blok/{context, lifecycle}**: The base context structure (storing all program data) and
+* **core**: The base context structure (storing all program data) and
 lifecycle functions.
-* **ai**: Handles path-finding operations. *Not Implemented Yet*.
-* **cmd**: Command line argument parsing and console host allocation.
 * **fmt**: Conversion between blok to win -types and vice versa.
 * **gdi**: Graphics tools lifetime management and theme colours.
 * **model**: Models data structures.

@@ -1,3 +1,10 @@
+/**
+ * @file vector.c
+ * @brief Vector Implementation.
+ * @author harshjayprakash
+ * @date 2025-07-22
+ ****************************************************************************************/
+
 #include "vector.h"
 #include <stdlib.h>
 

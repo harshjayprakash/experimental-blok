@@ -8,6 +8,7 @@
 #include "dynlist.h"
 #include <stdlib.h>
 #include <memory.h>
+#include <stdint.h>
 
 /**
  * @brief Generate a new list size.
@@ -53,6 +54,11 @@ static int _stDynListResize(
         return 0;
     }
 
+    if (newSize > LONG_MAX)
+    {
+        return 0;
+    }
+
     TNode *pNewMemory = realloc(pList->pArr, newSize * sizeof(TNode));
 
     if (pNewMemory == NULL)
@@ -71,6 +77,11 @@ int stDynListInit(
     const long size)
 {
     if (pList == NULL)
+    {
+        return 0;
+    }
+
+    if (size < 0 || size > LONG_MAX)
     {
         return 0;
     }

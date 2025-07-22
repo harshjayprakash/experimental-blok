@@ -290,6 +290,7 @@ int stDynListFree(
     if (pList->pArr != NULL)
     {
         free(pList->pArr);
+        pList->pArr = NULL;
     }
 
     return 1;

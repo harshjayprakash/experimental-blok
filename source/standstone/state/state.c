@@ -1,7 +1,24 @@
+/**
+ * @file state.c
+ * @brief Object State Implementation.
+ * @author harshjayprakash
+ * @date 2025-07-22
+ ****************************************************************************************/
+
 #include "state.h"
 #include "../model/vector.h"
 #include <stdlib.h>
 
+/**
+ * @brief Implementation of moving the box.
+ * 
+ * @details
+ *  Attempts to move the given box by the dimensions of the box itself.
+ * 
+ * @param[in, out] pBox      A valid pointer to the box to be moved.
+ * @param[in]      direction The direction to move the box.
+ * @return 1 for success, 0 for failure.
+ */
 static int _stStateMoveBoxImpl(
     TSquare *pBox,
     TDirection direction) 

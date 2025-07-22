@@ -1,13 +1,39 @@
+/**
+ * @file dynlist.c
+ * @brief Dynamic List Implementation.
+ * @author harshjayprakash
+ * @date 2025-07-20
+ ****************************************************************************************/
+
 #include "dynlist.h"
 #include <stdlib.h>
 #include <memory.h>
 
+/**
+ * @brief Generate a new list size.
+ * 
+ * @details
+ *  Generates a new list size that is 1.5 larger.
+ * 
+ * @param[in] currentSize The current list size.
+ * @return The new size.
+ */
 static long _stDynListGenerateNewSize(
     const long currentSize)
 {
     return (long)(currentSize + (currentSize / 2));
 }
 
+/**
+ * @brief Resize the dynamic list.
+ * 
+ * @details
+ *  Attempts to re-allocate the array memory block.
+ * 
+ * @param[in, out] pList   A valid pointer to the TDynList structure to be resized.
+ * @param[in]      newSize The new array size.
+ * @return 0 for failure, 1 for success.
+ */
 static int _stDynListResize(
     TDynList *pList,
     const long newSize)

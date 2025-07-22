@@ -6,12 +6,7 @@ int stPanelUpdateEx(
     const SIZE *pSize,
     const SIZE *pMargin)
 {
-    if (pPanel == NULL)
-    {
-        return 0;
-    }
-
-    if (pWindowRgn == NULL)
+    if (pPanel == NULL || pWindowRgn == NULL)
     {
         return 0;
     }
@@ -40,12 +35,7 @@ int stPanelUpdate(
     TPanel *pPanel,
     const RECT *pWindowRgn)
 {
-    if (pPanel == NULL)
-    {
-        return 0;
-    }
-
-    if (pWindowRgn == NULL)
+    if (pPanel == NULL || pWindowRgn == NULL)
     {
         return 0;
     }

@@ -61,12 +61,7 @@ int stToggleUpdate(
     TToggle *pToggle,
     const POINT *pPosition)
 {
-    if (pToggle == NULL)
-    {
-        return 0;
-    }
-
-    if (pPosition == NULL)
+    if (pToggle == NULL || pPosition == NULL)
     {
         return 0;
     }

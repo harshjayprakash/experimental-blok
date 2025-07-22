@@ -41,12 +41,7 @@ int stTextUpdate(
     TText *pText,
     const POINT *pPosition)
 {
-    if (pText == NULL)
-    {
-        return 0;
-    }
-
-    if (pPosition == NULL)
+    if (pText == NULL || pPosition == NULL)
     {
         return 0;
     }

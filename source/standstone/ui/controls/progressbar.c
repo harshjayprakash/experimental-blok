@@ -64,12 +64,7 @@ int stProgressBarUpdate(
     TProgressBar *pPbar,
     const POINT *pPosition)
 {
-    if (pPbar == NULL)
-    {
-        return 0;
-    }
-
-    if (pPosition == NULL)
+    if (pPbar == NULL || pPosition == NULL)
     {
         return 0;
     }

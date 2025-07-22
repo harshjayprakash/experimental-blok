@@ -4,12 +4,7 @@ int stCanvasUpdate(
     TCanvas *pCanvas,
     const RECT *pWindowRgn)
 {
-    if (pCanvas == NULL)
-    {
-        return 0;
-    }
-
-    if (pWindowRgn == NULL)
+    if (pCanvas == NULL || pWindowRgn == NULL)
     {
         return 0;
     }

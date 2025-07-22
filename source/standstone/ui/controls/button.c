@@ -41,12 +41,7 @@ int stButtonUpdate(
     TButton *pButton,
     const POINT *pPos)
 {
-    if (pButton == NULL)
-    {
-        return 0;
-    }
-
-    if (pPos == NULL)
+    if (pButton == NULL || pPos == NULL)
     {
         return 0;
     }

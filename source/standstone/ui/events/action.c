@@ -8,20 +8,11 @@ int stActionMoveBox(
     HWND hWindow,
     TDirection direction)
 {
-    if (pViewport == NULL)
+    if (pViewport == NULL || pState == NULL || hWindow == NULL)
     {
         return 0;
     }
 
-    if (pState == NULL)
-    {
-        return 0;
-    }
-
-    if (hWindow == NULL)
-    {
-        return 0;
-    }
 
     int movable = stStateIsBoxMovable(pState, direction);
     if (!movable)
@@ -54,12 +45,7 @@ int stActionToggleGridLines(
     TViewport *pViewport,
     HWND hWindow)
 {
-    if (pViewport == NULL)
-    {
-        return 0;
-    }
-
-    if (hWindow == NULL)
+    if (pViewport == NULL || hWindow == NULL)
     {
         return 0;
     }
@@ -78,12 +64,7 @@ int stActionToggleInterface(
     TViewport *pViewport,
     HWND hWindow)
 {
-    if (pViewport == NULL)
-    {
-        return 0;
-    }
-
-    if (hWindow == NULL)
+    if (pViewport == NULL || hWindow == NULL)
     {
         return 0;
     }
@@ -102,12 +83,7 @@ int stActionToggleCanvasLock(
     TViewport *pViewport,
     HWND hWindow)
 {
-    if (pViewport == NULL)
-    {
-        return 0;
-    }
-
-    if (hWindow == NULL)
+    if (pViewport == NULL || hWindow == NULL)
     {
         return 0;
     }
@@ -151,17 +127,7 @@ int stActionAddObstruct(
     HWND hWindow,
     const POINT *pPoint)
 {
-    if (pViewport == NULL)
-    {
-        return 0;
-    }
-
-    if (pState == NULL)
-    {
-        return 0;
-    }
-
-    if (hWindow == NULL)
+    if (pViewport == NULL || pState == NULL || hWindow == NULL)
     {
         return 0;
     }
@@ -215,17 +181,7 @@ int stActionRemoveObstruct(
     HWND hWindow,
     const POINT point)
 {
-    if (pViewport == NULL)
-    {
-        return 0;
-    }
-
-    if (pState == NULL)
-    {
-        return 0;
-    }
-
-    if (hWindow == NULL)
+    if (pViewport == NULL || pState == NULL || hWindow == NULL)
     {
         return 0;
     }
@@ -260,17 +216,7 @@ int stActionClearObstructs(
     TObjectState *pState,
     HWND hWindow)
 {
-    if (pViewport == NULL)
-    {
-        return 0;
-    }
-
-    if (pState == NULL)
-    {
-        return 0;
-    }
-
-    if (hWindow == NULL)
+    if (pViewport == NULL || pState == NULL || hWindow == NULL)
     {
         return 0;
     }

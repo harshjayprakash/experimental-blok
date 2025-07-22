@@ -61,12 +61,7 @@ int stWindowInit(
     TWindow *pWindow,
     HINSTANCE hInstance)
 {
-    if (pWindow == NULL)
-    {
-        return 0;
-    }
-
-    if (hInstance == NULL)
+    if (pWindow == NULL || hInstance == NULL)
     {
         return 0;
     }
@@ -100,7 +95,7 @@ int stWindowInit(
     pWindow->hHandle = CreateWindowExW(0L, pWindow->klassName, pWindow->caption, 
         WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 800, 600, 0, 0, hInstance, 0);
     
-    if (!pWindow->hHandle)
+    if (pWindow->hHandle == NULL)
     {
         (void)MessageBoxW(0, L"Window Creation Failed", L"Blok", MB_OK | MB_ICONERROR);
         stWindowFree(pWindow, hInstance);

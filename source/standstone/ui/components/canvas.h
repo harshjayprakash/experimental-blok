@@ -39,6 +39,9 @@ typedef struct _Canvas
  * @param[in, out] pCanvas    A valid pointer to the canvas to be updated.
  * @param[in]      pWindowRgn A valid pointer to the window client region.
  * @return 1 for success, 0 for failure.
+ * 
+ * @remark
+ *  This function must be called once for the initialisation.
  */
 int stCanvasUpdate(TCanvas *pCanvas, const RECT *pWindowRgn);
 

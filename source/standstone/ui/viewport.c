@@ -1,3 +1,10 @@
+/**
+ * @file viewport.c
+ * @brief Viewport Implementation.
+ * @author harshjayprakash
+ * @date 2025-07-23
+ ****************************************************************************************/
+
 #include "viewport.h"
 #include <strsafe.h>
 #include <time.h>

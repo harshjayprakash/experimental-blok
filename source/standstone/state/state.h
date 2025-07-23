@@ -2,7 +2,7 @@
  * @file state.h
  * @brief Object State Declarations.
  * @author harshjayprakash
- * @date 2025-07-22
+ * @date 2025-07-23
  ****************************************************************************************/
 
 #ifndef ST_STATE_H
@@ -16,7 +16,8 @@
  * @brief Object Entity State.
  * 
  * @details
- *  Represents the current state of entities rendered within the application.
+ *  Represents the current state of entities rendered within the application. The
+ *  stState* functions manage the data and lifecycle of the state.
  */
 typedef struct _State
 {

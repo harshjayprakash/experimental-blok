@@ -173,7 +173,7 @@ the object data.
 * **Top-Level UI Module**: Added an encapsulated Viewport UI module.
 * **Update Naming Conventions**:
   * Variables prefixed with `p` if pointer, `h` if handle.
-  * Function names follow `blok` + `<file-scope>` + `<function-name>()`.
+  * Function names follow `st` + `<file-scope>` + `<function-name>()`.
   * Function names are prefix with `_` if static.
   * Structures and enumerations are Pascal Case with `_` prefix.
   * Typedef follow Pascal Case and prefixed with `T`.

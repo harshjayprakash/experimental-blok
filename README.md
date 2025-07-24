@@ -203,8 +203,7 @@ call state functions and updates.
 
 * **Path Finding**: Finding the shortest path between two points.
 * **Movable Panel**: Allow the user to move the panel by introducing a draggable area.
-* **Notify System**: Providing feedback for operations that failed, especially when the
-console is disabled.
+* **Notify System**: Providing feedback for operations that failed.
 * **Custom Theming**: Allow user to theme the application to their liking.
 * **Help Guide**: Provide in-application guidance on how to use it.
 * **Save State**: Save and Import state from a file.

@@ -1,5 +1,12 @@
 # Experimental Blok
 
+> [!NOTE]
+> As of v. 1005, this project no longer follows a fixed release rhythm - defined as
+> regular merges from the next branch into main.
+>
+> New features will be introduced progressively, with early access gated behind feature
+> macro toggles (off by default).
+
 ## Overview
 
 <p align="center">

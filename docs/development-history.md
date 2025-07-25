@@ -10,7 +10,7 @@ attempts to reconstruct and narrate major from memory and surviving prototypes.
   <img src="./../docs/assets/xbk-original-recreation.gif" alt="hi">
   <br>
   <caption>
-    A recreation of Blok "Sandstone" as of September 2021.
+    <i>A recreation of Blok as of September 2021.</i>
   </caption>
 </p>
 

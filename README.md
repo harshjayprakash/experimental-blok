@@ -13,21 +13,22 @@
   <img src="./docs/assets/xbk-preview-raster.png" alt="Screenshot of Program Running">
 </p>
 
-"Experimental Blok", or simply "Blok", is a minimal simulation of a user-generated maze,
-featuring a box that moves around with the WASD or Arrow Keys.
+**Experimental Blok**, or simply *blok*, is a lightweight simulation of a user-generated
+maze. A box entity moves around the canvas using the `WASD` or Arrow Keys, with
+interactive controls for wall placement, scaling, and theming.
 
-This project originated as a way to learn C and the Windows API, although it was
-initially in C++, in February of 2021. *It was not available on GitHub at this time*.
-Initially, this project had no specific goals or direction. The name "Blok" resulted from
-an accidental misspelling of the word "Block" during this phase, when I referred to it as
-the "C Project". The program could render a square that moved within a native window, but
-would leave a trail due to a lack of window updates.
+Originally create in February 2021 as a personal experiment to learn C and the Windows
+API (after an initial C++ prototype), *Blok* had no defined goals or roadmap. The project
+name emerged from a simple typo - misspelling "Block" during its early phase as
+"The C Project." The first implementation rendered a box that moved freely across a native
+window, but left visual trails due to missing repaint logic.
 
-The motivation for creating this project is not entirely clear; however, I've always had
-a strong interest in the Windows Operating System.
+There was no formal documentation of GitHub presence during those early versions. The
+motivation was exploratory - root in a interest with Windows internals and low-level
+behaviour.
 
-See [Development History](./docs/development-history.md) for architecture evolution and
-major decisions.
+> See the [Development History](./docs/development-history.md) for how *Blok* went from
+> minimal rendering to intentional system design.
 
 ### The Canvas Grid
 

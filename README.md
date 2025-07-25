@@ -200,11 +200,14 @@ call state functions and updates.
 
 ## Limitations and Known Issues
 
-* The box can be positioned outside of the bounds of the window.
-* The box can be covered by the panel.
-* Specified scaling can be too small or too big.
-* Drag click can continue if the cursor leaves the window.
-* The hitbox for the buttons and toggle.
+* **Layout/Positioning**: The box may be positioned outside of the bounds.
+* **Panel Overlay**: The box can be covered by the panel. *This behaviour may persist by*
+*design in future revisions.*
+* **Scaling Sensitivity**: Specified scaling value may produce an unusable small or
+oversize grid.
+* **Drag Persistence**: Drag-click interaction can persist even if the cursor leaves
+the window boundary.
+* **Hitbox Detection**: Buttons and toggle regions have imprecise hit detection.
 
 ## Potential Future Features (No Specific Date).
 

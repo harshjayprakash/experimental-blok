@@ -7,11 +7,10 @@ attempts to reconstruct and narrate major shifts from memory and surviving proto
 ## Phase I - The Origins
 
 <p align="center">
-  <img height="400" src="./../docs/assets/xbk-original-recreation.gif" alt="">
+  <img src="./../docs/assets/xbk-original-recreation.gif" alt="">
   <br>
   <caption>
     <i>A recreation of Blok as of September 2021.</i>
   </caption>
 </p>
-
 

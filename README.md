@@ -24,7 +24,7 @@ name emerged from a simple typo - misspelling "Block" during its early phase as
 window, but left visual trails due to missing repaint logic.
 
 There was no formal documentation or GitHub presence during those early versions. The
-motivation was exploratory - root in a interest with Windows internals and low-level
+motivation was exploratory - rooted in a interest with Windows internals and low-level
 behaviour.
 
 > See the [Development History](./docs/development-history.md) for how *Blok* went from

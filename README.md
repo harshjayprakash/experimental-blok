@@ -26,6 +26,9 @@ would leave a trail due to a lack of window updates.
 The motivation for creating this project is not entirely clear; however, I've always had
 a strong interest in the Windows Operating System.
 
+See [Development History](./docs/development-history.md) for architecture evolution and
+major decisions.
+
 ### The Canvas Grid
 
 <p align="center">

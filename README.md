@@ -23,7 +23,7 @@ name emerged from a simple typo - misspelling "Block" during its early phase as
 "The C Project." The first implementation rendered a box that moved freely across a native
 window, but left visual trails due to missing repaint logic.
 
-There was no formal documentation of GitHub presence during those early versions. The
+There was no formal documentation or GitHub presence during those early versions. The
 motivation was exploratory - root in a interest with Windows internals and low-level
 behaviour.
 

@@ -17,7 +17,7 @@
 maze. A box entity moves around the canvas using the `WASD` or Arrow Keys, with
 interactive controls for wall placement, scaling, and theming.
 
-Originally create in February 2021 as a personal experiment to learn C and the Windows
+Originally created in February 2021 as a personal experiment to learn C and the Windows
 API (after an initial C++ prototype), *Blok* had no defined goals or roadmap. The project
 name emerged from a simple typo - misspelling "Block" during its early phase as
 "The C Project." The first implementation rendered a box that moved freely across a native
@@ -37,7 +37,7 @@ behaviour.
 </p>
 
 The "Canvas Grid" is a component that provides a coordinate grid, scaled at fifteen
-pixels or another specified value at startup via the CLI. This grid contains the box
+pixels, or another specified value at startup via the CLI. This grid contains the box
 entity and a surface to create walls ("obstructs") that block the box's movement.
 
 * The canvas adapts to the full window client area.

@@ -50,7 +50,7 @@ int stEntry(TContext* pContext, TParsedArgs *pArgs)
         goto stEntryCleanOnError;
     }
 
-    ok = stGraphicsInit(&pContext->graphics, pArgs->theme);
+    ok = stGraphicsInit(&pContext->graphics, (TTheme)pArgs->theme);
     
     if (!ok)
     {

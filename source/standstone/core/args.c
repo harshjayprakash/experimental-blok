@@ -2,7 +2,7 @@
  * @file args.c
  * @brief Argument Parsing Implementation.
  * @author harshjayprakash
- * @date 2025-07-20
+ * @date 2025-07-24
  ****************************************************************************************/
 
 #include "args.h"
@@ -26,24 +26,16 @@
  */
 typedef enum _ArgMode
 {
-    /**
-     * @brief Unset.
-     */
+    /** @brief Unset parsing mode. */
     ST_ARGM_UNSET = 0,
 
-    /**
-     * @brief X Scaling Parsing Mode.
-     */
+    /** @brief X Scaling Parsing Mode. */
     ST_ARGM_SCALE_X = 10,
 
-    /**
-     * @brief Y Scaling Parsing Mode.
-     */
+    /** @brief Y Scaling Parsing Mode. */
     ST_ARGM_SCALE_Y = 20,
 
-    /**
-     * @brief X and Y Scaling Parsing Mode.
-     */
+    /** @brief Both x and y scaling parsing mode. */
     ST_ARGM_SCALE_A = 30
 } TArgMode;
 

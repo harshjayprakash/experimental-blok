@@ -2,7 +2,7 @@
  * @file lifecycle.h
  * @brief Setup and Entry Declarations.
  * @author harshjayprakash
- * @date 2025-07-20
+ * @date 2025-07-28
  ****************************************************************************************/
 
 #ifndef ST_LIFECYCLE_H
@@ -25,9 +25,7 @@
  */
 typedef enum _ExitStatus
 {
-    /**
-     * @brief Application exited successfully with no errors.
-     */
+    /** @brief Application exited successfully with no errors. */
     ST_EXIT_SUCCESS = 0,
 
     /**
@@ -38,19 +36,13 @@ typedef enum _ExitStatus
      */
     ST_EXIT_NULLPTR = 1,
 
-    /**
-     * @brief The application object state module initialisation failed.
-     */
+    /** @brief The application object state module initialisation failed. */
     ST_EXIT_STATE_ERROR = 2,
 
-    /**
-     * @brief The application graphics module initialisation failed.
-     */
+    /** @brief The application graphics module initialisation failed. */
     ST_EXIT_GRAPHICS_ERROR = 3,
 
-    /**
-     * @brief The application viewport module initialisation failed.
-     */
+    /** @brief The application viewport module initialisation failed. */
     ST_EXIT_VIEWPORT_ERROR = 4,
 } TExitStatus;
 

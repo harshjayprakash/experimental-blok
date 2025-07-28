@@ -2,7 +2,7 @@
  * @file context.h
  * @brief Application Context and Helper Declarations.
  * @author harshjayprakash
- * @date 2025-07-20
+ * @date 2025-07-28
  ****************************************************************************************/
 
 #ifndef ST_CONTEXT_H
@@ -24,29 +24,19 @@
  */
 typedef struct _Context
 {
-    /**
-     * @brief Handle to application instance.
-     */
+    /** @brief Handle to application instance. */
     HINSTANCE hInstance;
 
-    /**
-     * @brief How the window will be displayed.
-     */
+    /** @brief How the window will be displayed. */
     int showFlag;
 
-    /**
-     * @brief Graphics configuration.
-     */
+    /** @brief Graphics configuration. */
     TGraphics graphics;
 
-    /**
-     * @brief Graphical user interface.
-     */
+    /** @brief Graphical user interface. */
     TViewport viewport;
 
-    /**
-     * @brief Entity states.
-     */
+    /** @brief Entity states. */
     TObjectState state;
 } TContext;
 

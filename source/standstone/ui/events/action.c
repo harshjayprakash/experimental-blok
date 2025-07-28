@@ -13,18 +13,17 @@ int stActionMoveBox(
         return 0;
     }
 
-
     int movable = stStateIsBoxMovable(pState, direction);
     if (!movable)
     {
         return 0;
     }
 
-    int result = stStateMoveBox(pState, direction);
+    int ok = stStateMoveBox(pState, direction);
 
-    (void)StringCbPrintfW(pViewport->coordinatesText.data, 60,
-        L"(%d, %d)", pState->box.position.x, pState->box.position.y);
-  
+    (void)StringCbPrintfW(pViewport->coordinatesText.data, 60, L"(%d, %d)",
+                          pState->box.position.x, pState->box.position.y);
+
     RECT boxUpdateRgn = {
         pState->box.position.x - pState->box.size.x,
         pState->box.position.y - pState->box.size.y,
@@ -35,10 +34,7 @@ int stActionMoveBox(
     (void)InvalidateRect(hWindow, &boxUpdateRgn, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
 
-    (void)wprintf(L"Move Box: Direction - %d, New Position (%d, %d)\n", direction,
-        pState->box.position.x, pState->box.position.y);
-
-    return result;
+    return ok;
 }
 
 int stActionToggleGridLines(
@@ -53,9 +49,6 @@ int stActionToggleGridLines(
     pViewport->isGridVisible = !pViewport->isGridVisible;
 
     (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
-
-    (void)wprintf(L"Toggle Gridlines: %ls\n",
-        pViewport->isGridVisible ? L"Visible" : L"Invisible");
 
     return 1;
 }
@@ -73,9 +66,6 @@ int stActionToggleInterface(
 
     (void)InvalidateRect(hWindow, &pViewport->panel.region, FALSE);
 
-    (void)wprintf(L"Toggle Interface: %ls\n",
-        pViewport->isInterfaceVisible ? L"Visible" : L"Invisible");
-
     return 1;
 }
 
@@ -90,13 +80,10 @@ int stActionToggleCanvasLock(
 
     pViewport->isCanvasLocked = !pViewport->isCanvasLocked;
 
-    (void)stToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
+    int result = stToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
     (void)InvalidateRect(hWindow, &pViewport->lockedToggle.region, FALSE);
 
-    (void)wprintf(L"Toggle Canvas Lock: %ls\n",
-        (pViewport->isCanvasLocked) ? L"Locked" : L"Unlocked");
-
-    return 1;
+    return result;
 }
 
 int stActionChangeTheme(
@@ -108,17 +95,17 @@ int stActionChangeTheme(
         return 0;
     }
 
-    TTheme currrentTheme = pGraphics->currentTheme;
+    TTheme currentTheme = pGraphics->currentTheme;
+    TTheme newTheme = (
+        (currentTheme == 1 || currentTheme == 0) 
+        ? ST_THEME_LIGHT : ST_THEME_DARK);
         
-    (void)stGraphicsFree(pGraphics);
-    (void)stGraphicsInit(pGraphics,
-        (currrentTheme == 1 || currrentTheme == 0) ? ST_THEME_LIGHT : ST_THEME_DARK);
+    int result = stGraphicsFree(pGraphics);
+    result = stGraphicsInit(pGraphics, newTheme) || result;
 
     (void)InvalidateRect(hWindow, NULL, FALSE);
 
-    (void)wprintf(L"Re-initialising Graphics Context: Update Theme\n");
-
-    return 1;
+    return result;
 }
 
 int stActionAddObstruct(
@@ -132,7 +119,7 @@ int stActionAddObstruct(
         return 0;
     }
 
-    TVector2 newNode = { 0, 0 };
+    TVector2 newNode = {0, 0};
     TVector2 scale = pState->box.size;
 
     if (pPoint == NULL) 
@@ -160,17 +147,6 @@ int stActionAddObstruct(
     (void)InvalidateRect(hWindow, &updateRegion, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
-
-    (void)wprintf(L"Add Obstruct: ");
-
-    if (result > -1)
-    {
-        (void)wprintf(L"New Node (%d, %d), Idx %d\n", newNode.x, newNode.y, result);
-    }
-    else
-    {
-        (void)wprintf(L"Exists - Skipping\n");
-    }
 
     return (result > -1);
 }
@@ -206,33 +182,40 @@ int stActionRemoveObstruct(
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
 
-    (void)wprintf(L"Remove Obstruct: At Node (%d, %d) at IDX %d\n", rp.x, rp.y, result);
-
     return (result > -1);
 }
 
-int stActionClearObstructs(
-    TViewport *pViewport,
-    TObjectState *pState,
-    HWND hWindow)
+int stActionClearObstructs(TViewport *pViewport, TObjectState *pState, HWND hWindow)
 {
     if (pViewport == NULL || pState == NULL || hWindow == NULL)
     {
         return 0;
     }
 
-    int result = stStateClearObstructs(pState);
-    (void)stProgressBarUpdateValue(
-        &pViewport->obstructMemoryBar, pState->obstructs.size);
-    (void)StringCbPrintfW(
-        pViewport->obstructCountText.data, 60, L"%ld", pState->obstructs.size);
+#define OK(x) x == 1
+
+    int ok = stStateClearObstructs(pState);
+
+    if (!ok)
+    {
+        return 0;
+    }
+
+    ok = stProgressBarUpdateValue(&pViewport->obstructMemoryBar, pState->obstructs.size);
+
+    if (!ok)
+    {
+        return 0;
+    }
+
+    (void)StringCbPrintfW(pViewport->obstructCountText.data, 60, L"%ld",
+                          pState->obstructs.size);
+
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
 
-    (void)wprintf(L"Clear Obstructs: %d\n", result);
-
-    return result;
+    return ok;
 }
 
 int stActionGenerateRandomObstructs(
@@ -245,28 +228,24 @@ int stActionGenerateRandomObstructs(
         return 0;
     }
 
-    (void)stActionClearObstructs(pViewport, pState, hWindow);
-
-    TVector2 maxRgnObstructs = { 0, 0 };
+    int ok = stActionClearObstructs(pViewport, pState, hWindow);
     TVector2 scale = pState->box.size;
-    TVector2 _d = stConvertSizeVector2FromRect(pViewport->canvas.region);
+    TVector2 bounds = stConvertSizeVector2FromRect(pViewport->canvas.region);
 
-    maxRgnObstructs.x = _d.x / scale.x;
-    maxRgnObstructs.y = _d.y / scale.y;
-
-    long _nNodes = (
-        (rand() % maxRgnObstructs.x) +
-        (rand() % maxRgnObstructs.y)
-    );
-
-    int result = 0;
-    
-    for (int idx = 0; idx < _nNodes; idx++)
+    for (long yIdx = 0; yIdx < bounds.y; yIdx += scale.y)
     {
-        result = (stActionAddObstruct(pViewport, pState, hWindow, NULL) || result);
+        for (long xIdx = 0; xIdx < bounds.x; xIdx += scale.x)
+        {
+            POINT pt = {xIdx, yIdx};
+            int shouldCreate = rand() % 50;
+
+            if (shouldCreate <= 10)
+            {
+                int result = stActionAddObstruct(pViewport, pState, hWindow, &pt);
+                ok = (ok || result);
+            }
+        }
     }
 
-    (void)wprintf(L"Generate Random Obstruct: %d New Nodes\n", _nNodes);
-
-    return 1;
+    return ok;
 }

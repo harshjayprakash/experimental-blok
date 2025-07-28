@@ -5,7 +5,7 @@
  * @date 2025-07-20
  ****************************************************************************************/
 
-#include "standstone/core/lifecycle.h"
+#include "sandstone/core/lifecycle.h"
 #include <windows.h>
 
 /**

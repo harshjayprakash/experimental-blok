@@ -17,38 +17,38 @@ set(CMAKE_C_STANDARD_REQUIRED True)
 
 set(SOURCES
     # FORMAT MODULE
-    "source/standstone/fmt/convert.c" "source/standstone/fmt/convert.h"
+    "source/sandstone/fmt/convert.c" "source/sandstone/fmt/convert.h"
 
     # GDI MODULE
-    "source/standstone/gdi/graphics.c" "source/standstone/gdi/graphics.h"
-    "source/standstone/gdi/rendertools.c" "source/standstone/gdi/rendertools.h"
-    "source/standstone/gdi/theme.c" "source/standstone/gdi/theme.h"
+    "source/sandstone/gdi/graphics.c" "source/sandstone/gdi/graphics.h"
+    "source/sandstone/gdi/rendertools.c" "source/sandstone/gdi/rendertools.h"
+    "source/sandstone/gdi/theme.c" "source/sandstone/gdi/theme.h"
 
     # MODEL MODULE
-    "source/standstone/model/direction.c" "source/standstone/model/direction.h"
-    "source/standstone/model/dynlist.c" "source/standstone/model/dynlist.h"
-    "source/standstone/model/square.h"
-    "source/standstone/model/vector.c" "source/standstone/model/vector.h"
+    "source/sandstone/model/direction.c" "source/sandstone/model/direction.h"
+    "source/sandstone/model/dynlist.c" "source/sandstone/model/dynlist.h"
+    "source/sandstone/model/square.h"
+    "source/sandstone/model/vector.c" "source/sandstone/model/vector.h"
 
     # STATE MODULE
-    "source/standstone/state/state.c" "source/standstone/state/state.h"
+    "source/sandstone/state/state.c" "source/sandstone/state/state.h"
 
     # UI MODULE
-    "source/standstone/ui/components/canvas.c" "source/standstone/ui/components/canvas.h"
-    "source/standstone/ui/components/panel.c" "source/standstone/ui/components/panel.h"
-    "source/standstone/ui/controls/button.c" "source/standstone/ui/controls/button.h"
-    "source/standstone/ui/controls/progressbar.c" "source/standstone/ui/controls/progressbar.h"
-    "source/standstone/ui/controls/text.c" "source/standstone/ui/controls/text.h"
-    "source/standstone/ui/controls/toggle.c" "source/standstone/ui/controls/toggle.h"
-    "source/standstone/ui/events/action.c" "source/standstone/ui/events/action.h"
-    "source/standstone/ui/events/process.c" "source/standstone/ui/events/process.h"
-    "source/standstone/ui/frame/window.c" "source/standstone/ui/frame/window.h"
-    "source/standstone/ui/viewport.c" "source/standstone/ui/viewport.h"
+    "source/sandstone/ui/components/canvas.c" "source/sandstone/ui/components/canvas.h"
+    "source/sandstone/ui/components/panel.c" "source/sandstone/ui/components/panel.h"
+    "source/sandstone/ui/controls/button.c" "source/sandstone/ui/controls/button.h"
+    "source/sandstone/ui/controls/progressbar.c" "source/sandstone/ui/controls/progressbar.h"
+    "source/sandstone/ui/controls/text.c" "source/sandstone/ui/controls/text.h"
+    "source/sandstone/ui/controls/toggle.c" "source/sandstone/ui/controls/toggle.h"
+    "source/sandstone/ui/events/action.c" "source/sandstone/ui/events/action.h"
+    "source/sandstone/ui/events/process.c" "source/sandstone/ui/events/process.h"
+    "source/sandstone/ui/frame/window.c" "source/sandstone/ui/frame/window.h"
+    "source/sandstone/ui/viewport.c" "source/sandstone/ui/viewport.h"
 
     # MAIN MODULE
-    "source/standstone/core/context.c" "source/standstone/core/context.h"
-     "source/standstone/core/lifecycle.h" "source/standstone/core/lifecycle.c"
-    "source/standstone/core/args.c" "source/standstone/core/args.h"
+    "source/sandstone/core/context.c" "source/sandstone/core/context.h"
+     "source/sandstone/core/lifecycle.h" "source/sandstone/core/lifecycle.c"
+    "source/sandstone/core/args.c" "source/sandstone/core/args.h"
 
     # MAIN ENTRYPOINT
     "source/main.c"

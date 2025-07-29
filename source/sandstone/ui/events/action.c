@@ -192,8 +192,6 @@ int stActionClearObstructs(TViewport *pViewport, TObjectState *pState, HWND hWin
         return 0;
     }
 
-#define OK(x) x == 1
-
     int ok = stStateClearObstructs(pState);
 
     if (!ok)

@@ -25,6 +25,9 @@ int stProgressBarUpdateEx(
 
 int stProgressBarUpdate(TProgressBar *pPbar, const POINT *pPosition);
 
+int stProgressBarUpdateValueEx(TProgressBar *pPbar, const int minValue,
+                               const int maxValue, const int value);
+
 int stProgressBarUpdateMinMax(
     TProgressBar *pPbar, const int minValue, const int maxValue);
 

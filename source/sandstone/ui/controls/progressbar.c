@@ -72,6 +72,23 @@ int stProgressBarUpdate(
     return stProgressBarUpdateEx(pPbar, pPosition, NULL, NULL, NULL);
 }
 
+int stProgressBarUpdateValueEx(
+    TProgressBar* pPbar,
+    const int minValue,
+    const int maxValue,
+    const int value)
+{
+    if (pPbar == NULL)
+    {
+        return 0;
+    }
+
+    int mmuOk = stProgressBarUpdateMinMax(pPbar, minValue, maxValue);
+    int vuOk = stProgressBarUpdateValue(pPbar, value);
+
+    return mmuOk && vuOk;
+}
+
 int stProgressBarUpdateMinMax(
     TProgressBar *pPbar,
     const int minValue,

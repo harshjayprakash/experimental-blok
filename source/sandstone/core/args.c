@@ -7,7 +7,7 @@
 
 #include "args.h"
 
-/**
+#define _ST_VALIDATE_SCALING(assignTo, value)                                               \
  * @defgroup stArgsEvaluateScale Argument Scaling Validation
  * @{
  */
@@ -73,11 +73,11 @@ int stArgsParse(
 
         if (argm == ST_ARGM_SCALE_A || argm == ST_ARGM_SCALE_X)
         {
-            ST_EVALUATE_SCALE(pParsedArgs->scaleX, ppArgv[idx]);
+            _ST_VALIDATE_SCALING(pParsedArgs->scaleX, ppArgv[idx]);
         }
         if (argm == ST_ARGM_SCALE_A || argm == ST_ARGM_SCALE_Y)
         {
-            ST_EVALUATE_SCALE(pParsedArgs->scaleY, ppArgv[idx]);
+            _ST_VALIDATE_SCALING(pParsedArgs->scaleY, ppArgv[idx]);
         }
 
         argm = ST_ARGM_UNSET;

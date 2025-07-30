@@ -7,7 +7,10 @@
 
 #include "lifecycle.h"
 
-int stSetup(HINSTANCE hInstance, LPWSTR pCommandLine, int showFlag)
+int stSetup(
+    HINSTANCE hInstance, 
+    LPWSTR pCommandLine, 
+    int showFlag)
 {
     if (hInstance == NULL || hInstance == INVALID_HANDLE_VALUE || pCommandLine == NULL)
     {
@@ -18,11 +21,12 @@ int stSetup(HINSTANCE hInstance, LPWSTR pCommandLine, int showFlag)
     ZeroMemory(pContext, sizeof(*pContext));
 
     TParsedArgs args = {0};
-    int ok = stArgsParse(&args, pCommandLine);
+    ST_ARGS_SET_DEFAULT(args);
 
-    if (!ok)
+    if (!stArgsParse(&args, pCommandLine))
     {
-        ST_ARGS_SET_DEFAULT(args);
+        (void)MessageBoxW(NULL, L"Argument Parsing Failed.", L"Blok",
+                          MB_OK | MB_ICONWARNING);
     }
 
     pContext->hInstance = hInstance;
@@ -31,48 +35,51 @@ int stSetup(HINSTANCE hInstance, LPWSTR pCommandLine, int showFlag)
     return stEntry(pContext, &args);
 }
 
-int stEntry(TContext* pContext, TParsedArgs *pArgs)
+int stEntry(
+    TContext *pContext, 
+    TParsedArgs *pArgs)
 {
     if (pContext == NULL || pArgs == NULL)
     {
         return ST_EXIT_NULLPTR;
     }
 
-    int ok = 0;
-    int status = ST_EXIT_SUCCESS;
-
+    int result = ST_EXIT_SUCCESS;
+    int exitCode = 0;
     TVector2 scale = {(long)pArgs->scaleX, (long)pArgs->scaleY};
-    ok = stStateInit(&pContext->state, scale);
 
-    if (!ok)
+    if (!stStateInit(&pContext->state, scale))
     {
-        status = ST_EXIT_STATE_ERROR;
+        result = ST_EXIT_STATE_ERROR;
         goto stEntryCleanOnError;
     }
 
-    ok = stGraphicsInit(&pContext->graphics, (TTheme)pArgs->theme);
-    
-    if (!ok)
+    if (!stGraphicsInit(&pContext->graphics, (TTheme)pArgs->theme))
     {
-        status = ST_EXIT_GRAPHICS_ERROR;
+        result = ST_EXIT_GRAPHICS_ERROR;
         goto stEntryCleanOnError;
     }
 
-    ok = stViewportInit(&pContext->viewport, pContext->hInstance);
-
-    if (!ok)
+    if (!stViewportInit(&pContext->viewport, pContext->hInstance))
     {
-        status = ST_EXIT_VIEWPORT_ERROR;
+        result = ST_EXIT_VIEWPORT_ERROR;
         goto stEntryCleanOnError;
     }
 
-    status = stViewportShow(&pContext->viewport, (DWORD)pContext->showFlag);
+    exitCode = stViewportShow(&pContext->viewport, (DWORD)pContext->showFlag);
 
 stEntryCleanOnError:
 
-    (void)stViewportFree(&pContext->viewport, pContext->hInstance);
-    (void)stGraphicsFree(&pContext->graphics);
-    (void)stStateFree(&pContext->state);
+    int vr = stViewportFree(&pContext->viewport, pContext->hInstance);
+    int gr = stGraphicsFree(&pContext->graphics);
+    int sr = stStateFree(&pContext->state);
+
+    if (vr && gr && sr)
+    {
+        result = ST_EXIT_CLEANUP_ERROR;
+    }
+
+    int status = result | exitCode;
 
     return status;
 }

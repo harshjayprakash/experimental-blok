@@ -13,7 +13,7 @@ attempts to reconstruct and narrate major shifts from memory and surviving proto
   <img src="./../docs/assets/xbk-original-recreation.gif" alt="">
   <br>
   <caption>
-    <i>A recreation of Blok as of September 2021.</i>
+    A recreation of <i>Blok</i> as of September 2021.
   </caption>
 </p>
 

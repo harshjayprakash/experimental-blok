@@ -44,6 +44,8 @@ typedef enum _ExitStatus
 
     /** @brief The application viewport module initialisation failed. */
     ST_EXIT_VIEWPORT_ERROR = (0x4 << 6),
+
+    ST_EXIT_CLEANUP_ERROR = (0x5 << 6),
 } TExitStatus;
 
 /**

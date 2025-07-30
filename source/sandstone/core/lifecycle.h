@@ -26,7 +26,7 @@
 typedef enum _ExitStatus
 {
     /** @brief Application exited successfully with no errors. */
-    ST_EXIT_SUCCESS = 0,
+    ST_EXIT_SUCCESS = (0x0 << 6),
 
     /**
      * @brief A required pointer was NULL during initialisation.
@@ -34,16 +34,16 @@ typedef enum _ExitStatus
      * @details
      *  Returned from stSetup or stEntry, if any required arguments are NULL.
      */
-    ST_EXIT_NULLPTR = 1,
+    ST_EXIT_NULLPTR = (0x1 << 6),
 
     /** @brief The application object state module initialisation failed. */
-    ST_EXIT_STATE_ERROR = 2,
+    ST_EXIT_STATE_ERROR = (0x2 << 6),
 
     /** @brief The application graphics module initialisation failed. */
-    ST_EXIT_GRAPHICS_ERROR = 3,
+    ST_EXIT_GRAPHICS_ERROR = (0x3 << 6),
 
     /** @brief The application viewport module initialisation failed. */
-    ST_EXIT_VIEWPORT_ERROR = 4,
+    ST_EXIT_VIEWPORT_ERROR = (0x4 << 6),
 } TExitStatus;
 
 /**

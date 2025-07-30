@@ -38,3 +38,28 @@ int stGraphicsFree(
 
     return stRenderToolsFree(&pGraphics->renderTools);
 }
+
+int stGraphicsSwitchTheme(
+    TGraphics* pGraphics)
+{
+    if (pGraphics == NULL)
+    {
+        return 0;
+    }
+
+    TTheme currentTheme = pGraphics->currentTheme;
+    TTheme newTheme =
+        ((currentTheme == 1 || currentTheme == 0) ? ST_THEME_LIGHT : ST_THEME_DARK);
+
+    if (!stGraphicsFree(pGraphics))
+    {
+        return 0;
+    }
+
+    if (!stGraphicsInit(pGraphics, newTheme))
+    {
+        return 0;
+    }
+
+    return okFree && okInit;
+}

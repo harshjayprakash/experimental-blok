@@ -76,4 +76,7 @@ int stGraphicsInit(TGraphics *pGraphics, const TTheme theme);
  */
 int stGraphicsFree(TGraphics *pGraphics);
 
+
+int stGraphicsSwitchTheme(TGraphics *pGraphics);
+
 #endif /* ST_GRAPHICS_H */

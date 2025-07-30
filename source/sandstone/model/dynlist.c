@@ -136,22 +136,14 @@ long stDynListAdd(
     TDynList *pList,
     const TNode *pNode)
 {
-    if (pList == NULL)
-    {
-        return -1L;
-    }
-
-    if (pNode == NULL)
+    if (pList == NULL || pNode == NULL)
     {
         return -1L;
     }
 
     if (stDynListIsFull(pList)) 
-    { 
-        int newSize = _stDynListGenerateNewSize(pList->max);
-        int success = _stDynListResize(pList, newSize);
-
-        if (!success)
+    {
+        if (!_stDynListResize(pList, _stDynListGenerateNewSize(pList->max)))
         {
             return -1L;
         }
@@ -193,17 +185,12 @@ long stDynListGetIndex(
     const TDynList *pList,
     const TNode *pNode)
 {
-    if (pList == NULL)
+    if (pList == NULL || pNode == NULL)
     {
         return -2L;
     }
 
     if (pList->pArr == NULL)
-    {
-        return -2L;
-    }
-
-    if (pNode == NULL)
     {
         return -2L;
     }
@@ -223,12 +210,7 @@ int stDynListExists(
     const TDynList *pList,
     const TNode *pNode)
 {
-    if (pList == NULL)
-    {
-        return -1;
-    }
-
-    if (pNode == NULL)
+    if (pList == NULL || pNode == NULL)
     {
         return -1;
     }

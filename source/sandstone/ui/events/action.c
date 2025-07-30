@@ -94,13 +94,7 @@ int stActionChangeTheme(
         return 0;
     }
 
-    TTheme currentTheme = pGraphics->currentTheme;
-    TTheme newTheme = (
-        (currentTheme == 1 || currentTheme == 0) 
-        ? ST_THEME_LIGHT : ST_THEME_DARK);
-        
-    int result = stGraphicsFree(pGraphics);
-    result = stGraphicsInit(pGraphics, newTheme) || result;
+    int result = stGraphicsSwitchTheme(pGraphics);
 
     (void)InvalidateRect(hWindow, NULL, FALSE);
 

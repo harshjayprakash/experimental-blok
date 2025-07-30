@@ -80,6 +80,7 @@ int stActionToggleCanvasLock(
     pViewport->isCanvasLocked = !pViewport->isCanvasLocked;
 
     int result = stToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
+
     (void)InvalidateRect(hWindow, &pViewport->lockedToggle.region, FALSE);
 
     return result;

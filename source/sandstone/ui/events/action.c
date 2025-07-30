@@ -13,16 +13,15 @@ int stActionMoveBox(
         return 0;
     }
 
-    int movable = stStateIsBoxMovable(pState, direction);
-    if (!movable)
+    if (!stStateIsBoxMovable(pState, direction))
     {
         return 0;
     }
 
     int ok = stStateMoveBox(pState, direction);
-
-    (void)StringCbPrintfW(pViewport->coordinatesText.data, 60, L"(%d, %d)",
-                          pState->box.position.x, pState->box.position.y);
+    int thr = SUCCEEDED(StringCbPrintfW(pViewport->coordinatesText.data, 60, L"(%d, %d)",
+                                        pState->box.position.x, pState->box.position.y));
+    ok = ok && thr;
 
     RECT boxUpdateRgn = {
         pState->box.position.x - pState->box.size.x,
@@ -133,22 +132,20 @@ int stActionAddObstruct(
         newNode.y = (pPoint->y / scale.y) * scale.y;
     }
     
-    int result = stStateAddObstruct(pState, newNode);
-    RECT updateRegion = stConvertRectFromVector2s(newNode, pState->box.size);
+    int idx = stStateAddObstruct(pState, newNode);
+    RECT updateRegion = stConvertRectFromVector2s(newNode, scale);
 
-    (void)StringCbPrintfW(
-        pViewport->obstructCountText.data, 60, L"%ld", pState->obstructs.size);
+    int thr = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, 60, L"%ld",
+                                        pState->obstructs.size));
 
-    (void)stProgressBarUpdateMinMax(
-        &pViewport->obstructMemoryBar, 0, pState->obstructs.max);
-    (void)stProgressBarUpdateValue(
-        &pViewport->obstructMemoryBar, pState->obstructs.size);
+    int uc = stProgressBarUpdateValueEx(&pViewport->obstructMemoryBar, 0,
+                                        pState->obstructs.max, pState->obstructs.size);
 
     (void)InvalidateRect(hWindow, &updateRegion, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
 
-    return (result > -1);
+    return (idx > -1) && thr && uc;
 }
 
 int stActionRemoveObstruct(
@@ -168,21 +165,20 @@ int stActionRemoveObstruct(
         (point.y / scale.y) * scale.y
     };
 
-    int result = stStateRemoveObstruct(pState, rp);
+    int idx = stStateRemoveObstruct(pState, rp);
 
-    (void)StringCbPrintfW(
-        pViewport->obstructCountText.data, 60, L"%ld", pState->obstructs.size);
+    int thr = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, 60, L"%ld",
+                                        pState->obstructs.size));
 
-    (void)stProgressBarUpdateMinMax(
-        &pViewport->obstructMemoryBar, 0, pState->obstructs.max);
-    (void)stProgressBarUpdateValue(
-        &pViewport->obstructMemoryBar, pState->obstructs.size);
+    int uc = stProgressBarUpdateValueEx(&pViewport->obstructMemoryBar, 0,
+                                        pState->obstructs.max, pState->obstructs.size);
 
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
 
-    return (result > -1);
+
+    return (idx > -1) && thr && uc;
 }
 
 int stActionClearObstructs(TViewport *pViewport, TObjectState *pState, HWND hWindow)
@@ -240,7 +236,7 @@ int stActionGenerateRandomObstructs(
             if (shouldCreate <= 10)
             {
                 int result = stActionAddObstruct(pViewport, pState, hWindow, &pt);
-                ok = (ok || result);
+                ok = (ok && result);
             }
         }
     }

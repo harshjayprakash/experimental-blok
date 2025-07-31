@@ -74,7 +74,7 @@ stEntryCleanOnError:
     int gr = stGraphicsFree(&pContext->graphics);
     int sr = stStateFree(&pContext->state);
 
-    if (vr && gr && sr)
+    if (!vr && !gr && !sr)
     {
         result = ST_EXIT_CLEANUP_ERROR;
     }

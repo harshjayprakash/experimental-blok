@@ -29,7 +29,7 @@ int WINAPI wWinMain(
 {
     (void)hPrevInstance;
     
-#ifdef __ST_FEATURE_SINGLE_INSTANCE
+#ifndef STF_NO_SINGLE_INSTANCE
     HANDLE hInstanceMutex = CreateMutexW(NULL, TRUE, L"BlokInstance");
 
     if (hInstanceMutex == NULL)
@@ -55,7 +55,7 @@ int WINAPI wWinMain(
 
     int status = stSetup(hInstance, lpCmdLine, nShowCmd);
 
-#ifdef __ST_FEATURE_SINGLE_INSTANCE
+#ifndef STF_NO_SINGLE_INSTANCE
     (void)CloseHandle(hInstanceMutex);
 #endif
 

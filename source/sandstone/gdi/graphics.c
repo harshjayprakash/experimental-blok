@@ -61,5 +61,5 @@ int stGraphicsSwitchTheme(
         return 0;
     }
 
-    return okFree && okInit;
+    return 1;
 }

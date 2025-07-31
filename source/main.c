@@ -2,24 +2,30 @@
  * @file main.c
  * @brief Entrypoint.
  * @author harshjayprakash
- * @date 2025-07-20
+ * @date 2025-07-31
  ****************************************************************************************/
 
 #include "sandstone/core/lifecycle.h"
 #include <windows.h>
 
 /**
- * @brief Windows application entrypoint.
+ * @brief Entrypoint for the Windows Application.
  *
  * @details
- *  Provides a wrapper for calling the stSetup.
+ * This function initialises the application, delegating the setup to the `stSetup`
+ * function. It performs a single-instance check unless the build-time toggle
+ * `STF_NO_SINGLE_INSTANCE` is defined.
+ * 
+ * The instance check uses a named mutex (`blokInstance`) to prevent multiple launches.
+ * If a previous instance is detected, the user is notified via a message box, terminating
+ * the program with an appropriate `TExitStatus` code.
  *
- * @param[in] hInstance     The handle to the application instance.
- * @param[in] hPrevInstance Always NULL.
- * @param[in] lpCmdLine     The null-terminated string of command line arguments.
- * @param[in] nShowCmd      How the window will be displayed.
- * @return Zero on success, non-zero indicates failure. For specific return values, refer
- *         to the TExitStatus enum.
+ * @param[in] hInstance     Handle to the application instance.
+ * @param[in] hPrevInstance Legacy instance handle (unused).
+ * @param[in] lpCmdLine     Unicode command-line arguments.
+ * @param[in] nShowCmd      Initial window display state.
+ * @return Exit status from `stSetup()` or early termination if instance check fails.
+ *         Refer to `TExitStatus` for specific codes.
  */
 int WINAPI wWinMain(
     HINSTANCE hInstance,

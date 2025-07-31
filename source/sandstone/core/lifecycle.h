@@ -46,6 +46,10 @@ typedef enum _ExitStatus
     ST_EXIT_VIEWPORT_ERROR = (0x4 << 6),
 
     ST_EXIT_CLEANUP_ERROR = (0x5 << 6),
+
+    ST_EXIT_INSTANCE_RUNNING = (0x6 << 6),
+
+    ST_EXIT_INSTANCE_CHECK_ERROR = (0x7 << 6),
 } TExitStatus;
 
 /**

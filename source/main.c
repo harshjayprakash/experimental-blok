@@ -29,5 +29,35 @@ int WINAPI wWinMain(
 {
     (void)hPrevInstance;
     
-    return stSetup(hInstance, lpCmdLine, nShowCmd);
+#ifdef __ST_FEATURE_SINGLE_INSTANCE
+    HANDLE hInstanceMutex = CreateMutexW(NULL, TRUE, L"BlokInstance");
+
+    if (hInstanceMutex == NULL)
+    {
+        (void)MessageBoxW(NULL, L"Instance check failed. The program will now exit.",
+                          L"Blok", MB_OK | MB_ICONERROR);
+
+        return ST_EXIT_INSTANCE_CHECK_ERROR;
+    }
+
+    if (GetLastError() == ERROR_ALREADY_EXISTS)
+    {
+        (void)MessageBoxW(NULL,
+                          L"An instance of Blok is already running. "
+                          "Please close the other instance before starting a new one.",
+                          L"Blok", MB_OK | MB_ICONERROR);
+
+        (void)CloseHandle(hInstanceMutex);
+
+        return ST_EXIT_INSTANCE_RUNNING;
+    }
+#endif
+
+    int status = stSetup(hInstance, lpCmdLine, nShowCmd);
+
+#ifdef __ST_FEATURE_SINGLE_INSTANCE
+    (void)CloseHandle(hInstanceMutex);
+#endif
+
+    return status;
 }

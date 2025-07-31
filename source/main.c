@@ -19,6 +19,9 @@
  * The instance check uses a named mutex (`blokInstance`) to prevent multiple launches.
  * If a previous instance is detected, the user is notified via a message box, terminating
  * the program with an appropriate `TExitStatus` code.
+ * 
+ * A known issue involves preventing the program startup as another application could use
+ * the same named mutex.
  *
  * @param[in] hInstance     Handle to the application instance.
  * @param[in] hPrevInstance Legacy instance handle (unused).

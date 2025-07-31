@@ -1,8 +1,8 @@
 /**
- * @file main.c
- * @brief Entrypoint.
+ * @file   main.c
+ * @brief  Windows Entrypoint.
  * @author harshjayprakash
- * @date 2025-07-31
+ * @date   2025-07-31
  ****************************************************************************************/
 
 #include "sandstone/core/lifecycle.h"

@@ -5,4 +5,9 @@
 # Feature: Single Instance
 # - Uses a Mutex object to determine if another instance of the application is running.
 # - @see CreateMutexW
-option(__ST_FEATURE_SINGLE_INSTANCE OFF)
+option(__ST_FEATURE_SINGLE_INSTANCE ON)
+
+if(__ST_FEATURE_SINGLE_INSTANCE)
+	add_compile_definitions(__ST_FEATURE_SINGLE_INSTANCE)
+	message(STATUS "[Sandstone Feature Toggles] Single Instance is Enabled")
+endif()

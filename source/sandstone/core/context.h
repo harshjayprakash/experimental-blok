@@ -1,8 +1,8 @@
 /**
- * @file context.h
- * @brief Application Context and Helper Declarations.
+ * @file   context.h
+ * @brief  Application Context and Helper Declarations.
  * @author harshjayprakash
- * @date 2025-07-28
+ * @date   2025-08-03
  ****************************************************************************************/
 
 #ifndef ST_CONTEXT_H
@@ -17,88 +17,68 @@
  * @brief Represents the Application Context.
  *
  * @details
- *  Contains configuration, data and handles for the application.
- *
- * @remark
- *  The stSetup and stEntry functions initialise and clean up the context.
+ * This structure is required by the application to function. The information stored
+ * involves the configuration of the graphics, user interface, entities drawn and
+ * Windows handles.
+ * 
+ * @remarks
+ * - The `stSetup` and `stEntry` functions initialise and clean up the context. The
+ *   caller must not attempt to manually free resources.
  */
 typedef struct _Context
 {
-    /** @brief Handle to application instance. */
-    HINSTANCE hInstance;
-
-    /** @brief How the window will be displayed. */
-    int showFlag;
-
-    /** @brief Graphics configuration. */
-    TGraphics graphics;
-
-    /** @brief Graphical user interface. */
-    TViewport viewport;
-
-    /** @brief Entity states. */
-    TObjectState state;
+    HINSTANCE hInstance;   /**< Handle to application instance. */
+    int showFlag;          /**< Initial display window state. */
+    TGraphics graphics;    /**< Graphics configuration. */
+    TViewport viewport;    /**< The user interface. */
+    TObjectState state;    /**< Entity states. */
 } TContext;
 
 /**
- * @brief Retrieves a pointer to the application context.
+ * @brief Returns the shared static context object.
  *
  * @details
- *  This function stores a statically stores the instance of the application context and
- *  a reference to this is returned.
+ * Provides access to the singleton `TContext` instance, which encapsulates graphics,
+ * viewport, and object state data for the application.
  *
- * @return A pointer to TContext.
- *
- * @remark
- *  The caller should avoid directly calling this function in favour of retrieving
- *  the specific parts required.
- * @remark
- *  The caller must not free this block of memory.
+ * @return Pointer to the internal static `TContext` object.
+ * 
+ * @remarks
+ * - The context is statically allocated and initialised on first access. Callers must
+ *   not assume ownership or attempt deallocation.
+ * - It is discouraged to retrieve the context as whole, please use the other
+ *   functions to retrieve the portion of the context required.
+ * 
+ * @see stContextGetGraphics
+ * @see stContextGetViewport
+ * @see stContextGetObjectState
  */
 TContext *stContextGet(void);
 
 /**
- * @brief Retrieves a pointer to the graphics module.
- *
- * @details
- *  This function provides a wrapper for stContextGet and returning only the TGraphics
- *  portion.
+ * @brief Accesses the graphics module from the shared context.
  * 
- * @return A pointer to TGraphics.
+ * @return Pointer to the `TGraphics` object within the static context.
  *
- * @remark
- *  The caller must not free this block of memory. For lifetime management, please
- *  refer to the stGraphicsInit and stGraphicsFree functions.
+ * @see stContextGet
  */
 TGraphics *stContextGetGraphics(void);
 
 /**
- * @brief Retrieves a pointer to the viewport module.
- * 
- * @details
- *  This function provides a wrapper for stContextGet and returning only the TViewport
- *  portion.
- * 
- * @return A pointer to TViewport
- * 
- * @remark
- *  The caller must not free this block of memory. For lifetime management, please
- *  refer to the stViewportInit and stViewportFree functions.
+ * @brief Accesses the viewport module from the shared context.
+ *
+ * @return Pointer to the `TViewport` object within the static context.
+ *
+ * @see stContextGet
  */
 TViewport *stContextGetViewport(void);
 
 /**
- * @brief Retrieves a pointer to the object state module.
- * 
- * @details
- *  This function provides a wrapper for stContextGet and returning only the TObjectState
- *  portion.
- * 
- * @return A pointer to TObjectState.
- * 
- * @remark
- *  The caller must not free this block of memory. For lifetime management, please
- *  refer to the stStateInit and stStateFree functions.
+ * @brief Accesses the object state module from the shared context.
+ *
+ * @return Pointer to the `TObjectState` object within the static context.
+ *
+ * @see stContextGet
  */
 TObjectState *stContextGetObjectState(void);
 

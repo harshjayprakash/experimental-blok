@@ -1,16 +1,13 @@
 /**
- * @file lifecycle.c
- * @brief Setup and Entry Implementation.
+ * @file   lifecycle.c
+ * @brief  Setup and Entry Implementation.
  * @author harshjayprakash
- * @date 2025-07-20
+ * @date   2025-07-20
  ****************************************************************************************/
 
 #include "lifecycle.h"
 
-int stSetup(
-    HINSTANCE hInstance, 
-    LPWSTR pCommandLine, 
-    int showFlag)
+int stSetup(HINSTANCE hInstance, LPWSTR pCommandLine, int showFlag)
 {
     if (hInstance == NULL || hInstance == INVALID_HANDLE_VALUE || pCommandLine == NULL)
     {
@@ -35,9 +32,7 @@ int stSetup(
     return stEntry(pContext, &args);
 }
 
-int stEntry(
-    TContext *pContext, 
-    TParsedArgs *pArgs)
+int stEntry(TContext *pContext, TParsedArgs *pArgs)
 {
     if (pContext == NULL || pArgs == NULL)
     {

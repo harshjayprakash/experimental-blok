@@ -1,8 +1,8 @@
 /**
- * @file square.h
- * @brief Square Declarations.
+ * @file   square.h
+ * @brief  Square Declarations.
  * @author harshjayprakash
- * @date 2025-07-22
+ * @date   2025-07-22
  ****************************************************************************************/
 
 #ifndef ST_SQUARE_H

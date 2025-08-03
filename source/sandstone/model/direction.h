@@ -1,8 +1,8 @@
 /**
- * @file direction.h
- * @brief Direction Declarations.
+ * @file   direction.h
+ * @brief  Direction Declarations.
  * @author harshjayprakash
- * @date 2025-07-20
+ * @date   2025-07-20
  ****************************************************************************************/
 
 #ifndef ST_DIRECTION_H
@@ -12,7 +12,7 @@
 
 /**
  * @brief Denotes Compass Rose Direction.
- * 
+ *
  * @details
  *  Provides direction based on the four main compass rose each assigned to the clock
  *  intervals.
@@ -28,14 +28,14 @@ typedef enum _Direction
 
 /**
  * @brief Convert Direction to Vector.
- * 
+ *
  * @details
  *  Maps the direction to a vector mask denoting the direction with 1 and/or 0 as the
  *  x and y positions.
- * 
+ *
  * @param[in] direction Direction to be converted.
  * @return The resulting vector.
- * 
+ *
  * @remark
  *  A NULL vector {0, 0} is returned if the direction is invalid.
  * @remark

@@ -1,43 +1,40 @@
 /**
- * @file dynlist.c
- * @brief Dynamic List Implementation.
+ * @file   dynlist.c
+ * @brief  Dynamic List Implementation.
  * @author harshjayprakash
- * @date 2025-07-20
+ * @date   2025-07-20
  ****************************************************************************************/
 
 #include "dynlist.h"
-#include <stdlib.h>
 #include <memory.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 /**
  * @brief Generate a new list size.
- * 
+ *
  * @details
  *  Generates a new list size that is 1.5 larger.
- * 
+ *
  * @param[in] currentSize The current list size.
  * @return The new size.
  */
-static long _stDynListGenerateNewSize(
-    const long currentSize)
+static long _stDynListGenerateNewSize(const long currentSize)
 {
     return (long)(currentSize + (currentSize / 2));
 }
 
 /**
  * @brief Resize the dynamic list.
- * 
+ *
  * @details
  *  Attempts to re-allocate the array memory block.
- * 
+ *
  * @param[in, out] pList   A valid pointer to the TDynList structure to be resized.
  * @param[in]      newSize The new array size.
  * @return 0 for failure, 1 for success.
  */
-static int _stDynListResize(
-    TDynList *pList,
-    const long newSize)
+static int _stDynListResize(TDynList *pList, const long newSize)
 {
     if (pList == NULL)
     {
@@ -72,9 +69,7 @@ static int _stDynListResize(
     return 1;
 }
 
-int stDynListInit(
-    TDynList *pList,
-    const long size)
+int stDynListInit(TDynList *pList, const long size)
 {
     if (pList == NULL)
     {
@@ -88,7 +83,7 @@ int stDynListInit(
 
     pList->pArr = calloc(size, sizeof(TNode));
 
-    if (pList->pArr == NULL) 
+    if (pList->pArr == NULL)
     {
         return 0;
     }
@@ -100,8 +95,7 @@ int stDynListInit(
     return 1;
 }
 
-int stDynListIsFull(
-    const TDynList *pList)
+int stDynListIsFull(const TDynList *pList)
 {
     if (pList == NULL)
     {
@@ -116,8 +110,7 @@ int stDynListIsFull(
     return (pList->size == pList->max);
 }
 
-int stDynListIsEmpty(
-    const TDynList *pList)
+int stDynListIsEmpty(const TDynList *pList)
 {
     if (pList == NULL)
     {
@@ -132,16 +125,14 @@ int stDynListIsEmpty(
     return (pList->head == -1);
 }
 
-long stDynListAdd(
-    TDynList *pList,
-    const TNode *pNode)
+long stDynListAdd(TDynList *pList, const TNode *pNode)
 {
     if (pList == NULL || pNode == NULL)
     {
         return -1L;
     }
 
-    if (stDynListIsFull(pList)) 
+    if (stDynListIsFull(pList))
     {
         if (!_stDynListResize(pList, _stDynListGenerateNewSize(pList->max)))
         {
@@ -153,7 +144,7 @@ long stDynListAdd(
     ++pList->size;
 
     int success = stVector2Copy(&(pList->pArr + pList->head)->data, pNode->data);
-    
+
     if (!success)
     {
         return -1L;
@@ -162,8 +153,7 @@ long stDynListAdd(
     return pList->head;
 }
 
-int stDynListClear(
-    TDynList *pList)
+int stDynListClear(TDynList *pList)
 {
     if (pList == NULL)
     {
@@ -181,9 +171,7 @@ int stDynListClear(
     return 1;
 }
 
-long stDynListGetIndex(
-    const TDynList *pList,
-    const TNode *pNode)
+long stDynListGetIndex(const TDynList *pList, const TNode *pNode)
 {
     if (pList == NULL || pNode == NULL)
     {
@@ -204,11 +192,9 @@ long stDynListGetIndex(
     }
 
     return -1L;
-}  
+}
 
-int stDynListExists(
-    const TDynList *pList,
-    const TNode *pNode)
+int stDynListExists(const TDynList *pList, const TNode *pNode)
 {
     if (pList == NULL || pNode == NULL)
     {
@@ -216,7 +202,7 @@ int stDynListExists(
     }
 
     int result = stDynListGetIndex(pList, pNode);
-    
+
     if (result == -2)
     {
         return -1;
@@ -230,9 +216,7 @@ int stDynListExists(
     return 1;
 }
 
-long stDynListRemove(
-    TDynList *pList,
-    const TNode node)
+long stDynListRemove(TDynList *pList, const TNode node)
 {
     if (pList == NULL)
     {
@@ -246,9 +230,8 @@ long stDynListRemove(
         return -1L;
     }
 
-    int success = stVector2Copy(
-        &(pList->pArr + idx)->data, 
-        (pList->pArr + pList->head)->data);
+    int success =
+        stVector2Copy(&(pList->pArr + idx)->data, (pList->pArr + pList->head)->data);
 
     if (!success)
     {
@@ -261,8 +244,7 @@ long stDynListRemove(
     return idx;
 }
 
-int stDynListFree(
-    TDynList *pList)
+int stDynListFree(TDynList *pList)
 {
     if (pList == NULL)
     {

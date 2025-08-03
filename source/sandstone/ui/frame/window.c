@@ -1,8 +1,8 @@
 /**
- * @file window.c
- * @brief Native Window Implementation.
+ * @file   window.c
+ * @brief  Native Window Implementation.
  * @author harshjayprakash
- * @date 2025-07-22
+ * @date   2025-08-03
  ****************************************************************************************/
 
 #include "window.h"
@@ -19,13 +19,13 @@
  * @brief The Window Procedure.
  *
  * @details
- *  Handles the window messages by calling stProcessEvent* functions. For any other
- *  messages, the default window procedure is called.
+ * Handles the window messages by calling stProcessEvent* functions. For any other
+ * messages, the default window procedure is called.
  *
- * @param[in] hWindow   The handle to the window.
- * @param[in] messageId The message identifier.
- * @param[in] dataWord  Additional information, dependant on the id.
- * @param[in] dataLong  Additional information, dependant on the id.
+ * @param[in] hWindow     Handle to the window.
+ * @param[in] messageId   Message identifier.
+ * @param[in] dataWord    Additional information, dependant on the id.
+ * @param[in] dataLong    Additional information, dependant on the id.
  * @return If the message has been handled.
  */
 static LRESULT CALLBACK _stWindowProcedure(HWND hWindow, UINT messageId, WPARAM dataWord,

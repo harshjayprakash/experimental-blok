@@ -11,17 +11,15 @@
 
 /**
  * @brief Implementation of moving the box.
- * 
+ *
  * @details
  *  Attempts to move the given box by the dimensions of the box itself.
- * 
+ *
  * @param[in, out] pBox      A valid pointer to the box to be moved.
  * @param[in]      direction The direction to move the box.
  * @return 1 for success, 0 for failure.
  */
-static int _stStateMoveBoxImpl(
-    TSquare *pBox,
-    TDirection direction) 
+static int _stStateMoveBoxImpl(TSquare *pBox, TDirection direction)
 {
     if (pBox == NULL)
     {
@@ -34,19 +32,17 @@ static int _stStateMoveBoxImpl(
     return stVector2Copy(&pBox->position, newpos);
 }
 
-int stStateInit(
-    TObjectState *pState,
-    const TVector2 scale)
+int stStateInit(TObjectState *pState, const TVector2 scale)
 {
     if (pState == NULL)
     {
         return 0;
     }
 
-    TVector2 defaultBoxState = { 0, 0 };
+    TVector2 defaultBoxState = {0, 0};
     TVector2 defaultBoxSize = scale;
-    int success = (stVector2Copy(&pState->box.size, defaultBoxSize)
-        && stVector2Copy(&pState->box.position, defaultBoxState));
+    int success = (stVector2Copy(&pState->box.size, defaultBoxSize) &&
+                   stVector2Copy(&pState->box.position, defaultBoxState));
 
     if (!success)
     {
@@ -56,8 +52,7 @@ int stStateInit(
     return stDynListInit(&pState->obstructs, 10);
 }
 
-int stStateFree(
-    TObjectState *pState)
+int stStateFree(TObjectState *pState)
 {
     if (pState == NULL)
     {
@@ -67,9 +62,7 @@ int stStateFree(
     return stDynListFree(&pState->obstructs);
 }
 
-int stStateMoveBox(
-    TObjectState *pState,
-    TDirection direction)
+int stStateMoveBox(TObjectState *pState, TDirection direction)
 {
     if (pState == NULL)
     {
@@ -79,9 +72,7 @@ int stStateMoveBox(
     return _stStateMoveBoxImpl(&pState->box, direction);
 }
 
-int stStateIsBoxMovable(
-    TObjectState *pState,
-    TDirection direction)
+int stStateIsBoxMovable(TObjectState *pState, TDirection direction)
 {
     if (pState == NULL)
     {
@@ -95,7 +86,7 @@ int stStateIsBoxMovable(
         return 0;
     }
 
-    TNode poschk = { projected.position };
+    TNode poschk = {projected.position};
     int eidx = stDynListGetIndex(&pState->obstructs, &poschk);
 
     if (eidx == -1)
@@ -106,16 +97,14 @@ int stStateIsBoxMovable(
     return 0;
 }
 
-int stStateAddObstruct(
-    TObjectState *pState,
-    const TVector2 point)
+int stStateAddObstruct(TObjectState *pState, const TVector2 point)
 {
     if (pState == NULL)
     {
         return -1;
     }
 
-    TNode newPoint = { point };
+    TNode newPoint = {point};
     int exists = stDynListExists(&pState->obstructs, &newPoint);
     if (exists)
     {
@@ -125,21 +114,18 @@ int stStateAddObstruct(
     return stDynListAdd(&pState->obstructs, &newPoint);
 }
 
-int stStateRemoveObstruct(
-    TObjectState *pState,
-    const TVector2 point)
+int stStateRemoveObstruct(TObjectState *pState, const TVector2 point)
 {
     if (pState == NULL)
     {
         return 0;
     }
 
-    TNode removePoint = { point };
+    TNode removePoint = {point};
     return stDynListRemove(&pState->obstructs, removePoint);
 }
 
-int stStateClearObstructs(
-    TObjectState *pState)
+int stStateClearObstructs(TObjectState *pState)
 {
     if (pState == NULL)
     {

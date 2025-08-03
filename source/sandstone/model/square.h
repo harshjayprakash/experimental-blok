@@ -15,15 +15,8 @@
  */
 typedef struct _Square
 {
-    /**
-     * @brief Position of the square.
-     */
-    TVector2 position;
-
-    /**
-     * @brief Size of the square.
-     */
-    TVector2 size;
+    TVector2 position; /**< Position of the square. */
+    TVector2 size;     /**< Size of the square. */
 } TSquare;
 
 #endif /* ST_SQUARE_H */

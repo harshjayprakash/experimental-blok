@@ -1,8 +1,8 @@
 /**
- * @file state.c
- * @brief Object State Implementation.
+ * @file   state.c
+ * @brief  Object State Implementation.
  * @author harshjayprakash
- * @date 2025-07-22
+ * @date   2025-08-03
  ****************************************************************************************/
 
 #include "state.h"
@@ -13,11 +13,11 @@
  * @brief Implementation of moving the box.
  *
  * @details
- *  Attempts to move the given box by the dimensions of the box itself.
+ * Attempts to move the given box by the dimensions of the box itself.
  *
- * @param[in, out] pBox      A valid pointer to the box to be moved.
- * @param[in]      direction The direction to move the box.
- * @return 1 for success, 0 for failure.
+ * @param[in, out] pBox        Pointer to the box to be moved.
+ * @param[in]      direction   Direction to move the box.
+ * @return `1` for success, `0` for failure.
  */
 static int _stStateMoveBoxImpl(TSquare *pBox, TDirection direction)
 {

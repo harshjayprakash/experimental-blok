@@ -1,8 +1,8 @@
 /**
- * @file viewport.h
- * @brief Viewport Declarations.
+ * @file   viewport.h
+ * @brief  Viewport Declarations.
  * @author harshjayprakash
- * @date 2025-07-23
+ * @date   2025-08-03
  ****************************************************************************************/
 
 #ifndef ST_VIEWPORT_H
@@ -21,49 +21,29 @@
  * @brief The Viewport Module.
  *
  * @details
- *  Contains the components required for the user interface. This is managed via the
- *  stViewport* functions.
+ * Contains the components required for the user interface. This is managed via the
+ * stViewport* functions.
  */
 typedef struct _Viewport
 {
-    /** @brief The native window data. */
-    TWindow window;
-    /** @brief The window client area. */
-    RECT region;
-    /** @brief The mouse position relative to the window. */
-    POINT mousePos;
-    /** @brief The font used for rendering. */
-    HFONT hFont;
-    /** @brief Is left mouse button down. */
-    BOOL isLeftMouseDown;
-    /** @brief Is right mouse button down. */
-    BOOL isRightMouseDown;
-
-    /** @brief The canvas component. */
-    TCanvas canvas;
-    /** @brief Is canvas locked. */
-    BOOL isCanvasLocked;
-    /** @brief Is grid lines visible. */
-    BOOL isGridVisible;
-
-    /** @brief The action and information panel component. */
-    TPanel panel;
-    /** @brief Is interface visible. */
-    BOOL isInterfaceVisible;
-    /** @brief The box coordinates label. */
-    TText coordinatesText;
-    /** @brief The clear all button. */
-    TButton clearAllButton;
-    /** @brief The generate one obstruct button. */
-    TButton generateButton;
-    /** @brief The obstruct count label. */
-    TText obstructCountText;
-    /** @brief The obstruct relative memory process bar. */
-    TProgressBar obstructMemoryBar;
-    /** @brief The locked canvas toggle label. */
-    TText lockedToggleText;
-    /** @brief The canvas locked toggle control. */
-    TToggle lockedToggle;
+    TWindow window;                 /**< Native window data. */
+    RECT region;                    /**< Window client area. */
+    POINT mousePos;                 /**< Mouse position relative to the window. */
+    HFONT hFont;                    /**< Font used for rendering. */
+    BOOL isLeftMouseDown;           /**< Is left mouse button down. */
+    BOOL isRightMouseDown;          /**< Is right mouse button down. */
+    TCanvas canvas;                 /**< Canvas component. */
+    BOOL isCanvasLocked;            /**< Is canvas locked. */
+    BOOL isGridVisible;             /**< Is grid lines visible. */
+    TPanel panel;                   /**< Action and information panel component. */
+    BOOL isInterfaceVisible;        /**< Is interface visible. */
+    TText coordinatesText;          /**< Box coordinates label. */
+    TButton clearAllButton;         /**< Clear all button. */
+    TButton generateButton;         /**< Generate one obstruct button. */
+    TText obstructCountText;        /**< Obstruct count label. */
+    TProgressBar obstructMemoryBar; /**< Obstruct relative memory process bar. */
+    TText lockedToggleText;         /**< Locked canvas toggle label. */
+    TToggle lockedToggle;           /**< Canvas locked toggle control. */
 } TViewport;
 
 /**
@@ -77,16 +57,14 @@ typedef struct _Viewport
  *  - Create the font.
  *  - Initialise all the components.
  *
- * @param[in, out] pViewport A valid pointer to the TViewport.
- * @param[in]      hInstance The handle to the application instance.
- * @return 1 for success, 0 for failure.
+ * @param[in, out] pViewport   Pointer to the viewport module.
+ * @param[in]      hInstance   Handle to the application instance.
+ * @return `1` for success, `0` for failure.
  *
- * @remark
- *  If the font creation fails, the application will continue using the base system
- *  font.
- * @remark
- *  If the native window creation fails, the application will exit. The corresponding the
- *  stViewportFree must be called.
+ * @remarks
+ * - If the font creation fails, the application will continue using the base system font.
+ * - If the native window creation fails, the application will exit. The corresponding the
+ *   stViewportFree must be called.
  */
 int stViewportInit(TViewport *pViewport, HINSTANCE hInstance);
 
@@ -94,11 +72,11 @@ int stViewportInit(TViewport *pViewport, HINSTANCE hInstance);
  * @brief Show the viewport.
  *
  * @details
- *  A wrapper for the stWindowShow function.
+ * A wrapper for the stWindowShow function.
  *
- * @param[in, out] pViewport A valid pointer to the TViewport.
- * @param[in]      showFlag  How the window will be displayed.
- * @return -1 for failure, or the exit code.
+ * @param[in, out] pViewport   Pointer to the viewport module.
+ * @param[in]      showFlag    Initial window display state.
+ * @return `-1` for failure, or the exit code.
  */
 int stViewportShow(TViewport *pViewport, DWORD showFlag);
 
@@ -106,11 +84,11 @@ int stViewportShow(TViewport *pViewport, DWORD showFlag);
  * @brief Free the viewport.
  *
  * @details
- *  Frees the allocated resources for the window and font.
+ * Frees the allocated resources for the window and font.
  *
- * @param[in, out] pViewport A valid pointer to the TViewport.
- * @param[in]      hInstance The handle to the application instance.
- * @return 1 for success, 0 for failure.
+ * @param[in, out] pViewport   Pointer to the viewport module.
+ * @param[in]      hInstance   Handle to the application instance.
+ * @return `1` for success, `0` for failure.
  */
 int stViewportFree(TViewport *pViewport, HINSTANCE hInstance);
 

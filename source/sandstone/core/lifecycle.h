@@ -2,7 +2,7 @@
  * @file   lifecycle.h
  * @brief  Setup and Entry Declarations.
  * @author harshjayprakash
- * @date   2025-07-28
+ * @date   2025-08-03
  ****************************************************************************************/
 
 #ifndef ST_LIFECYCLE_H

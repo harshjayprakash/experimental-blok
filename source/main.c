@@ -15,11 +15,11 @@
  * This function initialises the application, delegating the setup to the `stSetup`
  * function. It performs a single-instance check unless the build-time toggle
  * `STF_NO_SINGLE_INSTANCE` is defined.
- * 
+ *
  * The instance check uses a named mutex (`blokInstance`) to prevent multiple launches.
  * If a previous instance is detected, the user is notified via a message box, terminating
  * the program with an appropriate `TExitStatus` code.
- * 
+ *
  * A known issue involves preventing the program startup as another application could use
  * the same named mutex.
  *
@@ -30,14 +30,11 @@
  * @return Exit status from `stSetup()` or early termination if instance check fails.
  *         Refer to `TExitStatus` for specific codes.
  */
-int WINAPI wWinMain(
-    HINSTANCE hInstance,
-    HINSTANCE hPrevInstance,
-    LPWSTR lpCmdLine,
-    int nShowCmd)
+int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine,
+                    int nShowCmd)
 {
     (void)hPrevInstance;
-    
+
 #ifndef STF_NO_SINGLE_INSTANCE
     HANDLE hInstanceMutex = CreateMutexW(NULL, TRUE, L"BlokInstance");
 

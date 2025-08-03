@@ -1,8 +1,8 @@
 /**
- * @file lifecycle.h
- * @brief Setup and Entry Declarations.
+ * @file   lifecycle.h
+ * @brief  Setup and Entry Declarations.
  * @author harshjayprakash
- * @date 2025-07-28
+ * @date   2025-07-28
  ****************************************************************************************/
 
 #ifndef ST_LIFECYCLE_H
@@ -56,7 +56,7 @@ typedef enum _ExitStatus
  * - This function must be called from wWinMain as an entrypoint into the Sandstone
  *   application. stEntry is called internally.
  * - The showFlag value is not checked and will be passed to ShowWindow.
- * 
+ *
  * @see stEntry
  * @see TContext
  * @see stArgsParse
@@ -82,7 +82,7 @@ int stSetup(HINSTANCE hInstance, LPWSTR pCommandLine, int showFlag);
  *   lead to undefined behaviour.
  * - If any of the initialisation of modules fails, the function will exit, returning
  *   the appropriate exit code (passed to wWinMain). Any memory allocated is cleaned up.
- * 
+ *
  * @see TContext
  * @see TParsedArgs
  */

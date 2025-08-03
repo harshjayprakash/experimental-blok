@@ -39,15 +39,8 @@ int stStateInit(TObjectState *pState, const TVector2 scale)
         return 0;
     }
 
-    TVector2 defaultBoxState = {0, 0};
-    TVector2 defaultBoxSize = scale;
-    int success = (stVector2Copy(&pState->box.size, defaultBoxSize) &&
-                   stVector2Copy(&pState->box.position, defaultBoxState));
-
-    if (!success)
-    {
-        return 0;
-    }
+    pState->box.position = (TVector2){0, 0};
+    pState->box.size = scale;
 
     return stDynListInit(&pState->obstructs, 10);
 }
@@ -80,16 +73,13 @@ int stStateIsBoxMovable(TObjectState *pState, TDirection direction)
     }
 
     TSquare projected = pState->box;
-    int moved = _stStateMoveBoxImpl(&projected, direction);
-    if (!moved)
+    if (!_stStateMoveBoxImpl(&projected, direction))
     {
         return 0;
     }
 
-    TNode poschk = {projected.position};
-    int eidx = stDynListGetIndex(&pState->obstructs, &poschk);
-
-    if (eidx == -1)
+    TNode pos = {projected.position};
+    if (stDynListGetIndex(&pState->obstructs, &pos) == -1)
     {
         return 1;
     }
@@ -105,8 +95,7 @@ int stStateAddObstruct(TObjectState *pState, const TVector2 point)
     }
 
     TNode newPoint = {point};
-    int exists = stDynListExists(&pState->obstructs, &newPoint);
-    if (exists)
+    if (stDynListExists(&pState->obstructs, &newPoint) == 1)
     {
         return -1;
     }

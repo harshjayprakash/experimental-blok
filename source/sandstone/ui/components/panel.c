@@ -1,8 +1,8 @@
 /**
- * @file panel.c
- * @brief Panel Implementation.
+ * @file   panel.c
+ * @brief  Panel Implementation.
  * @author harshjayprakash
- * @date 2025-07-23
+ * @date   2025-07-23
  ****************************************************************************************/
 
 #include "panel.h"

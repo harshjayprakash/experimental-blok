@@ -1,11 +1,7 @@
 #include "toggle.h"
 
-int stToggleUpdateEx(
-    TToggle *pToggle,
-    const POINT *pPosition,
-    const SIZE *pSize,
-    const SIZE *pMargin, 
-    const SIZE *pSelectMargin)
+int stToggleUpdateEx(TToggle *pToggle, const POINT *pPosition, const SIZE *pSize,
+                     const SIZE *pMargin, const SIZE *pSelectMargin)
 {
     if (pToggle == NULL)
     {
@@ -30,7 +26,6 @@ int stToggleUpdateEx(
         pToggle->margin.cy = pMargin->cy;
     }
 
-    
     if (pSelectMargin != NULL)
     {
         pToggle->selectMargin.cx = pSelectMargin->cx;
@@ -40,7 +35,8 @@ int stToggleUpdateEx(
     pToggle->region.left = pToggle->position.x + pToggle->margin.cx;
     pToggle->region.top = pToggle->position.y + pToggle->margin.cy;
     pToggle->region.right = (pToggle->position.x + pToggle->size.cx) - pToggle->margin.cx;
-    pToggle->region.bottom = (pToggle->position.y + pToggle->size.cy) - pToggle->margin.cx;
+    pToggle->region.bottom =
+        (pToggle->position.y + pToggle->size.cy) - pToggle->margin.cx;
 
     BOOL success = CopyRect(&pToggle->selectRegion, &pToggle->region);
 
@@ -57,9 +53,7 @@ int stToggleUpdateEx(
     return 1;
 }
 
-int stToggleUpdate(
-    TToggle *pToggle,
-    const POINT *pPosition)
+int stToggleUpdate(TToggle *pToggle, const POINT *pPosition)
 {
     if (pToggle == NULL || pPosition == NULL)
     {
@@ -69,9 +63,7 @@ int stToggleUpdate(
     return stToggleUpdateEx(pToggle, pPosition, NULL, NULL, NULL);
 }
 
-int stToggleUpdateSelected(
-    TToggle *pToggle,
-    const BOOL selected)
+int stToggleUpdateSelected(TToggle *pToggle, const BOOL selected)
 {
     if (pToggle == NULL)
     {

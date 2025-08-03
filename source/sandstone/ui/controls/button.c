@@ -1,10 +1,7 @@
 #include "button.h"
 
-int stButtonUpdateEx(
-    TButton *pButton,
-    const POINT *pPos,
-    const SIZE *pSize,
-    const SIZE *pMargin)
+int stButtonUpdateEx(TButton *pButton, const POINT *pPos, const SIZE *pSize,
+                     const SIZE *pMargin)
 {
     if (pButton == NULL)
     {
@@ -32,14 +29,13 @@ int stButtonUpdateEx(
     pButton->region.left = pButton->position.x + pButton->margin.cx;
     pButton->region.top = pButton->position.y + pButton->margin.cy;
     pButton->region.right = (pButton->position.x + pButton->size.cx) - pButton->margin.cx;
-    pButton->region.bottom = (pButton->position.y + pButton->size.cy) - pButton->margin.cx;
+    pButton->region.bottom =
+        (pButton->position.y + pButton->size.cy) - pButton->margin.cx;
 
     return 1;
 }
 
-int stButtonUpdate(
-    TButton *pButton,
-    const POINT *pPos)
+int stButtonUpdate(TButton *pButton, const POINT *pPos)
 {
     if (pButton == NULL || pPos == NULL)
     {

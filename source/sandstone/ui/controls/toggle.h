@@ -14,9 +14,8 @@ typedef struct _Toggle
     BOOL selected;
 } TToggle;
 
-int stToggleUpdateEx(
-    TToggle *pToggle, const POINT *pPosition, const SIZE *pSize, const SIZE *pMargin, 
-    const SIZE *pSelectMargin);
+int stToggleUpdateEx(TToggle *pToggle, const POINT *pPosition, const SIZE *pSize,
+                     const SIZE *pMargin, const SIZE *pSelectMargin);
 
 int stToggleUpdate(TToggle *pToggle, const POINT *pPosition);
 

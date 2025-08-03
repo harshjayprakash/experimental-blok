@@ -12,8 +12,8 @@ typedef struct _Button
     POINT position;
 } TButton;
 
-int stButtonUpdateEx(
-    TButton *pButton, const POINT *pPos, const SIZE *pSize, const SIZE *pMargin);
+int stButtonUpdateEx(TButton *pButton, const POINT *pPos, const SIZE *pSize,
+                     const SIZE *pMargin);
 
 int stButtonUpdate(TButton *pButton, const POINT *pPos);
 

@@ -12,8 +12,8 @@ typedef struct _Text
     POINT position;
 } TText;
 
-int stTextUpdateEx(
-    TText *pText, const POINT *pPoint, const SIZE *pSize, const SIZE *pMargin);
+int stTextUpdateEx(TText *pText, const POINT *pPoint, const SIZE *pSize,
+                   const SIZE *pMargin);
 
 int stTextUpdate(TText *pText, const POINT *pPosition);
 

@@ -5,11 +5,10 @@
  * @date 2025-07-22
  ****************************************************************************************/
 
-
 #include "window.h"
 #include "../events/process.h"
 
-#define ST_CLEANUP_RESOURCE(object, cleanFn)                                           \
+#define ST_CLEANUP_RESOURCE(object, cleanFn)                                             \
     if (object != NULL)                                                                  \
     {                                                                                    \
         (void)cleanFn(object);                                                           \
@@ -18,25 +17,22 @@
 
 /**
  * @brief The Window Procedure.
- * 
+ *
  * @details
  *  Handles the window messages by calling stProcessEvent* functions. For any other
  *  messages, the default window procedure is called.
- * 
+ *
  * @param[in] hWindow   The handle to the window.
  * @param[in] messageId The message identifier.
  * @param[in] dataWord  Additional information, dependant on the id.
  * @param[in] dataLong  Additional information, dependant on the id.
  * @return If the message has been handled.
  */
-static LRESULT CALLBACK _stWindowProcedure(
-    HWND hWindow,
-    UINT messageId,
-    WPARAM dataWord,
-    LPARAM dataLong)
+static LRESULT CALLBACK _stWindowProcedure(HWND hWindow, UINT messageId, WPARAM dataWord,
+                                           LPARAM dataLong)
 {
     switch (messageId)
-    {   
+    {
     case WM_DESTROY:
         PostQuitMessage(0);
         return TRUE;
@@ -78,9 +74,7 @@ static LRESULT CALLBACK _stWindowProcedure(
     }
 }
 
-int stWindowInit(
-    TWindow *pWindow,
-    HINSTANCE hInstance)
+int stWindowInit(TWindow *pWindow, HINSTANCE hInstance)
 {
     if (pWindow == NULL || hInstance == NULL)
     {
@@ -104,18 +98,19 @@ int stWindowInit(
     pWindow->klass.hIconSm = LoadIconW(pWindow->klass.hInstance, IDI_APPLICATION);
 
     pWindow->klassAtomIdx = RegisterClassExW(&pWindow->klass);
-    
+
     if (pWindow->klassAtomIdx == 0)
     {
-        (void)MessageBoxW(0, L"Window Class Registration Failed", L"Blok", 
-            MB_OK | MB_ICONERROR);
+        (void)MessageBoxW(0, L"Window Class Registration Failed", L"Blok",
+                          MB_OK | MB_ICONERROR);
         stWindowFree(pWindow, hInstance);
         return 0;
     }
 
-    pWindow->hHandle = CreateWindowExW(0L, pWindow->klassName, pWindow->caption, 
-        WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 800, 600, 0, 0, hInstance, 0);
-    
+    pWindow->hHandle =
+        CreateWindowExW(0L, pWindow->klassName, pWindow->caption, WS_OVERLAPPEDWINDOW,
+                        CW_USEDEFAULT, CW_USEDEFAULT, 800, 600, 0, 0, hInstance, 0);
+
     if (pWindow->hHandle == NULL)
     {
         (void)MessageBoxW(0, L"Window Creation Failed", L"Blok", MB_OK | MB_ICONERROR);
@@ -126,9 +121,7 @@ int stWindowInit(
     return 1;
 }
 
-int stWindowShow(
-    TWindow *pWindow,
-    DWORD showFlag)
+int stWindowShow(TWindow *pWindow, DWORD showFlag)
 {
     if (pWindow == NULL)
     {
@@ -142,7 +135,7 @@ int stWindowShow(
 
     (void)ShowWindow(pWindow->hHandle, showFlag);
 
-    MSG message = { 0 };
+    MSG message = {0};
 
     for (;;)
     {
@@ -164,21 +157,19 @@ int stWindowShow(
     return (int)message.wParam;
 }
 
-int stWindowFree(
-    TWindow *pWindow,
-    HINSTANCE hInstance)
+int stWindowFree(TWindow *pWindow, HINSTANCE hInstance)
 {
     if (pWindow == NULL)
     {
         return 0;
     }
-    
+
     ST_CLEANUP_RESOURCE(pWindow->hHandle, DestroyWindow);
     ST_CLEANUP_RESOURCE(pWindow->klass.hIcon, DestroyIcon);
     ST_CLEANUP_RESOURCE(pWindow->klass.hIconSm, DestroyIcon);
     ST_CLEANUP_RESOURCE(pWindow->klass.hCursor, DestroyCursor);
     ST_CLEANUP_RESOURCE(pWindow->klass.hbrBackground, DeleteObject);
-    
+
     if (pWindow->klassAtomIdx != 0)
     {
         (void)UnregisterClassW(pWindow->klassName, hInstance);

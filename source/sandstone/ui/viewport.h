@@ -8,18 +8,18 @@
 #ifndef ST_VIEWPORT_H
 #define ST_VIEWPORT_H
 
-#include "controls/button.h"
-#include "controls/text.h"
-#include "controls/progressbar.h"
-#include "controls/toggle.h"
 #include "components/canvas.h"
 #include "components/panel.h"
+#include "controls/button.h"
+#include "controls/progressbar.h"
+#include "controls/text.h"
+#include "controls/toggle.h"
 #include "frame/window.h"
 #include <windows.h>
 
 /**
  * @brief The Viewport Module.
- * 
+ *
  * @details
  *  Contains the components required for the user interface. This is managed via the
  *  stViewport* functions.
@@ -68,7 +68,7 @@ typedef struct _Viewport
 
 /**
  * @brief Initialise the viewport.
- * 
+ *
  * @details
  *  A series of operations are performed to prepare the graphical user interface.
  *  - Randomise the seed.
@@ -76,11 +76,11 @@ typedef struct _Viewport
  *  - Sets the default flags.
  *  - Create the font.
  *  - Initialise all the components.
- * 
+ *
  * @param[in, out] pViewport A valid pointer to the TViewport.
  * @param[in]      hInstance The handle to the application instance.
  * @return 1 for success, 0 for failure.
- * 
+ *
  * @remark
  *  If the font creation fails, the application will continue using the base system
  *  font.
@@ -92,10 +92,10 @@ int stViewportInit(TViewport *pViewport, HINSTANCE hInstance);
 
 /**
  * @brief Show the viewport.
- * 
+ *
  * @details
  *  A wrapper for the stWindowShow function.
- * 
+ *
  * @param[in, out] pViewport A valid pointer to the TViewport.
  * @param[in]      showFlag  How the window will be displayed.
  * @return -1 for failure, or the exit code.
@@ -104,10 +104,10 @@ int stViewportShow(TViewport *pViewport, DWORD showFlag);
 
 /**
  * @brief Free the viewport.
- * 
+ *
  * @details
  *  Frees the allocated resources for the window and font.
- * 
+ *
  * @param[in, out] pViewport A valid pointer to the TViewport.
  * @param[in]      hInstance The handle to the application instance.
  * @return 1 for success, 0 for failure.

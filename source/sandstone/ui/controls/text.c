@@ -1,10 +1,7 @@
 #include "text.h"
 
-int stTextUpdateEx(
-    TText *pText,
-    const POINT *pPoint,
-    const SIZE *pSize,
-    const SIZE *pMargin)
+int stTextUpdateEx(TText *pText, const POINT *pPoint, const SIZE *pSize,
+                   const SIZE *pMargin)
 {
     if (pText == NULL)
     {
@@ -37,9 +34,7 @@ int stTextUpdateEx(
     return 1;
 }
 
-int stTextUpdate(
-    TText *pText,
-    const POINT *pPosition)
+int stTextUpdate(TText *pText, const POINT *pPosition)
 {
     if (pText == NULL || pPosition == NULL)
     {

@@ -19,17 +19,16 @@ typedef struct _ProgressBar
     INT barValue;
 } TProgressBar;
 
-int stProgressBarUpdateEx(
-    TProgressBar *pPbar, const POINT *pPosition, const SIZE *pSize, const SIZE *pMargin,
-    const SIZE *pBarMargin);
+int stProgressBarUpdateEx(TProgressBar *pPbar, const POINT *pPosition, const SIZE *pSize,
+                          const SIZE *pMargin, const SIZE *pBarMargin);
 
 int stProgressBarUpdate(TProgressBar *pPbar, const POINT *pPosition);
 
 int stProgressBarUpdateValueEx(TProgressBar *pPbar, const int minValue,
                                const int maxValue, const int value);
 
-int stProgressBarUpdateMinMax(
-    TProgressBar *pPbar, const int minValue, const int maxValue);
+int stProgressBarUpdateMinMax(TProgressBar *pPbar, const int minValue,
+                              const int maxValue);
 
 int stProgressBarUpdateValue(TProgressBar *pPbar, const int value);
 

@@ -1,12 +1,9 @@
-#include "../../fmt/convert.h"
 #include "action.h"
+#include "../../fmt/convert.h"
 #include <strsafe.h>
 
-int stActionMoveBox(
-    TViewport *pViewport,
-    TObjectState *pState,
-    HWND hWindow,
-    TDirection direction)
+int stActionMoveBox(TViewport *pViewport, TObjectState *pState, HWND hWindow,
+                    TDirection direction)
 {
     if (pViewport == NULL || pState == NULL || hWindow == NULL)
     {
@@ -36,9 +33,7 @@ int stActionMoveBox(
     return ok;
 }
 
-int stActionToggleGridLines(
-    TViewport *pViewport,
-    HWND hWindow)
+int stActionToggleGridLines(TViewport *pViewport, HWND hWindow)
 {
     if (pViewport == NULL || hWindow == NULL)
     {
@@ -52,9 +47,7 @@ int stActionToggleGridLines(
     return 1;
 }
 
-int stActionToggleInterface(
-    TViewport *pViewport,
-    HWND hWindow)
+int stActionToggleInterface(TViewport *pViewport, HWND hWindow)
 {
     if (pViewport == NULL || hWindow == NULL)
     {
@@ -68,9 +61,7 @@ int stActionToggleInterface(
     return 1;
 }
 
-int stActionToggleCanvasLock(
-    TViewport *pViewport,
-    HWND hWindow)
+int stActionToggleCanvasLock(TViewport *pViewport, HWND hWindow)
 {
     if (pViewport == NULL || hWindow == NULL)
     {
@@ -79,16 +70,15 @@ int stActionToggleCanvasLock(
 
     pViewport->isCanvasLocked = !pViewport->isCanvasLocked;
 
-    int result = stToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
+    int result =
+        stToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
 
     (void)InvalidateRect(hWindow, &pViewport->lockedToggle.region, FALSE);
 
     return result;
 }
 
-int stActionChangeTheme(
-    TGraphics *pGraphics,
-    HWND hWindow)
+int stActionChangeTheme(TGraphics *pGraphics, HWND hWindow)
 {
     if (pGraphics == NULL)
     {
@@ -102,11 +92,8 @@ int stActionChangeTheme(
     return result;
 }
 
-int stActionAddObstruct(
-    TViewport *pViewport,
-    TObjectState *pState,
-    HWND hWindow,
-    const POINT *pPoint)
+int stActionAddObstruct(TViewport *pViewport, TObjectState *pState, HWND hWindow,
+                        const POINT *pPoint)
 {
     if (pViewport == NULL || pState == NULL || hWindow == NULL)
     {
@@ -116,17 +103,17 @@ int stActionAddObstruct(
     TVector2 newNode = {0, 0};
     TVector2 scale = pState->box.size;
 
-    if (pPoint == NULL) 
+    if (pPoint == NULL)
     {
         newNode.x = ((rand() % pViewport->canvas.size.cx) / scale.x) * scale.x;
         newNode.y = ((rand() % pViewport->canvas.size.cy) / scale.y) * scale.y;
-    } 
-    else 
+    }
+    else
     {
         newNode.x = (pPoint->x / scale.x) * scale.x;
         newNode.y = (pPoint->y / scale.y) * scale.y;
     }
-    
+
     int idx = stStateAddObstruct(pState, newNode);
     RECT updateRegion = stConvertRectFromVector2s(newNode, scale);
 
@@ -143,11 +130,8 @@ int stActionAddObstruct(
     return (idx > -1) && thr && uc;
 }
 
-int stActionRemoveObstruct(
-    TViewport *pViewport,
-    TObjectState *pState,
-    HWND hWindow,
-    const POINT point)
+int stActionRemoveObstruct(TViewport *pViewport, TObjectState *pState, HWND hWindow,
+                           const POINT point)
 {
     if (pViewport == NULL || pState == NULL || hWindow == NULL)
     {
@@ -155,10 +139,7 @@ int stActionRemoveObstruct(
     }
 
     TVector2 scale = pState->box.size;
-    TVector2 rp = {
-        (point.x / scale.x) * scale.x,
-        (point.y / scale.y) * scale.y
-    };
+    TVector2 rp = {(point.x / scale.x) * scale.x, (point.y / scale.y) * scale.y};
 
     int idx = stStateRemoveObstruct(pState, rp);
 
@@ -171,7 +152,6 @@ int stActionRemoveObstruct(
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
-
 
     return (idx > -1) && thr && uc;
 }
@@ -207,10 +187,8 @@ int stActionClearObstructs(TViewport *pViewport, TObjectState *pState, HWND hWin
     return ok;
 }
 
-int stActionGenerateRandomObstructs(
-    TViewport *pViewport,
-    TObjectState *pState,
-    HWND hWindow)
+int stActionGenerateRandomObstructs(TViewport *pViewport, TObjectState *pState,
+                                    HWND hWindow)
 {
     if (pViewport == NULL || pState == NULL)
     {

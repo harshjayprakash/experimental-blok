@@ -9,9 +9,7 @@
 #include <strsafe.h>
 #include <time.h>
 
-int stViewportInit(
-    TViewport *pViewport,
-    HINSTANCE hInstance)
+int stViewportInit(TViewport *pViewport, HINSTANCE hInstance)
 {
     if (pViewport == NULL)
     {
@@ -33,11 +31,11 @@ int stViewportInit(
     pViewport->isGridVisible = 0;
     pViewport->isCanvasLocked = 0;
 
-    pViewport->hFont = CreateFontW(
-        16, 0, GM_COMPATIBLE, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET,
-        OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS, CLEARTYPE_QUALITY, FF_DONTCARE, 
-        L"Segoe UI");
-    
+    pViewport->hFont =
+        CreateFontW(16, 0, GM_COMPATIBLE, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+                    DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS,
+                    CLEARTYPE_QUALITY, FF_DONTCARE, L"Segoe UI");
+
     if (pViewport->hFont == NULL)
     {
         (void)MessageBoxW(0, L"Font Loading Failed.", L"Blok", MB_OK | MB_ICONERROR);
@@ -45,80 +43,55 @@ int stViewportInit(
 
     (void)GetClientRect(pViewport->window.hHandle, &pViewport->region);
 
-    (void)stPanelUpdateEx(
-        &pViewport->panel, &pViewport->region,
-        &(SIZE){500, 40}, 
-        &(SIZE){0, 0});
+    (void)stPanelUpdateEx(&pViewport->panel, &pViewport->region, &(SIZE){500, 40},
+                          &(SIZE){0, 0});
     (void)stCanvasUpdate(&pViewport->canvas, &pViewport->region);
-    
+
     (void)stTextUpdateEx(
-        &pViewport->coordinatesText, 
-        &(POINT){ pViewport->panel.region.left + 10, pViewport->panel.region.top + 10 }, 
-        &(SIZE){ 100, 20 },
-        &(SIZE){ 0, 0 });
+        &pViewport->coordinatesText,
+        &(POINT){pViewport->panel.region.left + 10, pViewport->panel.region.top + 10},
+        &(SIZE){100, 20}, &(SIZE){0, 0});
     (void)StringCbPrintfW(pViewport->coordinatesText.data, 60, L"(0, 0)");
 
-    (void)stButtonUpdateEx(
-        &pViewport->clearAllButton, 
-        &(POINT){
-            pViewport->coordinatesText.region.right + 10, 
-            pViewport->coordinatesText.region.top }, 
-        &(SIZE){ 60, 20 },
-        &(SIZE){ 0, 0 });
+    (void)stButtonUpdateEx(&pViewport->clearAllButton,
+                           &(POINT){pViewport->coordinatesText.region.right + 10,
+                                    pViewport->coordinatesText.region.top},
+                           &(SIZE){60, 20}, &(SIZE){0, 0});
     (void)StringCbPrintfW(pViewport->clearAllButton.text, 60, L"Clear All");
 
-    (void)stButtonUpdateEx(
-        &pViewport->generateButton, 
-        &(POINT){
-            pViewport->clearAllButton.region.right + 10, 
-            pViewport->clearAllButton.region.top }, 
-        &(SIZE){ 70, 20 },
-        &(SIZE){ 0, 0 });
+    (void)stButtonUpdateEx(&pViewport->generateButton,
+                           &(POINT){pViewport->clearAllButton.region.right + 10,
+                                    pViewport->clearAllButton.region.top},
+                           &(SIZE){70, 20}, &(SIZE){0, 0});
     (void)StringCbPrintfW(pViewport->generateButton.text, 60, L"Generate");
 
-    (void)stTextUpdateEx(
-        &pViewport->obstructCountText, 
-        &(POINT){
-            pViewport->generateButton.region.right + 10, 
-            pViewport->generateButton.region.top },
-        &(SIZE){ 25, 20 },
-        &(SIZE){ 0, 0 });
+    (void)stTextUpdateEx(&pViewport->obstructCountText,
+                         &(POINT){pViewport->generateButton.region.right + 10,
+                                  pViewport->generateButton.region.top},
+                         &(SIZE){25, 20}, &(SIZE){0, 0});
     (void)StringCbPrintfW(pViewport->obstructCountText.data, 60, L"0");
 
-    (void)stProgressBarUpdateEx(
-        &pViewport->obstructMemoryBar, 
-        &(POINT){
-            pViewport->obstructCountText.region.right + 10, 
-            pViewport->obstructCountText.region.top },
-        &(SIZE){ 70, 20 },
-        &(SIZE){ 0, 0 },
-        &(SIZE){ 3, 3 });
-    
-    (void)stToggleUpdateEx(
-        &pViewport->lockedToggle,
-        &(POINT){
-            pViewport->obstructMemoryBar.region.right + 10,
-            pViewport->obstructMemoryBar.region.top },
-        &(SIZE){ 20, 20 },
-        &(SIZE){ 0, 0 },
-        &(SIZE){ 5, 5 });
+    (void)stProgressBarUpdateEx(&pViewport->obstructMemoryBar,
+                                &(POINT){pViewport->obstructCountText.region.right + 10,
+                                         pViewport->obstructCountText.region.top},
+                                &(SIZE){70, 20}, &(SIZE){0, 0}, &(SIZE){3, 3});
+
+    (void)stToggleUpdateEx(&pViewport->lockedToggle,
+                           &(POINT){pViewport->obstructMemoryBar.region.right + 10,
+                                    pViewport->obstructMemoryBar.region.top},
+                           &(SIZE){20, 20}, &(SIZE){0, 0}, &(SIZE){5, 5});
     (void)stToggleUpdateSelected(&pViewport->lockedToggle, FALSE);
 
-    (void)stTextUpdateEx(
-        &pViewport->lockedToggleText, 
-        &(POINT){
-            pViewport->lockedToggle.region.right + 10, 
-            pViewport->lockedToggle.region.top },
-        &(SIZE){ 30, 20 },
-        &(SIZE){ 0, 0 });
+    (void)stTextUpdateEx(&pViewport->lockedToggleText,
+                         &(POINT){pViewport->lockedToggle.region.right + 10,
+                                  pViewport->lockedToggle.region.top},
+                         &(SIZE){30, 20}, &(SIZE){0, 0});
     (void)StringCbPrintfW(pViewport->lockedToggleText.data, 60, L"Locked");
 
     return 1;
 }
 
-int stViewportShow(
-    TViewport *pViewport,
-    DWORD showFlag)
+int stViewportShow(TViewport *pViewport, DWORD showFlag)
 {
     if (pViewport == NULL)
     {
@@ -128,9 +101,7 @@ int stViewportShow(
     return stWindowShow(&pViewport->window, showFlag);
 }
 
-int stViewportFree(
-    TViewport *pViewport,
-    HINSTANCE hInstance)
+int stViewportFree(TViewport *pViewport, HINSTANCE hInstance)
 {
     if (pViewport == NULL)
     {

@@ -7,9 +7,7 @@
 
 #include "canvas.h"
 
-int stCanvasUpdate(
-    TCanvas *pCanvas,
-    const RECT *pWindowRgn)
+int stCanvasUpdate(TCanvas *pCanvas, const RECT *pWindowRgn)
 {
     if (pCanvas == NULL || pWindowRgn == NULL)
     {
@@ -17,7 +15,7 @@ int stCanvasUpdate(
     }
 
     BOOL success = CopyRect(&pCanvas->region, pWindowRgn);
-    
+
     if (!success)
     {
         return 0;

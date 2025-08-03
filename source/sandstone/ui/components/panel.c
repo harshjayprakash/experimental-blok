@@ -7,11 +7,8 @@
 
 #include "panel.h"
 
-int stPanelUpdateEx(
-    TPanel *pPanel,
-    const RECT *pWindowRgn,
-    const SIZE *pSize,
-    const SIZE *pMargin)
+int stPanelUpdateEx(TPanel *pPanel, const RECT *pWindowRgn, const SIZE *pSize,
+                    const SIZE *pMargin)
 {
     if (pPanel == NULL || pWindowRgn == NULL)
     {
@@ -38,9 +35,7 @@ int stPanelUpdateEx(
     return 1;
 }
 
-int stPanelUpdate(
-    TPanel *pPanel,
-    const RECT *pWindowRgn)
+int stPanelUpdate(TPanel *pPanel, const RECT *pWindowRgn)
 {
     if (pPanel == NULL || pWindowRgn == NULL)
     {

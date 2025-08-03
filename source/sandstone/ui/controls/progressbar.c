@@ -1,11 +1,7 @@
 #include "progressbar.h"
 
-int stProgressBarUpdateEx(
-    TProgressBar *pPbar,
-    const POINT *pPosition,
-    const SIZE *pSize,
-    const SIZE *pMargin,
-    const SIZE *pBarMargin)
+int stProgressBarUpdateEx(TProgressBar *pPbar, const POINT *pPosition, const SIZE *pSize,
+                          const SIZE *pMargin, const SIZE *pBarMargin)
 {
     if (pPbar == NULL)
     {
@@ -42,7 +38,7 @@ int stProgressBarUpdateEx(
     pPbar->region.bottom = (pPbar->position.y + pPbar->size.cy) - pPbar->margin.cx;
 
     BOOL success = CopyRect(&pPbar->barRegion, &pPbar->region);
-        
+
     if (!success)
     {
         return 0;
@@ -60,9 +56,7 @@ int stProgressBarUpdateEx(
     return 1;
 }
 
-int stProgressBarUpdate(
-    TProgressBar *pPbar,
-    const POINT *pPosition)
+int stProgressBarUpdate(TProgressBar *pPbar, const POINT *pPosition)
 {
     if (pPbar == NULL || pPosition == NULL)
     {
@@ -72,11 +66,8 @@ int stProgressBarUpdate(
     return stProgressBarUpdateEx(pPbar, pPosition, NULL, NULL, NULL);
 }
 
-int stProgressBarUpdateValueEx(
-    TProgressBar* pPbar,
-    const int minValue,
-    const int maxValue,
-    const int value)
+int stProgressBarUpdateValueEx(TProgressBar *pPbar, const int minValue,
+                               const int maxValue, const int value)
 {
     if (pPbar == NULL)
     {
@@ -89,10 +80,7 @@ int stProgressBarUpdateValueEx(
     return mmuOk && vuOk;
 }
 
-int stProgressBarUpdateMinMax(
-    TProgressBar *pPbar,
-    const int minValue,
-    const int maxValue)
+int stProgressBarUpdateMinMax(TProgressBar *pPbar, const int minValue, const int maxValue)
 {
     if (pPbar == NULL)
     {
@@ -105,9 +93,7 @@ int stProgressBarUpdateMinMax(
     return 1;
 }
 
-int stProgressBarUpdateValue(
-    TProgressBar *pPbar,
-    const int value)
+int stProgressBarUpdateValue(TProgressBar *pPbar, const int value)
 {
     if (pPbar == NULL)
     {
@@ -115,8 +101,9 @@ int stProgressBarUpdateValue(
     }
 
     pPbar->barValue = value;
-    float percent = (float) pPbar->barValue / (pPbar->barMaxValue - pPbar->barMinValue);
-    pPbar->barRegion.right = pPbar->barRegion.left + ((LONG)(pPbar->barMaxSize * percent));
+    float percent = (float)pPbar->barValue / (pPbar->barMaxValue - pPbar->barMinValue);
+    pPbar->barRegion.right =
+        pPbar->barRegion.left + ((LONG)(pPbar->barMaxSize * percent));
 
     return 1;
 }

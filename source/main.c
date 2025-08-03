@@ -23,11 +23,11 @@
  * A known issue involves preventing the program startup as another application could use
  * the same named mutex.
  *
- * @param[in] hInstance     Handle to the application instance.
- * @param[in] hPrevInstance Legacy instance handle (unused).
- * @param[in] lpCmdLine     Unicode command-line arguments.
- * @param[in] nShowCmd      Initial window display state.
- * @return Exit status from `stSetup()` or early termination if instance check fails.
+ * @param[in] hInstance       Handle to the application instance.
+ * @param[in] hPrevInstance   Legacy instance handle (unused).
+ * @param[in] lpCmdLine       Unicode command-line arguments.
+ * @param[in] nShowCmd        Initial window display state.
+ * @return Exit status from `stSetup` or early termination if instance check fails.
  *         Refer to `TExitStatus` for specific codes.
  */
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine,

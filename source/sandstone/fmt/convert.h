@@ -1,8 +1,8 @@
 /**
- * @file convert.h
- * @brief Conversion Helper Declarations.
+ * @file   convert.h
+ * @brief  Conversion Helper Declarations.
  * @author harshjayprakash
- * @date 2025-07-20
+ * @date   2025-08-03
  ****************************************************************************************/
 
 #ifndef ST_CONVERT_H
@@ -12,78 +12,69 @@
 #include <windows.h>
 
 /**
- * @brief Converts Win32 POINT to TVector2
+ * @brief Converts Win32 POINT to a TVector2
  * 
  * @details
- *  Maps the values from POINT to TVector2 without modification.
+ * Copies the `x` and `y` fields from the POINT structure into the `TVector2` format.
  * 
- * @param[in] pt The point to be converted.
- * @return A TVector2.
+ * @param[in] pt   Structure with point coordinates.
+ * @return A TVector2 structure.
  */
 TVector2 stConvertVector2FromPoint(const POINT pt);
 
 /**
- * @brief Converts TVector2 to Win32 POINT.
+ * @brief Converts TVector2 to a Win32 POINT.
  * 
  * @details
- *  Maps the values from TVector2 to POINT without modification.
+ * Assigns the `x` and `y` fields from the TVector2 to a POINT structure.
  * 
- * @param[in] vec The vector to be converted.
- * @return A POINT.
+ * @param[in] vec   Vector to be mapped.
+ * @return A POINT structure.
  */
 POINT stConvertPointFromVector2(const TVector2 vec);
 
 /**
- * @brief Converts TVector2 to Win32 SIZE.
+ * @brief Converts TVector2 to a Win32 SIZE.
  * 
  * @details
- *  Maps the values from TVector2 to SIZE without modification.
+ * Interprets the vector's `x` and `y` fields as width and height.
  * 
- * @param[in] vec The vector to be converted.
- * @return A SIZE.
+ * @param[in] vec   Vector to be mapped.
+ * @return A SIZE structure.
  */
 SIZE stConvertSizeFromVector2(const TVector2 vec);
 
 /**
- * @brief Converts two TVector2s to Win32 RECT.
+ * @brief Builds a Win32 RECT from position and size vectors.
  * 
  * @details
- *  Maps the two TVector2s to the resulting RECT, where position denotes the top and left
- *  values. The size is used to calculate the right and bottom values.
- *  - `top = pos.y`
- *  - `left = pos.x`
- *  - `bottom = pos.y + size.y`
- *  - `right = pos.x + size.x`
+ * Uses `pos` as the top-left corner and adds `size` to compute the bottom-right edge.
  * 
- * @param[in] pos  The position of the rectangle.
- * @param[in] size The size of the rectangle.
- * @return A RECT.
+ * @param[in] pos    Vector representing the origin.
+ * @param[in] size   Vector representing the width and height.
+ * @return A RECT with calculated boundaries.
  */
 RECT stConvertRectFromVector2s(const TVector2 pos, const TVector2 size);
 
 /**
- * @brief Retrieves position from Win32 RECT.
+ * @brief Extracts the top-left position from a RECT into a TVector2.
  * 
  * @details
- *  Retrieves the top and left values as the position mapped to the TVector2 type.
- *  - `x = rect.left`
- *  - `y = rect.top`
+ * Returns a vector representing the `top` and `left` fields of the RECT.
  * 
- * @param[in] rect The rectangle to retrieve the position from.
- * @return A TVector2 denoting position.
+ * @param[in] rect   A RECT structure.
+ * @return A TVector2 containing position data.
  */
 TVector2 stConvertVector2PositionFromRect(const RECT rect);
 
 /**
- * @brief Retrieves size from Win32 RECT.
+ * @brief Computes size from a RECT and returns as a TVector2.
  * 
  * @details
- *  Retrieves the size by calculating the difference between values:
- *  - `y = rect.bottom - rect.top`,
- *  - `x = rect.right - rect.left`.
+ * Calculates width and height using `right - left` and `bottom - top`.
  * 
- * @param[in] rect The rectangle to retrieve the size from.
- * @return A TVector2 denoting size.
+ * @param[in] rect   A RECT structure.
+ * @return A TVector2 representing size.
  */
 TVector2 stConvertSizeVector2FromRect(const RECT rect);
 

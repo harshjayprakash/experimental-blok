@@ -20,15 +20,13 @@
  */
 typedef enum _ArgMode
 {
-    ST_ARGM_UNSET   =  0, /**< No parsing mode set. */
+    ST_ARGM_UNSET = 0,    /**< No parsing mode set. */
     ST_ARGM_SCALE_X = 10, /**< Parse horizontal (x-axis) scaling value only. */
     ST_ARGM_SCALE_Y = 20, /**< Parse vertical (y-axis) scaling value only. */
     ST_ARGM_SCALE_A = 30, /**< Parse both horizontal and vertical scaling values. */
 } TArgMode;
 
-int stArgsParse(
-    TParsedArgs *pParsedArgs, 
-    LPCWSTR pCommandLine)
+int stArgsParse(TParsedArgs *pParsedArgs, LPCWSTR pCommandLine)
 {
     if (pParsedArgs == NULL || pCommandLine == NULL)
     {

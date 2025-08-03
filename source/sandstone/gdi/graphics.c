@@ -1,15 +1,13 @@
 /**
- * @file graphics.c
- * @brief Graphics Lifecycle Implementation.
+ * @file   graphics.c
+ * @brief  Graphics Lifecycle Implementation.
  * @author harshjayprakash
- * @date 2025-07-20
+ * @date   2025-07-20
  ****************************************************************************************/
 
 #include "graphics.h"
 
-int stGraphicsInit(
-    TGraphics *pGraphics,
-    const TTheme theme)
+int stGraphicsInit(TGraphics *pGraphics, const TTheme theme)
 {
     if (pGraphics == NULL)
     {
@@ -28,8 +26,7 @@ int stGraphicsInit(
     return stRenderToolsInit(&pGraphics->renderTools, &pGraphics->palette);
 }
 
-int stGraphicsFree(
-    TGraphics *pGraphics)
+int stGraphicsFree(TGraphics *pGraphics)
 {
     if (pGraphics == NULL)
     {
@@ -39,8 +36,7 @@ int stGraphicsFree(
     return stRenderToolsFree(&pGraphics->renderTools);
 }
 
-int stGraphicsSwitchTheme(
-    TGraphics* pGraphics)
+int stGraphicsSwitchTheme(TGraphics *pGraphics)
 {
     if (pGraphics == NULL)
     {

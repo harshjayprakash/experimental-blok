@@ -1,42 +1,29 @@
 /**
- * @file args.c
- * @brief Argument Parsing Implementation.
+ * @file   args.c
+ * @brief  Argument parser implementation.
  * @author harshjayprakash
- * @date 2025-07-24
+ * @date   2025-07-30
  ****************************************************************************************/
 
 #include "args.h"
 
-#define _ST_VALIDATE_SCALING(assignTo, value)                                               \
- * @defgroup stArgsEvaluateScale Argument Scaling Validation
- * @{
- */
-
-#define ST_EVALUATE_SCALE(assignTo, value)                                               \
+#define _ST_VALIDATE_SCALING(assignTo, value)                                            \
     int scale = abs(_wtoi(value));                                                       \
     assignTo = (scale != 0) ? scale : ST_ARGS_SCALE_DEFAULT
 
-/** @} */
-
 /**
- * @brief Argument Parsing Mode.
- * 
+ * @brief Modes used during argument parsing.
+ *
  * @details
- *  Used as a series of flags for the argument parser, when looking for values to store.
+ * This enumeration represents flags that guide the argument parser in extracting values
+ * based on the previous contextual argument.
  */
 typedef enum _ArgMode
 {
-    /** @brief Unset parsing mode. */
-    ST_ARGM_UNSET = 0,
-
-    /** @brief X Scaling Parsing Mode. */
-    ST_ARGM_SCALE_X = 10,
-
-    /** @brief Y Scaling Parsing Mode. */
-    ST_ARGM_SCALE_Y = 20,
-
-    /** @brief Both x and y scaling parsing mode. */
-    ST_ARGM_SCALE_A = 30
+    ST_ARGM_UNSET   =  0, /**< No parsing mode set. */
+    ST_ARGM_SCALE_X = 10, /**< Parse horizontal (x-axis) scaling value only. */
+    ST_ARGM_SCALE_Y = 20, /**< Parse vertical (y-axis) scaling value only. */
+    ST_ARGM_SCALE_A = 30, /**< Parse both horizontal and vertical scaling values. */
 } TArgMode;
 
 int stArgsParse(

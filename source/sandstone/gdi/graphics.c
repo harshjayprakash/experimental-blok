@@ -17,8 +17,7 @@ int stGraphicsInit(TGraphics *pGraphics, const TTheme theme)
     int disregardTheme = (theme >= ST_THEME_MIN && theme <= ST_THEME_MAX);
     pGraphics->currentTheme = (!disregardTheme) ? ST_THEME_UNSET : theme;
 
-    int success = stThemeApply(&pGraphics->palette, pGraphics->currentTheme);
-    if (!success)
+    if (!stThemeApply(&pGraphics->palette, pGraphics->currentTheme))
     {
         return 0;
     }
@@ -44,8 +43,9 @@ int stGraphicsSwitchTheme(TGraphics *pGraphics)
     }
 
     TTheme currentTheme = pGraphics->currentTheme;
-    TTheme newTheme =
-        ((currentTheme == 1 || currentTheme == 0) ? ST_THEME_LIGHT : ST_THEME_DARK);
+    TTheme newTheme = ((currentTheme == ST_THEME_DARK || currentTheme == ST_THEME_UNSET)
+                           ? ST_THEME_LIGHT
+                           : ST_THEME_DARK);
 
     if (!stGraphicsFree(pGraphics))
     {

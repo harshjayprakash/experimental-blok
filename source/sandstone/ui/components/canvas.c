@@ -14,9 +14,7 @@ int stCanvasUpdate(TCanvas *pCanvas, const RECT *pWindowRgn)
         return 0;
     }
 
-    BOOL success = CopyRect(&pCanvas->region, pWindowRgn);
-
-    if (!success)
+    if (CopyRect(&pCanvas->region, pWindowRgn) == FALSE)
     {
         return 0;
     }

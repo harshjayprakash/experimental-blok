@@ -1,8 +1,8 @@
 /**
- * @file canvas.h
- * @brief Canvas Declarations.
+ * @file   canvas.h
+ * @brief  Canvas Declarations.
  * @author harshjayprakash
- * @date 2025-07-23
+ * @date   2025-08-03
  ****************************************************************************************/
 
 #ifndef ST_CANVAS_H
@@ -14,34 +14,27 @@
  * @brief Represents the Base Canvas Component.
  *
  * @details
- *  Stores the region area and size. Use the stCanvasUpdate function to manage these
- *  attributes.
+ * Stores the region area and size. Use the stCanvasUpdate function to manage these
+ * attributes.
  */
 typedef struct _Canvas
 {
-    /**
-     * @brief The canvas region.
-     */
-    RECT region;
-
-    /**
-     * @brief The canvas size.
-     */
-    SIZE size;
+    RECT region; /**< Canvas region. */
+    SIZE size; /**< Canvas size. */
 } TCanvas;
 
 /**
  * @brief Update or initialises the canvas values.
  *
  * @details
- *  Sizes the canvas to match the window's client area.
+ * Sizes the canvas to match the window's client area.
  *
- * @param[in, out] pCanvas    A valid pointer to the canvas to be updated.
- * @param[in]      pWindowRgn A valid pointer to the window client region.
- * @return 1 for success, 0 for failure.
+ * @param[in, out] pCanvas      Pointer to the canvas to be updated.
+ * @param[in]      pWindowRgn   Pointer to the window client region.
+ * @return `1` for success, `0` for failure.
  *
  * @remark
- *  This function must be called once for the initialisation.
+ * This function must be called once for the initialisation.
  */
 int stCanvasUpdate(TCanvas *pCanvas, const RECT *pWindowRgn);
 

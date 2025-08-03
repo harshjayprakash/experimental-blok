@@ -1,8 +1,8 @@
 /**
- * @file canvas.c
- * @brief Canvas Implementation.
+ * @file   canvas.c
+ * @brief  Canvas Implementation.
  * @author harshjayprakash
- * @date 2025-07-23
+ * @date   2025-07-23
  ****************************************************************************************/
 
 #include "canvas.h"

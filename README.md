@@ -201,6 +201,7 @@ call state functions and updates.
   * Updated to not rely on the caller updating control/component attributes.
 * **Simplify Model Grouping**: Flatten folder model structure.
 * **Remove Unused**: Removed any unused functions or structures.
+* **Updated Codename**: `st` for `Sandstone`.
 
 ## Limitations and Known Issues
 

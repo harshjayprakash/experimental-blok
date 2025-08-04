@@ -84,17 +84,19 @@ the canvas.
 
 ## The Architecture
 
-The architecture of the program is based on the `Context` structure, storing the state of
-the entire program as a sort of global through a singleton helper function.
+The architecture reflects a quiet intent - each module is a shaped layer in a larger
+system, design not just to function, but to clarify. At its centre is the `Context`
+structure, accessed via helpers.
 
-* **main.c**: Provides the entry point.
-* **core**: The base context structure (storing all program data) and
-lifecycle functions.
-* **fmt**: Conversion between blok to win -types and vice versa.
-* **gdi**: Graphics tools lifetime management and theme colours.
-* **model**: Models data structures.
-* **state**: Object state tracking.
-* **ui**: The user interface, components, controls and event handling.
+The layout is discoverable by design:
+
+* **main.c**: Entry point and context bootstrap.
+* **core**: Defines the `Context` structure and lifecycle functions.
+* **fmt**: Converts between internal *blok* types and Win32 facing values.
+* **gdi**: Manages graphics tool lifetimes and theme colours.
+* **model**: Shapes and organises internal data structures.
+* **state**: Tracks object state.
+* **ui**: Hosts components, controls, and event handling logic.
 
 ## Compilation and Execution
 

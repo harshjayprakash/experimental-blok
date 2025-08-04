@@ -1,3 +1,10 @@
+/**
+ * @file   progressbar.c
+ * @brief  Progress Bar Implementation
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #include "progressbar.h"
 
 int stProgressBarUpdateEx(TProgressBar *pPbar, const POINT *pPosition, const SIZE *pSize,

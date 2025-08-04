@@ -1,3 +1,10 @@
+/**
+ * @file   process.c
+ * @brief  Event Processing Implementation
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #include "process.h"
 #include "../../core/context.h"
 #include "../../fmt/convert.h"

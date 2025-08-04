@@ -1,3 +1,10 @@
+/**
+ * @file   button.c
+ * @brief  Button Implementation
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #include "button.h"
 
 int stButtonUpdateEx(TButton *pButton, const POINT *pPos, const SIZE *pSize,

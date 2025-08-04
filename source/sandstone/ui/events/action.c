@@ -1,3 +1,10 @@
+/**
+ * @file   action.c
+ * @brief  State Actions Implementation
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #include "action.h"
 #include "../../fmt/convert.h"
 #include <strsafe.h>

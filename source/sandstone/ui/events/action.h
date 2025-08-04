@@ -1,3 +1,10 @@
+/**
+ * @file   action.h
+ * @brief  State Actions Declarations
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #ifndef ST_ACTION_H
 #define ST_ACTION_H
 

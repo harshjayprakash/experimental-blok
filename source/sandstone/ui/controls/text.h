@@ -1,3 +1,10 @@
+/**
+ * @file   text.h
+ * @brief  Text Declarations
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #ifndef ST_TEXT_H
 #define ST_TEXT_H
 

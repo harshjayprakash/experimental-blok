@@ -1,3 +1,10 @@
+/**
+ * @file   button.h
+ * @brief  Button Declarations
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #ifndef ST_BUTTON_H
 #define ST_BUTTON_H
 

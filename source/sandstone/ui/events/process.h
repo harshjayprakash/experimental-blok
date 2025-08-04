@@ -1,3 +1,10 @@
+/**
+ * @file   process.h
+ * @brief  Event Processing Declarations
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #ifndef ST_PROCESS_H
 #define ST_PROCESS_H
 

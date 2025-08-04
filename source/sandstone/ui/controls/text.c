@@ -1,3 +1,10 @@
+/**
+ * @file   text.c
+ * @brief  Text Implementation
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #include "text.h"
 
 int stTextUpdateEx(TText *pText, const POINT *pPoint, const SIZE *pSize,

@@ -1,3 +1,10 @@
+/**
+ * @file   toggle.c
+ * @brief  Toggle Button Declarations
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #include "toggle.h"
 
 int stToggleUpdateEx(TToggle *pToggle, const POINT *pPosition, const SIZE *pSize,

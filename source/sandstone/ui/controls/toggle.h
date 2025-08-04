@@ -1,3 +1,10 @@
+/**
+ * @file   toggle.h
+ * @brief  Toggle Button Declarations
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #ifndef ST_TOGGLE_H
 #define ST_TOGGLE_H
 

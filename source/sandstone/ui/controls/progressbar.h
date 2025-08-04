@@ -1,3 +1,10 @@
+/**
+ * @file   progressbar.h
+ * @brief  Progress Bar Declarations
+ * @author harshjayprakash
+ * @date   2025-08-04
+ ****************************************************************************************/
+
 #ifndef ST_PROGRESSBAR_H
 #define ST_PROGRESSBAR_H
 

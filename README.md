@@ -106,6 +106,13 @@ The layout is discoverable by design:
 > MinGW may work (even on Linux under Wine), it is not officially supported, and no 
 > specific steps are provided.
 
+Required Libraries
+
+* **GDI32**: Used for graphics.
+* **SHELL32**: Command-line parsing.
+* **USER32**: Window messages, controls and event handling.
+* **KERNEL32**: Memory and process interaction.
+
 ### Building the Project
 
 ```sh

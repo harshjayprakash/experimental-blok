@@ -37,9 +37,7 @@ int stProgressBarUpdateEx(TProgressBar *pPbar, const POINT *pPosition, const SIZ
     pPbar->region.right = (pPbar->position.x + pPbar->size.cx) - pPbar->margin.cx;
     pPbar->region.bottom = (pPbar->position.y + pPbar->size.cy) - pPbar->margin.cx;
 
-    BOOL success = CopyRect(&pPbar->barRegion, &pPbar->region);
-
-    if (!success)
+    if (CopyRect(&pPbar->barRegion, &pPbar->region) == FALSE)
     {
         return 0;
     }

@@ -12,13 +12,15 @@ int stActionMoveBox(TViewport *pViewport, TObjectState *pState, HWND hWindow,
 
     if (!stStateIsBoxMovable(pState, direction))
     {
-        return 0;
+        return 1;
     }
 
-    int ok = stStateMoveBox(pState, direction);
-    int thr = SUCCEEDED(StringCbPrintfW(pViewport->coordinatesText.data, 60, L"(%d, %d)",
-                                        pState->box.position.x, pState->box.position.y));
-    ok = ok && thr;
+    int boxMoved = stStateMoveBox(pState, direction);
+    int textUpdated =
+        SUCCEEDED(StringCbPrintfW(pViewport->coordinatesText.data, 60, L"(%d, %d)",
+                                  pState->box.position.x, pState->box.position.y));
+
+    int ok = boxMoved && textUpdated;
 
     RECT boxUpdateRgn = {
         pState->box.position.x - pState->box.size.x,
@@ -70,12 +72,11 @@ int stActionToggleCanvasLock(TViewport *pViewport, HWND hWindow)
 
     pViewport->isCanvasLocked = !pViewport->isCanvasLocked;
 
-    int result =
-        stToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
+    int ok = stToggleUpdateSelected(&pViewport->lockedToggle, pViewport->isCanvasLocked);
 
     (void)InvalidateRect(hWindow, &pViewport->lockedToggle.region, FALSE);
 
-    return result;
+    return ok;
 }
 
 int stActionChangeTheme(TGraphics *pGraphics, HWND hWindow)
@@ -85,11 +86,11 @@ int stActionChangeTheme(TGraphics *pGraphics, HWND hWindow)
         return 0;
     }
 
-    int result = stGraphicsSwitchTheme(pGraphics);
+    int ok = stGraphicsSwitchTheme(pGraphics);
 
     (void)InvalidateRect(hWindow, NULL, FALSE);
 
-    return result;
+    return ok;
 }
 
 int stActionAddObstruct(TViewport *pViewport, TObjectState *pState, HWND hWindow,
@@ -114,20 +115,20 @@ int stActionAddObstruct(TViewport *pViewport, TObjectState *pState, HWND hWindow
         newNode.y = (pPoint->y / scale.y) * scale.y;
     }
 
-    int idx = stStateAddObstruct(pState, newNode);
+    int newIdx = stStateAddObstruct(pState, newNode);
+    int textUpdated = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, 60,
+                                                L"%ld", pState->obstructs.size));
+    int pbarUpdated = stProgressBarUpdateValueEx(
+        &pViewport->obstructMemoryBar, 0, pState->obstructs.max, pState->obstructs.size);
+
+    int ok = (newIdx > -1) && textUpdated && pbarUpdated;
+
     RECT updateRegion = stConvertRectFromVector2s(newNode, scale);
-
-    int thr = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, 60, L"%ld",
-                                        pState->obstructs.size));
-
-    int uc = stProgressBarUpdateValueEx(&pViewport->obstructMemoryBar, 0,
-                                        pState->obstructs.max, pState->obstructs.size);
-
     (void)InvalidateRect(hWindow, &updateRegion, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
 
-    return (idx > -1) && thr && uc;
+    return ok;
 }
 
 int stActionRemoveObstruct(TViewport *pViewport, TObjectState *pState, HWND hWindow,
@@ -141,19 +142,19 @@ int stActionRemoveObstruct(TViewport *pViewport, TObjectState *pState, HWND hWin
     TVector2 scale = pState->box.size;
     TVector2 rp = {(point.x / scale.x) * scale.x, (point.y / scale.y) * scale.y};
 
-    int idx = stStateRemoveObstruct(pState, rp);
+    int rmIdx = stStateRemoveObstruct(pState, rp);
+    int textUpdated = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, 60,
+                                                L"%ld", pState->obstructs.size));
+    int pbarUpdated = stProgressBarUpdateValueEx(
+        &pViewport->obstructMemoryBar, 0, pState->obstructs.max, pState->obstructs.size);
 
-    int thr = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, 60, L"%ld",
-                                        pState->obstructs.size));
-
-    int uc = stProgressBarUpdateValueEx(&pViewport->obstructMemoryBar, 0,
-                                        pState->obstructs.max, pState->obstructs.size);
+    int ok = (rmIdx > -1) && textUpdated && pbarUpdated;
 
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->canvas.region, FALSE);
 
-    return (idx > -1) && thr && uc;
+    return ok;
 }
 
 int stActionClearObstructs(TViewport *pViewport, TObjectState *pState, HWND hWindow)
@@ -163,22 +164,13 @@ int stActionClearObstructs(TViewport *pViewport, TObjectState *pState, HWND hWin
         return 0;
     }
 
-    int ok = stStateClearObstructs(pState);
+    int cleared = stStateClearObstructs(pState);
+    int pbarValueUpdated =
+        stProgressBarUpdateValue(&pViewport->obstructMemoryBar, pState->obstructs.size);
+    int textUpdated = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, 60,
+                                                L"%ld", pState->obstructs.size));
 
-    if (!ok)
-    {
-        return 0;
-    }
-
-    ok = stProgressBarUpdateValue(&pViewport->obstructMemoryBar, pState->obstructs.size);
-
-    if (!ok)
-    {
-        return 0;
-    }
-
-    (void)StringCbPrintfW(pViewport->obstructCountText.data, 60, L"%ld",
-                          pState->obstructs.size);
+    int ok = cleared && pbarValueUpdated && textUpdated;
 
     (void)InvalidateRect(hWindow, &pViewport->obstructCountText.region, FALSE);
     (void)InvalidateRect(hWindow, &pViewport->obstructMemoryBar.region, FALSE);

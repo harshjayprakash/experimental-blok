@@ -38,9 +38,7 @@ int stToggleUpdateEx(TToggle *pToggle, const POINT *pPosition, const SIZE *pSize
     pToggle->region.bottom =
         (pToggle->position.y + pToggle->size.cy) - pToggle->margin.cx;
 
-    BOOL success = CopyRect(&pToggle->selectRegion, &pToggle->region);
-
-    if (!success)
+    if (CopyRect(&pToggle->selectRegion, &pToggle->region) == FALSE)
     {
         return 0;
     }

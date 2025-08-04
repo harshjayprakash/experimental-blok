@@ -213,7 +213,8 @@ call state functions and updates.
 oversize grid.
 * **Drag Persistence**: Drag-click interaction can persist even if the cursor leaves
 the window boundary.
-* **Hitbox Detection**: Buttons and toggle regions have imprecise hit detection.
+* **Hitbox Detection**: Buttons and toggle regions - especially `Clear All` and `Generate`
+have imprecise hitboxes, which may impact usability.
 
 ## Potential Future Features (No Specific Date).
 

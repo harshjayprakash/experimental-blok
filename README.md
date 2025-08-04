@@ -145,7 +145,7 @@ The available arguments are shown below.
 
 ## Changelog
 
-### Version 1005.0 - September 2025
+### Version 1005.0 - 04 August 2025
 
 **Overview**: This version is a complete rewrite.
 

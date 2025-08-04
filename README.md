@@ -142,7 +142,7 @@ The available arguments are shown below.
 
 **Overview**: This version is a complete rewrite.
 
-#### Functionality
+#### **Functionality**
 
 * **New Shortcuts**: Added new keyboard shortcuts for extra functionality.
 * **Drag Click**: Implemented canvas drag-click for rapid obstruct creation and removal.
@@ -153,7 +153,7 @@ The available arguments are shown below.
   * Added absolute value check to handle negative inputs.
 * **Non-Case Sensitive CLI Arguments**: Updated to use the `_wcsnicmp` function.
 
-#### Visual
+#### **Visual**
 
 * **Panel Visibility**: Added `I` keyboard shortcut to toggle panel visibility.
 * **Grid Lines**: Added `G` keyboard shortcut to toggle the grid lines visibility.
@@ -165,7 +165,7 @@ The available arguments are shown below.
 * **Faster UI Updates**: Updated message loop to use `PeekMessage` instead of `GetMessage`.
 * **Updated Panel Width**: Updated the panel to not span the whole width of the window.
 
-#### Internal
+#### **Internal**
 
 * **Updated Architecture**: Focused on a more modular architecture based on the `Context`
 structure.

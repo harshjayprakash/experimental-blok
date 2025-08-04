@@ -2,10 +2,11 @@
 
 > [!NOTE]
 > As of v. 1005, this project no longer follows a fixed release rhythm - defined as
-> regular merges from the next branch into main.
+> regular merges from the next branch into main.  New features will be introduced
+> progressively, with early access gated behind feature macro toggles (off by default).
 >
-> New features will be introduced progressively, with early access gated behind feature
-> macro toggles (off by default).
+> The next few versions will focus on stability, reliability, internal changes and
+> documentation.
 
 ## Overview
 

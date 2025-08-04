@@ -28,8 +28,10 @@ There was no formal documentation or GitHub presence during those early versions
 motivation was exploratory - rooted in a interest with Windows internals and low-level
 behaviour.
 
+<!--
 > See the [Development History](./docs/development-history.md) for how *Blok* went from
 > minimal rendering to intentional system design.
+-->
 
 ### The Canvas Grid
 

@@ -218,11 +218,19 @@ have imprecise hitboxes, which may impact usability.
 
 ## Potential Future Features (No Specific Date).
 
-* **Path Finding**: Finding the shortest path between two points.
+### User Experience Enhancements
+
 * **Movable Panel**: Allow the user to move the panel by introducing a draggable area.
 * **Notify System**: Providing feedback for operations that failed.
-* **Custom Theming**: Allow user to theme the application to their liking.
 * **Help Guide**: Provide in-application guidance on how to use it.
+* **Custom Theming**: Allow user to theme the application to their liking.
+
+### Persistence and Configuration
+
 * **Save State**: Save and Import state from a file.
 * **Configuration File**: Provide a method to import settings from a file on startup.
+
+### Simulation and Logic
+
+* **Path Finding**: Finding the shortest path between two points.
 * **Generate Maze**: Allow entire maze generation.

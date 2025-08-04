@@ -24,7 +24,7 @@ int stActionMoveBox(TViewport *pViewport, TObjectState *pState, HWND hWindow,
 
     int boxMoved = stStateMoveBox(pState, direction);
     int textUpdated =
-        SUCCEEDED(StringCbPrintfW(pViewport->coordinatesText.data, 60, L"(%d, %d)",
+        SUCCEEDED(StringCbPrintfW(pViewport->coordinatesText.data, ST_TEXT_SIZE, L"(%d, %d)",
                                   pState->box.position.x, pState->box.position.y));
 
     int ok = boxMoved && textUpdated;
@@ -123,7 +123,7 @@ int stActionAddObstruct(TViewport *pViewport, TObjectState *pState, HWND hWindow
     }
 
     int newIdx = stStateAddObstruct(pState, newNode);
-    int textUpdated = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, 60,
+    int textUpdated = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, ST_TEXT_SIZE,
                                                 L"%ld", pState->obstructs.size));
     int pbarUpdated = stProgressBarUpdateValueEx(
         &pViewport->obstructMemoryBar, 0, pState->obstructs.max, pState->obstructs.size);
@@ -150,7 +150,7 @@ int stActionRemoveObstruct(TViewport *pViewport, TObjectState *pState, HWND hWin
     TVector2 rp = {(point.x / scale.x) * scale.x, (point.y / scale.y) * scale.y};
 
     int rmIdx = stStateRemoveObstruct(pState, rp);
-    int textUpdated = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, 60,
+    int textUpdated = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, ST_TEXT_SIZE,
                                                 L"%ld", pState->obstructs.size));
     int pbarUpdated = stProgressBarUpdateValueEx(
         &pViewport->obstructMemoryBar, 0, pState->obstructs.max, pState->obstructs.size);
@@ -174,7 +174,7 @@ int stActionClearObstructs(TViewport *pViewport, TObjectState *pState, HWND hWin
     int cleared = stStateClearObstructs(pState);
     int pbarValueUpdated =
         stProgressBarUpdateValue(&pViewport->obstructMemoryBar, pState->obstructs.size);
-    int textUpdated = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, 60,
+    int textUpdated = SUCCEEDED(StringCbPrintfW(pViewport->obstructCountText.data, ST_TEXT_SIZE,
                                                 L"%ld", pState->obstructs.size));
 
     int ok = cleared && pbarValueUpdated && textUpdated;

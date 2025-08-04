@@ -10,9 +10,11 @@
 
 #include <windows.h>
 
+#define ST_TEXT_SIZE 60
+
 typedef struct _Text
 {
-    WCHAR data[60];
+    WCHAR data[ST_TEXT_SIZE];
     RECT region;
     SIZE size;
     SIZE margin;

@@ -10,9 +10,11 @@
 
 #include <windows.h>
 
+#define ST_BUTTON_TEXT_SIZE 60
+
 typedef struct _Button
 {
-    WCHAR text[60];
+    WCHAR text[ST_BUTTON_TEXT_SIZE];
     RECT region;
     SIZE size;
     SIZE margin;

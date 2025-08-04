@@ -51,25 +51,26 @@ int stViewportInit(TViewport *pViewport, HINSTANCE hInstance)
         &pViewport->coordinatesText,
         &(POINT){pViewport->panel.region.left + 10, pViewport->panel.region.top + 10},
         &(SIZE){100, 20}, &(SIZE){0, 0});
-    (void)StringCbPrintfW(pViewport->coordinatesText.data, 60, L"(0, 0)");
+    (void)StringCbPrintfW(pViewport->coordinatesText.data, ST_TEXT_SIZE, L"(0, 0)");
 
     (void)stButtonUpdateEx(&pViewport->clearAllButton,
                            &(POINT){pViewport->coordinatesText.region.right + 10,
                                     pViewport->coordinatesText.region.top},
                            &(SIZE){60, 20}, &(SIZE){0, 0});
-    (void)StringCbPrintfW(pViewport->clearAllButton.text, 60, L"Clear All");
+    (void)StringCbPrintfW(pViewport->clearAllButton.text, ST_BUTTON_TEXT_SIZE, L"Clear All");
 
     (void)stButtonUpdateEx(&pViewport->generateButton,
                            &(POINT){pViewport->clearAllButton.region.right + 10,
                                     pViewport->clearAllButton.region.top},
                            &(SIZE){70, 20}, &(SIZE){0, 0});
-    (void)StringCbPrintfW(pViewport->generateButton.text, 60, L"Generate");
+    (void)StringCbPrintfW(pViewport->generateButton.text, ST_BUTTON_TEXT_SIZE,
+                          L"Generate");
 
     (void)stTextUpdateEx(&pViewport->obstructCountText,
                          &(POINT){pViewport->generateButton.region.right + 10,
                                   pViewport->generateButton.region.top},
                          &(SIZE){25, 20}, &(SIZE){0, 0});
-    (void)StringCbPrintfW(pViewport->obstructCountText.data, 60, L"0");
+    (void)StringCbPrintfW(pViewport->obstructCountText.data, ST_TEXT_SIZE, L"0");
 
     (void)stProgressBarUpdateEx(&pViewport->obstructMemoryBar,
                                 &(POINT){pViewport->obstructCountText.region.right + 10,
@@ -86,7 +87,7 @@ int stViewportInit(TViewport *pViewport, HINSTANCE hInstance)
                          &(POINT){pViewport->lockedToggle.region.right + 10,
                                   pViewport->lockedToggle.region.top},
                          &(SIZE){30, 20}, &(SIZE){0, 0});
-    (void)StringCbPrintfW(pViewport->lockedToggleText.data, 60, L"Locked");
+    (void)StringCbPrintfW(pViewport->lockedToggleText.data, ST_TEXT_SIZE, L"Locked");
 
     return 1;
 }

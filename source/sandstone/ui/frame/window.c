@@ -1,0 +1,179 @@
+/**
+ * @file   window.c
+ * @brief  Native Window Implementation.
+ * @author harshjayprakash
+ * @date   2025-08-03
+ ****************************************************************************************/
+
+#include "window.h"
+#include "../events/process.h"
+
+#define ST_CLEANUP_RESOURCE(object, cleanFn)                                             \
+    if (object != NULL)                                                                  \
+    {                                                                                    \
+        (void)cleanFn(object);                                                           \
+        object = NULL;                                                                   \
+    }
+
+/**
+ * @brief The Window Procedure.
+ *
+ * @details
+ * Handles the window messages by calling stProcessEvent* functions. For any other
+ * messages, the default window procedure is called.
+ *
+ * @param[in] hWindow     Handle to the window.
+ * @param[in] messageId   Message identifier.
+ * @param[in] dataWord    Additional information, dependant on the id.
+ * @param[in] dataLong    Additional information, dependant on the id.
+ * @return If the message has been handled.
+ */
+static LRESULT CALLBACK _stWindowProcedure(HWND hWindow, UINT messageId, WPARAM dataWord,
+                                           LPARAM dataLong)
+{
+    switch (messageId)
+    {
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return TRUE;
+
+    case WM_PAINT:
+        stProcessEventOnPaint(hWindow);
+        return TRUE;
+
+    case WM_SIZE:
+        stProcessEventOnResize(hWindow);
+        return TRUE;
+
+    case WM_KEYDOWN:
+        stProcessEventOnKeyDown(hWindow, dataWord);
+        return TRUE;
+
+    case WM_LBUTTONDOWN:
+        stProcessEventOnLeftMouseDown(hWindow, dataLong);
+        return TRUE;
+
+    case WM_RBUTTONDOWN:
+        stProcessEventOnRightMouseDown(hWindow, dataLong);
+        return TRUE;
+
+    case WM_LBUTTONUP:
+        stProcessEventOnLeftMouseUp(hWindow, dataLong);
+        return TRUE;
+
+    case WM_RBUTTONUP:
+        stProcessEventOnRightMouseUp(hWindow, dataLong);
+        return TRUE;
+
+    case WM_MOUSEMOVE:
+        stProcessEventOnMouseHover(hWindow, dataLong);
+        return TRUE;
+
+    default:
+        return DefWindowProcW(hWindow, messageId, dataWord, dataLong);
+    }
+}
+
+int stWindowInit(TWindow *pWindow, HINSTANCE hInstance)
+{
+    if (pWindow == NULL || hInstance == NULL)
+    {
+        return 0;
+    }
+
+    pWindow->klassName = L"BlokViewportWindow";
+    pWindow->caption = L"Blok 1005.0";
+
+    pWindow->klass.cbSize = sizeof(WNDCLASSEXW);
+    pWindow->klass.style = CS_HREDRAW | CS_VREDRAW;
+    pWindow->klass.lpfnWndProc = _stWindowProcedure;
+    pWindow->klass.cbClsExtra = 0;
+    pWindow->klass.cbWndExtra = 0;
+    pWindow->klass.hInstance = hInstance;
+    pWindow->klass.hIcon = LoadIconW(pWindow->klass.hInstance, IDI_APPLICATION);
+    pWindow->klass.hCursor = LoadCursorW(NULL, IDC_ARROW);
+    pWindow->klass.hbrBackground = CreateSolidBrush(RGB(0, 0, 0));
+    pWindow->klass.lpszMenuName = 0;
+    pWindow->klass.lpszClassName = pWindow->klassName;
+    pWindow->klass.hIconSm = LoadIconW(pWindow->klass.hInstance, IDI_APPLICATION);
+
+    pWindow->klassAtomIdx = RegisterClassExW(&pWindow->klass);
+
+    if (pWindow->klassAtomIdx == 0)
+    {
+        (void)MessageBoxW(0, L"Window Class Registration Failed", L"Blok",
+                          MB_OK | MB_ICONERROR);
+        stWindowFree(pWindow, hInstance);
+        return 0;
+    }
+
+    pWindow->hHandle =
+        CreateWindowExW(0L, pWindow->klassName, pWindow->caption, WS_OVERLAPPEDWINDOW,
+                        CW_USEDEFAULT, CW_USEDEFAULT, 800, 600, 0, 0, hInstance, 0);
+
+    if (pWindow->hHandle == NULL)
+    {
+        (void)MessageBoxW(0, L"Window Creation Failed", L"Blok", MB_OK | MB_ICONERROR);
+        stWindowFree(pWindow, hInstance);
+        return 0;
+    }
+
+    return 1;
+}
+
+int stWindowShow(TWindow *pWindow, DWORD showFlag)
+{
+    if (pWindow == NULL)
+    {
+        return -1;
+    }
+
+    if (pWindow->hHandle == NULL)
+    {
+        return -1;
+    }
+
+    (void)ShowWindow(pWindow->hHandle, showFlag);
+
+    MSG message = {0};
+
+    for (;;)
+    {
+        if (PeekMessageW(&message, 0, 0, 0, PM_REMOVE))
+        {
+            (void)TranslateMessage(&message);
+            (void)DispatchMessageW(&message);
+
+            if (message.message == WM_QUIT)
+            {
+                break;
+            }
+        }
+
+        (void)UpdateWindow(pWindow->hHandle);
+        Sleep(1);
+    }
+
+    return (int)message.wParam;
+}
+
+int stWindowFree(TWindow *pWindow, HINSTANCE hInstance)
+{
+    if (pWindow == NULL)
+    {
+        return 0;
+    }
+
+    ST_CLEANUP_RESOURCE(pWindow->hHandle, DestroyWindow);
+    ST_CLEANUP_RESOURCE(pWindow->klass.hIcon, DestroyIcon);
+    ST_CLEANUP_RESOURCE(pWindow->klass.hIconSm, DestroyIcon);
+    ST_CLEANUP_RESOURCE(pWindow->klass.hCursor, DestroyCursor);
+    ST_CLEANUP_RESOURCE(pWindow->klass.hbrBackground, DeleteObject);
+
+    if (pWindow->klassAtomIdx != 0)
+    {
+        (void)UnregisterClassW(pWindow->klassName, hInstance);
+    }
+
+    return 1;
+}

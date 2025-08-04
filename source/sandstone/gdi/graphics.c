@@ -1,0 +1,61 @@
+/**
+ * @file   graphics.c
+ * @brief  Graphics Lifecycle Implementation.
+ * @author harshjayprakash
+ * @date   2025-07-20
+ ****************************************************************************************/
+
+#include "graphics.h"
+
+int stGraphicsInit(TGraphics *pGraphics, const TTheme theme)
+{
+    if (pGraphics == NULL)
+    {
+        return 0;
+    }
+
+    int disregardTheme = (theme >= ST_THEME_MIN && theme <= ST_THEME_MAX);
+    pGraphics->currentTheme = (!disregardTheme) ? ST_THEME_UNSET : theme;
+
+    if (!stThemeApply(&pGraphics->palette, pGraphics->currentTheme))
+    {
+        return 0;
+    }
+
+    return stRenderToolsInit(&pGraphics->renderTools, &pGraphics->palette);
+}
+
+int stGraphicsFree(TGraphics *pGraphics)
+{
+    if (pGraphics == NULL)
+    {
+        return 0;
+    }
+
+    return stRenderToolsFree(&pGraphics->renderTools);
+}
+
+int stGraphicsSwitchTheme(TGraphics *pGraphics)
+{
+    if (pGraphics == NULL)
+    {
+        return 0;
+    }
+
+    TTheme currentTheme = pGraphics->currentTheme;
+    TTheme newTheme = ((currentTheme == ST_THEME_DARK || currentTheme == ST_THEME_UNSET)
+                           ? ST_THEME_LIGHT
+                           : ST_THEME_DARK);
+
+    if (!stGraphicsFree(pGraphics))
+    {
+        return 0;
+    }
+
+    if (!stGraphicsInit(pGraphics, newTheme))
+    {
+        return 0;
+    }
+
+    return 1;
+}

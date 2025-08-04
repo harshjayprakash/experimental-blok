@@ -102,9 +102,9 @@ The layout is discoverable by design:
 
 ### Pre-requisites
 
-* **CMake** (Minimum Version: 3.10): Required for building the project.
-* **MSVC** (or a Compiler that Supports C11).
-* **Windows OS** (It can be compiled with MinGW on Linux (steps not provided), though designed for Windows).
+> This project is tested with MSVC on Windows, using CMake as its build system. While
+> MinGW may work (even on Linux under Wine), it is not officially supported, and no 
+> specific steps are provided.
 
 ### Building the Project
 

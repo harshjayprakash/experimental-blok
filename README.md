@@ -72,7 +72,7 @@ the canvas.
 * `W`: Move box up by current scale (up arrow).
 * `A`: Move box right by current scale (right arrow).
 * `S`: Move box down by current scale (down arrow).
-* `D`: Move box left by current scale (right arrow).
+* `D`: Move box left by current scale (left arrow).
 * `G`: Toggle grid lines visibility.
 * `O`: Generate an obstructive at a random location.
 * `I`: Toggle interface visibility.

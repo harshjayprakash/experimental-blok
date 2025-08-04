@@ -102,11 +102,8 @@ lifecycle functions.
 ### Pre-requisites
 
 * **CMake** (Minimum Version: 3.10): Required for building the project.
-* **MSVC** (or a Compiler that Support C11).
-* **Windows OS** (It can be compiled with MinGW on Linux, though designed for Windows).
-
-Please note that Visual Studio, VSCode (with the CMake Extension), or CLion will
-automatically build the project on Windows.
+* **MSVC** (or a Compiler that Supports C11).
+* **Windows OS** (It can be compiled with MinGW on Linux (steps not provided), though designed for Windows).
 
 ### Building the Project
 

@@ -1,12 +1,8 @@
 # Experimental Blok
 
 > [!NOTE]
-> As of v. 1005, this project no longer follows a fixed release rhythm - defined as
-> regular merges from the next branch into main.  New features will be introduced
-> progressively, with early access gated behind feature macro toggles (off by default).
->
-> The next few versions will focus on stability, reliability, internal changes and
-> documentation.
+> As of v6.0, this project no longer follows a fixed release rhythm - defined as
+> regular merges from the next branch into main.
 
 ## Overview
 
@@ -27,10 +23,6 @@ window, but left visual trails due to missing repaint logic.
 There was no formal documentation or GitHub presence during those early versions. The
 motivation was exploratory - rooted in a interest with Windows internals and low-level
 behaviour.
-
-> _Curious how Blok evolved?_ See
-> [the Wiki](https://github.com/harshjayprakash/experimental-blok/wiki) for development 
-> history and system design. 
 
 ### The Canvas Grid
 
@@ -145,7 +137,7 @@ The available arguments are shown below.
 
 ## Changelog
 
-### Version 1005.0 - 04 August 2025
+### Version 6.0 - 04 August 2025
 
 **Overview**: This version is a complete rewrite.
 

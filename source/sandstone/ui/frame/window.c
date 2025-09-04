@@ -82,7 +82,7 @@ int stWindowInit(TWindow *pWindow, HINSTANCE hInstance)
     }
 
     pWindow->klassName = L"BlokViewportWindow";
-    pWindow->caption = L"Blok 1005.0";
+    pWindow->caption = L"Blok 6.0";
 
     pWindow->klass.cbSize = sizeof(WNDCLASSEXW);
     pWindow->klass.style = CS_HREDRAW | CS_VREDRAW;

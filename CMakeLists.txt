@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.10)
 
 project(blok C)
 
-include(${CMAKE_SOURCE_DIR}/config/FeatureToggles.cmake)
-
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
 

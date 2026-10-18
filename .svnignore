@@ -1,1 +1,4 @@
 .git
+.vs
+out
+build

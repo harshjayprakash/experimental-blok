@@ -7,41 +7,41 @@ set(CMAKE_C_STANDARD_REQUIRED True)
 
 set(SOURCES
     # FORMAT MODULE
-    "source/sandstone/fmt/convert.c" "source/sandstone/fmt/convert.h"
+    "src/blok/fmt/convert.c" "src/blok/fmt/convert.h"
 
     # GDI MODULE
-    "source/sandstone/gdi/graphics.c" "source/sandstone/gdi/graphics.h"
-    "source/sandstone/gdi/rendertools.c" "source/sandstone/gdi/rendertools.h"
-    "source/sandstone/gdi/theme.c" "source/sandstone/gdi/theme.h"
+    "src/blok/gdi/graphics.c" "src/blok/gdi/graphics.h"
+    "src/blok/gdi/rendertools.c" "src/blok/gdi/rendertools.h"
+    "src/blok/gdi/theme.c" "src/blok/gdi/theme.h"
 
     # MODEL MODULE
-    "source/sandstone/model/direction.c" "source/sandstone/model/direction.h"
-    "source/sandstone/model/dynlist.c" "source/sandstone/model/dynlist.h"
-    "source/sandstone/model/square.h"
-    "source/sandstone/model/vector.c" "source/sandstone/model/vector.h"
+    "src/blok/model/direction.c" "src/blok/model/direction.h"
+    "src/blok/model/dynlist.c" "src/blok/model/dynlist.h"
+    "src/blok/model/square.h"
+    "src/blok/model/vector.c" "src/blok/model/vector.h"
 
     # STATE MODULE
-    "source/sandstone/state/state.c" "source/sandstone/state/state.h"
+    "src/blok/state/state.c" "src/blok/state/state.h"
 
     # UI MODULE
-    "source/sandstone/ui/components/canvas.c" "source/sandstone/ui/components/canvas.h"
-    "source/sandstone/ui/components/panel.c" "source/sandstone/ui/components/panel.h"
-    "source/sandstone/ui/controls/button.c" "source/sandstone/ui/controls/button.h"
-    "source/sandstone/ui/controls/progressbar.c" "source/sandstone/ui/controls/progressbar.h"
-    "source/sandstone/ui/controls/text.c" "source/sandstone/ui/controls/text.h"
-    "source/sandstone/ui/controls/toggle.c" "source/sandstone/ui/controls/toggle.h"
-    "source/sandstone/ui/events/action.c" "source/sandstone/ui/events/action.h"
-    "source/sandstone/ui/events/process.c" "source/sandstone/ui/events/process.h"
-    "source/sandstone/ui/frame/window.c" "source/sandstone/ui/frame/window.h"
-    "source/sandstone/ui/viewport.c" "source/sandstone/ui/viewport.h"
+    "src/blok/ui/components/canvas.c" "src/blok/ui/components/canvas.h"
+    "src/blok/ui/components/panel.c" "src/blok/ui/components/panel.h"
+    "src/blok/ui/controls/button.c" "src/blok/ui/controls/button.h"
+    "src/blok/ui/controls/progressbar.c" "src/blok/ui/controls/progressbar.h"
+    "src/blok/ui/controls/text.c" "src/blok/ui/controls/text.h"
+    "src/blok/ui/controls/toggle.c" "src/blok/ui/controls/toggle.h"
+    "src/blok/ui/events/action.c" "src/blok/ui/events/action.h"
+    "src/blok/ui/events/process.c" "src/blok/ui/events/process.h"
+    "src/blok/ui/frame/window.c" "src/blok/ui/frame/window.h"
+    "src/blok/ui/viewport.c" "src/blok/ui/viewport.h"
 
     # MAIN MODULE
-    "source/sandstone/core/context.c" "source/sandstone/core/context.h"
-     "source/sandstone/core/lifecycle.h" "source/sandstone/core/lifecycle.c"
-    "source/sandstone/core/args.c" "source/sandstone/core/args.h"
+    "src/blok/core/context.c" "src/blok/core/context.h"
+    "src/blok/core/lifecycle.h" "src/blok/core/lifecycle.c"
+    "src/blok/core/args.c" "src/blok/core/args.h"
 
     # MAIN ENTRYPOINT
-    "source/main.c"
+    "src/main.c"
  )
 
 add_definitions(/DUNICODE /D_UNICODE /DSTRICT)

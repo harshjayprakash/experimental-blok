@@ -40,9 +40,31 @@ set(SOURCES
     "src/blok/core/lifecycle.h" "src/blok/core/lifecycle.c"
     "src/blok/core/args.c" "src/blok/core/args.h"
 
+    # INFO MODULE
+    "src/blok/info/version.h"
+
     # MAIN ENTRYPOINT
     "src/main.c"
  )
 
-add_definitions(/DUNICODE /D_UNICODE /DSTRICT)
+set(BLOK_VERSION_STRING "")
+set(BLOK_MILESTONE 8.0)
+set(BLOK_SVN_REVISION "")
+
+execute_process(
+    COMMAND svn info --show-item revision
+    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
+    OUTPUT_VARIABLE BLOK_SVN_REVISION
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+if (DEFINED BLOK_MILESTONE)
+    string(APPEND BLOK_VERSION_STRING "m${BLOK_MILESTONE}")
+endif()
+
+if (NOT BLOK_SVN_REVISION STREQUAL "")
+    string(APPEND BLOK_VERSION_STRING " (r${BLOK_SVN_REVISION})")
+endif()
+
+add_definitions(/DUNICODE /D_UNICODE /DSTRICT /DBLOK_VERSION_STRING="${BLOK_VERSION_STRING}")
 add_executable(${PROJECT_NAME} WIN32 ${SOURCES})

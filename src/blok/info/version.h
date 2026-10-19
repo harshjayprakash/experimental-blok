@@ -1,0 +1,10 @@
+#ifndef BLOK_VERSION_H
+#define BLOK_VERSION_H
+
+#define BLOK_PROGRAM_NAME L"Blok "
+
+#ifndef BLOK_VERSION_STRING
+#define BLOK_VERSION_STRING L""
+#endif /* BLOK_VERSION_STRING */
+
+#endif /* BLOK_VERSION_H */

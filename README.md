@@ -12,13 +12,12 @@ interactive controls for wall placement, scaling, and theming.
 
 Originally created in February 2021 as a personal experiment to learn C and the Windows
 API (after an initial C++ prototype), *Blok* had no defined goals or roadmap. The project
-name emerged from a simple typo - misspelling "Block" during its early phase as
+name was created from a simple typo - misspelling of "Block" during its early phase as
 "The C Project." The first implementation rendered a box that moved freely across a native
 window, but left visual trails due to missing repaint logic.
 
 There was no formal documentation or GitHub presence during those early versions. The
-motivation was exploratory - rooted in a interest with Windows internals and low-level
-behaviour.
+motivation was exploratory, with interest with Windows internals and low-level behaviour.
 
 ### The Canvas Grid
 
@@ -60,24 +59,21 @@ the canvas.
 
 | Key | Action |
 | :-- | :----- |
-| <kbd>W</kbd> | Move box up by current scale. |
-| <kbd>A</kbd> | Move box left by current scale. |
-| <kbd>S</kbd> | Move box down by current scale. |
-| <kbd>D</kbd> | Move box right by current scale. |
+| <kbd>W</kbd> / <kbd>&UpArrow;</kbd> | Move box up by current scale. |
+| <kbd>A</kbd> / <kbd>&LeftArrow;</kbd> | Move box left by current scale. |
+| <kbd>S</kbd> / <kbd>&RightArrow;</kbd> | Move box down by current scale. |
+| <kbd>D</kbd> / <kbd>&DownArrow;</kbd> | Move box right by current scale. |
 | <kbd>G</kbd> | Toggle grid lines visibility. |
 | <kbd>O</kbd> | Generate an obstructive at a random location. |
 | <kbd>I</kbd> | Toggle interface visibility. |
-| <kbd>T</kbd> | Change theme. |
+| <kbd>T</kbd> | Switch theme between light/dark. |
 | <kbd>C</kbd> | Clear all obstructs. |
 | <kbd>L</kbd> | Toggle canvas lock. |
 | <kbd>M</kbd> | Generate a set of random obstructs. |
 
 ## The Architecture
 
-The architecture reflects a quiet intent - each module is a shaped layer in a larger
-system, design not just to function, but to clarify. At its centre is the `Context`
-structure, accessed via helpers.
-
+The application is centred around the `TContext` structure, accessed via helpers.
 The layout is discoverable by design:
 
 * **main.c**: Entry point and context bootstrap.

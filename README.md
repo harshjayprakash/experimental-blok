@@ -61,8 +61,8 @@ the canvas.
 | :-- | :----- |
 | <kbd>W</kbd> / <kbd>&UpArrow;</kbd> | Move box up by current scale. |
 | <kbd>A</kbd> / <kbd>&LeftArrow;</kbd> | Move box left by current scale. |
-| <kbd>S</kbd> / <kbd>&RightArrow;</kbd> | Move box down by current scale. |
-| <kbd>D</kbd> / <kbd>&DownArrow;</kbd> | Move box right by current scale. |
+| <kbd>S</kbd> / <kbd>&DownArrow;</kbd> | Move box down by current scale. |
+| <kbd>D</kbd> / <kbd>&RightArrow;</kbd> | Move box right by current scale. |
 | <kbd>G</kbd> | Toggle grid lines visibility. |
 | <kbd>O</kbd> | Generate an obstructive at a random location. |
 | <kbd>I</kbd> | Toggle interface visibility. |

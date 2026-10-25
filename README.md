@@ -137,71 +137,7 @@ The available arguments are shown below.
 
 ## Changelog
 
-### Version 6.0 - 04 August 2025
-
-**Overview**: This version is a complete rewrite.
-
-#### **Functionality**
-
-* **New Shortcuts**: Added new keyboard shortcuts for extra functionality.
-* **Drag Click**: Implemented canvas drag-click for rapid obstruct creation and removal.
-* **Obstruct Handling**: Re-added obstruct removal.
-* **Instance Check**: Implemented a Mutex for a single running instance.
-* **Custom Scaling Arguments**:
-  * Implemented optional separate x and y scaling arguments.
-  * Added absolute value check to handle negative inputs.
-* **Non-Case Sensitive CLI Arguments**: Updated to use the `_wcsnicmp` function.
-
-#### **Visual**
-
-* **Panel Visibility**: Added `I` keyboard shortcut to toggle panel visibility.
-* **Grid Lines**: Added `G` keyboard shortcut to toggle the grid lines visibility.
-* **Font Upgrade**: Updated font to Segoe UI.
-* **Redesigned UI**: Updated the UI for a more modern look.
-* **Colour Scheme**: Increased colours in palette.
-* **Updated Text Rendering**: Updated to use `DrawTextW` instead of `TextOutW` for richer options.
-* **Hover Effects**: Add hover indication over controls.
-* **Faster UI Updates**: Updated message loop to use `PeekMessage` instead of `GetMessage`.
-* **Updated Panel Width**: Updated the panel to not span the whole width of the window.
-
-#### **Internal**
-
-* **Updated Architecture**: Focused on a more modular architecture based on the `Context`
-structure.
-* **Build System Update**: Switch to CMake and Microsoft Cl Compiler.
-* **Fully Unicode**: Switched to the `wWinMain` entry point.
-* **Enhanced Documentation**: Updated technical documentation for clarity.
-* **Static Data**: Removed all file-scope static variables.
-* **Simplified Return Values**: Functions return an integer instead of a result. (If not
-applicable, data is returned.)
-* **Refactor Types**: Renamed `Vector` to `DynList`, and `position` and `size` to
-`VectorII`.
-* **Extracted Modules**: Modularised additional modules
-  * **State Module**: An abstraction from direct data modification for the UI and stores
-the object data.
-  * **Graphics**: A store for GDI graphics tools and colours decoupled from the UI.
-  * **Arguments**: Updated to not rely on global application-specific functions.
-* **Top-Level UI Module**: Added an encapsulated Viewport UI module.
-* **Update Naming Conventions**:
-  * Variables prefixed with `p` if pointer, `h` if handle.
-  * Function names follow `st` + `<file-scope>` + `<function-name>()`.
-  * Function names are prefix with `_` if static.
-  * Structures and enumerations are Pascal Case with `_` prefix.
-  * Typedef follow Pascal Case and prefixed with `T`.
-* **List Node Removal**: Add Node Removal on DynList API.
-* **Add Conversion Util Functions**:
-  * Implemented WinTypes to BlokTypes and vice versa.
-  * Implemented Direction to Vector function.
-* **Extracted UI Logic**
-  * **Process Event Methods**: Re-implemented event functions.
-  * **Action UI Methods**: Re-implemented a set of abstracted functions for the UI to
-call state functions and updates.
-* **Modular Controls and Components**:
-  * Add separate update functions.
-  * Updated to not rely on the caller updating control/component attributes.
-* **Simplify Model Grouping**: Flatten folder model structure.
-* **Remove Unused**: Removed any unused functions or structures.
-* **Updated Codename**: `st` for `Sandstone`.
+* See [Changelog and Version History](./CHANGELOG)
 
 ## Limitations and Known Issues
 

@@ -1,9 +1,5 @@
 # Experimental Blok
 
-> [!NOTE]
-> As of v6.0, this project no longer follows a fixed release rhythm - defined as
-> regular merges from the next branch into main.
-
 ## Overview
 
 <p align="center">
@@ -62,17 +58,19 @@ the canvas.
 
 ### Keyboard Shortcuts
 
-* `W`: Move box up by current scale.
-* `A`: Move box left by current scale.
-* `S`: Move box down by current scale.
-* `D`: Move box right by current scale.
-* `G`: Toggle grid lines visibility.
-* `O`: Generate an obstructive at a random location.
-* `I`: Toggle interface visibility.
-* `T`: Change theme.
-* `C`: Clear all obstructs.
-* `L`: Toggle canvas lock.
-* `M`: Generate a set of random obstructs. _experimental: to generate whole maze_.
+| Key | Action |
+| :-- | :----- |
+| <kbd>W</kbd> | Move box up by current scale. |
+| <kbd>A</kbd> | Move box left by current scale. |
+| <kbd>S</kbd> | Move box down by current scale. |
+| <kbd>D</kbd> | Move box right by current scale. |
+| <kbd>G</kbd> | Toggle grid lines visibility. |
+| <kbd>O</kbd> | Generate an obstructive at a random location. |
+| <kbd>I</kbd> | Toggle interface visibility. |
+| <kbd>T</kbd> | Change theme. |
+| <kbd>C</kbd> | Clear all obstructs. |
+| <kbd>L</kbd> | Toggle canvas lock. |
+| <kbd>M</kbd> | Generate a set of random obstructs. |
 
 ## The Architecture
 

@@ -2,13 +2,13 @@
 #define BLOK_STATE_H
 
 #include "../model/direction.h"
-#include "../model/dynlist.h"
+#include "../model/dynarr.h"
 #include "../model/square.h"
 
 typedef struct _State
 {
     TSquare box;
-    TDynList obstructs;
+    TDynArr obstructs;
 } TObjectState;
 
 int BlokStateInit(TObjectState *pState, const TVector2 scale);

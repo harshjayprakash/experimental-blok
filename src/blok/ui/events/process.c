@@ -71,7 +71,7 @@ void BlokProcessEventOnPaint(HWND hWindow)
     for (long obstructIdx = 0; obstructIdx < pState->obstructs.size; obstructIdx++)
     {
         RECT obstructiveRc =
-            BlokConvertRectFromVector2s(pState->obstructs.pArr[obstructIdx].data, scaling);
+            BlokConvertRectFromVector2s(pState->obstructs.arr[obstructIdx].data, scaling);
         (void)FillRect(hOffSurface, &obstructiveRc,
                        pGraphics->renderTools.brushes.hBaseBackgroundMedium);
     }

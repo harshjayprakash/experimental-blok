@@ -25,7 +25,7 @@ int BlokStateInit(TObjectState *pState, const TVector2 scale)
     pState->box.position = (TVector2){0, 0};
     pState->box.size = scale;
 
-    return BlokDynListInit(&pState->obstructs, 10);
+    return BlokDynArrInit(&pState->obstructs, 10);
 }
 
 int BlokStateFree(TObjectState *pState)
@@ -35,7 +35,7 @@ int BlokStateFree(TObjectState *pState)
         return 0;
     }
 
-    return BlokDynListFree(&pState->obstructs);
+    return BlokDynArrFree(&pState->obstructs);
 }
 
 int BlokStateMoveBox(TObjectState *pState, TDirection direction)
@@ -62,7 +62,7 @@ int BlokStateIsBoxMovable(TObjectState *pState, TDirection direction)
     }
 
     TNode pos = {projected.position};
-    if (BlokDynListGetIndex(&pState->obstructs, &pos) == -1)
+    if (BlokDynArrGetIndex(&pState->obstructs, &pos) == -1)
     {
         return 1;
     }
@@ -78,12 +78,12 @@ int BlokStateAddObstruct(TObjectState *pState, const TVector2 point)
     }
 
     TNode newPoint = {point};
-    if (BlokDynListExists(&pState->obstructs, &newPoint) == 1)
+    if (BlokDynArrExists(&pState->obstructs, &newPoint) == 1)
     {
         return -1;
     }
 
-    return BlokDynListAdd(&pState->obstructs, &newPoint);
+    return BlokDynArrAdd(&pState->obstructs, &newPoint);
 }
 
 int BlokStateRemoveObstruct(TObjectState *pState, const TVector2 point)
@@ -94,7 +94,7 @@ int BlokStateRemoveObstruct(TObjectState *pState, const TVector2 point)
     }
 
     TNode removePoint = {point};
-    return BlokDynListRemove(&pState->obstructs, removePoint);
+    return BlokDynArrRemove(&pState->obstructs, removePoint);
 }
 
 int BlokStateClearObstructs(TObjectState *pState)
@@ -104,5 +104,5 @@ int BlokStateClearObstructs(TObjectState *pState)
         return 0;
     }
 
-    return BlokDynListClear(&pState->obstructs);
+    return BlokDynArrClear(&pState->obstructs);
 }

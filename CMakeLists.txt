@@ -16,7 +16,7 @@ set(SOURCES
 
     # MODEL MODULE
     "src/blok/model/direction.c" "src/blok/model/direction.h"
-    "src/blok/model/dynlist.c" "src/blok/model/dynlist.h"
+    "src/blok/model/dynarr.c" "src/blok/model/dynarr.h"
     "src/blok/model/square.h"
     "src/blok/model/vector.c" "src/blok/model/vector.h"
 

@@ -13,9 +13,9 @@ typedef struct _ParsedArgs
 #define BLOK_ARGS_SCALE_DEFAULT 15
 
 #define BLOK_ARGS_SET_DEFAULT(tParsedArgs)                                               \
-    tParsedArgs.theme = 0;                                                               \
-    tParsedArgs.scaleX = BLOK_ARGS_SCALE_DEFAULT;                                        \
-    tParsedArgs.scaleY = BLOK_ARGS_SCALE_DEFAULT
+    (tParsedArgs).theme = 0;                                                             \
+    (tParsedArgs).scaleX = BLOK_ARGS_SCALE_DEFAULT;                                      \
+    (tParsedArgs).scaleY = BLOK_ARGS_SCALE_DEFAULT
 
 int BlokArgsParse(TParsedArgs *pParsedArgs, LPCWSTR pCommandLine);
 

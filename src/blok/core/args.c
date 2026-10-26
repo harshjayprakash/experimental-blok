@@ -19,7 +19,7 @@ int BlokArgsParse(TParsedArgs *pParsedArgs, LPCWSTR pCommandLine)
         return 0;
     }
 
-    BLOK_ARGS_SET_DEFAULT((*pParsedArgs));
+    BLOK_ARGS_SET_DEFAULT(*pParsedArgs);
 
     int argc = 0;
     TArgMode argm = BLOK_ARGM_UNSET;

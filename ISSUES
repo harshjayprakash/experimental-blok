@@ -1,0 +1,27 @@
+
+EXPERIMENTAL BLOK: KNOWN ISSUES AND LIMITATIONS
+===============================================
+
+First column is an identifier:
+	' ' -> No longer an issue.
+	'I' -> Confirmed Issue
+	'R' -> Reopened a previous issue.
+	'N' -> Not verified.
+
+Second column is the Id of the issue.
+Third column is the revision that issue is present.
+Fourth column is the last revision that issue was present.
+Fifth column describes the issue.
+
+	#1		97		132		Cannot unmark regions.
+	#2		97		97		Duplicate regions.
+	#3		97		97		Square can be positioned outside of window client area.
+	#4		97		97		Square can cover a marked region.
+	#5		97		197		GDI graphics rendering can show noticable flicker.
+	#6		123		132		"CLEAR ALL" button hitbox is inaccurate.
+I	#7		187		471		Specified scaling does not have bounds.
+	#8		187		197		Slow generation of multiple obstructable generation.
+I	#9		187		471		Square can be covered by the panel.
+R	#10		405		471		Square can be positioned outside of window client area.
+I	#11		405		471		Drag persistence when mouse leaves the window.
+	#12		405		471		Imprecise hitbox for interactive controls.
